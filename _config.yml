@@ -10,11 +10,7 @@
 ############################
 
 # Name of website
-<<<<<<< HEAD
 title: Scobru
-=======
-title: My website
->>>>>>> 3920be6d2e79ca15f4c28b65e8af6cbdf1a76fe1
 
 # Your name to show in the footer
 author: Francesco Bruno
@@ -57,7 +53,6 @@ round-avatar: true
 social-network-links:
   email: "dev.scobru@pm.me"
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
-<<<<<<< HEAD
 #  facebook: deanattali
   github: scobru
   twitter: scobru1988
@@ -66,17 +61,6 @@ social-network-links:
   medium: scobru
 #  reddit: yourname
   linkedin: scobru
-=======
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
-  patreon: DeanAttali
-  youtube: "@daattali"
-  whatsapp: 15551212
-#  medium: yourname
-#  reddit: yourname or r/yoursubreddit
-#  linkedin: daattali
->>>>>>> 3920be6d2e79ca15f4c28b65e8af6cbdf1a76fe1
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
@@ -150,25 +134,14 @@ keywords: "solidity,blockchain,numerai,ai,machine learning, music, electronic mu
 
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
-<<<<<<< HEAD
-navbar-col: "#000000"
-navbar-text-col: "#ffffff"
-navbar-border-col: "#DDDDDD"
-page-col: "#e0f6ff"
-=======
 page-col: "#FFFFFF"
->>>>>>> 3920be6d2e79ca15f4c28b65e8af6cbdf1a76fe1
 text-col: "#404040"
 link-col: "#008080"
 hover-col: "#0085A1"
-<<<<<<< HEAD
-footer-col: "#ffffff"
-=======
 navbar-col: "#EAEAEA"
 navbar-text-col: "#404040"
 navbar-border-col: "#DDDDDD"
 footer-col: "#EAEAEA"
->>>>>>> 3920be6d2e79ca15f4c28b65e8af6cbdf1a76fe1
 footer-text-col: "#777777"
 footer-link-col: "#000000"
 footer-hover-col: "#0085A1"
