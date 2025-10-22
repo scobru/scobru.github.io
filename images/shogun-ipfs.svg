@@ -1,0 +1,50 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- IPFS - InterPlanetary File System - Unique Design -->
+  <!-- IPFS logo hexagon -->
+  <path d="M100,30 L120,40 L120,60 L100,70 L80,60 L80,40 Z" fill="#6366F1" opacity="0.9"/>
+  <path d="M100,70 L120,80 L120,100 L100,110 L80,100 L80,80 Z" fill="#4F46E5" opacity="0.8"/>
+  <path d="M100,110 L120,120 L120,140 L100,150 L80,140 L80,120 Z" fill="#3730A3" opacity="0.7"/>
+  
+  <!-- Distributed storage network -->
+  <circle cx="50" cy="50" r="6" fill="#6366F1" opacity="0.8"/>
+  <circle cx="150" cy="50" r="6" fill="#6366F1" opacity="0.8"/>
+  <circle cx="50" cy="150" r="6" fill="#6366F1" opacity="0.8"/>
+  <circle cx="150" cy="150" r="6" fill="#6366F1" opacity="0.8"/>
+  <circle cx="100" cy="100" r="8" fill="#6366F1" opacity="0.9"/>
+  
+  <!-- P2P connections -->
+  <path d="M56,56 L100,100" stroke="#6366F1" stroke-width="2" opacity="0.6"/>
+  <path d="M144,56 L100,100" stroke="#6366F1" stroke-width="2" opacity="0.6"/>
+  <path d="M56,144 L100,100" stroke="#6366F1" stroke-width="2" opacity="0.6"/>
+  <path d="M144,144 L100,100" stroke="#6366F1" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Content addressing -->
+  <rect x="30" y="30" width="140" height="20" rx="4" fill="#1F2937" opacity="0.9"/>
+  <text x="100" y="42" text-anchor="middle" fill="#6366F1" font-size="8" font-family="monospace">QmYwAPJzv5CZsnA625s3Xf2NtL73F1L4Fg4bzdm8Uq2mc</text>
+  
+  <!-- File storage blocks -->
+  <rect x="40" y="170" width="20" height="15" rx="2" fill="#6366F1" opacity="0.7"/>
+  <rect x="65" y="170" width="20" height="15" rx="2" fill="#4F46E5" opacity="0.6"/>
+  <rect x="90" y="170" width="20" height="15" rx="2" fill="#3730A3" opacity="0.5"/>
+  <rect x="115" y="170" width="20" height="15" rx="2" fill="#6366F1" opacity="0.4"/>
+  <rect x="140" y="170" width="20" height="15" rx="2" fill="#4F46E5" opacity="0.3"/>
+  
+  <!-- Merkle tree structure -->
+  <circle cx="70" cy="80" r="4" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="130" cy="80" r="4" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="100" cy="90" r="5" fill="#FFFFFF" opacity="0.9"/>
+  
+  <path d="M70,84 L100,90" stroke="#FFFFFF" stroke-width="1" opacity="0.7"/>
+  <path d="M130,84 L100,90" stroke="#FFFFFF" stroke-width="1" opacity="0.7"/>
+  
+  <!-- IPFS protocol indicators -->
+  <text x="100" y="20" text-anchor="middle" fill="#6366F1" font-size="10" font-weight="bold">IPFS</text>
+  <text x="100" y="190" text-anchor="middle" fill="#6B7280" font-size="6">InterPlanetary File System</text>
+  
+  <!-- Storage indicators -->
+  <rect x="20" y="160" width="30" height="8" rx="2" fill="#10B981" opacity="0.8"/>
+  <text x="35" y="166" text-anchor="middle" fill="#FFFFFF" font-size="5">Distributed</text>
+  
+  <rect x="150" y="160" width="30" height="8" rx="2" fill="#3B82F6" opacity="0.8"/>
+  <text x="165" y="166" text-anchor="middle" fill="#FFFFFF" font-size="5">P2P</text>
+</svg>

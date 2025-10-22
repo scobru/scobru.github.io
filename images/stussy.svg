@@ -1,0 +1,73 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Polpo/Octopus con colori che risaltano su sfondo scuro -->
+  <g filter="url(#shadow)">
+    <!-- Corpo principale -->
+    <ellipse cx="100" cy="85" rx="35" ry="32" fill="#a78bfa"/>
+    
+    <!-- Tentacoli (8 come un vero polpo) - colore più chiaro -->
+    <!-- Tentacolo 1 (sinistra estrema) -->
+    <path d="M 70 105 Q 55 115 52 130 Q 50 140 55 145" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="55" cy="145" r="4" fill="#8b5cf6"/>
+    
+    <!-- Tentacolo 2 -->
+    <path d="M 78 108 Q 68 120 65 135 Q 64 145 68 152" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="68" cy="152" r="4" fill="#8b5cf6"/>
+    
+    <!-- Tentacolo 3 -->
+    <path d="M 86 110 Q 82 125 82 140 Q 82 150 85 158" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="85" cy="158" r="4" fill="#8b5cf6"/>
+    
+    <!-- Tentacolo 4 (centrale sinistra) -->
+    <path d="M 94 112 Q 94 128 96 143 Q 98 153 100 162" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="100" cy="162" r="4" fill="#8b5cf6"/>
+    
+    <!-- Tentacolo 5 (centrale destra) -->
+    <path d="M 106 112 Q 106 128 104 143 Q 102 153 100 162" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    
+    <!-- Tentacolo 6 -->
+    <path d="M 114 110 Q 118 125 118 140 Q 118 150 115 158" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="115" cy="158" r="4" fill="#8b5cf6"/>
+    
+    <!-- Tentacolo 7 -->
+    <path d="M 122 108 Q 132 120 135 135 Q 136 145 132 152" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="132" cy="152" r="4" fill="#8b5cf6"/>
+    
+    <!-- Tentacolo 8 (destra estrema) -->
+    <path d="M 130 105 Q 145 115 148 130 Q 150 140 145 145" stroke="#c4b5fd" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="145" cy="145" r="4" fill="#8b5cf6"/>
+    
+    <!-- Testa/Occhi -->
+    <circle cx="88" cy="80" r="8" fill="#1f2937"/>
+    <circle cx="112" cy="80" r="8" fill="#1f2937"/>
+    <circle cx="90" cy="78" r="3.5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="114" cy="78" r="3.5" fill="#ffffff" filter="url(#glow)"/>
+    
+    <!-- Bocca felice -->
+    <path d="M 88 92 Q 100 98 112 92" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Dettaglio code bracket sul corpo -->
+    <text x="92" y="72" font-family="monospace" font-size="14" fill="#6366f1" opacity="0.6" font-weight="bold">&lt;/&gt;</text>
+  </g>
+  
+  <!-- Stelline decorative -->
+  <g opacity="0.8">
+    <path d="M 40 50 L 42 54 L 46 54 L 43 57 L 44 61 L 40 58 L 36 61 L 37 57 L 34 54 L 38 54 Z" fill="#fbbf24"/>
+    <path d="M 160 40 L 161 43 L 164 43 L 162 45 L 163 48 L 160 46 L 157 48 L 158 45 L 156 43 L 159 43 Z" fill="#fbbf24"/>
+    <path d="M 170 165 L 171 167 L 173 167 L 172 169 L 172 171 L 170 170 L 168 171 L 168 169 L 167 167 L 169 167 Z" fill="#fbbf24"/>
+  </g>
+</svg>

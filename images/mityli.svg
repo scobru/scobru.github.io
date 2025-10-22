@@ -1,0 +1,31 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Anchor symbol (⚓) representing stability and reliability -->
+  <path d="M100 40 L100 80 M90 50 L110 50 M100 80 L85 95 M100 80 L115 95" 
+        stroke="#2563EB" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- Type checking brackets -->
+  <path d="M40 120 L30 130 L40 140" stroke="#2563EB" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M160 120 L170 130 L160 140" stroke="#2563EB" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Data flow arrows -->
+  <path d="M60 100 L80 100" stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M120 100 L140 100" stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Validation checkmarks -->
+  <path d="M50 110 L55 115 L65 105" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M145 110 L150 115 L160 105" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Central validation circle -->
+  <circle cx="100" cy="100" r="15" fill="#2563EB" opacity="0.1"/>
+  <circle cx="100" cy="100" r="15" stroke="#2563EB" stroke-width="2" fill="none"/>
+  
+  <!-- Type indicators -->
+  <text x="100" y="105" font-family="monospace" font-size="8" fill="#2563EB" text-anchor="middle">T</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+  </defs>
+</svg>

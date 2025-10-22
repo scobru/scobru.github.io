@@ -1,0 +1,66 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wallet App - Digital Wallet - Unique Design -->
+  <!-- Main wallet interface -->
+  <rect x="40" y="40" width="120" height="80" rx="8" fill="#059669" opacity="0.9"/>
+  <rect x="45" y="45" width="110" height="70" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  
+  <!-- Wallet header -->
+  <rect x="45" y="45" width="110" height="20" rx="4" fill="#047857" opacity="0.8"/>
+  <text x="100" y="57" text-anchor="middle" fill="#FFFFFF" font-size="8" font-weight="bold">Digital Wallet</text>
+  
+  <!-- Balance display -->
+  <text x="100" y="80" text-anchor="middle" fill="#059669" font-size="12" font-weight="bold">$2,847.32</text>
+  <text x="100" y="95" text-anchor="middle" fill="#6B7280" font-size="6">Available Balance</text>
+  
+  <!-- Wallet actions -->
+  <rect x="55" y="105" width="30" height="15" rx="3" fill="#10B981" opacity="0.8"/>
+  <text x="70" y="115" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">Send</text>
+  
+  <rect x="90" y="105" width="30" height="15" rx="3" fill="#3B82F6" opacity="0.8"/>
+  <text x="105" y="115" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">Receive</text>
+  
+  <rect x="125" y="105" width="30" height="15" rx="3" fill="#8B5CF6" opacity="0.8"/>
+  <text x="140" y="115" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">Swap</text>
+  
+  <!-- Cryptocurrency icons -->
+  <circle cx="50" cy="50" r="8" fill="#F59E0B" opacity="0.8"/>
+  <text x="50" y="55" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">₿</text>
+  
+  <circle cx="150" cy="50" r="8" fill="#3B82F6" opacity="0.8"/>
+  <text x="150" y="55" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">Ξ</text>
+  
+  <circle cx="50" cy="150" r="8" fill="#8B5CF6" opacity="0.8"/>
+  <text x="50" y="155" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">◊</text>
+  
+  <circle cx="150" cy="150" r="8" fill="#EF4444" opacity="0.8"/>
+  <text x="150" y="155" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">$</text>
+  
+  <!-- Connection lines -->
+  <path d="M58,50 L100,80" stroke="#059669" stroke-width="2" opacity="0.6"/>
+  <path d="M142,50 L100,80" stroke="#059669" stroke-width="2" opacity="0.6"/>
+  <path d="M58,150 L100,120" stroke="#059669" stroke-width="2" opacity="0.6"/>
+  <path d="M142,150 L100,120" stroke="#059669" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Transaction history -->
+  <rect x="20" y="140" width="160" height="40" rx="4" fill="#1F2937" opacity="0.9"/>
+  <text x="100" y="155" text-anchor="middle" fill="#059669" font-size="8" font-weight="bold">Recent Transactions</text>
+  
+  <!-- Transaction items -->
+  <rect x="30" y="160" width="140" height="8" rx="2" fill="#374151" opacity="0.8"/>
+  <text x="35" y="166" fill="#FFFFFF" font-size="5">Received 0.05 BTC</text>
+  <text x="160" y="166" fill="#10B981" font-size="5">+$2,150</text>
+  
+  <rect x="30" y="170" width="140" height="8" rx="2" fill="#374151" opacity="0.6"/>
+  <text x="35" y="176" fill="#FFFFFF" font-size="5">Sent 1.2 ETH</text>
+  <text x="160" y="176" fill="#EF4444" font-size="5">-$3,200</text>
+  
+  <!-- Wallet status -->
+  <rect x="20" y="190" width="40" height="8" rx="2" fill="#10B981" opacity="0.8"/>
+  <text x="40" y="196" text-anchor="middle" fill="#FFFFFF" font-size="5">Connected</text>
+  
+  <rect x="140" y="190" width="40" height="8" rx="2" fill="#3B82F6" opacity="0.8"/>
+  <text x="160" y="196" text-anchor="middle" fill="#FFFFFF" font-size="5">Secure</text>
+  
+  <!-- App title -->
+  <text x="100" y="25" text-anchor="middle" fill="#059669" font-size="10" font-weight="bold">Wallet App</text>
+</svg>

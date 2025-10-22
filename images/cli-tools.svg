@@ -1,0 +1,54 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Terminal window -->
+  <rect x="30" y="30" width="140" height="100" fill="#1F2937" stroke="#10B981" stroke-width="2" rx="5"/>
+  
+  <!-- Terminal header -->
+  <rect x="30" y="30" width="140" height="20" fill="#10B981" opacity="0.8"/>
+  <circle cx="40" cy="40" r="3" fill="#1F2937"/>
+  <circle cx="50" cy="40" r="3" fill="#1F2937"/>
+  <circle cx="60" cy="40" r="3" fill="#1F2937"/>
+  
+  <!-- Terminal prompt -->
+  <text x="40" y="60" font-family="monospace" font-size="10" fill="#10B981">$ python cli-tools.py</text>
+  
+  <!-- Command lines -->
+  <text x="40" y="75" font-family="monospace" font-size="8" fill="#F3F4F6">clip - clipboard manager</text>
+  <text x="40" y="85" font-family="monospace" font-size="8" fill="#F3F4F6">cryptomessage - encrypted chat</text>
+  <text x="40" y="95" font-family="monospace" font-size="8" fill="#F3F4F6">editor - terminal editor</text>
+  <text x="40" y="105" font-family="monospace" font-size="8" fill="#F3F4F6">foldx - folder organizer</text>
+  <text x="40" y="115" font-family="monospace" font-size="8" fill="#F3F4F6">meteocheck - weather</text>
+  
+  <!-- Cursor -->
+  <rect x="40" y="120" width="6" height="8" fill="#10B981" opacity="0.8"/>
+  
+  <!-- Tool icons around terminal -->
+  <!-- Clipboard -->
+  <rect x="20" y="150" width="20" height="25" fill="none" stroke="#10B981" stroke-width="2" rx="2"/>
+  <path d="M25 155 L30 160 L35 155" stroke="#10B981" stroke-width="1" fill="none"/>
+  
+  <!-- Lock (crypto) -->
+  <rect x="50" y="150" width="15" height="20" fill="none" stroke="#10B981" stroke-width="2"/>
+  <path d="M50 150 L57 150 L57 145" stroke="#10B981" stroke-width="2" fill="none"/>
+  
+  <!-- Folder -->
+  <path d="M80 150 L80 170 L95 170 L100 165 L100 150 L80 150" fill="none" stroke="#10B981" stroke-width="2"/>
+  <path d="M80 150 L85 145 L90 150" stroke="#10B981" stroke-width="2" fill="none"/>
+  
+  <!-- Weather cloud -->
+  <ellipse cx="120" cy="160" rx="12" ry="8" fill="none" stroke="#10B981" stroke-width="2"/>
+  <ellipse cx="125" cy="155" rx="8" ry="6" fill="none" stroke="#10B981" stroke-width="2"/>
+  
+  <!-- Password key -->
+  <circle cx="150" cy="160" r="8" fill="none" stroke="#10B981" stroke-width="2"/>
+  <path d="M150 160 L150 170" stroke="#10B981" stroke-width="2"/>
+  <path d="M150 170 L155 175" stroke="#10B981" stroke-width="2"/>
+  
+  <!-- Checkmark (tasks) -->
+  <path d="M180 155 L185 160 L190 155" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Python snake -->
+  <path d="M100 20 Q110 15 120 20 Q130 25 120 30 Q110 35 100 30 Q90 25 100 20" 
+        fill="#10B981" opacity="0.6"/>
+  <circle cx="105" cy="25" r="2" fill="#1F2937"/>
+  <circle cx="115" cy="25" r="2" fill="#1F2937"/>
+</svg>

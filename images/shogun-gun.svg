@@ -1,0 +1,53 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- GunDB - Unique Design -->
+  <!-- Database cluster -->
+  <rect x="60" y="40" width="80" height="60" rx="6" fill="#8A3FFC" opacity="0.9"/>
+  <rect x="65" y="45" width="70" height="50" rx="3" fill="#FFFFFF" opacity="0.95"/>
+  
+  <!-- Database tables -->
+  <rect x="70" y="50" width="60" height="8" rx="1" fill="#8A3FFC" opacity="0.8"/>
+  <text x="100" y="56" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">users</text>
+  
+  <rect x="70" y="60" width="60" height="8" rx="1" fill="#8A3FFC" opacity="0.6"/>
+  <text x="100" y="66" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">messages</text>
+  
+  <rect x="70" y="70" width="60" height="8" rx="1" fill="#8A3FFC" opacity="0.4"/>
+  <text x="100" y="76" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">channels</text>
+  
+  <rect x="70" y="80" width="60" height="8" rx="1" fill="#8A3FFC" opacity="0.2"/>
+  <text x="100" y="86" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">settings</text>
+  
+  <!-- P2P network nodes -->
+  <circle cx="40" cy="40" r="6" fill="#8A3FFC" opacity="0.7"/>
+  <circle cx="160" cy="40" r="6" fill="#8A3FFC" opacity="0.7"/>
+  <circle cx="40" cy="120" r="6" fill="#8A3FFC" opacity="0.7"/>
+  <circle cx="160" cy="120" r="6" fill="#8A3FFC" opacity="0.7"/>
+  <circle cx="100" cy="160" r="8" fill="#8A3FFC" opacity="0.8"/>
+  
+  <!-- P2P connections -->
+  <path d="M46,40 L100,70" stroke="#8A3FFC" stroke-width="2" opacity="0.6"/>
+  <path d="M154,40 L100,70" stroke="#8A3FFC" stroke-width="2" opacity="0.6"/>
+  <path d="M46,120 L100,100" stroke="#8A3FFC" stroke-width="2" opacity="0.6"/>
+  <path d="M154,120 L100,100" stroke="#8A3FFC" stroke-width="2" opacity="0.6"/>
+  <path d="M100,100 L100,152" stroke="#8A3FFC" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Data synchronization arrows -->
+  <path d="M75,70 L85,80 L75,90" stroke="#8A3FFC" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M125,70 L115,80 L125,90" stroke="#8A3FFC" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M100,110 L100,120 L100,130" stroke="#8A3FFC" stroke-width="2" fill="none" opacity="0.7"/>
+  
+  <!-- GunDB protocol indicators -->
+  <text x="100" y="30" text-anchor="middle" fill="#8A3FFC" font-size="10" font-weight="bold">GunDB</text>
+  <text x="100" y="180" text-anchor="middle" fill="#6B7280" font-size="6">Decentralized Database</text>
+  
+  <!-- Real-time sync indicators -->
+  <circle cx="20" cy="170" r="3" fill="#10B981"/>
+  <circle cx="30" cy="170" r="3" fill="#10B981"/>
+  <circle cx="40" cy="170" r="3" fill="#10B981"/>
+  <text x="50" y="175" fill="#10B981" font-size="6">Real-time Sync</text>
+  
+  <circle cx="120" cy="170" r="3" fill="#3B82F6"/>
+  <circle cx="130" cy="170" r="3" fill="#3B82F6"/>
+  <circle cx="140" cy="170" r="3" fill="#3B82F6"/>
+  <text x="150" y="175" fill="#3B82F6" font-size="6">P2P Network</text>
+</svg>

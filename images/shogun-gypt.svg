@@ -1,0 +1,55 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gypt - Geolocation App - Unique Design -->
+  <!-- Mobile device -->
+  <rect x="80" y="40" width="40" height="70" rx="8" fill="#14B8A6" opacity="0.9"/>
+  <rect x="85" y="45" width="30" height="60" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  
+  <!-- Phone screen -->
+  <rect x="90" y="50" width="20" height="35" rx="2" fill="#0F766E" opacity="0.8"/>
+  
+  <!-- Map interface on phone -->
+  <rect x="92" y="52" width="16" height="12" fill="#10B981" opacity="0.6"/>
+  <rect x="92" y="65" width="16" height="8" fill="#059669" opacity="0.4"/>
+  <rect x="92" y="74" width="16" height="6" fill="#047857" opacity="0.3"/>
+  
+  <!-- Location pin on map -->
+  <path d="M100,58 L98,62 L102,62 Z" fill="#EF4444" opacity="0.9"/>
+  <circle cx="100" cy="58" r="2" fill="#EF4444" opacity="0.9"/>
+  
+  <!-- GPS coordinates display -->
+  <rect x="92" y="82" width="16" height="3" fill="#FFFFFF" opacity="0.8"/>
+  <text x="100" y="84" text-anchor="middle" fill="#0F766E" font-size="3" font-family="monospace">40.7128°N</text>
+  
+  <!-- Large location pin -->
+  <path d="M100,130 L90,150 L110,150 Z" fill="#14B8A6" opacity="0.9"/>
+  <circle cx="100" cy="130" r="12" fill="#14B8A6" opacity="0.9"/>
+  <circle cx="100" cy="130" r="6" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- GPS signal waves -->
+  <circle cx="100" cy="130" r="25" fill="none" stroke="#14B8A6" stroke-width="2" opacity="0.6"/>
+  <circle cx="100" cy="130" r="40" fill="none" stroke="#14B8A6" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="100" cy="130" r="55" fill="none" stroke="#14B8A6" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Satellite indicators -->
+  <circle cx="50" cy="50" r="4" fill="#14B8A6" opacity="0.7"/>
+  <circle cx="150" cy="50" r="4" fill="#14B8A6" opacity="0.7"/>
+  <circle cx="50" cy="150" r="4" fill="#14B8A6" opacity="0.7"/>
+  <circle cx="150" cy="150" r="4" fill="#14B8A6" opacity="0.7"/>
+  
+  <!-- Satellite connections -->
+  <path d="M54,54 L100,130" stroke="#14B8A6" stroke-width="1" opacity="0.5"/>
+  <path d="M146,54 L100,130" stroke="#14B8A6" stroke-width="1" opacity="0.5"/>
+  <path d="M54,146 L100,130" stroke="#14B8A6" stroke-width="1" opacity="0.5"/>
+  <path d="M146,146 L100,130" stroke="#14B8A6" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Location accuracy indicator -->
+  <rect x="20" y="170" width="60" height="15" rx="3" fill="#14B8A6" opacity="0.8"/>
+  <text x="50" y="180" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">GPS Active</text>
+  
+  <!-- Coordinates display -->
+  <rect x="120" y="170" width="60" height="15" rx="3" fill="#0F766E" opacity="0.8"/>
+  <text x="150" y="180" text-anchor="middle" fill="#FFFFFF" font-size="6">74.0060°W</text>
+  
+  <!-- App title -->
+  <text x="100" y="25" text-anchor="middle" fill="#14B8A6" font-size="10" font-weight="bold">Gypt</text>
+</svg>

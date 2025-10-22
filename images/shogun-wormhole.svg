@@ -1,0 +1,73 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wormhole - File Transfer Portal - Unique Design -->
+  <!-- Wormhole portal -->
+  <circle cx="100" cy="100" r="50" fill="none" stroke="#8A3FFC" stroke-width="4" opacity="0.8"/>
+  <circle cx="100" cy="100" r="35" fill="none" stroke="#8A3FFC" stroke-width="3" opacity="0.6"/>
+  <circle cx="100" cy="100" r="20" fill="none" stroke="#8A3FFC" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Portal energy core -->
+  <circle cx="100" cy="100" r="12" fill="#8A3FFC" opacity="0.3"/>
+  <circle cx="100" cy="100" r="6" fill="#8A3FFC" opacity="0.6"/>
+  
+  <!-- Energy spiral effects -->
+  <path d="M100,50 A25,25 0 0,1 150,100 A25,25 0 0,1 100,150 A25,25 0 0,1 50,100 A25,25 0 0,1 100,50" stroke="#8A3FFC" stroke-width="2" fill="none" opacity="0.4"/>
+  
+  <!-- File transfer interface -->
+  <rect x="20" y="30" width="60" height="40" rx="4" fill="#1F2937" opacity="0.9"/>
+  <text x="50" y="45" text-anchor="middle" fill="#8A3FFC" font-size="8" font-weight="bold">Source</text>
+  
+  <!-- Source files -->
+  <rect x="25" y="50" width="15" height="15" rx="2" fill="#8A3FFC" opacity="0.7"/>
+  <rect x="28" y="53" width="9" height="2" fill="#FFFFFF" opacity="0.8"/>
+  <rect x="28" y="56" width="6" height="2" fill="#FFFFFF" opacity="0.8"/>
+  <rect x="28" y="59" width="8" height="2" fill="#FFFFFF" opacity="0.8"/>
+  
+  <rect x="45" y="50" width="15" height="15" rx="2" fill="#8A3FFC" opacity="0.5"/>
+  <rect x="48" y="53" width="9" height="2" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="48" y="56" width="6" height="2" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="48" y="59" width="8" height="2" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- Destination interface -->
+  <rect x="120" y="30" width="60" height="40" rx="4" fill="#1F2937" opacity="0.9"/>
+  <text x="150" y="45" text-anchor="middle" fill="#8A3FFC" font-size="8" font-weight="bold">Destination</text>
+  
+  <!-- Destination files -->
+  <rect x="125" y="50" width="15" height="15" rx="2" fill="#8A3FFC" opacity="0.4"/>
+  <rect x="128" y="53" width="9" height="2" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="128" y="56" width="6" height="2" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="128" y="59" width="8" height="2" fill="#FFFFFF" opacity="0.5"/>
+  
+  <rect x="145" y="50" width="15" height="15" rx="2" fill="#8A3FFC" opacity="0.2"/>
+  <rect x="148" y="53" width="9" height="2" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="148" y="56" width="6" height="2" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="148" y="59" width="8" height="2" fill="#FFFFFF" opacity="0.3"/>
+  
+  <!-- Transfer progress -->
+  <rect x="30" y="80" width="140" height="8" rx="4" fill="#374151" opacity="0.8"/>
+  <rect x="30" y="80" width="90" height="8" rx="4" fill="#8A3FFC" opacity="0.8"/>
+  <text x="100" y="87" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">64%</text>
+  
+  <!-- Transfer speed -->
+  <text x="100" y="100" text-anchor="middle" fill="#8A3FFC" font-size="8" font-weight="bold">2.1 GB/s</text>
+  
+  <!-- Wormhole connections -->
+  <path d="M80,50 Q100,75 120,50" stroke="#8A3FFC" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M80,150 Q100,125 120,150" stroke="#8A3FFC" stroke-width="3" fill="none" opacity="0.6"/>
+  
+  <!-- Data packets flowing -->
+  <circle cx="85" cy="60" r="3" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="95" cy="70" r="3" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="105" cy="80" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="115" cy="90" r="3" fill="#FFFFFF" opacity="0.2"/>
+  
+  <!-- Portal title -->
+  <text x="100" y="20" text-anchor="middle" fill="#8A3FFC" font-size="10" font-weight="bold">Wormhole</text>
+  <text x="100" y="180" text-anchor="middle" fill="#6B7280" font-size="6">Inter-dimensional File Transfer</text>
+  
+  <!-- Transfer status -->
+  <rect x="20" y="160" width="40" height="12" rx="3" fill="#10B981" opacity="0.8"/>
+  <text x="40" y="168" text-anchor="middle" fill="#FFFFFF" font-size="6">Active</text>
+  
+  <rect x="140" y="160" width="40" height="12" rx="3" fill="#3B82F6" opacity="0.8"/>
+  <text x="160" y="168" text-anchor="middle" fill="#FFFFFF" font-size="6">Encrypted</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Super Peer - High-Performance Network Node - Unique Design -->
+  <!-- Super peer server (tower shape) -->
+  <rect x="85" y="50" width="30" height="40" rx="3" fill="#0891B2" opacity="0.9"/>
+  <rect x="90" y="55" width="20" height="30" rx="1" fill="#FFFFFF" opacity="0.95"/>
+  
+  <!-- Network antenna -->
+  <path d="M100,50 L100,30" stroke="#0891B2" stroke-width="3" opacity="0.9"/>
+  <path d="M95,30 L105,30" stroke="#0891B2" stroke-width="2" opacity="0.9"/>
+  <circle cx="100" cy="30" r="2" fill="#0891B2" opacity="0.9"/>
+  
+  <!-- Super peer nodes (star shapes) -->
+  <g fill="#0891B2" opacity="0.8">
+    <path d="M60,60 L65,70 L75,70 L67,77 L70,87 L60,82 L50,87 L53,77 L45,70 L55,70 Z"/>
+    <text x="60" y="85" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">P1</text>
+    
+    <path d="M140,60 L145,70 L155,70 L147,77 L150,87 L140,82 L130,87 L133,77 L125,70 L135,70 Z"/>
+    <text x="140" y="85" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">P2</text>
+    
+    <path d="M60,120 L65,130 L75,130 L67,137 L70,147 L60,142 L50,147 L53,137 L45,130 L55,130 Z"/>
+    <text x="60" y="145" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">P3</text>
+    
+    <path d="M140,120 L145,130 L155,130 L147,137 L150,147 L140,142 L130,147 L133,137 L125,130 L135,130 Z"/>
+    <text x="140" y="145" text-anchor="middle" fill="#FFFFFF" font-size="6" font-weight="bold">P4</text>
+  </g>
+  
+  <!-- Network connections (radiating lines) -->
+  <path d="M100,90 L60,70" stroke="#0891B2" stroke-width="2" opacity="0.7"/>
+  <path d="M100,90 L140,70" stroke="#0891B2" stroke-width="2" opacity="0.7"/>
+  <path d="M100,90 L60,130" stroke="#0891B2" stroke-width="2" opacity="0.7"/>
+  <path d="M100,90 L140,130" stroke="#0891B2" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Super peer indicator -->
+  <text x="100" y="45" text-anchor="middle" fill="#0891B2" font-size="8" font-weight="bold" opacity="0.8">SUPER</text>
+  
+  <!-- Performance metrics -->
+  <rect x="20" y="160" width="160" height="30" rx="4" fill="#1F2937" opacity="0.9"/>
+  <text x="100" y="175" text-anchor="middle" fill="#0891B2" font-size="8" font-weight="bold">Super Peer Performance</text>
+  
+  <!-- Performance indicators -->
+  <rect x="30" y="180" width="30" height="8" rx="2" fill="#10B981" opacity="0.8"/>
+  <text x="45" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">High BW</text>
+  
+  <rect x="70" y="180" width="30" height="8" rx="2" fill="#3B82F6" opacity="0.8"/>
+  <text x="85" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">Low Lat</text>
+  
+  <rect x="110" y="180" width="30" height="8" rx="2" fill="#F59E0B" opacity="0.8"/>
+  <text x="125" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">Reliable</text>
+  
+  <rect x="150" y="180" width="30" height="8" rx="2" fill="#8B5CF6" opacity="0.8"/>
+  <text x="165" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">P2P</text>
+  
+  <!-- Network rings -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#0891B2" stroke-width="2" opacity="0.4"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#0E7490" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Super peer title -->
+  <text x="100" y="30" text-anchor="middle" fill="#0891B2" font-size="10" font-weight="bold">Super Peer</text>
+  <text x="100" y="200" text-anchor="middle" fill="#6B7280" font-size="6">High-Performance Network Node</text>
+</svg>

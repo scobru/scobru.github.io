@@ -1,0 +1,56 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stealth Address - Privacy Protection - Unique Design -->
+  <!-- Stealth mask overlay -->
+  <path fill="#7C2D12" opacity="0.8" d="M100,40 L120,60 L120,80 L100,100 L80,80 L80,60 Z"/>
+  
+  <!-- Privacy shield -->
+  <path d="M100,60 L110,70 L110,90 L100,100 L90,90 L90,70 Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M95,75 L100,80 L105,75" stroke="#7C2D12" stroke-width="2" fill="none"/>
+  
+  <!-- Stealth address nodes (diamond shapes) -->
+  <path d="M60,60 L70,70 L60,80 L50,70 Z" fill="#FFFFFF" opacity="0.7"/>
+  <text x="60" y="75" text-anchor="middle" fill="#7C2D12" font-size="6" font-weight="bold">S1</text>
+  
+  <path d="M140,60 L150,70 L140,80 L130,70 Z" fill="#FFFFFF" opacity="0.7"/>
+  <text x="140" y="75" text-anchor="middle" fill="#7C2D12" font-size="6" font-weight="bold">S2</text>
+  
+  <path d="M60,120 L70,130 L60,140 L50,130 Z" fill="#FFFFFF" opacity="0.7"/>
+  <text x="60" y="135" text-anchor="middle" fill="#7C2D12" font-size="6" font-weight="bold">S3</text>
+  
+  <path d="M140,120 L150,130 L140,140 L130,130 Z" fill="#FFFFFF" opacity="0.7"/>
+  <text x="140" y="135" text-anchor="middle" fill="#7C2D12" font-size="6" font-weight="bold">S4</text>
+  
+  <!-- Stealth connection lines (dashed for privacy) -->
+  <path d="M70,70 L100,100 L130,70" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+  <path d="M70,130 L100,100 L130,130" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+  
+  <!-- Privacy protection interface -->
+  <rect x="30" y="160" width="140" height="30" rx="4" fill="#1F2937" opacity="0.9"/>
+  <text x="100" y="175" text-anchor="middle" fill="#7C2D12" font-size="8" font-weight="bold">Stealth Address System</text>
+  
+  <!-- Privacy features -->
+  <rect x="40" y="180" width="30" height="8" rx="2" fill="#7C2D12" opacity="0.8"/>
+  <text x="55" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">Hidden</text>
+  
+  <rect x="80" y="180" width="30" height="8" rx="2" fill="#991B1B" opacity="0.8"/>
+  <text x="95" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">Private</text>
+  
+  <rect x="120" y="180" width="30" height="8" rx="2" fill="#DC2626" opacity="0.8"/>
+  <text x="135" y="186" text-anchor="middle" fill="#FFFFFF" font-size="5">Secure</text>
+  
+  <!-- Privacy rings (concentric) -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#7C2D12" stroke-width="2" opacity="0.4"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#991B1B" stroke-width="1" opacity="0.3"/>
+  <circle cx="100" cy="100" r="55" fill="none" stroke="#7C2D12" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Encryption indicators -->
+  <rect x="20" y="50" width="15" height="10" rx="2" fill="#7C2D12" opacity="0.6"/>
+  <path d="M25,55 L30,60 L35,55" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+  
+  <rect x="165" y="50" width="15" height="10" rx="2" fill="#7C2D12" opacity="0.6"/>
+  <path d="M170,55 L175,60 L180,55" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+  
+  <!-- Stealth title -->
+  <text x="100" y="30" text-anchor="middle" fill="#7C2D12" font-size="10" font-weight="bold">Stealth Address</text>
+  <text x="100" y="200" text-anchor="middle" fill="#6B7280" font-size="6">Privacy-First Address System</text>
+</svg>
