@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thoughts - Scobru</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .thoughts-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .article-list {
+        display: grid;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .article-item {
+        background: white;
+        border: 2px solid #333;
+        border-radius: 12px;
+        padding: 25px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .article-item:hover {
+        background: #333;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .article-item:hover a {
+        color: white;
+        border-bottom-color: white;
+      }
+
+      .article-preview h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .article-preview h3 a {
+        color: #333;
+        text-decoration: none;
+        border-bottom: 2px solid #333;
+        transition: all 0.2s;
+      }
+
+      .article-preview p {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .article-meta {
+        display: flex;
+        gap: 15px;
+        font-size: 0.9rem;
+        color: #999;
+      }
+
+      /* Dark mode */
+      body.dark .article-item {
+        background: #2a2a2a;
+        border-color: #e0e0e0;
+        color: #e0e0e0;
+      }
+
+      body.dark .article-item:hover {
+        background: #e0e0e0;
+        color: #333;
+      }
+
+      body.dark .article-preview h3 a {
+        color: #e0e0e0;
+        border-bottom-color: #e0e0e0;
+      }
+
+      body.dark .article-item:hover .article-preview h3 a {
+        color: #333;
+        border-bottom-color: #333;
+      }
+
+      body.dark .article-preview p {
+        color: #bbb;
+      }
+
+      body.dark .article-meta {
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <div class="container">
+      <header>
+        <div class="avatar-container">
+          <img src="./images/image.png" alt="Scobru" class="avatar" />
+        </div>
+        <nav class="main-nav">
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dev.html">Dev</a>
+            <a href="music.html">Music</a>
+            <a href="post.html">Thoughts</a>
+          </div>
+        </nav>
+        <h1>Thoughts</h1>
+        <p class="subtitle">
+          Reflections on technology, decentralization, and the future
+        </p>
+      </header>
+
+      <section>
+        <div class="thoughts-container">
+          <h2>📚 Available Articles</h2>
+          
+          <div class="article-list">
+            <div class="article-item" onclick="window.location.href='post/why-decentralization-matter.html'">
+              <div class="article-preview">
+                <h3><a href="post/why-decentralization-matter.html">Why Decentralization Matters?</a></h3>
+                <p>A deep dive into the importance of decentralized systems and why they matter for our digital future. Exploring the technical foundations, real-world impact, and challenges of building a more open and transparent digital world.</p>
+                <div class="article-meta">
+                  <span>📅 2025-01-27</span>
+                  <span>👤 Scobru</span>
+                  <span>⏱️ 8 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="article-item" onclick="window.location.href='post/dont-buy-donate.html'">
+              <div class="article-preview">
+                <h3><a href="post/dont-buy-donate.html">Don't Buy, Donate</a></h3>
+                <p>Rethinking the music industry's business model. A critical look at how streaming platforms exploit artists and why direct fan support through donations creates a more sustainable and equitable music ecosystem.</p>
+                <div class="article-meta">
+                  <span>📅 2025-01-27</span>
+                  <span>👤 Scobru</span>
+                  <span>⏱️ 10 min read</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-links">
+          <a href="index.html">← Back to Portfolio</a>
+        </div>
+        <div class="footer-note">© 2025 — All projects MIT licensed</div>
+      </footer>
+    </div>
+
+    <script>
+      // Theme toggle functionality
+      function toggleTheme() {
+        const body = document.body;
+        const themeToggle = document.querySelector(".theme-toggle");
+
+        if (body.classList.contains("dark")) {
+          body.classList.remove("dark");
+          themeToggle.textContent = "🌙";
+          localStorage.setItem("theme", "light");
+        } else {
+          body.classList.add("dark");
+          themeToggle.textContent = "☀️";
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      // Load saved theme on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedTheme = localStorage.getItem("theme");
+        const themeToggle = document.querySelector(".theme-toggle");
+
+        if (savedTheme === "dark") {
+          document.body.classList.add("dark");
+          themeToggle.textContent = "☀️";
+        } else {
+          themeToggle.textContent = "🌙";
+        }
+      });
+    </script>
+  </body>
+</html>

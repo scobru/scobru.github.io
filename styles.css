@@ -53,6 +53,42 @@ body.dark footer {
     color: #999;
 }
 
+body.dark .social-links a {
+    background: #333;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+body.dark .social-links a:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+body.dark .nav-links a {
+    background: #333;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+body.dark .nav-links a:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+body.dark .nav-links a.active {
+    background: #e0e0e0;
+    color: #333;
+}
+
+body.dark .avatar {
+    border-color: #e0e0e0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .avatar:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
 /* Theme toggle button */
 .theme-toggle {
     position: fixed;
@@ -92,6 +128,125 @@ body.dark .theme-toggle:hover {
     margin: 0 auto;
 }
 
+/* Navigation styles */
+.main-nav {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border: 2px solid #333;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.2s;
+    border-bottom: 2px solid #333;
+}
+
+.nav-links a:hover {
+    background: #333;
+    color: #fff;
+    opacity: 1;
+}
+
+.nav-links a.active {
+    background: #333;
+    color: #fff;
+}
+
+/* Section Navigation Menu */
+.section-nav {
+    margin: 40px 0 60px 0;
+    text-align: center;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 12px 20px;
+    background: #f8f9fa;
+    border: 2px solid #333;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link:hover {
+    background: #333;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme for section navigation */
+body.dark .section-nav {
+    background: rgba(26, 26, 26, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .nav-link {
+    background: #333;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+body.dark .nav-link:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+/* Avatar styles */
+.avatar-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #333;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
 h1 {
     font-size: 3.5rem;
     font-weight: 600;
@@ -110,7 +265,7 @@ section {
 }
 
 h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -119,11 +274,182 @@ h2 {
 }
 
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 30px;
     color: #333;
 }
+
+/** 
+ * Enhanced banner styles with modern design
+ * Generic class utility (for decorative callouts, eg: <free>, <note>, <tip>)
+ * Usage: <span class="generic">...</span>
+ */
+.banner {
+    display: block;
+    padding: 2em 2.5em 1.8em 2.5em;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 16px;
+    color: #1e293b;
+    font-size: 1.1rem;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0 0 40px 0;
+    line-height: 1.7;
+    font-weight: 500;
+    box-shadow: 
+      0 10px 40px rgba(15, 23, 42, 0.08),
+      0 4px 16px rgba(15, 23, 42, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.banner:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 20px 60px rgba(15, 23, 42, 0.12),
+      0 8px 24px rgba(15, 23, 42, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.banner h3, .banner h4 {
+    margin: 0 0 8px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.banner h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #0f172a;
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.banner h3::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.banner h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: #475569;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Enhanced dark mode styles for .banner */
+body.dark .banner {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 2px solid transparent;
+    color: #f1f5f9;
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.dark .banner::before {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee, #34d399);
+}
+
+body.dark .banner:hover {
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      0 8px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+body.dark .banner h3 {
+    color: #f8fafc;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .banner h3::after {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+}
+
+body.dark .banner h4 {
+    color: #cbd5e1;
+    opacity: 0.9;
+}
+
+/* Special banner variants for different sections */
+.banner[id="self-hosted"] {
+    border-left: 4px solid #10b981;
+}
+
+.banner[id="p2p-networking"] {
+    border-left: 4px solid #3b82f6;
+}
+
+.banner[id="utility-libraries"] {
+    border-left: 4px solid #8b5cf6;
+}
+
+.banner[id="blockchain-defi"] {
+    border-left: 4px solid #f59e0b;
+}
+
+/* Enhanced banner animations */
+.banner {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Banner icon support */
+.banner-icon {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+
 
 .project {
     margin-bottom: 44px;
@@ -153,8 +479,8 @@ h3 {
 }
 
 .project-image {
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 180px;
     display: block;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -384,7 +710,37 @@ footer {
     border-top: 2px solid #eee;
     font-size: 1.15rem;
     color: #999;
-    text-align: right;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 2px solid #333;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.social-links a:hover {
+    background: #333;
+    color: #fff;
+    opacity: 1;
+}
+
+.footer-note {
+    font-size: 1rem;
+    color: #999;
 }
 
 .footer-links {
