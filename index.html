@@ -1,90 +1,94 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Portfolio</title>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="menu.js" defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Define title -->
+    <title>Carl Barks</title>
+
+    <!-- Include favicon. Use, e.g., https://favicon.io/ -->
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+
+    <!-- Include style sheets -->
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- Fonts from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet" />
+
+    <!-- Load FontAwesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" />
+
+    <!-- Load Academicons (for more icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css"
+        integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg=="
+        crossorigin="anonymous" />
 </head>
 
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-  <div class="container">
-    <header>
-      <div class="avatar-container">
-        <img src="./images/image.png" alt="Scobru" class="avatar" />
-      </div>
-      <nav class="main-nav">
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="dev.html">Dev</a>
-          <a href="music.html">Music</a>
-          <a href="post.html">Thoughts</a>
-        </div>
-      </nav>
-      <h1>Scobru</h1>
-      <p class="subtitle">
-        Open Source Developer, Sound Designer and teacher.
-      </p>
-    </header>
+    <div class="container">
+        <!-- Profile Section -->
+        <header class="profile">
+            <img src="https://scobru.github.io/images/image.png" alt="Scobru" class="avatar" />
+            <h1>Scobru</h1>
+            <p class="bio">Open Source Developer, Sound Designer & Teacher</p>
+            <p class="description">
+                Building sustainable tools & creating sounds.
+            </p>
+        </header>
 
-    <section>
-      <h2>Hi, I'm Scobru.</h2>
-      <p style="font-size: 1.5rem; max-width: 65ch">
-        I create open-source tools for developers, focusing on simplicity,
-        performance, and sustainability.<br />
-        I also produce music and design sounds.<br />
-        Building things that respect people and the web.
-      </p>
-    </section>
-    <footer>
-      <div class="social-links">
-        <a href="https://github.com/scobru" target="_blank">GitHub</a>
-        <a href="https://twitter.com/scobru1988" target="_blank">Twitter</a>
-        <a href="https://linkedin.com/in/scobru" target="_blank">LinkedIn</a>
-        <a href="https://instagram.com/francescobruno" target="_blank">Instagram</a>
-        <a href="https://www.youtube.com/@scobru88" target="_blank">YouTube</a>
-        <a href="https://t.me/scobru" target="_blank">Telegram</a>
-        <a href="mailto:dev.scobru@pm.me">Email</a>
-      </div>
-      <div class="footer-note">© 2025 — All projects MIT licensed</div>
-    </footer>
-  </div>
+        <!-- Links Section -->
+        <!-- Links Section -->
+        <main class="links">
+            <h2 class="section-title">Development</h2>
+            <a href="https://shogun-eco.xyz" class="link-card" target="_blank">
+                <span class="link-text">SHOGUN a decentralized ecosystem build on top of gunDB</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <a href="https://tunecamp.vercel.app" class="link-card" target="_blank">
+                <span class="link-text">TUNECAMP a self-hosted music streaming platform</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <h2 class="section-title">Self Hosted</h2>
+            <a href="https://tunecamp.scobrudot.dev" class="link-card" target="_blank">
+                <span class="link-text">SUDO RECORDS is my personal TUNECAMP instance</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
 
-  <script>
-    // Theme toggle functionality
-    function toggleTheme() {
-      const body = document.body;
-      const themeToggle = document.querySelector(".theme-toggle");
+            <h2 class="section-title">Music</h2>
+            <a href="https://homologomusic.bandcamp.com" class="link-card" target="_blank">
+                <span class="link-text">HOMOLOGO music on bandcamp</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <a href="https://fademusik.bandcamp.com" class="link-card" target="_blank">
+                <span class="link-text">FADEMUSIK music on bandcamp</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <a href="https://zimablue.bandcamp.com" class="link-card" target="_blank">
+                <span class="link-text">ZIMABLUE music on bandcamp</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
 
-      if (body.classList.contains("dark")) {
-        body.classList.remove("dark");
-        themeToggle.textContent = "🌙";
-        localStorage.setItem("theme", "light");
-      } else {
-        body.classList.add("dark");
-        themeToggle.textContent = "☀️";
-        localStorage.setItem("theme", "dark");
-      }
-    }
+        </main>
 
-    // Load saved theme on page load
-    document.addEventListener("DOMContentLoaded", function () {
-      const savedTheme = localStorage.getItem("theme");
-      const themeToggle = document.querySelector(".theme-toggle");
-
-      if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-        themeToggle.textContent = "☀️";
-      } else {
-        themeToggle.textContent = "🌙";
-      }
-    });
-  </script>
+        <!-- Social Icons -->
+        <footer class="socials">
+            <a href="https://github.com/scobru" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/scobru1988" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://livellosegreto.it/@scobru" title="Mastodon"><i class="fab fa-mastodon"></i></a>
+            <a href="https://t.me/scobru" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/francescobruno" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/scobru88" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:dev.scobru@pm.me" title="Email"><i class="fas fa-envelope"></i></a>
+        </footer>
+    </div>
 </body>
 
 </html>
