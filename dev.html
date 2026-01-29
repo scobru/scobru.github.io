@@ -1,484 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developer Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
-  <body>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    <div class="container">
-      <header>
-        <div class="avatar-container">
-          <img src="./images/image.png" alt="Scobru" class="avatar" />
-        </div>
-        <nav class="main-nav">
-          <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="dev.html">Dev</a>
-            <a href="music.html">Music</a>
-            <a href="post.html">Thoughts</a>
-          </div>
-        </nav>
-        <h1>Development</h1>
-        <!-- <p class="subtitle">
-            Open Source projects
-        </p> -->
-      </header>
 
-      <!-- Navigation Menu -->
-      <nav class="section-nav">
-        <div class="nav-container">
-          <a href="#self-hosted" class="nav-link">Self Hosted</a>
-          <a href="#p2p-networking" class="nav-link">P2P Networking</a>
-          <a href="#utility-libraries" class="nav-link">Utility Libraries</a>
-          <a href="#blockchain-defi" class="nav-link">Blockchain & DeFi</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="menu.js" defer></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  <div class="container">
+    <header>
+      <div class="avatar-container">
+        <img src="./images/image.png" alt="Scobru" class="avatar" />
+      </div>
+      <nav class="main-nav">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="dev.html">Dev</a>
+          <a href="music.html">Music</a>
+          <a href="post.html">Thoughts</a>
         </div>
       </nav>
+      <h1>Development</h1>
+      <!-- <p class="subtitle">
+            Open Source projects
+        </p> -->
+    </header>
 
-      <section>
-        <h2>Projects</h2>
-        <div class="banner" id="self-hosted">
-          <h3>
-            <span class="banner-icon">🏠</span>
-            <strong><free>SELF HOSTED</free></strong>
-          </h3>
-          <h4>Simple and easy to use apps that you can host yourself</h4>
-        </div>
-        <div class="project">
-          <img
-            src="./images/tunecamp.svg"
-            width="100"
-            height="100"
-            alt="Tunecamp"
-            class="project-image"
-          />
-          <div class="project-title">Tunecamp</div>
-          <p class="project-desc">
-            Static site generator for audio producers and music labels.
-            <a href="https://github.com/scobru/tunecamp">GitHub</a>
-          </p>
-          <p class="project-tech">Node.js, JavaScript</p>
-        </div>
+    <!-- Navigation Menu -->
+    <nav class="section-nav">
+      <div class="nav-container">
+        <a href="#self-hosted" class="nav-link">Self Hosted</a>
+        <a href="#p2p-networking" class="nav-link">P2P Networking</a>
+        <a href="#utility-libraries" class="nav-link">Utility Libraries</a>
+        <a href="#blockchain-defi" class="nav-link">Blockchain & DeFi</a>
+      </div>
+    </nav>
 
-        <div class="project">
-          <img
-            src="./images/stussy.svg"
-            width="256"
-            height="256"
-            alt="Stussy"
-            class="project-image"
-          />
-          <div class="project-title">Stussy</div>
-          <p class="project-desc">
-            Static site generator for everyone.
-            <a href="https://github.com/scobru/stussy">GitHub</a>
-          </p>
-          <p class="project-tech">TypeScript, Node.js, JavaScript</p>
-        </div>
+    <section>
+      <h2>Projects</h2>
+      <div class="banner" id="self-hosted">
+        <h3>
+          <span class="banner-icon">🏠</span>
+          <strong>
+            <free>SELF HOSTED</free>
+          </strong>
+        </h3>
+        <h4>Simple and easy to use apps that you can host yourself</h4>
+      </div>
+      <div class="project">
+        <img src="./images/tunecamp.svg" width="100" height="100" alt="Tunecamp" class="project-image" />
+        <div class="project-title">Tunecamp</div>
+        <p class="project-desc">
+          Static site generator for audio producers and music labels.
+          <a href="https://github.com/scobru/tunecamp">GitHub</a>
+        </p>
+        <p class="project-tech">Node.js, JavaScript</p>
+      </div>
 
-        <div class="banner" id="p2p-networking">
-          <h3>
-            <span class="banner-icon">🌐</span>
-            <strong><free>P2P NETWORKING</free></strong>
-          </h3>
-          <h4>
-            Projects related to decentralized messaging, chat and general
-            peer-to-peer networking
-          </h4>
-        </div>
+      <div class="project">
+        <img src="./images/stussy.svg" width="256" height="256" alt="Stussy" class="project-image" />
+        <div class="project-title">Stussy</div>
+        <p class="project-desc">
+          Static site generator for everyone.
+          <a href="https://github.com/scobru/stussy">GitHub</a>
+        </p>
+        <p class="project-tech">TypeScript, Node.js, JavaScript</p>
+      </div>
 
-
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Core</div>
-            <img
-              src="./images/shogun.svg"
-              width="256"
-              height="256"
-              alt="Shogun Core"
-              class="project-image"
-            />
-          </a>
-          <p class="project-desc">
-            Core components for Shogun ecosystem with decentralized
-            authentication, distributed storage with GunDB, wallet management,
-            and security.
-            <a href="https://github.com/scobru/shogun-core">GitHub</a>
-          </p>
-          <p class="project-tech">
-            React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
-          </p>
-        </div>
-
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Button React</div>
-          </a>
-          <p class="project-desc">
-            React component library for seamless Shogun authentication
-            integration.
-            <a href="https://github.com/scobru/shogun-button-react">GitHub</a>
-          </p>
-          <p class="project-tech">
-            React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
-          </p>
-        </div>
-
-        <div class="project">
-          <a href="https://github.com/scobru/shogun-linda">
-            <div class="project-title">Shogun Linda</div>
-          </a>
-          <p class="project-desc">
-            Decentralized chat protocol.
-            <a href="https://github.com/scobru/shogun-linda">GitHub</a>
-            <a href="https://linda.shogun-eco.xyz/">Website</a>
-          </p>
-          <p class="project-tech">
-            React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
-          </p>
-        </div>
+      <div class="banner" id="p2p-networking">
+        <h3>
+          <span class="banner-icon">🌐</span>
+          <strong>
+            <free>P2P NETWORKING</free>
+          </strong>
+        </h3>
+        <h4>
+          Projects related to decentralized messaging, chat and general
+          peer-to-peer networking
+        </h4>
+      </div>
 
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Wormhole</div>
-          </a>
-          <p class="project-desc">
-            Decentralized file sharing system that uses IPFS and GunDB as
-            backend.
-            <a href="https://github.com/scobru/shogun-wormhole">GitHub</a>
-            <a href="https://wormhole.shogun-eco.xyz/">Website</a>
-          </p>
-          <p class="project-tech">Node.js, JavaScript</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Core</div>
+          <img src="./images/shogun.svg" width="256" height="256" alt="Shogun Core" class="project-image" />
+        </a>
+        <p class="project-desc">
+          Core components for Shogun ecosystem with decentralized
+          authentication, distributed storage with GunDB, wallet management,
+          and security.
+          <a href="https://github.com/scobru/shogun-core">GitHub</a>
+        </p>
+        <p class="project-tech">
+          React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
+        </p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Linko</div>
-          </a>
-          <p class="project-desc">
-            Decentralized Linktree-style page builder with GunDB sync,
-            multilingual support, and real-time updates.
-            <a href="https://github.com/scobru/shogun-linko">GitHub</a>
-            <a href="https://linko.shogun-eco.xyz/">Website</a>
-          </p>
-          <p class="project-tech">
-            React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
-          </p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Button React</div>
+        </a>
+        <p class="project-desc">
+          React component library for seamless Shogun authentication
+          integration.
+          <a href="https://github.com/scobru/shogun-button-react">GitHub</a>
+        </p>
+        <p class="project-tech">
+          React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
+        </p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Contracts</div>
-          </a>
-          <p class="project-desc">
-            Smart contracts for the Shogun ecosystem.
-            <a href="https://github.com/scobru/shogun-contracts">GitHub</a>
-          </p>
-          <p class="project-tech">Solidity, TypeScript, JavaScript</p>
-        </div>
+      <div class="project">
+        <a href="https://github.com/scobru/shogun-linda">
+          <div class="project-title">Shogun Linda</div>
+        </a>
+        <p class="project-desc">
+          Decentralized chat protocol.
+          <a href="https://github.com/scobru/shogun-linda">GitHub</a>
+          <a href="https://linda.shogun-eco.xyz/">Website</a>
+        </p>
+        <p class="project-tech">
+          React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
+        </p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Gypt</div>
-          </a>
-          <p class="project-desc">
-            Location-based encrypted messaging platform built on decentralized
-            technology.
-            <a href="https://github.com/scobru/shogun-gypt">GitHub</a>
-            <a href="https://gypt.shogun-eco.xyz/">Website</a>
-          </p>
-          <p class="project-tech">TypeScript, JavaScript</p>
-        </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun IPFS</div>
-          </a>
-          <p class="project-desc">
-            InterPlanetary File System integration for decentralized storage and
-            content addressing in the Shogun ecosystem.
-            <a href="https://github.com/scobru/shogun-ipfs">GitHub</a>
-          </p>
-          <p class="project-tech">TypeScript, JavaScript, IPFS</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Wormhole</div>
+        </a>
+        <p class="project-desc">
+          Decentralized file sharing system that uses IPFS and GunDB as
+          backend.
+          <a href="https://github.com/scobru/shogun-wormhole">GitHub</a>
+          <a href="https://wormhole.shogun-eco.xyz/">Website</a>
+        </p>
+        <p class="project-tech">Node.js, JavaScript</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Linda Relay</div>
-          </a>
-          <p class="project-desc">
-            TheLindaRelay is a Peer-to-Peer cloud application for real-time
-            chats that is used in the Linda protocol.
-            <a href="https://github.com/scobru/shogun-linda-relay">GitHub</a>
-          </p>
-          <p class="project-tech">TypeScript, JavaScript</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Linko</div>
+        </a>
+        <p class="project-desc">
+          Decentralized Linktree-style page builder with GunDB sync,
+          multilingual support, and real-time updates.
+          <a href="https://github.com/scobru/shogun-linko">GitHub</a>
+          <a href="https://linko.shogun-eco.xyz/">Website</a>
+        </p>
+        <p class="project-tech">
+          React, TypeScript, GunDB, ShogunCore, ShogunButton, JavaScript
+        </p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Onion</div>
-          </a>
-          <p class="project-desc">
-            A decentralized web ring system connecting sites in the Shogun
-            ecosystem.
-            <a href="https://github.com/scobru/shogun-onion">GitHub</a>
-          </p>
-          <p class="project-tech">HTML, CSS, JavaScript</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Contracts</div>
+        </a>
+        <p class="project-desc">
+          Smart contracts for the Shogun ecosystem.
+          <a href="https://github.com/scobru/shogun-contracts">GitHub</a>
+        </p>
+        <p class="project-tech">Solidity, TypeScript, JavaScript</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Relay</div>
-          </a>
-          <p class="project-desc">
-            Relay server for the Shogun ecosystem with Docker support and
-            optimization.
-            <a href="https://github.com/scobru/shogun-relay">GitHub</a>
-            <a href="https://shogunnode.scobrudot.dev/">Website</a>
-          </p>
-          <p class="project-tech">Node.js, Docker, JavaScript</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Gypt</div>
+        </a>
+        <p class="project-desc">
+          Location-based encrypted messaging platform built on decentralized
+          technology.
+          <a href="https://github.com/scobru/shogun-gypt">GitHub</a>
+          <a href="https://gypt.shogun-eco.xyz/">Website</a>
+        </p>
+        <p class="project-tech">TypeScript, JavaScript</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Relays</div>
-          </a>
-          <p class="project-desc">
-            Returns volunteer GUN relays for use in your decentralized apps.
-            <a href="https://github.com/scobru/shogun-relays">GitHub</a>
-          </p>
-          <p class="project-tech">JavaScript, GunDB</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun IPFS</div>
+        </a>
+        <p class="project-desc">
+          InterPlanetary File System integration for decentralized storage and
+          content addressing in the Shogun ecosystem.
+          <a href="https://github.com/scobru/shogun-ipfs">GitHub</a>
+        </p>
+        <p class="project-tech">TypeScript, JavaScript, IPFS</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun SHIP</div>
-          </a>
-          <p class="project-desc">
-            SHIP (Shogun Interface Proposals) - Standards for decentralized
-            authentication, messaging, wallets, and storage.
-            <a href="https://github.com/scobru/shogun-SHIP">GitHub</a>
-          </p>
-          <p class="project-tech">TypeScript, JavaScript</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Linda Relay</div>
+        </a>
+        <p class="project-desc">
+          TheLindaRelay is a Peer-to-Peer cloud application for real-time
+          chats that is used in the Linda protocol.
+          <a href="https://github.com/scobru/shogun-linda-relay">GitHub</a>
+        </p>
+        <p class="project-tech">TypeScript, JavaScript</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Ripple Boilerplate</div>
-          </a>
-          <p class="project-desc">
-            Complete Ripple.js boilerplate with Shogun Core integration,
-            featuring real-time data synchronization, user authentication, and
-            modern UI components.
-            <a href="https://github.com/scobru/shogun-ripple-boilerplate"
-              >GitHub</a
-            >
-          </p>
-          <p class="project-tech">Ripple.js, TypeScript, GunDB, ShogunCore</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Onion</div>
+        </a>
+        <p class="project-desc">
+          A decentralized web ring system connecting sites in the Shogun
+          ecosystem.
+          <a href="https://github.com/scobru/shogun-onion">GitHub</a>
+        </p>
+        <p class="project-tech">HTML, CSS, JavaScript</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Ripple Todos</div>
-          </a>
-          <p class="project-desc">
-            Modern decentralized todo application built with Ripple.js and
-            Shogun Core, featuring real-time synchronization and user
-            authentication.
-            <a href="https://github.com/scobru/shogun-ripple-todos">GitHub</a>
-          </p>
-          <p class="project-tech">Ripple.js, TypeScript, GunDB, ShogunCore</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Relay</div>
+        </a>
+        <p class="project-desc">
+          Relay server for the Shogun ecosystem with Docker support and
+          optimization.
+          <a href="https://github.com/scobru/shogun-relay">GitHub</a>
+          <a href="https://shogunnode.scobrudot.dev/">Website</a>
+        </p>
+        <p class="project-tech">Node.js, Docker, JavaScript</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Shogun Auth</div>
-          </a>
-          <p class="project-desc">
-            Comprehensive React-based authentication application with multiple
-            login methods, encrypted data storage, and seamless integration
-            capabilities.
-            <a href="https://github.com/scobru/shogun-auth-app">GitHub</a>
-            <a href="https://auth.shogun-eco.xyz/">Website</a>
-          </p>
-          <p class="project-tech">React, TypeScript, GunDB, WebAuthn, Web3</p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Relays</div>
+        </a>
+        <p class="project-desc">
+          Returns volunteer GUN relays for use in your decentralized apps.
+          <a href="https://github.com/scobru/shogun-relays">GitHub</a>
+        </p>
+        <p class="project-tech">JavaScript, GunDB</p>
+      </div>
 
-    
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun SHIP</div>
+        </a>
+        <p class="project-desc">
+          SHIP (Shogun Interface Proposals) - Standards for decentralized
+          authentication, messaging, wallets, and storage.
+          <a href="https://github.com/scobru/shogun-SHIP">GitHub</a>
+        </p>
+        <p class="project-tech">TypeScript, JavaScript</p>
+      </div>
 
-       
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Ripple Boilerplate</div>
+        </a>
+        <p class="project-desc">
+          Complete Ripple.js boilerplate with Shogun Core integration,
+          featuring real-time data synchronization, user authentication, and
+          modern UI components.
+          <a href="https://github.com/scobru/shogun-ripple-boilerplate">GitHub</a>
+        </p>
+        <p class="project-tech">Ripple.js, TypeScript, GunDB, ShogunCore</p>
+      </div>
 
-       
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Ripple Todos</div>
+        </a>
+        <p class="project-desc">
+          Modern decentralized todo application built with Ripple.js and
+          Shogun Core, featuring real-time synchronization and user
+          authentication.
+          <a href="https://github.com/scobru/shogun-ripple-todos">GitHub</a>
+        </p>
+        <p class="project-tech">Ripple.js, TypeScript, GunDB, ShogunCore</p>
+      </div>
 
-        <div class="banner" id="utility-libraries">
-          <h3>
-            <span class="banner-icon">🛠️</span>
-            <strong><free>UTILITY LIBRARIES</free></strong>
-          </h3>
-          <h4>Projects related to utility libraries</h4>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Shogun Auth</div>
+        </a>
+        <p class="project-desc">
+          Comprehensive React-based authentication application with multiple
+          login methods, encrypted data storage, and seamless integration
+          capabilities.
+          <a href="https://github.com/scobru/shogun-auth-app">GitHub</a>
+          <a href="https://auth.shogun-eco.xyz/">Website</a>
+        </p>
+        <p class="project-tech">React, TypeScript, GunDB, WebAuthn, Web3</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Mityli</div>
-          </a>
-          <p class="project-desc">
-            Minimal JavaScript library providing runtime type-checking powered
-            by Valibot with automatic schema inference.
-            <a href="https://github.com/scobru/mityli">GitHub</a>
-          </p>
-          <p class="project-tech">JavaScript, TypeScript, Valibot</p>
-        </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">CLI Tools</div>
-          </a>
-          <p class="project-desc">
-            Collection of Python command-line tools for daily productivity
-            including clipboard manager, encrypted messaging, weather checker,
-            and more.
-            <a href="https://github.com/scobru/cli-tools">GitHub</a>
-          </p>
-          <p class="project-tech">Python, CLI, Productivity, Cryptography</p>
-        </div>
 
-        <div class="banner" id="blockchain-defi">
-          <h3>
-            <span class="banner-icon">⛓️</span>
-            <strong><free>BLOCKCHAIN AND DEFI</free></strong>
-          </h3>
-          <h4>Projects related to blockchain and decentralized finance</h4>
-        </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Mecenate</div>
-          </a>
-          <p class="project-desc">
-            Decentralized Anonymous Data Marketplace.
-            <a href="https://github.com/scobru/mecenate-monorepo">GitHub</a>
-          </p>
-          <p class="project-tech">
-            JavaScript, TypeScript, GunDB, Web3, Blockchain
-          </p>
-        </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Nostr3</div>
-          </a>
-          <p class="project-desc">
-            Nostr3 is here to make your life easier when dealing with the Nostr
-            protocol! It cleverly generates private keys right from your EVM
-            address, taking the hassle out of key storage.
 
-            <a href="https://github.com/scobru/nostr3-monorepo">GitHub</a>
-            <a href="https://nostr3.vercel.app/">Website</a>
-          </p>
-          <p class="project-tech">
-            JavaScript, TypeScript, GunDB, Web3, Blockchain
-          </p>
-        </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Tiers</div>
-          </a>
-          <p class="project-desc">
-            Tiers is a subscriptions protocol that allows users to create their
-            own subscription selecting fee, duration and secret content that
-            only subscribers can access.
+      <div class="banner" id="utility-libraries">
+        <h3>
+          <span class="banner-icon">🛠️</span>
+          <strong>
+            <free>UTILITY LIBRARIES</free>
+          </strong>
+        </h3>
+        <h4>Projects related to utility libraries</h4>
+      </div>
 
-            <a href="https://github.com/scobru/tiers-monorepo">GitHub</a>
-          </p>
-        </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Mityli</div>
+        </a>
+        <p class="project-desc">
+          Minimal JavaScript library providing runtime type-checking powered
+          by Valibot with automatic schema inference.
+          <a href="https://github.com/scobru/mityli">GitHub</a>
+        </p>
+        <p class="project-tech">JavaScript, TypeScript, Valibot</p>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Universe</div>
-          </a>
-          <p class="project-desc">
-            Universe is a decentralized application (dapp) that enables devs to
-            create an Index Fund using ERC20 tokens. In addition to this,
-            Universe also allows to create a Index Farm Fund, which is
-            essentially an index fund that uses the farming vault from Beefy
-            Finance as collateral instead of using tokens directly.
+      <div class="project">
+        <a href="#">
+          <div class="project-title">CLI Tools</div>
+        </a>
+        <p class="project-desc">
+          Collection of Python command-line tools for daily productivity
+          including clipboard manager, encrypted messaging, weather checker,
+          and more.
+          <a href="https://github.com/scobru/cli-tools">GitHub</a>
+        </p>
+        <p class="project-tech">Python, CLI, Productivity, Cryptography</p>
+      </div>
 
-            <a href="https://github.com/scobru/universe-monorepo/tree/v2"
-              >GitHub</a
-            >
-          </p>
-        </div>
+      <div class="banner" id="blockchain-defi">
+        <h3>
+          <span class="banner-icon">⛓️</span>
+          <strong>
+            <free>BLOCKCHAIN AND DEFI</free>
+          </strong>
+        </h3>
+        <h4>Projects related to blockchain and decentralized finance</h4>
+      </div>
 
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Dharma DAO</div>
-          </a>
-          <p class="project-desc">
-            Dharma DAO is a decentralized autonomous organization that allows to
-            create a decentralized autonomous organization.
-            <a href="https://github.com/scobru/dharma-dao-monorepo">GitHub</a>
-          </p>
-        </div>
-        <div class="project">
-          <a href="#">
-            <div class="project-title">Pocketbase Extension</div>
-          </a>
-          <p class="project-desc">
-            This module provides utility functions for interacting with
-            PocketBase in SE-2, a backend for your next SaaS and。
-            <a href="https://github.com/scobru/pocketbase-extension">GitHub</a>
-          </p>
-          <p class="project-tech">
-            JavaScript, TypeScript, GunDB, Web3, Blockchain
-          </p>
-        </div>
-      </section>
-      <footer>© 2025 — All projects MIT licensed</footer>
-    </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Mecenate</div>
+        </a>
+        <p class="project-desc">
+          Decentralized Anonymous Data Marketplace.
+          <a href="https://github.com/scobru/mecenate-monorepo">GitHub</a>
+        </p>
+        <p class="project-tech">
+          JavaScript, TypeScript, GunDB, Web3, Blockchain
+        </p>
+      </div>
 
-    <script>
-      // Theme toggle functionality
-      function toggleTheme() {
-        const body = document.body;
-        const themeToggle = document.querySelector(".theme-toggle");
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Nostr3</div>
+        </a>
+        <p class="project-desc">
+          Nostr3 is here to make your life easier when dealing with the Nostr
+          protocol! It cleverly generates private keys right from your EVM
+          address, taking the hassle out of key storage.
 
-        if (body.classList.contains("dark")) {
-          body.classList.remove("dark");
-          themeToggle.textContent = "🌙";
-          localStorage.setItem("theme", "light");
-        } else {
-          body.classList.add("dark");
-          themeToggle.textContent = "☀️";
-          localStorage.setItem("theme", "dark");
-        }
+          <a href="https://github.com/scobru/nostr3-monorepo">GitHub</a>
+          <a href="https://nostr3.vercel.app/">Website</a>
+        </p>
+        <p class="project-tech">
+          JavaScript, TypeScript, GunDB, Web3, Blockchain
+        </p>
+      </div>
+
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Tiers</div>
+        </a>
+        <p class="project-desc">
+          Tiers is a subscriptions protocol that allows users to create their
+          own subscription selecting fee, duration and secret content that
+          only subscribers can access.
+
+          <a href="https://github.com/scobru/tiers-monorepo">GitHub</a>
+        </p>
+      </div>
+
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Universe</div>
+        </a>
+        <p class="project-desc">
+          Universe is a decentralized application (dapp) that enables devs to
+          create an Index Fund using ERC20 tokens. In addition to this,
+          Universe also allows to create a Index Farm Fund, which is
+          essentially an index fund that uses the farming vault from Beefy
+          Finance as collateral instead of using tokens directly.
+
+          <a href="https://github.com/scobru/universe-monorepo/tree/v2">GitHub</a>
+        </p>
+      </div>
+
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Dharma DAO</div>
+        </a>
+        <p class="project-desc">
+          Dharma DAO is a decentralized autonomous organization that allows to
+          create a decentralized autonomous organization.
+          <a href="https://github.com/scobru/dharma-dao-monorepo">GitHub</a>
+        </p>
+      </div>
+      <div class="project">
+        <a href="#">
+          <div class="project-title">Pocketbase Extension</div>
+        </a>
+        <p class="project-desc">
+          This module provides utility functions for interacting with
+          PocketBase in SE-2, a backend for your next SaaS and。
+          <a href="https://github.com/scobru/pocketbase-extension">GitHub</a>
+        </p>
+        <p class="project-tech">
+          JavaScript, TypeScript, GunDB, Web3, Blockchain
+        </p>
+      </div>
+    </section>
+    <footer>© 2025 — All projects MIT licensed</footer>
+  </div>
+
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const body = document.body;
+      const themeToggle = document.querySelector(".theme-toggle");
+
+      if (body.classList.contains("dark")) {
+        body.classList.remove("dark");
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      } else {
+        body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
       }
+    }
 
-      // Load saved theme on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        const savedTheme = localStorage.getItem("theme");
-        const themeToggle = document.querySelector(".theme-toggle");
+    // Load saved theme on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedTheme = localStorage.getItem("theme");
+      const themeToggle = document.querySelector(".theme-toggle");
 
-        if (savedTheme === "dark") {
-          document.body.classList.add("dark");
-          themeToggle.textContent = "☀️";
-        } else {
-          themeToggle.textContent = "🌙";
-        }
-      });
-    </script>
-  </body>
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+      } else {
+        themeToggle.textContent = "🌙";
+      }
+    });
+  </script>
+</body>
+
 </html>

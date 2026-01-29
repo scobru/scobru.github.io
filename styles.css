@@ -130,8 +130,37 @@ body.dark .theme-toggle:hover {
 
 /* Navigation styles */
 .main-nav {
-    margin-bottom: 60px;
+    margin-bottom: 60px; /* Spacer to prevent jumping */
     text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.main-nav.nav-hidden {
+    transform: translate(-50%, -150%);
+    opacity: 0;
+}
+
+.main-nav .nav-links {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+body.dark .main-nav .nav-links {
+    background: rgba(26, 26, 26, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .nav-links {

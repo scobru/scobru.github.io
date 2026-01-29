@@ -1,88 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developer Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    <div class="container">
-      <header>
-        <div class="avatar-container">
-          <img src="./images/image.png" alt="Scobru" class="avatar" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="menu.js" defer></script>
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  <div class="container">
+    <header>
+      <div class="avatar-container">
+        <img src="./images/image.png" alt="Scobru" class="avatar" />
+      </div>
+      <nav class="main-nav">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="dev.html">Dev</a>
+          <a href="music.html">Music</a>
+          <a href="post.html">Thoughts</a>
         </div>
-        <nav class="main-nav">
-          <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="dev.html">Dev</a>
-            <a href="music.html">Music</a>
-            <a href="post.html">Thoughts</a>
-          </div>
-        </nav>
-        <h1>Scobru</h1>
-        <p class="subtitle">
-          Open Source Developer, Sound Designer and teacher.
-        </p>
-      </header>
+      </nav>
+      <h1>Scobru</h1>
+      <p class="subtitle">
+        Open Source Developer, Sound Designer and teacher.
+      </p>
+    </header>
 
-      <section>
-        <h2>Hi, I'm Scobru.</h2>
-        <p style="font-size: 1.5rem; max-width: 65ch">
-          I create open-source tools for developers, focusing on simplicity,
-          performance, and sustainability.<br />
-          I also produce music and design sounds.<br />
-          Building things that respect people and the web.
-        </p>
-      </section>
-        <footer>
-          <div class="social-links">
-            <a href="https://github.com/scobru" target="_blank">GitHub</a>
-            <a href="https://twitter.com/scobru1988" target="_blank">Twitter</a>
-            <a href="https://linkedin.com/in/scobru" target="_blank">LinkedIn</a>
-            <a href="https://instagram.com/francescobruno" target="_blank">Instagram</a>
-            <a href="https://www.youtube.com/@scobru88" target="_blank">YouTube</a>
-            <a href="https://t.me/scobru" target="_blank">Telegram</a>
-            <a href="mailto:dev.scobru@pm.me">Email</a>
-          </div>
-          <div class="footer-note">© 2025 — All projects MIT licensed</div>
-        </footer>
-    </div>
+    <section>
+      <h2>Hi, I'm Scobru.</h2>
+      <p style="font-size: 1.5rem; max-width: 65ch">
+        I create open-source tools for developers, focusing on simplicity,
+        performance, and sustainability.<br />
+        I also produce music and design sounds.<br />
+        Building things that respect people and the web.
+      </p>
+    </section>
+    <footer>
+      <div class="social-links">
+        <a href="https://github.com/scobru" target="_blank">GitHub</a>
+        <a href="https://twitter.com/scobru1988" target="_blank">Twitter</a>
+        <a href="https://linkedin.com/in/scobru" target="_blank">LinkedIn</a>
+        <a href="https://instagram.com/francescobruno" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@scobru88" target="_blank">YouTube</a>
+        <a href="https://t.me/scobru" target="_blank">Telegram</a>
+        <a href="mailto:dev.scobru@pm.me">Email</a>
+      </div>
+      <div class="footer-note">© 2025 — All projects MIT licensed</div>
+    </footer>
+  </div>
 
-    <script>
-      // Theme toggle functionality
-      function toggleTheme() {
-        const body = document.body;
-        const themeToggle = document.querySelector(".theme-toggle");
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const body = document.body;
+      const themeToggle = document.querySelector(".theme-toggle");
 
-        if (body.classList.contains("dark")) {
-          body.classList.remove("dark");
-          themeToggle.textContent = "🌙";
-          localStorage.setItem("theme", "light");
-        } else {
-          body.classList.add("dark");
-          themeToggle.textContent = "☀️";
-          localStorage.setItem("theme", "dark");
-        }
+      if (body.classList.contains("dark")) {
+        body.classList.remove("dark");
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      } else {
+        body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
       }
+    }
 
-      // Load saved theme on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        const savedTheme = localStorage.getItem("theme");
-        const themeToggle = document.querySelector(".theme-toggle");
+    // Load saved theme on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedTheme = localStorage.getItem("theme");
+      const themeToggle = document.querySelector(".theme-toggle");
 
-        if (savedTheme === "dark") {
-          document.body.classList.add("dark");
-          themeToggle.textContent = "☀️";
-        } else {
-          themeToggle.textContent = "🌙";
-        }
-      });
-    </script>
-  </body>
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+      } else {
+        themeToggle.textContent = "🌙";
+      }
+    });
+  </script>
+</body>
+
 </html>
