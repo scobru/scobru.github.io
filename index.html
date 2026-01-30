@@ -219,8 +219,10 @@
                 img.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    e.stopImmediatePropagation();
                     openLightbox(img.src, img.alt);
-                });
+                    return false;
+                }, true);
             });
 
             lightboxClose.addEventListener('click', closeLightbox);
