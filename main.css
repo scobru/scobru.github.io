@@ -108,6 +108,16 @@ h1 {
     box-shadow: var(--card-shadow);
     position: relative;
     overflow: hidden;
+    gap: 1rem; /* Space between icon and text */
+}
+
+.card-icon {
+    width: 200px; /* Much larger width for screenshots */
+    height: auto; /* Maintain aspect ratio */
+    min-height: 100px; /* Ensure some height */
+    object-fit: cover; /* Fill the area nicely */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Add subtle shadow to image */
 }
 
 .link-card:hover {
