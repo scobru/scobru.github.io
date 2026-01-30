@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&display=swap');
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --accent-color: #1565c0;
-    --hover-bg: rgba(255, 255, 255, 0.1);
-    --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --bg-deep: #0a0e14;
+    --bg-gradient: linear-gradient(160deg, #0a0e14 0%, #0f1820 35%, #132029 70%, #0d161c 100%);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-strong: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f0f4f8;
+    --text-secondary: #8b9cad;
+    --text-muted: #5c6f82;
+    --accent-color: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.25);
+    --hover-bg: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    --card-radius: 14px;
 }
 
 * {
@@ -23,12 +28,16 @@ html, body {
 }
 
 body {
-    background: var(--bg-gradient);
-    background-attachment: fixed; /* Ensures gradient covers scroll */
+    background: var(--bg-deep);
+    background-image:
+        var(--bg-gradient),
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.08), transparent),
+        radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.06), transparent);
+    background-attachment: fixed;
     color: var(--text-primary);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Allow scrolling for tall content */
+    align-items: flex-start;
     min-height: 100vh;
     padding: 2rem 1rem;
 }
@@ -53,15 +62,16 @@ body {
     width: 96px;
     height: 96px;
     border-radius: 50%;
-    border: 3px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     object-fit: cover;
     margin-bottom: 1rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .avatar:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 24px var(--accent-glow);
 }
 
 h1 {
@@ -96,40 +106,58 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 12px; /* Smooth rounded corners */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--card-radius);
     text-decoration: none;
     color: var(--text-primary);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: var(--card-shadow);
     position: relative;
     overflow: hidden;
-    gap: 1rem; /* Space between icon and text */
+    gap: 1rem;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent-color);
+    border-radius: 3px 0 0 3px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.link-card:hover::before {
+    opacity: 1;
 }
 
 .card-icon {
-    width: 200px; /* Much larger width for screenshots */
-    height: auto; /* Maintain aspect ratio */
-    min-height: 100px; /* Ensure some height */
-    object-fit: cover; /* Fill the area nicely */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Add subtle shadow to image */
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .link-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     background: var(--hover-bg);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .link-card .link-text {
     font-weight: 500;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    line-height: 1.35;
 }
 
 .link-card i { /* Arrow icon */
@@ -171,14 +199,24 @@ h1 {
 
 .section-title {
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    letter-spacing: 3px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
     align-self: flex-start;
-    padding-left: 0.5rem;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 0.75rem;
+    opacity: 0.95;
+}
+
+.section-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    padding-left: 0.75rem;
 }
 
 /* Responsive */
@@ -186,8 +224,12 @@ h1 {
     .container {
         max-width: 100%;
     }
-    
+
     .link-card {
         padding: 1rem 1.25rem;
+    }
+
+    .section-desc {
+        font-size: 0.9rem;
     }
 }
