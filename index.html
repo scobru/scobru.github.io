@@ -186,6 +186,52 @@
             <a href="mailto:dev.scobru@pm.me" title="Email"><i class="fas fa-envelope"></i></a>
         </footer>
     </div>
+
+    <!-- Lightbox per ingrandire le icone al clic -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Chiudi">&times;</button>
+            <img id="lightbox-img" src="" alt="" />
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            var lightboxClose = document.getElementById('lightbox-close');
+
+            function openLightbox(src, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || '';
+                lightbox.classList.add('is-open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.card-icon').forEach(function (img) {
+                img.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightbox(img.src, img.alt);
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function (e) {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        })();
+    </script>
 </body>
 
 </html>
