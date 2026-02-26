@@ -216,18 +216,10 @@
             <h2 class="section-title">Live Chat</h2>
             <p class="section-desc">Join the Scobru lobby and chat directly via P2P.</p>
 
-            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; width: 100%;">
-                <input type="text" id="chat-nick" placeholder="Enter your nickname..."
-                    style="flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2); color: white; outline: none; font-family: inherit; font-size: 0.95rem;">
-                <button id="set-nick-btn"
-                    style="padding: 0.75rem 1rem; border-radius: 8px; border: none; background: var(--accent-color); color: white; cursor: pointer; font-weight: 600; font-family: inherit; font-size: 0.95rem; transition: background 0.2s;">Set
-                    Name</button>
-            </div>
-
             <div
                 style="width: 100%; height: 500px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2); margin-top: 1rem;">
                 <iframe id="chat-frame"
-                    src="https://raw.githubusercontent.com/scobru/shogun-iframechat/refs/heads/main/index.html?embed=true&room=scobru-lobby"
+                    src="https://unpkg.com/shogun-iframechat@1.0.1/index.html?embed=true&room=scobru-lobby"
                     style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
             </div>
         </main>
@@ -244,38 +236,6 @@
         </footer>
     </div>
 
-    <!-- Chat Embed Logic -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatFrame = document.getElementById('chat-frame');
-            const nickInput = document.getElementById('chat-nick');
-            const setNickBtn = document.getElementById('set-nick-btn');
-
-            setNickBtn.addEventListener('click', () => {
-                const nick = nickInput.value.trim();
-                if (nick && chatFrame) {
-                    chatFrame.contentWindow.postMessage({
-                        type: 'set-user',
-                        name: nick
-                    }, '*');
-
-                    const originalBg = setNickBtn.style.background;
-                    setNickBtn.style.background = '#10b981'; // Success Green
-                    setNickBtn.innerText = 'Saved!';
-                    setTimeout(() => {
-                        setNickBtn.style.background = originalBg;
-                        setNickBtn.innerText = 'Set Name';
-                    }, 2000);
-                }
-            });
-
-            nickInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    setNickBtn.click();
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
