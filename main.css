@@ -16,6 +16,18 @@
     --card-radius: 14px;
 }
 
+:root[data-theme="light"] {
+    --bg-deep: #f8fafc;
+    --bg-gradient: linear-gradient(160deg, #f8fafc 0%, #f1f5f9 35%, #e2e8f0 70%, #cbd5e1 100%);
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-bg-strong: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --hover-bg: rgba(0, 0, 0, 0.04);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -50,6 +62,40 @@ body {
     align-items: center;
     gap: 2rem;
     animation: fadeIn 0.8s ease-out;
+}
+
+/* Controls (Theme & Lang) */
+.controls {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    z-index: 100;
+}
+
+.control-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition: all 0.25s ease;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: var(--card-shadow);
+}
+
+.control-btn:hover {
+    background: var(--hover-bg);
+    transform: translateY(-2px);
 }
 
 /* Profile Section */
