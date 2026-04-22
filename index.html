@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -7,41 +6,35 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Define title -->
-    <title>Scobru</title>
+    <title>Scobru | Linktree</title>
 
-    <!-- Include favicon. Use, e.g., https://favicon.io/ -->
     <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
-
-    <!-- Include style sheets -->
     <link rel="stylesheet" href="main.css" />
 
-    <!-- Fonts from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Load FontAwesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" />
-
-    <!-- Load Academicons (for more icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css"
-        integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg=="
         crossorigin="anonymous" />
 </head>
 
 <body>
-    <div class="controls">
-        <button id="theme-toggle" class="control-btn" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
-        <button id="lang-toggle" class="control-btn" aria-label="Toggle language">IT</button>
-    </div>
+    <nav class="top-nav">
+        <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">IT</button>
+    </nav>
+
     <div class="container">
         <!-- Profile Section -->
         <header class="profile">
-            <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru"
-                class="avatar" />
+            <div class="avatar-wrapper">
+                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru"
+                    class="avatar" />
+            </div>
             <h1>Scobru</h1>
             <p class="bio" data-i18n="bio">Open Source Developer, Sound Designer & Teacher</p>
             <p class="description" data-i18n="description">
@@ -51,144 +44,137 @@
 
         <!-- Links Section -->
         <main class="links">
-            <h2 class="section-title" data-i18n="musicTitles">Music & Art</h2>
-            <p class="section-desc" data-i18n="musicDesc">Music, Art, and other creative projects.</p>
+            <!-- Music & Art -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="musicTitles">Music & Art</h2>
+            </div>
 
             <a href="https://homologomusic.bandcamp.com" class="link-card" target="_blank">
-                <span class="link-text"><strong data-i18n="homologoTitle">HOMOLOGO on Bandcamp</strong><br><span
-                        data-i18n="homologoDesc">Songwriter, Pop,
-                        Electronic</span></span>
+                <span class="link-content">
+                    <span class="link-text" data-i18n="homologoTitle">HOMOLOGO on Bandcamp</span>
+                    <span class="link-subtext" data-i18n="homologoDesc">Songwriter, Pop, Electronic</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
+
             <a href="https://fademusik.bandcamp.com" class="link-card" target="_blank">
-                <span class="link-text"><strong data-i18n="fadeTitle">FADE on Bandcamp</strong><br><span
-                        data-i18n="fadeDesc">Electronic</span></span>
+                <span class="link-content">
+                    <span class="link-text" data-i18n="fadeTitle">FADE on Bandcamp</span>
+                    <span class="link-subtext" data-i18n="fadeDesc">Electronic</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
+
             <a href="https://zimablue.bandcamp.com" class="link-card" target="_blank">
-                <span class="link-text"><strong data-i18n="zimaTitle">ZIMA BLUE on Bandcamp</strong><br><span
-                        data-i18n="zimaDesc">Ambient,
-                        Experimental</span></span>
+                <span class="link-content">
+                    <span class="link-text" data-i18n="zimaTitle">ZIMA BLUE on Bandcamp</span>
+                    <span class="link-subtext" data-i18n="zimaDesc">Ambient, Experimental</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://audius.co/francescobruno" class="link-card" target="_blank">
-                <span class="link-text"><strong data-i18n="audiusDesc">All my music on Audius</strong></span>
+                <span class="link-text" data-i18n="audiusDesc">All my music on Audius</span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac" class="link-card"
                 target="_blank">
-                <span class="link-text"><strong data-i18n="spotifyDesc">All my music on Spotify</strong></span>
+                <span class="link-text" data-i18n="spotifyDesc">All my music on Spotify</span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
-
 
             <a href="https://www.youtube.com/@scobru1988/videos" class="link-card" target="_blank">
-                <span class="link-text"><strong data-i18n="youtubeDesc">Music for Fashion and ADV</strong></span>
+                <span class="link-text" data-i18n="youtubeDesc">Music for Fashion and ADV</span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
-            <h2 class="section-title" data-i18n="selfHostTitle">Self Hosted</h2>
-            <p class="section-desc" data-i18n="selfHostDesc">Self-hosted projects and services.</p>
+            <!-- Self Hosted -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="selfHostTitle">Self Hosted</h2>
+            </div>
 
             <a href="https://sudorecords.scobrudot.dev/" class="link-card" target="_blank">
-                <span class="link-text"><strong>SUDO RECORDS</strong><br><span data-i18n="sudoDesc">Independent record
-                        label based on an instance of TUNECAMP</span></span>
+                <span class="link-content">
+                    <span class="link-text">SUDO RECORDS</span>
+                    <span class="link-subtext" data-i18n="sudoDesc">Independent record label</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
-            <h2 class="section-title" data-i18n="appsTitle">Apps & Services</h2>
-            <p class="section-desc" data-i18n="appsDesc">Core tools for identity, transfer, and digital assets.</p>
+            <!-- Apps & Services -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="appsTitle">Apps & Services</h2>
+            </div>
 
             <a href="https://tunecamp.vercel.app/" class="link-card" target="_blank">
-                <span class="link-text"><strong>TUNECAMP</strong><br><span data-i18n="tunecampDesc">Decentralized Music
-                        Streaming Platform</span></span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://shogun-eco.xyz/" class="link-card" target="_blank">
-                <span class="link-text"><strong>SHOGUN ECO</strong><br><span data-i18n="shogunEcoDesc">Decentralized
-                        ecosystem</span></span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://auth.shogun-eco.xyz/" class="link-card" target="_blank">
-                <span class="link-text"><strong>AUTH</strong><br><span data-i18n="authDesc">Decentralized
-                        authentication</span></span>
+                <span class="link-content">
+                    <span class="link-text">TUNECAMP</span>
+                    <span class="link-subtext" data-i18n="tunecampDesc">Decentralized Music Streaming</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://linda.shogun-eco.xyz/" class="link-card" target="_blank">
-                <span class="link-text"><strong>LINDA</strong><br><span data-i18n="lindaDesc">Encrypted P2P chat
-                        protocol</span></span>
+                <span class="link-content">
+                    <span class="link-text">LINDA</span>
+                    <span class="link-subtext" data-i18n="lindaDesc">Encrypted P2P chat</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://wormhole.shogun-eco.xyz/" class="link-card" target="_blank">
-                <span class="link-text"><strong>WORMHOLE</strong><br><span data-i18n="wormholeDesc">Secure file
-                        transfer</span></span>
+                <span class="link-content">
+                    <span class="link-text">WORMHOLE</span>
+                    <span class="link-subtext" data-i18n="wormholeDesc">Secure file transfer</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
-            <a href="https://shogun-space.vercel.app/" class="link-card" target="_blank">
-                <span class="link-text"><strong>SPACE</strong><br><span data-i18n="spaceDesc">Decentralized
-                        hub</span></span>
+            <a href="https://shogun-stealth.vercel.app/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">NULL ROUTE</span>
+                    <span class="link-subtext" data-i18n="stealthDesc">Stealth Transactions</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
-            <a href="https://scan.shogun-eco.xyz/" class="link-card" target="_blank">
-                <span class="link-text"><strong>SCAN</strong><br><span data-i18n="scanDesc">Network
-                        monitor</span></span>
+            <a href="https://shogun-eco.xyz/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">SHOGUN ECO</span>
+                    <span class="link-subtext" data-i18n="shogunEcoDesc">Decentralized ecosystem</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
-
-            <h2 class="section-title" data-i18n="devTitle">Dev Tools</h2>
-            <p class="section-desc" data-i18n="devDesc">Libraries, SDK, contracts and infrastructure for developers.</p>
-
-            <a href="https://github.com/scobru/shogun-core" class="link-card" target="_blank">
-                <span class="link-text"><strong>CORE</strong><br><span data-i18n="coreDesc">SDK, auth &
-                        storage</span></span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
+            <!-- Dev Tools -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="devTitle">Dev Tools</h2>
+            </div>
 
             <a href="https://github.com/scobru/shogun-relay" class="link-card" target="_blank">
-                <span class="link-text"><strong>RELAY</strong><br><span data-i18n="relayDesc">Network node
-                        server</span></span>
+                <span class="link-content">
+                    <span class="link-text">RELAY</span>
+                    <span class="link-subtext" data-i18n="relayDesc">Network node server</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://github.com/scobru/shogun-contracts" class="link-card" target="_blank">
-                <span class="link-text"><strong>CONTRACTS</strong><br><span data-i18n="contractsDesc">Smart
-                        contracts</span></span>
+                <span class="link-content">
+                    <span class="link-text">CONTRACTS</span>
+                    <span class="link-subtext" data-i18n="contractsDesc">Smart contracts</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://github.com/scobru/shogun-ipfs" class="link-card" target="_blank">
-                <span class="link-text"><strong>IPFS</strong><br><span data-i18n="ipfsDesc">Storage
-                        wrapper</span></span>
+                <span class="link-content">
+                    <span class="link-text">IPFS</span>
+                    <span class="link-subtext" data-i18n="ipfsDesc">Storage wrapper</span>
+                </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
-
-            <a href="https://github.com/scobru/shogun-button-react" class="link-card" target="_blank">
-                <span class="link-text"><strong>BUTTON REACT</strong><br><span data-i18n="buttonDesc">Auth
-                        components</span></span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://github.com/scobru/shogun-starter" class="link-card" target="_blank">
-                <span class="link-text"><strong>STARTER</strong><br><span data-i18n="starterDesc">TypeScript/React
-                        template</span></span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://github.com/scobru/cli-tools" class="link-card" target="_blank">
-                <span class="link-text"><strong>CLI TOOLS</strong><br><span data-i18n="cliDesc">Command-line
-                        utilities</span></span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
         </main>
 
         <!-- Social Icons -->
