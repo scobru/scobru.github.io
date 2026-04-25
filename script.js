@@ -75,6 +75,133 @@ const translations = {
     }
 };
 
+const projectDetails = {
+    en: {
+        'https://homologomusic.bandcamp.com': {
+            desc: "Songwriter, Pop, and Electronic music project.",
+            bullets: ["Direct artist support", "Exclusive releases", "High-quality downloads"]
+        },
+        'https://fademusik.bandcamp.com': {
+            desc: "Electronic music project focusing on beats and atmospheric soundscapes.",
+            bullets: ["Electronic explorations", "Beat-driven tracks", "Available for licensing"]
+        },
+        'https://zimablue.bandcamp.com': {
+            desc: "Ambient and experimental sound design project.",
+            bullets: ["Atmospheric textures", "Deep listening experiences", "Sound art"]
+        },
+        'https://audius.co/francescobruno': {
+            desc: "Stream all music tracks on the decentralized Audius network.",
+            bullets: ["Web3 streaming", "Free access", "No intermediaries"]
+        },
+        'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac': {
+            desc: "Curated playlist of all released tracks.",
+            bullets: ["Official discography", "Regular updates", "High-fidelity streaming"]
+        },
+        'https://www.youtube.com/@scobru1988/videos': {
+            desc: "Visual art, music videos, and commercial scores.",
+            bullets: ["Fashion soundtracks", "Visual collaborations", "Behind the scenes"]
+        },
+        'https://sudorecords.scobrudot.dev/': {
+            desc: "Independent record label hosted on a private instance.",
+            bullets: ["Self-hosted infrastructure", "Independent distribution", "Privacy-focused"]
+        },
+        'https://scobru-tunecamp.vercel.app/': {
+            desc: "Decentralized alternative to music streaming.",
+            bullets: ["Subsonic compatibility", "Federated Music model", "Artist direct monetization"]
+        },
+        'https://scobru-linda.vercel.app/': {
+            desc: "Primary messaging application of the ecosystem.",
+            bullets: ["End-to-end encryption", "P2P architecture", "Post-Quantum resistance"]
+        },
+        'https://scobru-wormhole.vercel.app/': {
+            desc: "Secure, asynchronous P2P file-sharing utility.",
+            bullets: ["Encrypted transfers", "64KB chunk sharding", "Automatic cleanup"]
+        },
+        'https://scobru-nullroute.vercel.app/': {
+            desc: "Premium payment dashboard for absolute privacy.",
+            bullets: ["Stealth Addresses", "Ethereum-based", "Zero-link tracking"]
+        },
+        'https://github.com/scobru/shogun-relay': {
+            desc: "Unified Connection Hub for P2P graph sync and storage.",
+            bullets: ["WebSocket backbone", "IPFS Gateway", "SQLite persistence"]
+        },
+        'https://shogun-relay.scobrudot.dev': {
+            desc: "Public node infrastructure for the Shogun network.",
+            bullets: ["24/7 Availability", "Open access", "High performance"]
+        },
+        'https://github.com/scobru/shogun-contracts': {
+            desc: "Core smart contracts powering the ecosystem.",
+            bullets: ["Solidity based", "Security audited", "Gas optimized"]
+        },
+        'https://github.com/scobru/shogun-ipfs': {
+            desc: "Storage wrapper and pinning utility.",
+            bullets: ["IPFS integration", "Easy API", "Automated pinning"]
+        }
+    },
+    it: {
+        'https://homologomusic.bandcamp.com': {
+            desc: "Progetto musicale Cantautore, Pop, Elettronica.",
+            bullets: ["Supporto diretto all'artista", "Uscite esclusive", "Download in alta qualità"]
+        },
+        'https://fademusik.bandcamp.com': {
+            desc: "Progetto di musica elettronica focalizzato su beat e paesaggi sonori.",
+            bullets: ["Esplorazioni elettroniche", "Tracce basate su beat", "Disponibile per licensing"]
+        },
+        'https://zimablue.bandcamp.com': {
+            desc: "Progetto di ambient e sound design sperimentale.",
+            bullets: ["Texture atmosferiche", "Esperienze di ascolto profondo", "Arte sonora"]
+        },
+        'https://audius.co/francescobruno': {
+            desc: "Ascolta tutti i brani sulla rete decentralizzata Audius.",
+            bullets: ["Streaming Web3", "Accesso gratuito", "Senza intermediari"]
+        },
+        'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac': {
+            desc: "Playlist curata con tutti i brani rilasciati.",
+            bullets: ["Discografia ufficiale", "Aggiornamenti regolari", "Streaming in alta fedeltà"]
+        },
+        'https://www.youtube.com/@scobru1988/videos': {
+            desc: "Arte visiva, video musicali e colonne sonore commerciali.",
+            bullets: ["Colonne sonore per moda", "Collaborazioni visive", "Dietro le quinte"]
+        },
+        'https://sudorecords.scobrudot.dev/': {
+            desc: "Etichetta discografica indipendente ospitata su istanza privata.",
+            bullets: ["Infrastruttura self-hosted", "Distribuzione indipendente", "Orientata alla privacy"]
+        },
+        'https://scobru-tunecamp.vercel.app/': {
+            desc: "Alternativa decentralizzata allo streaming musicale.",
+            bullets: ["Compatibilità Subsonic", "Modello Federated Music", "Monetizzazione diretta"]
+        },
+        'https://scobru-linda.vercel.app/': {
+            desc: "Applicazione di messaggistica principale dell'ecosistema.",
+            bullets: ["Crittografia end-to-end", "Architettura P2P", "Resistenza Post-Quantum"]
+        },
+        'https://scobru-wormhole.vercel.app/': {
+            desc: "Utility per la condivisione sicura e asincrona di file P2P.",
+            bullets: ["Trasferimenti crittografati", "Sharding in chunk da 64KB", "Pulizia automatica"]
+        },
+        'https://scobru-nullroute.vercel.app/': {
+            desc: "Dashboard di pagamento premium per la massima privacy.",
+            bullets: ["Stealth Addresses", "Basato su Ethereum", "Nessun tracciamento"]
+        },
+        'https://github.com/scobru/shogun-relay': {
+            desc: "Hub di connessione unificato per sync del grafo e storage.",
+            bullets: ["Backbone WebSocket", "Gateway IPFS", "Persistenza SQLite"]
+        },
+        'https://shogun-relay.scobrudot.dev': {
+            desc: "Infrastruttura di nodo pubblico per la rete Shogun.",
+            bullets: ["Disponibilità 24/7", "Accesso aperto", "Alte prestazioni"]
+        },
+        'https://github.com/scobru/shogun-contracts': {
+            desc: "Smart contracts core che alimentano l'ecosistema.",
+            bullets: ["Basati su Solidity", "Verificati per sicurezza", "Ottimizzati per il gas"]
+        },
+        'https://github.com/scobru/shogun-ipfs': {
+            desc: "Wrapper di archiviazione e utility di pinning.",
+            bullets: ["Integrazione IPFS", "API semplice", "Pinning automatizzato"]
+        }
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Theme setup
     const themeBtn = document.getElementById('theme-toggle');
@@ -115,6 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         langBtn.textContent = lang === 'en' ? 'IT' : 'EN';
+        
+        // Remove existing dropdowns on language change to force regeneration
+        document.querySelectorAll('.dropdown-content').forEach(d => d.remove());
     };
 
     updateLanguage();
@@ -123,5 +253,56 @@ document.addEventListener('DOMContentLoaded', () => {
         lang = lang === 'en' ? 'it' : 'en';
         localStorage.setItem('lang', lang);
         updateLanguage();
+    });
+
+    // Dropdown Logic
+    const cards = document.querySelectorAll('.link-card');
+    cards.forEach(card => {
+        const href = card.getAttribute('href');
+        if (!projectDetails.en[href]) return;
+
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('.visit-btn')) return;
+
+            e.preventDefault();
+
+            let dropdown = card.nextElementSibling;
+            if (dropdown && dropdown.classList.contains('dropdown-content')) {
+                dropdown.classList.toggle('is-open');
+                return;
+            }
+
+            dropdown = document.createElement('div');
+            dropdown.classList.add('dropdown-content');
+
+            const data = projectDetails[lang][href];
+            let bulletsHtml = '';
+            if (data.bullets) {
+                bulletsHtml = `<ul>${data.bullets.map(b => `<li><i class="fas fa-check"></i> ${b}</li>`).join('')}</ul>`;
+            }
+
+            const visitText = lang === 'en' ? 'Visit Site' : 'Visita il Sito';
+
+            dropdown.innerHTML = `
+                <div class="dropdown-inner">
+                    <p>${data.desc}</p>
+                    ${bulletsHtml}
+                    <a href="${href}" target="_blank" class="visit-btn">${visitText} <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+
+            // Close others
+            document.querySelectorAll('.dropdown-content.is-open').forEach(openDropdown => {
+                if (openDropdown !== dropdown) {
+                    openDropdown.classList.remove('is-open');
+                }
+            });
+
+            card.parentNode.insertBefore(dropdown, card.nextSibling);
+            
+            // Force reflow
+            dropdown.offsetHeight;
+            dropdown.classList.add('is-open');
+        });
     });
 });
