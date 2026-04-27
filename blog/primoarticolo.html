@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scobru | Tra Musica, Codice e Libertà Digitale</title>
+
+    <link rel="icon" type="image/png" href="../favicon.png" sizes="32x32" />
+    <link rel="stylesheet" href="../main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" />
+        
+    <style>
+        body {
+            display: block; /* Override flex from main.css */
+            padding: 0;
+            background-attachment: fixed;
+        }
+
+        .blog-layout {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 3rem;
+        }
+
+        .blog-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .blog-post {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 3.5rem 3rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .post-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .post-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .post-content em {
+            color: var(--accent-color);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .post-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--glass-border);
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .author-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .blog-layout {
+                padding: 2rem 1rem;
+            }
+
+            .blog-post {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Theme setup (immediate) -->
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
+
+    <div class="blog-layout">
+        <header class="blog-header">
+            <a href="../index.html" class="blog-logo">Scobru</a>
+            <nav>
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Torna alla Home
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1 class="post-title">Tra Musica, Codice e Libertà Digitale</h1>
+                
+                <div class="post-meta">
+                    <span><i class="far fa-calendar-alt"></i> 26 Aprile 2026</span>
+                    <span><i class="far fa-user"></i> Scobru</span>
+                    <span><i class="far fa-clock"></i> 3 min lettura</span>
+                </div>
+                
+                <div class="post-content">
+                    <p>
+                        Se sei arrivato su questa pagina, probabilmente ti starai chiedendo cosa unisce progetti musicali come <em>HOMOLOGO</em> a strumenti crittografici come <em>LINDA</em> o <em>WORMHOLE</em>.
+                    </p>
+                    
+                    <p>
+                        La risposta è semplice: <strong>la ricerca di armonia e libertà.</strong>
+                    </p>
+
+                    <h3>1. Il Codice: Costruire l'Ecosistema Shogun</h3>
+                    <p>
+                        Passo gran parte del mio tempo come <strong>Sviluppatore Open Source</strong>. Non mi limito a creare app, ma cerco di costruire un vero e proprio ecosistema decentralizzato (l'ecosistema Shogun) dove le persone hanno il controllo totale dei propri dati.
+                    </p>
+                    
+                    <ul>
+                        <li><strong>LINDA</strong>: Una chat sicura che usa la crittografia Post-Quantum per proteggere i messaggi anche in un futuro dominato dai computer quantistici.</li>
+                        <li><strong>WORMHOLE</strong>: Uno strumento per inviare file in modo asincrono e sicuro, spezzettando i dati e salvandoli su IPFS.</li>
+                        <li><strong>TUNECAMP</strong>: La mia risposta allo streaming musicale centralizzato. Una piattaforma federata dove gli artisti possono monetizzare direttamente la propria arte.</li>
+                    </ul>
+                    
+                    <p>
+                        Tutto questo si poggia su <em>DELAY</em>, il cuore pulsante che tiene insieme i nodi della rete P2P.
+                    </p>
+
+                    <h3>2. La Musica: Dare Voce ai Bit</h3>
+                    <p>
+                        La musica è il mio respiro. Sotto nomi come <em>HOMOLOGO</em>, <em>FADE</em> e <em>ZIMA BLUE</em>, creo paesaggi sonori che vanno dal pop elettronico all'ambient sperimentale. Per me, comporre musica e scrivere un algoritmo elegante sono due facce della stessa medaglia: entrambe richiedono struttura, intuizione e passione.
+                    </p>
+
+                    <h3>3. L'Insegnamento: Crescere Insieme</h3>
+                    <p>
+                        Infine, c'è la condivisione. Insegnare mi permette di restituire alla community quello che ho imparato. Non c'è niente di più bello che vedere qualcun altro accendersi scoprendo il potenziale del Web3 e del P2P.
+                    </p>
+
+                    <p style="margin-bottom: 0; margin-top: 2rem; font-size: 1.2rem; text-align: center; font-weight: 500;">
+                        Un altro web è possibile. Un web più sicuro, più artistico, e soprattutto più umano.
+                    </p>
+                </div>
+
+                <div class="post-footer">
+                    <div class="author-info">
+                        <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru" class="author-avatar" />
+                        <div>
+                            <div class="author-name">Scobru</div>
+                            <div class="author-title">Open Source Developer & Sound Designer</div>
+                        </div>
+                    </div>
+                    
+                    <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <!-- Theme toggle logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeBtn = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+
+            if (currentTheme === 'light') {
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const isLight = root.getAttribute('data-theme') === 'light';
+                if (isLight) {
+                    root.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'dark');
+                    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    root.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

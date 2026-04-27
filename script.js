@@ -34,7 +34,11 @@ const translations = {
         ipfsDesc: "Storage wrapper",
         buttonDesc: "Auth components",
         starterDesc: "TypeScript/React template",
-        cliDesc: "Command-line utilities"
+        cliDesc: "Command-line utilities",
+        blogTitle: "Blog",
+        postTitle: "What do I actually do? Between Music, Code, and Teaching",
+        readArticle: "Read article",
+        postContent: "Hi! If you landed here, you might be wondering what I do with all these projects. Simply put: I combine creativity and technology.\n\nAs an Open Source Developer, I focus on building decentralized and secure tools. Projects like LINDA (encrypted chat) or WORMHOLE (secure file transfer) are born from the desire to give people control over their data.\n\nMusic is my other great passion. I create soundscapes and electronic tracks under various names like HOMOLOGO, FADE, and ZIMA BLUE.\n\nFinally, I love teaching. Sharing what I learn is key to growing the community.\n\nEverything on this page is the result of this journey: a bridge between bits and sounds."
     },
     it: {
         bio: "Sviluppatore Open Source, Sound Designer e Insegnante",
@@ -71,7 +75,11 @@ const translations = {
         ipfsDesc: "Wrapper di archiviazione",
         buttonDesc: "Componenti di auth",
         starterDesc: "Template TypeScript/React",
-        cliDesc: "Strumenti a riga di comando"
+        cliDesc: "Strumenti a riga di comando",
+        blogTitle: "Blog",
+        postTitle: "Cosa faccio davvero? Tra Musica, Codice e Insegnamento",
+        readArticle: "Leggi l'articolo",
+        postContent: "Ciao! Se sei arrivato qui, probabilmente ti starai chiedendo cosa faccio con tutti questi progetti. In poche parole: unisco creatività e tecnologia.\n\nCome Sviluppatore Open Source, mi concentro sulla creazione di strumenti decentralizzati e sicuri. Progetti come LINDA (una chat crittografata) o WORMHOLE (per inviare file in sicurezza) nascono dalla voglia di dare alle persone il controllo sui propri dati.\n\nLa Musica è l'altra mia grande passione. Creo paesaggi sonori e brani elettronici sotto vari nomi come HOMOLOGO, FADE e ZIMA BLUE.\n\nInfine, mi piace insegnare. Condividere quello che imparo è fondamentale per far crescere la community.\n\nTutto quello che trovi in questa pagina è frutto di questa ricerca: un ponte tra bit e suoni."
     }
 };
 
