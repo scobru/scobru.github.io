@@ -2,208 +2,341 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Scobru | Linktree</title>
-
-    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
-    <link rel="stylesheet" href="main.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&display=swap" rel="stylesheet" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicForProgramming(); // Scobru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" />
+    <style>
+        :root {
+            --bg: #000;
+            --fg: #fff;
+            --gray: #888;
+            --accent: #555;
+            --highlight: #222;
+        }
+
+        [data-theme="light"] {
+            --bg: #fff;
+            --fg: #000;
+            --gray: #777;
+            --accent: #ccc;
+            --highlight: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'IBM Plex Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .avatar-box {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--accent);
+            padding: 4px;
+            flex-shrink: 0;
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .meta {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-size: 11px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .controls span {
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .controls span:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        .line {
+            display: flex;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .line:hover {
+            background-color: var(--highlight);
+        }
+
+        .ln {
+            color: var(--accent);
+            width: 40px;
+            text-align: right;
+            padding-right: 15px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .comment {
+            color: var(--gray);
+        }
+
+        .string {
+            color: var(--fg);
+        }
+
+        .keyword {
+            font-weight: 600;
+        }
+
+        .section-header {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--gray);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .link-item {
+            cursor: pointer;
+            display: block;
+        }
+
+        .link-item .title {
+            color: var(--fg);
+        }
+
+        .link-item .subtext {
+            color: var(--gray);
+            margin-left: 10px;
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 11px;
+            color: var(--gray);
+            border-top: 1px solid var(--accent);
+            padding-top: 20px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--fg);
+            vertical-align: middle;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .avatar-box {
+                width: 60px;
+                height: 60px;
+            }
+
+            .ln {
+                width: 30px;
+                padding-right: 10px;
+            }
+
+            body {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .controls span {
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="top-nav">
-        <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">
-            <i class="fas fa-sun"></i>
-        </button>
-        <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">IT</button>
-    </nav>
-
     <div class="container">
-        <!-- Profile Section -->
-        <header class="profile">
-            <div class="avatar-wrapper">
-                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru"
-                    class="avatar" />
+        <header>
+            <div class="avatar-box">
+                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru" />
             </div>
-            <h1>Scobru</h1>
-            <p class="bio" data-i18n="bio">Open Source Developer, Sound Designer & Teacher</p>
-            <p class="description" data-i18n="description">
-                Building sustainable tools & creating sounds.
-            </p>
+            <div class="header-content">
+                <div class="meta">PROJECT: SCOBRU_WEBSITE // VERSION: 2.0.1 // STATUS: STABLE</div>
+                <div class="controls">
+                    <span onclick="toggleTheme()">[invert]</span>
+                    <span onclick="window.location.href='index.html'">[exit]</span>
+                </div>
+                <div class="line">
+                    <div class="ln">01</div>
+                    <div class="content"><span class="keyword">function</span> <span class="string">initPortfolio</span>() {
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="ln">02</div>
+                    <div class="content"> <span class="comment">// Open Source Developer, Sound Designer & Teacher</span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="ln">03</div>
+                    <div class="content"> <span class="keyword">const</span> scobru = <span class="keyword">new</span> <span
+                            class="string">Human</span>({ <span class="string">"creative"</span>: <span
+                            class="keyword">true</span>, <span class="string">"tech"</span>: <span
+                            class="keyword">true</span> });</div>
+                </div>
+                <div class="line">
+                    <div class="ln">04</div>
+                    <div class="content">}</div>
+                </div>
+            </div>
         </header>
 
-        <!-- Links Section -->
-        <main class="links">
-            <!-- Music & Art -->
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="musicTitles">Music & Art</h2>
-            </div>
-
-            <a href="https://homologomusic.bandcamp.com" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text" data-i18n="homologoTitle">HOMOLOGO on Bandcamp</span>
-                    <span class="link-subtext" data-i18n="homologoDesc">Songwriter, Pop, Electronic</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://fademusik.bandcamp.com" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text" data-i18n="fadeTitle">FADE on Bandcamp</span>
-                    <span class="link-subtext" data-i18n="fadeDesc">Electronic</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://zimablue.bandcamp.com" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text" data-i18n="zimaTitle">ZIMA BLUE on Bandcamp</span>
-                    <span class="link-subtext" data-i18n="zimaDesc">Ambient, Experimental</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://audius.co/francescobruno" class="link-card" target="_blank">
-                <span class="link-text" data-i18n="audiusDesc">All my music on Audius</span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac" class="link-card"
-                target="_blank">
-                <span class="link-text" data-i18n="spotifyDesc">All my music on Spotify</span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://www.youtube.com/@scobru1988/videos" class="link-card" target="_blank">
-                <span class="link-text" data-i18n="youtubeDesc">Music for Fashion and ADV</span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <!-- Self Hosted -->
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="selfHostTitle">Self Hosted</h2>
-            </div>
-
-            <a href="https://sudorecords.scobrudot.dev/" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">SUDO RECORDS</span>
-                    <span class="link-subtext" data-i18n="sudoDesc">Independent record label</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <!-- Apps & Services -->
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="appsTitle">Apps & Services</h2>
-            </div>
-
-            <a href="https://scobru-tunecamp.vercel.app/" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">TUNECAMP</span>
-                    <span class="link-subtext" data-i18n="tunecampDesc">Decentralized Music Streaming</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://scobru-linda.vercel.app/" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">LINDA</span>
-                    <span class="link-subtext" data-i18n="lindaDesc">Encrypted P2P chat</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://scobru-wormhole.vercel.app/" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">WORMHOLE</span>
-                    <span class="link-subtext" data-i18n="wormholeDesc">Secure file transfer</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://scobru-nullroute.vercel.app/" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">NULL ROUTE</span>
-                    <span class="link-subtext" data-i18n="stealthDesc">Stealth Transactions</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <!-- Dev Tools -->
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="devTitle">Dev Tools</h2>
-            </div>
-
-            <a href="https://github.com/scobru/shogun-relay" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">DELAY</span>
-                    <span class="link-subtext" data-i18n="relayDesc">Network node server</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://shogun-relay.scobrudot.dev" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">PUBLIC DELAY NODE</span>
-                    <span class="link-subtext" data-i18n="relayDesc">Public Node</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://github.com/scobru/shogun-contracts" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">SMART CONTRACTS</span>
-                    <span class="link-subtext" data-i18n="contractsDesc">Smart contracts</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://github.com/scobru/shogun-ipfs" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">IPFS</span>
-                    <span class="link-subtext" data-i18n="ipfsDesc">Storage wrapper</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </main>
-
-        <!-- Blog Section -->
-        <div class="section-header">
-            <h2 class="section-title" data-i18n="blogTitle">Blog</h2>
+        <div class="section-header">~/links/music_and_art</div>
+        <div id="links-container">
+            <!-- Dynamic links will be here to mimic the lines of code -->
         </div>
 
-        <a href="blog/primoarticolo.html" class="link-card">
-            <span class="link-content">
-                <span class="link-text" data-i18n="postTitle">Cosa faccio davvero? Tra Musica, Codice e Insegnamento</span>
-                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
-            </span>
-            <i class="fas fa-chevron-right"></i>
-        </a>
+        <div class="section-header">~/links/apps_and_services</div>
+        <div id="apps-container"></div>
 
+        <div class="section-header">~/links/dev_tools</div>
+        <div id="dev-container"></div>
 
-        <!-- Social Icons -->
-        <footer class="socials">
-            <a href="https://github.com/scobru" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/scobru1988" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://livellosegreto.it/@scobru" title="Mastodon"><i class="fab fa-mastodon"></i></a>
-            <a href="https://t.me/scobru" title="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="https://instagram.com/francescobruno" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/scobru88" title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="mailto:dev.scobru@pm.me" title="Email"><i class="fas fa-envelope"></i></a>
+        <div class="section-header">~/blog</div>
+        <div id="blog-container"></div>
+
+        <div class="section-header">~/socials</div>
+        <div id="socials-container"></div>
+
+        <footer>
+            EOF // [2026-05-17] // SCOBRU.DEV <span class="cursor"></span>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'light');
+            }
+        }
+
+        const sections = {
+            'links-container': [
+                { title: 'HOMOLOGO', sub: 'Songwriter, Pop, Electronic', url: 'https://homologomusic.bandcamp.com' },
+                { title: 'FADE', sub: 'Electronic', url: 'https://fademusik.bandcamp.com' },
+                { title: 'ZIMA BLUE', sub: 'Ambient, Experimental', url: 'https://zimablue.bandcamp.com' },
+                { title: 'AUDIUS', sub: 'All my music on Audius', url: 'https://audius.co/francescobruno' }
+            ],
+            'apps-container': [
+                { title: 'TUNECAMP', sub: 'Decentralized Music Streaming', url: 'https://scobru-tunecamp.vercel.app/' },
+                { title: 'LINDA', sub: 'Encrypted P2P chat', url: 'https://scobru-linda.vercel.app/' },
+                { title: 'WORMHOLE', sub: 'Secure file transfer', url: 'https://scobru-wormhole.vercel.app/' }
+            ],
+            'dev-container': [
+                { title: 'DELAY', sub: 'Network node server', url: 'https://github.com/scobru/shogun-relay' },
+                { title: 'SMART CONTRACTS', sub: 'Solidity infrastructure', url: 'https://github.com/scobru/shogun-contracts' }
+            ],
+            'blog-container': [
+                { title: 'BOOKMARKS_MUSIC.md', sub: 'All my music links', url: 'blog/bookmarks_music.html' }
+            ],
+            'socials-container': [
+                { title: 'GITHUB', sub: 'scobru', url: 'https://github.com/scobru', icon: 'fab fa-github' },
+                { title: 'TWITTER', sub: 'scobru1988', url: 'https://twitter.com/scobru1988', icon: 'fab fa-twitter' },
+                { title: 'MASTODON', sub: '@scobru@livellosegreto.it', url: 'https://livellosegreto.it/@scobru', icon: 'fab fa-mastodon' },
+                { title: 'TELEGRAM', sub: 't.me/scobru', url: 'https://t.me/scobru', icon: 'fab fa-telegram' },
+                { title: 'INSTAGRAM', sub: 'francescobruno', url: 'https://instagram.com/francescobruno', icon: 'fab fa-instagram' },
+                { title: 'YOUTUBE', sub: 'scobru88', url: 'https://youtube.com/scobru88', icon: 'fab fa-youtube' },
+                { title: 'EMAIL', sub: 'dev.scobru@pm.me', url: 'mailto:dev.scobru@pm.me', icon: 'fas fa-envelope' }
+            ]
+        };
+
+        let currentLine = 5;
+
+        function renderLinks() {
+            for (const [id, items] of Object.entries(sections)) {
+                const container = document.getElementById(id);
+                items.forEach(item => {
+                    const lineDiv = document.createElement('div');
+                    lineDiv.className = 'line link-item';
+                    lineDiv.onclick = () => window.open(item.url, '_blank');
+
+                    const iconHtml = item.icon ? `<i class="${item.icon}" style="margin-right: 10px; width: 15px; text-align: center;"></i>` : '';
+
+                    lineDiv.innerHTML = `
+                        <div class="ln">${String(currentLine++).padStart(2, '0')}</div>
+                        <div class="content">  <span class="keyword">import</span> { ${iconHtml}<span class="string">${item.title}</span> } <span class="keyword">from</span> <span class="comment">'${item.sub}'</span>;</div>
+                    `;
+                    container.appendChild(lineDiv);
+                });
+
+                // Add empty line between sections
+                const emptyLine = document.createElement('div');
+                emptyLine.className = 'line';
+                emptyLine.innerHTML = `<div class="ln">${String(currentLine++).padStart(2, '0')}</div><div class="content"></div>`;
+                container.appendChild(emptyLine);
+            }
+        }
+
+        renderLinks();
+    </script>
 </body>
 
 </html>

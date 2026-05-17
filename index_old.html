@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scobru | Linktree</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+    <link rel="stylesheet" href="main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <nav class="top-nav">
+        <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">IT</button>
+    </nav>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <header class="profile">
+            <div class="avatar-wrapper">
+                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru"
+                    class="avatar" />
+            </div>
+            <h1>Scobru</h1>
+            <p class="bio" data-i18n="bio">Open Source Developer, Sound Designer & Teacher</p>
+            <p class="description" data-i18n="description">
+                Building sustainable tools & creating sounds.
+            </p>
+        </header>
+
+        <!-- Links Section -->
+        <main class="links">
+            <!-- Music & Art -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="musicTitles">Music & Art</h2>
+            </div>
+
+            <a href="https://homologomusic.bandcamp.com" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="homologoTitle">HOMOLOGO on Bandcamp</span>
+                    <span class="link-subtext" data-i18n="homologoDesc">Songwriter, Pop, Electronic</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://fademusik.bandcamp.com" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="fadeTitle">FADE on Bandcamp</span>
+                    <span class="link-subtext" data-i18n="fadeDesc">Electronic</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://zimablue.bandcamp.com" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="zimaTitle">ZIMA BLUE on Bandcamp</span>
+                    <span class="link-subtext" data-i18n="zimaDesc">Ambient, Experimental</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://audius.co/francescobruno" class="link-card" target="_blank">
+                <span class="link-text" data-i18n="audiusDesc">All my music on Audius</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac" class="link-card"
+                target="_blank">
+                <span class="link-text" data-i18n="spotifyDesc">All my music on Spotify</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://www.youtube.com/@scobru1988/videos" class="link-card" target="_blank">
+                <span class="link-text" data-i18n="youtubeDesc">Music for Fashion and ADV</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <!-- Self Hosted -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="selfHostTitle">Self Hosted</h2>
+            </div>
+
+            <a href="https://sudorecords.scobrudot.dev/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">SUDO RECORDS</span>
+                    <span class="link-subtext" data-i18n="sudoDesc">Independent record label</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <!-- Apps & Services -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="appsTitle">Apps & Services</h2>
+            </div>
+
+            <a href="https://scobru-tunecamp.vercel.app/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">TUNECAMP</span>
+                    <span class="link-subtext" data-i18n="tunecampDesc">Decentralized Music Streaming</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://scobru-linda.vercel.app/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">LINDA</span>
+                    <span class="link-subtext" data-i18n="lindaDesc">Encrypted P2P chat</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://scobru-wormhole.vercel.app/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">WORMHOLE</span>
+                    <span class="link-subtext" data-i18n="wormholeDesc">Secure file transfer</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://scobru-nullroute.vercel.app/" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">NULL ROUTE</span>
+                    <span class="link-subtext" data-i18n="stealthDesc">Stealth Transactions</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <!-- Dev Tools -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="devTitle">Dev Tools</h2>
+            </div>
+
+            <a href="https://github.com/scobru/shogun-relay" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">DELAY</span>
+                    <span class="link-subtext" data-i18n="relayDesc">Network node server</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://shogun-relay.scobrudot.dev" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">PUBLIC DELAY NODE</span>
+                    <span class="link-subtext" data-i18n="relayDesc">Public Node</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://github.com/scobru/shogun-contracts" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">SMART CONTRACTS</span>
+                    <span class="link-subtext" data-i18n="contractsDesc">Smart contracts</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="https://github.com/scobru/shogun-ipfs" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text">IPFS</span>
+                    <span class="link-subtext" data-i18n="ipfsDesc">Storage wrapper</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </main>
+
+        <!-- Blog Section -->
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="blogTitle">Blog</h2>
+        </div>
+
+        <a href="blog/primoarticolo.html" class="link-card">
+            <span class="link-content">
+                <span class="link-text" data-i18n="postTitle">Cosa faccio davvero? Tra Musica, Codice e Insegnamento</span>
+                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
+            </span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <a href="blog/bookmarks_music.html" class="link-card">
+            <span class="link-content">
+                <span class="link-text" data-i18n="musicBookmarksTitle">Siti interessanti per ascoltare musica (Open Source)</span>
+                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
+            </span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <a href="blog/fmhy.html" class="link-card">
+            <span class="link-content">
+                <span class="link-text" data-i18n="fmhyTitle">FMHY: La guida definitiva alle risorse gratuite</span>
+                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
+            </span>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+
+        <!-- Social Icons -->
+        <footer class="socials">
+            <a href="https://github.com/scobru" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/scobru1988" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://livellosegreto.it/@scobru" title="Mastodon"><i class="fab fa-mastodon"></i></a>
+            <a href="https://t.me/scobru" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/francescobruno" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/scobru88" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:dev.scobru@pm.me" title="Email"><i class="fas fa-envelope"></i></a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

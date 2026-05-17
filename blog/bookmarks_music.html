@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicForProgramming(); // Music_Resources.md</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000;
+            --fg: #fff;
+            --gray: #888;
+            --accent: #555;
+            --highlight: #222;
+        }
+
+        [data-theme="light"] {
+            --bg: #fff;
+            --fg: #000;
+            --gray: #777;
+            --accent: #ccc;
+            --highlight: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'IBM Plex Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 20px;
+        }
+
+        .meta {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-size: 11px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .controls span {
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .controls span:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        .line {
+            display: flex;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .line:hover {
+            background-color: var(--highlight);
+        }
+
+        .ln {
+            color: var(--accent);
+            width: 40px;
+            text-align: right;
+            padding-right: 15px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .comment {
+            color: var(--gray);
+        }
+
+        .string {
+            color: var(--fg);
+        }
+
+        .keyword {
+            font-weight: 600;
+        }
+
+        .section-header {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--gray);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 11px;
+            color: var(--gray);
+            border-top: 1px solid var(--accent);
+            padding-top: 20px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--fg);
+            vertical-align: middle;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .ln { width: 30px; padding-right: 10px; }
+            body { padding: 10px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="meta">DOC: MUSIC_RESOURCES.md // TYPE: ARTICLE // STATUS: PUBLISHED</div>
+            <div class="controls">
+                <span onclick="toggleTheme()">[invert]</span>
+                <span onclick="window.location.href='../index2.html'">[back]</span>
+            </div>
+            <div class="line">
+                <div class="ln">01</div>
+                <div class="content"><span class="keyword">#</span> <span class="string">Siti Open Source e Decentralizzati per la Musica</span></div>
+            </div>
+            <div class="line">
+                <div class="ln">02</div>
+                <div class="content"><span class="comment">// Una lista di piattaforme libere per scoprire e ascoltare musica</span></div>
+            </div>
+        </header>
+
+        <div class="line">
+            <div class="ln">03</div>
+            <div class="content"></div>
+        </div>
+
+        <div class="line">
+            <div class="ln">04</div>
+            <div class="content"><span class="keyword">const</span> <span class="string">resources</span> = [</div>
+        </div>
+
+        <!-- Funkwhale -->
+        <div class="line" onclick="window.open('https://funkwhale.audio/', '_blank')" style="cursor:pointer">
+            <div class="ln">05</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"Funkwhale"</span>, <span class="keyword">type</span>: <span class="string">"ActivityPub"</span>, <span class="keyword">desc</span>: <span class="comment">"Piattaforma sociale e decentralizzata."</span> },</div>
+        </div>
+
+        <!-- Audius -->
+        <div class="line" onclick="window.open('https://audius.co/', '_blank')" style="cursor:pointer">
+            <div class="ln">06</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"Audius"</span>, <span class="keyword">type</span>: <span class="string">"Blockchain"</span>, <span class="keyword">desc</span>: <span class="comment">"Streaming decentralizzato per artisti."</span> },</div>
+        </div>
+
+        <!-- Airsonic -->
+        <div class="line" onclick="window.open('https://airsonic.github.io/', '_blank')" style="cursor:pointer">
+            <div class="ln">07</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"Airsonic"</span>, <span class="keyword">type</span>: <span class="string">"Self-Hosted"</span>, <span class="keyword">desc</span>: <span class="comment">"Media streamer libero e open source."</span> },</div>
+        </div>
+
+        <!-- FMA -->
+        <div class="line" onclick="window.open('https://www.fma.org/', '_blank')" style="cursor:pointer">
+            <div class="ln">08</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"Free Music Archive"</span>, <span class="keyword">type</span>: <span class="string">"CC"</span>, <span class="keyword">desc</span>: <span class="comment">"Musica di alta qualità scaricabile legalmente."</span> },</div>
+        </div>
+
+        <!-- Jamendo -->
+        <div class="line" onclick="window.open('https://jamendo.com/', '_blank')" style="cursor:pointer">
+            <div class="ln">09</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"Jamendo"</span>, <span class="keyword">type</span>: <span class="string">"Independent"</span>, <span class="keyword">desc</span>: <span class="comment">"Grande piattaforma per musica libera."</span> },</div>
+        </div>
+
+        <!-- Bandcamp -->
+        <div class="line" onclick="window.open('https://bandcamp.com/', '_blank')" style="cursor:pointer">
+            <div class="ln">10</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"Bandcamp"</span>, <span class="keyword">type</span>: <span class="string">"Artist-Direct"</span>, <span class="keyword">desc</span>: <span class="comment">"La piattaforma più rispettosa degli artisti."</span> },</div>
+        </div>
+
+        <!-- MPD -->
+        <div class="line" onclick="window.open('https://mpd.wikia.com/wiki/Music_Player_Daemon', '_blank')" style="cursor:pointer">
+            <div class="ln">11</div>
+            <div class="content">  { <span class="keyword">name</span>: <span class="string">"MPD"</span>, <span class="keyword">type</span>: <span class="string">"Architecture"</span>, <span class="keyword">desc</span>: <span class="comment">"Music Player Daemon per server musicali."</span> }</div>
+        </div>
+
+        <div class="line">
+            <div class="ln">12</div>
+            <div class="content">];</div>
+        </div>
+
+        <footer>
+            EOF // [2026-05-17] // ARTICLE_END <span class="cursor"></span>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'light');
+            }
+        }
+    </script>
+</body>
+</html>
