@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicForProgramming(); // Bookmarks.md</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" />
+    <style>
+        :root {
+            --bg: #000;
+            --fg: #fff;
+            --gray: #888;
+            --accent: #555;
+            --highlight: #222;
+        }
+
+        [data-theme="light"] {
+            --bg: #fff;
+            --fg: #000;
+            --gray: #777;
+            --accent: #ccc;
+            --highlight: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'IBM Plex Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .avatar-box {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--accent);
+            padding: 4px;
+            flex-shrink: 0;
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .meta {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-size: 11px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .controls span {
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .controls span:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .line {
+            display: flex;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 20px;
+        }
+
+        .line:hover {
+            background-color: var(--highlight);
+        }
+
+        .ln {
+            color: var(--accent);
+            width: 40px;
+            text-align: right;
+            padding-right: 15px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .comment {
+            color: var(--gray);
+        }
+
+        .string {
+            color: var(--fg);
+        }
+
+        .keyword {
+            font-weight: 600;
+        }
+
+        .section-header {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--gray);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            scroll-margin-top: 20px;
+        }
+
+        #category-nav {
+            margin-top: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--highlight);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 11px;
+        }
+
+        .nav-item {
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            color: var(--fg);
+            text-decoration: underline;
+        }
+
+        .nav-item::before {
+            content: "[";
+            margin-right: 2px;
+        }
+
+        .nav-item::after {
+            content: "]";
+            margin-left: 2px;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: var(--fg);
+            font-family: inherit;
+            font-size: inherit;
+            outline: none;
+            width: 100%;
+            border-bottom: 1px dashed var(--accent);
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--fg);
+            font-family: inherit;
+            padding: 2px 10px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        button:hover {
+            background: var(--highlight);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 11px;
+            color: var(--gray);
+            border-top: 1px solid var(--accent);
+            padding-top: 20px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--fg);
+            vertical-align: middle;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar-box">
+                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru" />
+            </div>
+            <div class="header-content">
+                <div class="meta">DOC: BOOKMARKS.md // TYPE: APP // STATUS: CRYPTO_LOCKED</div>
+                <div class="controls">
+                    <span onclick="toggleTheme()">[invert]</span>
+                    <span onclick="window.location.href='../index.html'">[back]</span>
+                </div>
+                <div id="auth-section">
+                    <div class="line">
+                        <div class="ln">01</div>
+                        <div class="content"><span class="keyword">function</span> <span class="string">auth</span>() {</div>
+                    </div>
+                    <div class="line">
+                        <div class="ln">02</div>
+                        <div class="content">  <span class="keyword">user</span>: <input type="text" id="user-input" style="width: 150px;" placeholder="username">,</div>
+                    </div>
+                    <div class="line">
+                        <div class="ln">03</div>
+                        <div class="content">  <span class="keyword">pass</span>: <input type="password" id="pass-input" style="width: 150px;" placeholder="password"></div>
+                    </div>
+                    <div class="line">
+                        <div class="ln">04</div>
+                        <div class="content">} <button id="login-btn">[EXECUTE]</button></div>
+                    </div>
+                </div>
+                <div id="user-info" class="hidden">
+                    <div class="line">
+                        <div class="ln">01</div>
+                        <div class="content"><span class="keyword">const</span> user = <span
+                                class="string">"Authorized"</span>; <span class="comment">// Logged in</span></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="app-content">
+            <div id="add-section" class="hidden">
+                <div class="section-header">~/add_bookmark</div>
+                <div class="line">
+                    <div class="ln">03</div>
+                    <div class="content"> { </div>
+                </div>
+                <div class="line">
+                    <div class="ln">04</div>
+                    <div class="content"> <span class="keyword">name</span>: <input type="text" id="bm-name"
+                            style="width: 200px;" placeholder="Site Name">, </div>
+                </div>
+                <div class="line">
+                    <div class="ln">05</div>
+                    <div class="content"> <span class="keyword">url</span>: <input type="text" id="bm-url"
+                            style="width: 300px;" placeholder="https://...">, </div>
+                </div>
+                <div class="line">
+                    <div class="ln">06</div>
+                    <div class="content"> <span class="keyword">cat</span>: <input type="text" id="bm-cat"
+                            style="width: 150px;" placeholder="Category"> </div>
+                </div>
+                <div class="line">
+                    <div class="ln">07</div>
+                    <div class="content"> } <button id="add-bm-btn">[EXECUTE]</button></div>
+                </div>
+            </div>
+
+            <div id="category-nav">
+                <!-- Dynamic categories will appear here -->
+            </div>
+
+            <div id="bookmarks-categories">
+                <!-- Categories and bookmarks will appear here -->
+            </div>
+        </div>
+
+        <footer>
+            EOF // [2026-05-17] // ZEN_ENTROPY_NETWORK <span class="cursor"></span>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'light');
+            }
+        }
+    </script>
+
+    <script type="module">
+        import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
+
+        const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
+
+        let zen;
+        let pair;
+        let lineCounter = 8;
+        let isAuthenticated = false;
+
+        // Auto-initialize Zen
+        zen = new ZEN({
+            peers: [
+                'https://shogun-relay.scobrudot.dev/zen',
+                'https://zen-relay.scobrudot.dev/zen'
+            ],
+            localStorage: true
+        });
+
+        // Load public bookmarks on startup
+        loadBookmarks('0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0');
+
+        async function login() {
+            const userInput = document.getElementById('user-input').value;
+            const passInput = document.getElementById('pass-input').value;
+            
+            if (!userInput || !passInput) return;
+
+            try {
+                const btn = document.getElementById('login-btn');
+                btn.innerText = "[LOADING...]";
+
+                pair = await ZEN.pair(null, { seed: userInput + passInput });
+                isAuthenticated = true;
+
+                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('add-section').classList.remove('hidden');
+                document.getElementById('user-info').classList.remove('hidden');
+
+                loadBookmarks(pair.pub);
+            } catch (e) {
+                console.error("Login Error:", e);
+                alert("Auth failed: " + e.message);
+                document.getElementById('login-btn').innerText = "[EXECUTE]";
+            }
+        }
+
+        async function addBookmark() {
+            if (!isAuthenticated) return;
+            const name = document.getElementById('bm-name').value;
+            const url = document.getElementById('bm-url').value;
+            const cat = document.getElementById('bm-cat').value || 'general';
+
+            if (!name || !url) return;
+
+            const bm = { name, url, cat, timestamp: Date.now() };
+            const soul = 'bm-' + Date.now() + '-' + Math.random().toString(36).substring(7);
+
+            zen.get('~' + pair.pub).get('bookmarks').get(soul).put(bm, (ack) => {
+                if (ack && ack.err) {
+                    alert("Save failed: " + ack.err);
+                }
+            }, { authenticator: pair });
+
+            document.getElementById('bm-name').value = '';
+            document.getElementById('bm-url').value = '';
+            document.getElementById('bm-cat').value = '';
+        }
+
+        function deleteBookmark(soul) {
+            if (!isAuthenticated) return;
+            if (!confirm("Remove bookmark?")) return;
+            
+            zen.get('~' + pair.pub).get('bookmarks').get(soul).put(null, (ack) => {
+                if (!ack.err) {
+                    const el = document.getElementById('bm-' + soul);
+                    if (el) el.remove();
+                }
+            }, { authenticator: pair });
+        }
+
+        function loadBookmarks(pubKey) {
+            if (!pubKey) return;
+            const container = document.getElementById('bookmarks-categories');
+            const nav = document.getElementById('category-nav');
+            container.innerHTML = '';
+            nav.innerHTML = '';
+            let innerLineCounter = 8;
+            
+            const categories = {};
+
+            zen.get('~' + pubKey).get('bookmarks').map().on((bm, id) => {
+                if (!bm) {
+                    const el = document.getElementById('bm-' + id);
+                    if (el) el.remove();
+                    return;
+                }
+                
+                if (!bm.name || !bm.url) return;
+                const cat = bm.cat || 'general';
+                
+                if (!categories[cat]) {
+                    // Add to Nav
+                    const navItem = document.createElement('span');
+                    navItem.className = 'nav-item';
+                    navItem.innerText = cat;
+                    navItem.onclick = () => {
+                        document.getElementById(`sec-${cat}`).scrollIntoView({ behavior: 'smooth' });
+                    };
+                    nav.appendChild(navItem);
+
+                    // Create Section
+                    const secHeader = document.createElement('div');
+                    secHeader.className = 'section-header';
+                    secHeader.id = `sec-${cat}`;
+                    secHeader.innerText = `~/bookmarks/${cat}`;
+                    container.appendChild(secHeader);
+                    
+                    const catList = document.createElement('div');
+                    catList.id = `cat-${cat}`;
+                    container.appendChild(catList);
+                    categories[cat] = catList;
+                }
+
+                if (document.getElementById('bm-' + id)) return;
+
+                const line = document.createElement('div');
+                line.className = 'line';
+                line.id = 'bm-' + id;
+                
+                const content = document.createElement('div');
+                content.className = 'content';
+                content.style.cursor = 'pointer';
+                content.onclick = () => window.open(bm.url, '_blank');
+                content.innerHTML = `<span class="keyword">link</span>(${id.substring(0, 4)}) { <span class="string">"${bm.name}"</span> } <span class="comment">// ${bm.url}</span>`;
+                
+                if (isAuthenticated) {
+                    const delBtn = document.createElement('span');
+                    delBtn.innerText = ' [DEL]';
+                    delBtn.style.color = 'var(--gray)';
+                    delBtn.style.cursor = 'pointer';
+                    delBtn.style.fontSize = '10px';
+                    delBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        deleteBookmark(id);
+                    };
+                    content.appendChild(delBtn);
+                }
+                
+                line.innerHTML = `<div class="ln">${String(innerLineCounter++).padStart(2, '0')}</div>`;
+                line.appendChild(content);
+                
+                categories[cat].appendChild(line);
+            });
+        }
+
+        window.login = login;
+        window.addBookmark = addBookmark;
+
+        document.getElementById('user-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') document.getElementById('pass-input').focus();
+        });
+
+        document.getElementById('pass-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') login();
+        });
+
+        document.getElementById('login-btn').addEventListener('click', login);
+        document.getElementById('add-bm-btn').addEventListener('click', addBookmark);
+    </script>
+</body>
+
+</html>
