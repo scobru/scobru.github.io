@@ -22,6 +22,9 @@
 
 <body>
     <nav class="top-nav">
+        <button onclick="window.location.href='index.html'" class="nav-btn" aria-label="Terminal View" title="Terminal View">
+            <i class="fas fa-terminal"></i>
+        </button>
         <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">
             <i class="fas fa-sun"></i>
         </button>
@@ -51,7 +54,7 @@
 
             <a href="https://homologomusic.bandcamp.com" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text" data-i18n="homologoTitle">HOMOLOGO on Bandcamp</span>
+                    <span class="link-text" data-i18n="homologoTitle">HOMOLOGO</span>
                     <span class="link-subtext" data-i18n="homologoDesc">Songwriter, Pop, Electronic</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
@@ -59,7 +62,7 @@
 
             <a href="https://fademusik.bandcamp.com" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text" data-i18n="fadeTitle">FADE on Bandcamp</span>
+                    <span class="link-text" data-i18n="fadeTitle">FADE</span>
                     <span class="link-subtext" data-i18n="fadeDesc">Electronic</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
@@ -67,37 +70,16 @@
 
             <a href="https://zimablue.bandcamp.com" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text" data-i18n="zimaTitle">ZIMA BLUE on Bandcamp</span>
+                    <span class="link-text" data-i18n="zimaTitle">ZIMA BLUE</span>
                     <span class="link-subtext" data-i18n="zimaDesc">Ambient, Experimental</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://audius.co/francescobruno" class="link-card" target="_blank">
-                <span class="link-text" data-i18n="audiusDesc">All my music on Audius</span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac" class="link-card"
-                target="_blank">
-                <span class="link-text" data-i18n="spotifyDesc">All my music on Spotify</span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://www.youtube.com/@scobru1988/videos" class="link-card" target="_blank">
-                <span class="link-text" data-i18n="youtubeDesc">Music for Fashion and ADV</span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <!-- Self Hosted -->
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="selfHostTitle">Self Hosted</h2>
-            </div>
-
-            <a href="https://sudorecords.scobrudot.dev/" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">SUDO RECORDS</span>
-                    <span class="link-subtext" data-i18n="sudoDesc">Independent record label</span>
+                    <span class="link-text" data-i18n="audiusTitle">AUDIUS</span>
+                    <span class="link-subtext" data-i18n="audiusDesc">All my music on Audius</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
@@ -107,9 +89,33 @@
                 <h2 class="section-title" data-i18n="appsTitle">Apps & Services</h2>
             </div>
 
+            <a href="apps/keep.html" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="keepTitle">ZEN KEEP</span>
+                    <span class="link-subtext" data-i18n="keepDesc">End-to-end encrypted vault</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="apps/notes.html" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="notesTitle">ZEN NOTES</span>
+                    <span class="link-subtext" data-i18n="notesDesc">Decentralized thoughts & notes</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="mini_apps/bookmarks.html" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="bookmarksTitle">ZEN BOOKMARKS</span>
+                    <span class="link-subtext" data-i18n="bookmarksDesc">Decentralized bookmark manager</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
             <a href="https://scobru-tunecamp.vercel.app/" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">TUNECAMP</span>
+                    <span class="link-text" data-i18n="tunecampTitle">TUNECAMP</span>
                     <span class="link-subtext" data-i18n="tunecampDesc">Decentralized Music Streaming</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
@@ -117,7 +123,7 @@
 
             <a href="https://scobru-linda.vercel.app/" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">LINDA</span>
+                    <span class="link-text" data-i18n="lindaTitle">LINDA</span>
                     <span class="link-subtext" data-i18n="lindaDesc">Encrypted P2P chat</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
@@ -125,16 +131,8 @@
 
             <a href="https://scobru-wormhole.vercel.app/" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">WORMHOLE</span>
+                    <span class="link-text" data-i18n="wormholeTitle">WORMHOLE</span>
                     <span class="link-subtext" data-i18n="wormholeDesc">Secure file transfer</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://scobru-nullroute.vercel.app/" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">NULL ROUTE</span>
-                    <span class="link-subtext" data-i18n="stealthDesc">Stealth Transactions</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
@@ -146,65 +144,41 @@
 
             <a href="https://github.com/scobru/shogun-relay" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">DELAY</span>
+                    <span class="link-text" data-i18n="relayTitle">DELAY</span>
                     <span class="link-subtext" data-i18n="relayDesc">Network node server</span>
-                </span>
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-
-            <a href="https://shogun-relay.scobrudot.dev" class="link-card" target="_blank">
-                <span class="link-content">
-                    <span class="link-text">PUBLIC DELAY NODE</span>
-                    <span class="link-subtext" data-i18n="relayDesc">Public Node</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
             <a href="https://github.com/scobru/shogun-contracts" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">SMART CONTRACTS</span>
-                    <span class="link-subtext" data-i18n="contractsDesc">Smart contracts</span>
+                    <span class="link-text" data-i18n="contractsTitle">SMART CONTRACTS</span>
+                    <span class="link-subtext" data-i18n="contractsDesc">Solidity infrastructure</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
-            <a href="https://github.com/scobru/shogun-ipfs" class="link-card" target="_blank">
+            <!-- Blog Section -->
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="blogTitle">Blog</h2>
+            </div>
+
+            <a href="mini_apps/notes.html" class="link-card" target="_blank">
                 <span class="link-content">
-                    <span class="link-text">IPFS</span>
-                    <span class="link-subtext" data-i18n="ipfsDesc">Storage wrapper</span>
+                    <span class="link-text" data-i18n="blogNotesTitle">NOTES.md</span>
+                    <span class="link-subtext" data-i18n="blogNotesDesc">My thoughts</span>
+                </span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a href="mini_apps/bookmarks.html" class="link-card" target="_blank">
+                <span class="link-content">
+                    <span class="link-text" data-i18n="blogBookmarksTitle">BOOKMARKS.md</span>
+                    <span class="link-subtext" data-i18n="blogBookmarksDesc">Decentralized bookmarks</span>
                 </span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
         </main>
-
-        <!-- Blog Section -->
-        <div class="section-header">
-            <h2 class="section-title" data-i18n="blogTitle">Blog</h2>
-        </div>
-
-        <a href="blog/primoarticolo.html" class="link-card">
-            <span class="link-content">
-                <span class="link-text" data-i18n="postTitle">Cosa faccio davvero? Tra Musica, Codice e Insegnamento</span>
-                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
-            </span>
-            <i class="fas fa-chevron-right"></i>
-        </a>
-
-        <a href="blog/bookmarks_music.html" class="link-card">
-            <span class="link-content">
-                <span class="link-text" data-i18n="musicBookmarksTitle">Siti interessanti per ascoltare musica (Open Source)</span>
-                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
-            </span>
-            <i class="fas fa-chevron-right"></i>
-        </a>
-
-        <a href="blog/fmhy.html" class="link-card">
-            <span class="link-content">
-                <span class="link-text" data-i18n="fmhyTitle">FMHY: La guida definitiva alle risorse gratuite</span>
-                <span class="link-subtext" data-i18n="readArticle">Leggi l'articolo</span>
-            </span>
-            <i class="fas fa-chevron-right"></i>
-        </a>
 
 
         <!-- Social Icons -->

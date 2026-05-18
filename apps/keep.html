@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musicForProgramming(); // Notes.md</title>
+    <title>musicForProgramming(); // Keep.md</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
             --gray: #888;
             --accent: #555;
             --highlight: #222;
+            --locked: #ff4444;
         }
 
         [data-theme="light"] {
@@ -26,6 +27,7 @@
             --gray: #777;
             --accent: #ccc;
             --highlight: #f0f0f0;
+            --locked: #aa0000;
         }
 
         * {
@@ -231,6 +233,12 @@
                 opacity: 0;
             }
         }
+        
+        .e2ee-status {
+            color: var(--locked);
+            font-size: 10px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -241,15 +249,16 @@
                 <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru" />
             </div>
             <div class="header-content">
-                <div class="meta">DOC: NOTES.md // TYPE: MINI_APP // STATUS: CRYPTO_LOCKED</div>
+                <div class="meta">DOC: KEEP.md // TYPE: PRIVATE_VAULT // <span class="e2ee-status">STATUS: END_TO_END_ENCRYPTED</span></div>
                 <div class="controls">
                     <span onclick="toggleTheme()">[invert]</span>
+                    <span id="logout-span" onclick="logout()" class="hidden">[lock]</span>
                     <span onclick="window.location.href='../index.html'">[back]</span>
                 </div>
                 <div id="auth-section">
                     <div class="line">
                         <div class="ln">01</div>
-                        <div class="content"><span class="keyword">function</span> <span class="string">auth</span>() {</div>
+                        <div class="content"><span class="keyword">function</span> <span class="string">unlockVault</span>() {</div>
                     </div>
                     <div class="line">
                         <div class="ln">02</div>
@@ -261,61 +270,61 @@
                     </div>
                     <div class="line">
                         <div class="ln">04</div>
-                        <div class="content">} <button id="login-btn">[EXECUTE]</button></div>
+                        <div class="content">} <button id="login-btn">[DECRYPT]</button></div>
                     </div>
                 </div>
                 <div id="user-info" class="hidden">
                     <div class="line">
                         <div class="ln">01</div>
-                        <div class="content"><span class="keyword">const</span> user = <span
-                                class="string">"Authorized"</span>; <span class="comment">// Think freely</span></div>
+                        <div class="content"><span class="keyword">const</span> vault = <span
+                                class="string">"Unlocked"</span>; <span class="comment">// Data is now local & readable</span></div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <div id="app-content">
-            <div id="add-section" class="hidden">
-                <div class="section-header">~/write_thought</div>
+        <div id="app-content" class="hidden">
+            <div id="add-section">
+                <div class="section-header">~/vault/encrypt_note</div>
                 <div class="line">
                     <div class="ln">03</div>
                     <div class="content"> { </div>
                 </div>
                 <div class="line">
                     <div class="ln">04</div>
-                    <div class="content"> <span class="keyword">title</span>: <input type="text" id="note-title"
-                            style="width: 250px;" placeholder="Subject line">, </div>
+                    <div class="content"> <span class="keyword">subject</span>: <input type="text" id="note-title"
+                            style="width: 250px;" placeholder="Title">, </div>
                 </div>
                 <div class="line">
                     <div class="ln">05</div>
-                    <div class="content"> <span class="keyword">body</span>:  </div>
+                    <div class="content"> <span class="keyword">content</span>:  </div>
                 </div>
                 <div class="line">
                     <div class="ln">06</div>
-                    <div class="content">   <textarea id="note-body" placeholder="Deep thoughts..."></textarea> </div>
+                    <div class="content">   <textarea id="note-body" placeholder="Your private note..."></textarea> </div>
                 </div>
                 <div class="line">
                     <div class="ln">07</div>
-                    <div class="content">   <span class="keyword">cat</span>: <input type="text" id="note-cat"
+                    <div class="content">   <span class="keyword">tag</span>: <input type="text" id="note-cat"
                             style="width: 150px;" placeholder="Category"> </div>
                 </div>
                 <div class="line">
                     <div class="ln">08</div>
-                    <div class="content"> } <button id="add-note-btn">[COMMIT]</button></div>
+                    <div class="content"> } <button id="add-note-btn">[SAFE_STORE]</button></div>
                 </div>
             </div>
 
-            <div id="category-nav">
-                <!-- Dynamic categories will appear here -->
-            </div>
-
-            <div id="notes-categories">
-                <!-- Notes will appear here -->
-            </div>
+            <div id="category-nav"></div>
+            <div id="notes-categories"></div>
+        </div>
+        
+        <div id="lock-screen" style="text-align: center; margin-top: 100px; color: var(--gray);">
+            <i class="fas fa-lock" style="font-size: 30px; margin-bottom: 20px;"></i>
+            <p>VAULT IS LOCKED. ENTER CREDENTIALS TO ACCESS PRIVATE DATA.</p>
         </div>
 
         <footer>
-            EOF // [2026-05-17] // ZEN_ENTROPY_NETWORK <span class="cursor"></span>
+            EOF // [2026-05-17] // ZEN_ENTROPY_NETWORK // E2EE_ACTIVE <span class="cursor"></span>
         </footer>
     </div>
 
@@ -333,8 +342,6 @@
     <script type="module">
         import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
 
-        const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
-
         let zen;
         let pair;
         let isAuthenticated = false;
@@ -347,30 +354,36 @@
             localStorage: true
         });
 
-        loadNotes(PUBLIC_VIEW_KEY);
-
         async function login() {
-            const userInput = document.getElementById('user-input').value;
-            const passInput = document.getElementById('pass-input').value;
+            const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
+            const passInput = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
             
             if (!userInput || !passInput) return;
 
             try {
                 const btn = document.getElementById('login-btn');
-                btn.innerText = "[LOADING...]";
+                btn.innerText = "[UNLOCKING...]";
 
                 pair = await ZEN.pair(null, { seed: userInput + passInput });
                 isAuthenticated = true;
 
+                sessionStorage.setItem('zen_user', userInput);
+                sessionStorage.setItem('zen_pass', passInput);
+
                 document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('lock-screen').classList.add('hidden');
                 document.getElementById('add-section').classList.remove('hidden');
                 document.getElementById('user-info').classList.remove('hidden');
+                document.getElementById('app-content').classList.remove('hidden');
 
-                loadNotes(pair.pub);
+                const logoutSpan = document.getElementById('logout-span');
+                if (logoutSpan) logoutSpan.classList.remove('hidden');
+
+                loadNotes();
             } catch (e) {
                 console.error("Login Error:", e);
-                alert("Auth failed: " + e.message);
-                document.getElementById('login-btn').innerText = "[EXECUTE]";
+                alert("Decryption failed: " + e.message);
+                document.getElementById('login-btn').innerText = "[DECRYPT]";
             }
         }
 
@@ -378,16 +391,29 @@
             if (!isAuthenticated) return;
             const title = document.getElementById('note-title').value;
             const body = document.getElementById('note-body').value;
-            const cat = document.getElementById('note-cat').value || 'thoughts';
+            const cat = document.getElementById('note-cat').value || 'private';
 
             if (!title || !body) return;
 
-            const note = { title, body, cat, timestamp: Date.now() };
-            const soul = 'note-' + Date.now() + '-' + Math.random().toString(36).substring(7);
+            // ENCRYPTION: We encrypt each field before sending to ZEN
+            // Using ZEN.encrypt(data, pair) which uses the pair's secret
+            const encTitle = await ZEN.encrypt(title, pair);
+            const encBody = await ZEN.encrypt(body, pair);
+            const encCat = await ZEN.encrypt(cat, pair);
 
-            zen.get('~' + pair.pub).get('notes').get(soul).put(note, (ack) => {
+            const note = { 
+                title: encTitle, 
+                body: encBody, 
+                cat: encCat, 
+                timestamp: Date.now(),
+                encrypted: true 
+            };
+            
+            const soul = 'vault-' + Date.now() + '-' + Math.random().toString(36).substring(7);
+
+            zen.get('~' + pair.pub).get('vault').get(soul).put(note, (ack) => {
                 if (ack && ack.err) {
-                    alert("Commit failed: " + ack.err);
+                    alert("Storage failed: " + ack.err);
                 }
             }, { authenticator: pair });
 
@@ -398,9 +424,9 @@
 
         function deleteNote(soul) {
             if (!isAuthenticated) return;
-            if (!confirm("Discard this thought?")) return;
+            if (!confirm("Permanently erase this note?")) return;
             
-            zen.get('~' + pair.pub).get('notes').get(soul).put(null, (ack) => {
+            zen.get('~' + pair.pub).get('vault').get(soul).put(null, (ack) => {
                 if (ack && !ack.err) {
                     const el = document.getElementById('note-' + soul);
                     if (el) el.remove();
@@ -408,8 +434,7 @@
             }, { authenticator: pair });
         }
 
-        function loadNotes(pubKey) {
-            if (!pubKey) return;
+        async function loadNotes() {
             const container = document.getElementById('notes-categories');
             const nav = document.getElementById('category-nav');
             container.innerHTML = '';
@@ -418,18 +443,27 @@
             
             const categories = {};
 
-            zen.get('~' + pubKey).get('notes').map().on((note, id) => {
+            zen.get('~' + pair.pub).get('vault').map().on(async (note, id) => {
                 if (!note) {
                     const el = document.getElementById('note-' + id);
                     if (el) el.remove();
                     return;
                 }
                 
-                if (!note.title || !note.body) return;
-                const cat = note.cat || 'thoughts';
+                // DECRYPTION: Attempt to decrypt data using user's pair
+                let title, body, cat;
+                try {
+                    title = await ZEN.decrypt(note.title, pair);
+                    body = await ZEN.decrypt(note.body, pair);
+                    cat = await ZEN.decrypt(note.cat, pair) || 'private';
+                } catch (e) {
+                    console.warn("Could not decrypt note:", id);
+                    return; // Skip if decryption fails
+                }
+                
+                if (!title || !body) return;
                 
                 if (!categories[cat]) {
-                    // Add to Nav
                     const navItem = document.createElement('span');
                     navItem.className = 'nav-item';
                     navItem.innerText = cat;
@@ -438,11 +472,10 @@
                     };
                     nav.appendChild(navItem);
 
-                    // Create Section
                     const secHeader = document.createElement('div');
                     secHeader.className = 'section-header';
                     secHeader.id = `sec-${cat}`;
-                    secHeader.innerText = `~/thoughts/${cat}`;
+                    secHeader.innerText = `~/vault/${cat}`;
                     container.appendChild(secHeader);
                     
                     const catList = document.createElement('div');
@@ -453,7 +486,7 @@
 
                 if (document.getElementById('note-' + id)) {
                     const existingContent = document.querySelector(`#note-${id} .note-text`);
-                    if(existingContent) existingContent.innerText = note.body;
+                    if(existingContent) existingContent.innerText = body;
                     return;
                 }
 
@@ -467,14 +500,14 @@
                     <div style="display: flex;">
                         <div class="ln">${String(lineCounter++).padStart(2, '0')}</div>
                         <div class="content">
-                            <span class="keyword">thought</span>("${note.title}") {
-                            ${isAuthenticated ? `<span class="comment" style="cursor:pointer;" id="del-${id}">[DISCARD]</span>` : ''}
+                            <span class="keyword">locked_thought</span>("${title}") {
+                            <span class="comment" style="cursor:pointer;" id="del-${id}">[ERASE]</span>
                         </div>
                     </div>
                     <div style="display: flex;">
                         <div class="ln">${String(lineCounter++).padStart(2, '0')}</div>
                         <div class="content" style="padding-left: 20px; color: var(--gray);">
-                            <span class="note-text">${note.body}</span>
+                            <span class="note-text">${body}</span>
                         </div>
                     </div>
                     <div style="display: flex;">
@@ -486,14 +519,19 @@
                 line.innerHTML = html;
                 categories[cat].appendChild(line);
 
-                if (isAuthenticated) {
-                    const delEl = document.getElementById(`del-${id}`);
-                    if(delEl) delEl.addEventListener('click', () => deleteNote(id));
-                }
+                const delEl = document.getElementById(`del-${id}`);
+                if(delEl) delEl.addEventListener('click', () => deleteNote(id));
             });
         }
 
+        function logout() {
+            sessionStorage.removeItem('zen_user');
+            sessionStorage.removeItem('zen_pass');
+            window.location.reload();
+        }
+
         window.login = login;
+        window.logout = logout;
         window.addNote = addNote;
         window.deleteNote = deleteNote;
 
@@ -507,6 +545,13 @@
 
         document.getElementById('login-btn').addEventListener('click', login);
         document.getElementById('add-note-btn').addEventListener('click', addNote);
+
+        // Auto-login on load if credentials exist in sessionStorage
+        const savedUser = sessionStorage.getItem('zen_user');
+        const savedPass = sessionStorage.getItem('zen_pass');
+        if (savedUser && savedPass) {
+            login();
+        }
     </script>
 </body>
 

@@ -241,6 +241,7 @@
                 <div class="meta">DOC: BOOKMARKS.md // TYPE: APP // STATUS: CRYPTO_LOCKED</div>
                 <div class="controls">
                     <span onclick="toggleTheme()">[invert]</span>
+                    <span id="logout-span" onclick="logout()" class="hidden">[lock]</span>
                     <span onclick="window.location.href='../index.html'">[back]</span>
                 </div>
                 <div id="auth-section">
@@ -347,8 +348,8 @@
         loadBookmarks('0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0');
 
         async function login() {
-            const userInput = document.getElementById('user-input').value;
-            const passInput = document.getElementById('pass-input').value;
+            const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
+            const passInput = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
             
             if (!userInput || !passInput) return;
 
@@ -359,9 +360,15 @@
                 pair = await ZEN.pair(null, { seed: userInput + passInput });
                 isAuthenticated = true;
 
+                sessionStorage.setItem('zen_user', userInput);
+                sessionStorage.setItem('zen_pass', passInput);
+
                 document.getElementById('auth-section').classList.add('hidden');
                 document.getElementById('add-section').classList.remove('hidden');
                 document.getElementById('user-info').classList.remove('hidden');
+
+                const logoutSpan = document.getElementById('logout-span');
+                if (logoutSpan) logoutSpan.classList.remove('hidden');
 
                 loadBookmarks(pair.pub);
             } catch (e) {
@@ -480,7 +487,14 @@
             });
         }
 
+        function logout() {
+            sessionStorage.removeItem('zen_user');
+            sessionStorage.removeItem('zen_pass');
+            window.location.reload();
+        }
+
         window.login = login;
+        window.logout = logout;
         window.addBookmark = addBookmark;
 
         document.getElementById('user-input').addEventListener('keydown', (e) => {
@@ -493,6 +507,13 @@
 
         document.getElementById('login-btn').addEventListener('click', login);
         document.getElementById('add-bm-btn').addEventListener('click', addBookmark);
+
+        // Auto-login on load if credentials exist in sessionStorage
+        const savedUser = sessionStorage.getItem('zen_user');
+        const savedPass = sessionStorage.getItem('zen_pass');
+        if (savedUser && savedPass) {
+            login();
+        }
     </script>
 </body>
 

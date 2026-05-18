@@ -2,88 +2,86 @@ const translations = {
     en: {
         bio: "Open Source Developer, Sound Designer & Teacher",
         description: "Building sustainable tools & creating sounds.",
+        
         musicTitles: "Music & Art",
-        musicDesc: "Music, Art, and other creative projects.",
-        homologoTitle: "HOMOLOGO on Bandcamp",
+        homologoTitle: "HOMOLOGO",
         homologoDesc: "Songwriter, Pop, Electronic",
-        fadeTitle: "FADE on Bandcamp",
+        fadeTitle: "FADE",
         fadeDesc: "Electronic",
-        zimaTitle: "ZIMA BLUE on Bandcamp",
+        zimaTitle: "ZIMA BLUE",
         zimaDesc: "Ambient, Experimental",
+        audiusTitle: "AUDIUS",
         audiusDesc: "All my music on Audius",
-        spotifyDesc: "All my music on Spotify",
-        youtubeDesc: "Music for Fashion and ADV",
-        selfHostTitle: "Self Hosted",
-        selfHostDesc: "Self-hosted projects and services.",
-        sudoDesc: "Independent record label based on an instance of TUNECAMP",
+        
         appsTitle: "Apps & Services",
-        appsDesc: "Core tools for identity, transfer, and digital assets.",
-        tunecampDesc: "Decentralized Music Streaming Platform",
-        shogunEcoDesc: "Decentralized ecosystem",
-        authDesc: "Decentralized authentication",
-        lindaDesc: "Encrypted P2P chat protocol",
+        keepTitle: "ZEN KEEP",
+        keepDesc: "End-to-end encrypted vault",
+        notesTitle: "ZEN NOTES",
+        notesDesc: "Decentralized thoughts & notes",
+        bookmarksTitle: "ZEN BOOKMARKS",
+        bookmarksDesc: "Decentralized bookmark manager",
+        tunecampTitle: "TUNECAMP",
+        tunecampDesc: "Decentralized Music Streaming",
+        lindaTitle: "LINDA",
+        lindaDesc: "Encrypted P2P chat",
+        wormholeTitle: "WORMHOLE",
         wormholeDesc: "Secure file transfer",
-        spaceDesc: "Decentralized hub",
-        scanDesc: "Network monitor",
+        
         devTitle: "Dev Tools",
-        devDesc: "Libraries, SDK, contracts and infrastructure for developers.",
-        coreDesc: "SDK, auth & storage",
+        relayTitle: "DELAY",
         relayDesc: "Network node server",
-        contractsDesc: "Smart contracts",
-        ccDesc: "CC or Continue Communication is a terminal-based peer-to-peer encrypted chat application.",
-        ipfsDesc: "Storage wrapper",
-        buttonDesc: "Auth components",
-        starterDesc: "TypeScript/React template",
-        cliDesc: "Command-line utilities",
+        contractsTitle: "SMART CONTRACTS",
+        contractsDesc: "Solidity infrastructure",
+        
         blogTitle: "Blog",
-        postTitle: "What do I actually do? Between Music, Code, and Teaching",
-        musicBookmarksTitle: "Interesting Open Source Music Sites",
-        fmhyTitle: "FMHY: The Ultimate Guide to Free Resources",
-        readArticle: "Read article",
-        postContent: "Hi! If you landed here, you might be wondering what I do with all these projects. Simply put: I combine creativity and technology.\n\nAs an Open Source Developer, I focus on building decentralized and secure tools. Projects like LINDA (encrypted chat) or WORMHOLE (secure file transfer) are born from the desire to give people control over their data.\n\nMusic is my other great passion. I create soundscapes and electronic tracks under various names like HOMOLOGO, FADE, and ZIMA BLUE.\n\nFinally, I love teaching. Sharing what I learn is key to growing the community.\n\nEverything on this page is the result of this journey: a bridge between bits and sounds."
+        blogNotesTitle: "NOTES.md",
+        blogNotesDesc: "My thoughts",
+        blogBookmarksTitle: "BOOKMARKS.md",
+        blogBookmarksDesc: "Decentralized bookmarks",
+        
+        readArticle: "Read article"
     },
     it: {
         bio: "Sviluppatore Open Source, Sound Designer e Insegnante",
         description: "Sviluppo strumenti sostenibili e creo suoni.",
+        
         musicTitles: "Musica e Arte",
-        musicDesc: "Musica, arte e altri progetti creativi.",
-        homologoTitle: "HOMOLOGO su Bandcamp",
+        homologoTitle: "HOMOLOGO",
         homologoDesc: "Cantautore, Pop, Elettronica",
-        fadeTitle: "FADE su Bandcamp",
+        fadeTitle: "FADE",
         fadeDesc: "Elettronica",
-        zimaTitle: "ZIMA BLUE su Bandcamp",
+        zimaTitle: "ZIMA BLUE",
         zimaDesc: "Ambient, Sperimentale",
+        audiusTitle: "AUDIUS",
         audiusDesc: "Tutta la mia musica su Audius",
-        spotifyDesc: "Tutta la mia musica su Spotify",
-        youtubeDesc: "Musica per Moda e ADV",
-        selfHostTitle: "Self Hosted",
-        selfHostDesc: "Progetti e servizi ospitati in proprio.",
-        sudoDesc: "Etichetta discografica indipendente basata su un'istanza di TUNECAMP",
+        
         appsTitle: "App e Servizi",
-        appsDesc: "Strumenti core per identità, trasferimenti e asset digitali.",
-        tunecampDesc: "Piattaforma di streaming musicale decentralizzata",
-        shogunEcoDesc: "Ecosistema decentralizzato",
-        authDesc: "Autenticazione decentralizzata",
-        lindaDesc: "Protocollo di chat P2P crittografato",
+        keepTitle: "ZEN KEEP",
+        keepDesc: "Vault crittografato end-to-end",
+        notesTitle: "ZEN NOTES",
+        notesDesc: "Note e pensieri decentralizzati",
+        bookmarksTitle: "ZEN BOOKMARKS",
+        bookmarksDesc: "Gestore di segnalibri decentralizzato",
+        tunecampTitle: "TUNECAMP",
+        tunecampDesc: "Streaming musicale decentralizzato",
+        lindaTitle: "LINDA",
+        lindaDesc: "Chat crittografata P2P",
+        wormholeTitle: "WORMHOLE",
         wormholeDesc: "Trasferimento file sicuro",
-        spaceDesc: "Hub decentralizzato",
-        scanDesc: "Monitor di rete",
+        
         devTitle: "Strumenti per Sviluppatori",
-        devDesc: "Librerie, SDK, contratti e infrastruttura per sviluppatori.",
-        coreDesc: "SDK, auth e archiviazione",
+        relayTitle: "DELAY",
         relayDesc: "Server nodo di rete",
-        contractsDesc: "Smart contracts",
-        ccDesc: "CC o Continue Communication è un'applicazione di chat crittografata peer-to-peer basata su terminale.",
-        ipfsDesc: "Wrapper di archiviazione",
-        buttonDesc: "Componenti di auth",
-        starterDesc: "Template TypeScript/React",
-        cliDesc: "Strumenti a riga di comando",
+        contractsTitle: "SMART CONTRACTS",
+        contractsDesc: "Infrastruttura Solidity",
+        
         blogTitle: "Blog",
-        postTitle: "Cosa faccio davvero? Tra Musica, Codice e Insegnamento",
-        musicBookmarksTitle: "Siti interessanti per ascoltare musica (Open Source)",
-        fmhyTitle: "FMHY: La guida definitiva alle risorse gratuite",
-        readArticle: "Leggi l'articolo",
-        postContent: "Ciao! Se sei arrivato qui, probabilmente ti starai chiedendo cosa faccio con tutti questi progetti. In poche parole: unisco creatività e tecnologia.\n\nCome Sviluppatore Open Source, mi concentro sulla creazione di strumenti decentralizzati e sicuri. Progetti come LINDA (una chat crittografata) o WORMHOLE (per inviare file in sicurezza) nascono dalla voglia di dare alle persone il controllo sui propri dati.\n\nLa Musica è l'altra mia grande passione. Creo paesaggi sonori e brani elettronici sotto vari nomi come HOMOLOGO, FADE e ZIMA BLUE.\n\nInfine, mi piace insegnare. Condividere quello che imparo è fondamentale per far crescere la community.\n\nTutto quello che trovi in questa pagina è frutto di questa ricerca: un ponte tra bit e suoni."
+        blogNotesTitle: "NOTES.md",
+        blogNotesDesc: "I miei pensieri",
+        blogBookmarksTitle: "BOOKMARKS.md",
+        blogBookmarksDesc: "Segnalibri decentralizzati",
+        
+        readArticle: "Leggi l'articolo"
     }
 };
 
@@ -105,17 +103,21 @@ const projectDetails = {
             desc: "Stream all music tracks on the decentralized Audius network.",
             bullets: ["Web3 streaming", "Free access", "No intermediaries"]
         },
-        'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac': {
-            desc: "Curated playlist of all released tracks.",
-            bullets: ["Official discography", "Regular updates", "High-fidelity streaming"]
+        'apps/keep.html': {
+            desc: "End-to-end encrypted personal vault to store credentials and keys securely.",
+            bullets: ["Zero-knowledge encryption", "Self-hosted storage options", "Offline first design"]
         },
-        'https://www.youtube.com/@scobru1988/videos': {
-            desc: "Visual art, music videos, and commercial scores.",
-            bullets: ["Fashion soundtracks", "Visual collaborations", "Behind the scenes"]
+        'apps/notes.html': {
+            desc: "Decentralized notes manager designed to keep your thoughts private and synced.",
+            bullets: ["P2P synchronization", "Markdown editor", "Encrypted storage"]
         },
-        'https://sudorecords.scobrudot.dev/': {
-            desc: "Independent record label hosted on a private instance.",
-            bullets: ["Self-hosted infrastructure", "Independent distribution", "Privacy-focused"]
+        'mini_apps/bookmarks.html': {
+            desc: "Decentralized bookmark manager for your favorite web resources.",
+            bullets: ["Private bookmarking", "Tag organization", "Easy search and export"]
+        },
+        'mini_apps/notes.html': {
+            desc: "Simple and lightweight markdown notes application.",
+            bullets: ["Clean reading view", "Quick search", "Local export"]
         },
         'https://scobru-tunecamp.vercel.app/': {
             desc: "Decentralized alternative to music streaming.",
@@ -129,25 +131,13 @@ const projectDetails = {
             desc: "Secure, asynchronous P2P file-sharing utility.",
             bullets: ["Encrypted transfers", "64KB chunk sharding", "Automatic cleanup"]
         },
-        'https://scobru-nullroute.vercel.app/': {
-            desc: "Premium payment dashboard for absolute privacy.",
-            bullets: ["Stealth Addresses", "Ethereum-based", "Zero-link tracking"]
-        },
         'https://github.com/scobru/shogun-relay': {
             desc: "Unified Connection Hub for P2P graph sync and storage.",
             bullets: ["WebSocket backbone", "IPFS Gateway", "SQLite persistence"]
         },
-        'https://shogun-relay.scobrudot.dev': {
-            desc: "Public node infrastructure for the Shogun network.",
-            bullets: ["24/7 Availability", "Open access", "High performance"]
-        },
         'https://github.com/scobru/shogun-contracts': {
             desc: "Core smart contracts powering the ecosystem.",
             bullets: ["Solidity based", "Security audited", "Gas optimized"]
-        },
-        'https://github.com/scobru/shogun-ipfs': {
-            desc: "Storage wrapper and pinning utility.",
-            bullets: ["IPFS integration", "Easy API", "Automated pinning"]
         }
     },
     it: {
@@ -167,17 +157,21 @@ const projectDetails = {
             desc: "Ascolta tutti i brani sulla rete decentralizzata Audius.",
             bullets: ["Streaming Web3", "Accesso gratuito", "Senza intermediari"]
         },
-        'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=b460e0078bfd42ac': {
-            desc: "Playlist curata con tutti i brani rilasciati.",
-            bullets: ["Discografia ufficiale", "Aggiornamenti regolari", "Streaming in alta fedeltà"]
+        'apps/keep.html': {
+            desc: "Vault personale crittografato end-to-end per memorizzare credenziali e chiavi in sicurezza.",
+            bullets: ["Crittografia a conoscenza zero", "Opzioni di archiviazione autonoma", "Design offline first"]
         },
-        'https://www.youtube.com/@scobru1988/videos': {
-            desc: "Arte visiva, video musicali e colonne sonore commerciali.",
-            bullets: ["Colonne sonore per moda", "Collaborazioni visive", "Dietro le quinte"]
+        'apps/notes.html': {
+            desc: "Gestore di note decentralizzato progettato per mantenere i tuoi pensieri privati e sincronizzati.",
+            bullets: ["Sincronizzazione P2P", "Editor Markdown", "Archiviazione crittografata"]
         },
-        'https://sudorecords.scobrudot.dev/': {
-            desc: "Etichetta discografica indipendente ospitata su istanza privata.",
-            bullets: ["Infrastruttura self-hosted", "Distribuzione indipendente", "Orientata alla privacy"]
+        'mini_apps/bookmarks.html': {
+            desc: "Gestore di segnalibri decentralizzato per le tue risorse web preferite.",
+            bullets: ["Segnalibri privati", "Organizzazione con tag", "Ricerca ed esportazione facili"]
+        },
+        'mini_apps/notes.html': {
+            desc: "Applicazione di note in markdown semplice e leggera.",
+            bullets: ["Vista di lettura pulita", "Ricerca rapida", "Esportazione locale"]
         },
         'https://scobru-tunecamp.vercel.app/': {
             desc: "Alternativa decentralizzata allo streaming musicale.",
@@ -191,25 +185,13 @@ const projectDetails = {
             desc: "Utility per la condivisione sicura e asincrona di file P2P.",
             bullets: ["Trasferimenti crittografati", "Sharding in chunk da 64KB", "Pulizia automatica"]
         },
-        'https://scobru-nullroute.vercel.app/': {
-            desc: "Dashboard di pagamento premium per la massima privacy.",
-            bullets: ["Stealth Addresses", "Basato su Ethereum", "Nessun tracciamento"]
-        },
         'https://github.com/scobru/shogun-relay': {
             desc: "Hub di connessione unificato per sync del grafo e storage.",
             bullets: ["Backbone WebSocket", "Gateway IPFS", "Persistenza SQLite"]
         },
-        'https://shogun-relay.scobrudot.dev': {
-            desc: "Infrastruttura di nodo pubblico per la rete Shogun.",
-            bullets: ["Disponibilità 24/7", "Accesso aperto", "Alte prestazioni"]
-        },
         'https://github.com/scobru/shogun-contracts': {
             desc: "Smart contracts core che alimentano l'ecosistema.",
             bullets: ["Basati su Solidity", "Verificati per sicurezza", "Ottimizzati per il gas"]
-        },
-        'https://github.com/scobru/shogun-ipfs': {
-            desc: "Wrapper di archiviazione e utility di pinning.",
-            bullets: ["Integrazione IPFS", "API semplice", "Pinning automatizzato"]
         }
     }
 };
