@@ -171,7 +171,8 @@
             margin-left: 2px;
         }
 
-        input, textarea {
+        input,
+        textarea {
             background: transparent;
             border: none;
             color: var(--fg);
@@ -250,15 +251,18 @@
                 <div id="auth-section">
                     <div class="line">
                         <div class="ln">01</div>
-                        <div class="content"><span class="keyword">function</span> <span class="string">auth</span>() {</div>
+                        <div class="content"><span class="keyword">function</span> <span class="string">auth</span>() {
+                        </div>
                     </div>
                     <div class="line">
                         <div class="ln">02</div>
-                        <div class="content">  <span class="keyword">user</span>: <input type="text" id="user-input" style="width: 150px;" placeholder="username">,</div>
+                        <div class="content"> <span class="keyword">user</span>: <input type="text" id="user-input"
+                                style="width: 150px;" placeholder="username">,</div>
                     </div>
                     <div class="line">
                         <div class="ln">03</div>
-                        <div class="content">  <span class="keyword">pass</span>: <input type="password" id="pass-input" style="width: 150px;" placeholder="password"></div>
+                        <div class="content"> <span class="keyword">pass</span>: <input type="password" id="pass-input"
+                                style="width: 150px;" placeholder="password"></div>
                     </div>
                     <div class="line">
                         <div class="ln">04</div>
@@ -289,15 +293,15 @@
                 </div>
                 <div class="line">
                     <div class="ln">05</div>
-                    <div class="content"> <span class="keyword">body</span>:  </div>
+                    <div class="content"> <span class="keyword">body</span>: </div>
                 </div>
                 <div class="line">
                     <div class="ln">06</div>
-                    <div class="content">   <textarea id="note-body" placeholder="Deep thoughts..."></textarea> </div>
+                    <div class="content"> <textarea id="note-body" placeholder="Deep thoughts..."></textarea> </div>
                 </div>
                 <div class="line">
                     <div class="ln">07</div>
-                    <div class="content">   <span class="keyword">cat</span>: <input type="text" id="note-cat"
+                    <div class="content"> <span class="keyword">cat</span>: <input type="text" id="note-cat"
                             style="width: 150px;" placeholder="Category"> </div>
                 </div>
                 <div class="line">
@@ -340,10 +344,14 @@
         let pair;
         let isAuthenticated = false;
 
+        const relays = ['wss://zen.akao.io/zen',
+            'wss://zen0.akao.io/zen',
+            'wss://zen1.akao.io/zen',
+            'wss://shogun-relay.scobrudot.dev/zen'
+        ]
+
         zen = new ZEN({
-            peers: [
-                'https://shogun-relay.scobrudot.dev/zen'
-            ],
+            peers: relays,
             localStorage: true
         });
 
@@ -352,7 +360,7 @@
         async function login() {
             const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
             const passInput = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
-            
+
             if (!userInput || !passInput) return;
 
             try {
@@ -405,7 +413,7 @@
         function deleteNote(soul) {
             if (!isAuthenticated) return;
             if (!confirm("Discard this thought?")) return;
-            
+
             zen.get('~' + pair.pub).get('notes').get(soul).put(null, (ack) => {
                 if (ack && !ack.err) {
                     const el = document.getElementById('note-' + soul);
@@ -421,7 +429,7 @@
             container.innerHTML = '';
             nav.innerHTML = '';
             let lineCounter = 10;
-            
+
             const categories = {};
 
             zen.get('~' + pubKey).get('notes').map().on((note, id) => {
@@ -430,10 +438,10 @@
                     if (el) el.remove();
                     return;
                 }
-                
+
                 if (!note.title || !note.body) return;
                 const cat = note.cat || 'thoughts';
-                
+
                 if (!categories[cat]) {
                     // Add to Nav
                     const navItem = document.createElement('span');
@@ -450,7 +458,7 @@
                     secHeader.id = `sec-${cat}`;
                     secHeader.innerText = `~/thoughts/${cat}`;
                     container.appendChild(secHeader);
-                    
+
                     const catList = document.createElement('div');
                     catList.id = `cat-${cat}`;
                     container.appendChild(catList);
@@ -459,7 +467,7 @@
 
                 if (document.getElementById('note-' + id)) {
                     const existingContent = document.querySelector(`#note-${id} .note-text`);
-                    if(existingContent) existingContent.innerText = note.body;
+                    if (existingContent) existingContent.innerText = note.body;
                     return;
                 }
 
@@ -468,7 +476,7 @@
                 line.id = 'note-' + id;
                 line.style.flexDirection = 'column';
                 line.style.marginBottom = '15px';
-                
+
                 let html = `
                     <div style="display: flex;">
                         <div class="ln">${String(lineCounter++).padStart(2, '0')}</div>
@@ -488,13 +496,13 @@
                         <div class="content">}</div>
                     </div>
                 `;
-                
+
                 line.innerHTML = html;
                 categories[cat].appendChild(line);
 
                 if (isAuthenticated) {
                     const delEl = document.getElementById(`del-${id}`);
-                    if(delEl) delEl.addEventListener('click', () => deleteNote(id));
+                    if (delEl) delEl.addEventListener('click', () => deleteNote(id));
                 }
             });
         }

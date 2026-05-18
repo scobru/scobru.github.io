@@ -346,10 +346,14 @@
         let pair;
         let isAuthenticated = false;
 
+        const relays = ['wss://zen.akao.io/zen',
+            'wss://zen0.akao.io/zen',
+            'wss://zen1.akao.io/zen',
+            'wss://shogun-relay.scobrudot.dev/zen'
+        ]
+
         zen = new ZEN({
-            peers: [
-                'https://shogun-relay.scobrudot.dev/zen',
-            ],
+            peers: relays,
             localStorage: true
         });
 
