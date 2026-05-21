@@ -1,327 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musicForProgramming(); // Bookmarks.md</title>
+    <title>ZEN Bookmarks | Scobru</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" />
-    <style>
-        :root {
-            --bg: #000;
-            --fg: #fff;
-            --gray: #888;
-            --accent: #555;
-            --highlight: #222;
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: oklch(0.55 0.2 250);
+            --color-on-primary: oklch(1 0 0);
+            --color-primary-container: oklch(0.9 0.05 250);
+            --color-on-primary-container: oklch(0.2 0.1 250);
+            --color-surface: oklch(0.98 0.01 250);
+            --color-surface-dim: oklch(0.88 0.01 250);
+            --color-surface-container: oklch(0.94 0.01 250);
+            --color-surface-container-high: oklch(0.92 0.01 250);
+            --color-on-surface: oklch(0.2 0.02 250);
+            --color-on-surface-variant: oklch(0.45 0.03 250);
+            --color-outline: oklch(0.5 0.02 250);
+            --color-outline-variant: oklch(0.8 0.01 250);
+            --color-error: oklch(0.55 0.25 25);
+            --color-error-container: oklch(0.9 0.1 25);
+            --color-on-error: oklch(1 0 0);
+
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            --radius-xs: 0.25rem;
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+
+            --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+            --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --duration-short-4: 200ms;
+            --duration-medium-2: 300ms;
         }
 
-        [data-theme="light"] {
-            --bg: #fff;
-            --fg: #000;
-            --gray: #777;
-            --accent: #ccc;
-            --highlight: #f0f0f0;
-        }
-
-        * {
-            box-sizing: border-box;
+        @media (prefers-color-scheme: dark) {
+            :root, [data-theme="dark"] {
+                --color-primary: oklch(0.7 0.15 250);
+                --color-on-primary: oklch(0.2 0.1 250);
+                --color-primary-container: oklch(0.3 0.1 250);
+                --color-on-primary-container: oklch(0.9 0.05 250);
+                --color-surface: oklch(0.18 0.01 250);
+                --color-surface-dim: oklch(0.15 0.01 250);
+                --color-surface-container: oklch(0.22 0.01 250);
+                --color-surface-container-high: oklch(0.26 0.01 250);
+                --color-on-surface: oklch(0.9 0.01 250);
+                --color-on-surface-variant: oklch(0.7 0.02 250);
+                --color-outline: oklch(0.5 0.02 250);
+                --color-outline-variant: oklch(0.35 0.02 250);
+                --color-error: oklch(0.65 0.2 25);
+                --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+                --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+                --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+            }
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--fg);
-            font-family: 'IBM Plex Mono', monospace;
-            margin: 0;
-            padding: 20px;
-            font-size: 13px;
-            line-height: 1.6;
+            background-color: var(--color-surface);
+            color: var(--color-on-surface);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        .m3-card {
+            background-color: var(--color-surface-container);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-level-1);
+            transition: transform var(--duration-medium-2) var(--ease-spring),
+                        box-shadow var(--duration-short-4) var(--ease-standard);
         }
 
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .avatar-box {
-            width: 80px;
-            height: 80px;
-            border: 1px solid var(--accent);
-            padding: 4px;
-            flex-shrink: 0;
-        }
-
-        .avatar-box img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            filter: grayscale(100%);
-        }
-
-        .header-content {
-            flex: 1;
-        }
-
-        .meta {
-            color: var(--gray);
-            margin-bottom: 10px;
-            font-size: 11px;
-        }
-
-        .controls {
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .controls span {
-            cursor: pointer;
-            margin-right: 15px;
-        }
-
-        .controls span:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .line {
-            display: flex;
-            white-space: pre-wrap;
-            word-break: break-all;
-            min-height: 20px;
-        }
-
-        .line:hover {
-            background-color: var(--highlight);
-        }
-
-        .ln {
-            color: var(--accent);
-            width: 40px;
-            text-align: right;
-            padding-right: 15px;
-            user-select: none;
-            flex-shrink: 0;
-        }
-
-        .content {
-            flex: 1;
-        }
-
-        .comment {
-            color: var(--gray);
-        }
-
-        .string {
-            color: var(--fg);
-        }
-
-        .keyword {
-            font-weight: 600;
-        }
-
-        .section-header {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: var(--gray);
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 1px;
-            scroll-margin-top: 20px;
-        }
-
-        #category-nav {
-            margin-top: 20px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--highlight);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 11px;
-        }
-
-        .nav-item {
-            color: var(--gray);
+        .m3-card-interactive:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-level-3);
             cursor: pointer;
         }
-
-        .nav-item:hover {
-            color: var(--fg);
-            text-decoration: underline;
+        .m3-card-interactive:active { transform: scale(0.98); }
+        
+        .m3-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            transition: all var(--duration-medium-2) var(--ease-spring);
         }
+        .m3-btn:active { transform: scale(0.95); }
 
-        .nav-item::before {
-            content: "[";
-            margin-right: 2px;
+        .m3-input {
+            background-color: var(--color-surface-container-high);
+            border-bottom: 2px solid var(--color-outline);
+            border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+            color: var(--color-on-surface);
+            transition: border-color var(--duration-short-4) var(--ease-standard);
         }
-
-        .nav-item::after {
-            content: "]";
-            margin-left: 2px;
-        }
-
-        input {
-            background: transparent;
-            border: none;
-            color: var(--fg);
-            font-family: inherit;
-            font-size: inherit;
+        .m3-input:focus {
+            border-bottom-color: var(--color-primary);
             outline: none;
-            width: 100%;
-            border-bottom: 1px dashed var(--accent);
-        }
-
-        button {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--fg);
-            font-family: inherit;
-            padding: 2px 10px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-
-        button:hover {
-            background: var(--highlight);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        footer {
-            margin-top: 60px;
-            font-size: 11px;
-            color: var(--gray);
-            border-top: 1px solid var(--accent);
-            padding-top: 20px;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 15px;
-            background: var(--fg);
-            vertical-align: middle;
-            margin-left: 5px;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+            background-color: var(--color-surface-container-high);
         }
     </style>
 </head>
-
-<body>
-    <div class="container">
-        <header>
-            <div class="avatar-box">
-                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru" />
-            </div>
-            <div class="header-content">
-                <div class="meta">DOC: BOOKMARKS.md // TYPE: APP // STATUS: CRYPTO_LOCKED</div>
-                <div class="controls">
-                    <span onclick="toggleTheme()">[invert]</span>
-                    <span id="logout-span" onclick="logout()" class="hidden">[lock]</span>
-                    <span onclick="window.location.href='../index.html'">[back]</span>
-                </div>
-                <div id="auth-section">
-                    <div class="line">
-                        <div class="ln">01</div>
-                        <div class="content"><span class="keyword">function</span> <span class="string">auth</span>() {</div>
-                    </div>
-                    <div class="line">
-                        <div class="ln">02</div>
-                        <div class="content">  <span class="keyword">user</span>: <input type="text" id="user-input" style="width: 150px;" placeholder="username">,</div>
-                    </div>
-                    <div class="line">
-                        <div class="ln">03</div>
-                        <div class="content">  <span class="keyword">pass</span>: <input type="password" id="pass-input" style="width: 150px;" placeholder="password"></div>
-                    </div>
-                    <div class="line">
-                        <div class="ln">04</div>
-                        <div class="content">} <button id="login-btn">[EXECUTE]</button></div>
-                    </div>
-                </div>
-                <div id="user-info" class="hidden">
-                    <div class="line">
-                        <div class="ln">01</div>
-                        <div class="content"><span class="keyword">const</span> user = <span
-                                class="string">"Authorized"</span>; <span class="comment">// Logged in</span></div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div id="app-content">
-            <div id="add-section" class="hidden">
-                <div class="section-header">~/add_bookmark</div>
-                <div class="line">
-                    <div class="ln">03</div>
-                    <div class="content"> { </div>
-                </div>
-                <div class="line">
-                    <div class="ln">04</div>
-                    <div class="content"> <span class="keyword">name</span>: <input type="text" id="bm-name"
-                            style="width: 200px;" placeholder="Site Name">, </div>
-                </div>
-                <div class="line">
-                    <div class="ln">05</div>
-                    <div class="content"> <span class="keyword">url</span>: <input type="text" id="bm-url"
-                            style="width: 300px;" placeholder="https://...">, </div>
-                </div>
-                <div class="line">
-                    <div class="ln">06</div>
-                    <div class="content"> <span class="keyword">cat</span>: <input type="text" id="bm-cat"
-                            style="width: 150px;" placeholder="Category"> </div>
-                </div>
-                <div class="line">
-                    <div class="ln">07</div>
-                    <div class="content"> } <button id="add-bm-btn">[EXECUTE]</button></div>
-                </div>
-            </div>
-
-            <div id="category-nav">
-                <!-- Dynamic categories will appear here -->
-            </div>
-
-            <div id="bookmarks-categories">
-                <!-- Categories and bookmarks will appear here -->
-            </div>
+<body class="font-sans antialiased min-h-screen p-4 sm:p-10 flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+    <div class="max-w-5xl w-full">
+        <!-- Top Nav -->
+        <div class="flex justify-end gap-4 mb-8">
+            <button onclick="toggleTheme()" class="m3-btn bg-surface-container-high px-6 py-3 text-on-surface shadow-level-1 hover:shadow-level-2 hover:bg-surface-dim font-medium text-sm">
+                <i class="fas fa-adjust mr-2"></i> Theme
+            </button>
+            <button id="logout-btn" onclick="logout()" class="hidden m3-btn border border-outline px-6 py-3 text-on-surface-variant hover:bg-surface-dim font-medium text-sm">
+                <i class="fas fa-lock mr-2"></i> Lock
+            </button>
+            <button onclick="window.location.href='../index.html'" class="m3-btn border border-outline px-6 py-3 text-primary hover:bg-primary/10 font-medium text-sm">
+                <i class="fas fa-arrow-left mr-2"></i> Back
+            </button>
         </div>
 
-        <footer>
-            EOF // [2026-05-17] // ZEN_ENTROPY_NETWORK <span class="cursor"></span>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Header Card -->
+            <div class="m3-card col-span-1 md:col-span-4 p-8 flex flex-col sm:flex-row items-center gap-6">
+                <div class="w-20 h-20 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center text-4xl shadow-level-1"><i class="fas fa-bookmark"></i></div>
+                <div class="text-center sm:text-left flex-1">
+                    <h1 class="text-3xl font-bold tracking-tight mb-2 text-on-surface">ZEN Bookmarks</h1>
+                    <p class="text-on-surface-variant mb-4">Decentralized Bookmark Manager</p>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-2">
+                        <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-outline text-on-surface-variant">DOC: BOOKMARKS.MD</span>
+                        <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-surface-container-high text-on-surface">STATUS: CRYPTO_LOCKED</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auth Section -->
+            <div id="auth-section" class="m3-card col-span-1 md:col-span-4 p-8">
+                <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i class="fas fa-key text-primary"></i> Authentication Required</h3>
+                <p class="text-sm text-on-surface-variant mb-6">Log in to add or delete bookmarks.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="user-input" placeholder="Username" class="m3-input px-4 py-3 flex-1">
+                    <input type="password" id="pass-input" placeholder="Password" class="m3-input px-4 py-3 flex-1">
+                    <button id="login-btn" class="m3-btn bg-primary text-on-primary px-8 py-3 shadow-level-1 hover:shadow-level-2 hover:opacity-90 font-medium">Authenticate</button>
+                </div>
+            </div>
+
+            <!-- Add Bookmark Section -->
+            <div id="add-section" class="hidden m3-card col-span-1 md:col-span-4 p-8">
+                <h3 class="text-xl font-semibold mb-6 flex items-center gap-2"><i class="fas fa-plus-circle text-primary"></i> Add Bookmark</h3>
+                <div class="flex flex-col md:flex-row gap-4 items-start">
+                    <input type="text" id="bm-name" placeholder="Site Name" class="m3-input px-4 py-3 w-full md:w-1/3">
+                    <input type="text" id="bm-url" placeholder="URL (e.g. https://...)" class="m3-input px-4 py-3 w-full md:flex-1">
+                    <input type="text" id="bm-cat" placeholder="Category" class="m3-input px-4 py-3 w-full md:w-1/4">
+                    <button id="add-bm-btn" class="m3-btn bg-primary text-on-primary px-8 py-3 shadow-level-1 hover:shadow-level-2 w-full md:w-auto font-medium">Save</button>
+                </div>
+            </div>
+            
+            <!-- Bookmarks Wrapper -->
+            <div id="bookmarks-container" class="col-span-1 md:col-span-4 contents"></div>
+        </div>
+
+        <footer class="mt-20 mb-10 text-center flex items-center justify-center gap-3 text-on-surface-variant text-sm">
+            <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
+            <span class="font-mono">ZEN_ENTROPY_NETWORK // SCOBRU.DEV</span>
         </footer>
     </div>
 
     <script>
         function toggleTheme() {
             const body = document.body;
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-            } else {
-                body.setAttribute('data-theme', 'light');
-            }
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
         }
     </script>
 
@@ -332,35 +187,22 @@
 
         let zen;
         let pair;
-        let lineCounter = 8;
         let isAuthenticated = false;
 
-        // Auto-initialize Zen
-        const relays = ['wss://zen.akao.io/zen',
-            'wss://zen0.akao.io/zen',
-            'wss://zen1.akao.io/zen',
-            'wss://shogun-relay.scobrudot.dev/zen'
-        ];
-        
-        // Temporary fix: Clear zenPeers from localStorage to prevent the AXE plugin 
-        // from calling adopt() and mesh.hi() synchronously before websocket.js 
-        // initializes mesh.wire. This avoids the "e.wire is not a function" crash.
+        const relays = ['wss://zen.akao.io/zen', 'wss://zen0.akao.io/zen', 'wss://zen1.akao.io/zen', 'wss://shogun-relay.scobrudot.dev/zen'];
         localStorage.removeItem('zenPeers');
-        
         zen = new ZEN(relays);
 
-        // Load public bookmarks on startup
-        loadBookmarks('0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0');
+        loadBookmarks(PUBLIC_VIEW_KEY);
 
         async function login() {
             const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
             const passInput = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
-            
             if (!userInput || !passInput) return;
 
             try {
                 const btn = document.getElementById('login-btn');
-                btn.innerText = "[LOADING...]";
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Authenticating...';
 
                 pair = await ZEN.pair(null, { seed: userInput + passInput });
                 isAuthenticated = true;
@@ -370,16 +212,13 @@
 
                 document.getElementById('auth-section').classList.add('hidden');
                 document.getElementById('add-section').classList.remove('hidden');
-                document.getElementById('user-info').classList.remove('hidden');
-
-                const logoutSpan = document.getElementById('logout-span');
-                if (logoutSpan) logoutSpan.classList.remove('hidden');
+                document.getElementById('logout-btn').classList.remove('hidden');
 
                 loadBookmarks(pair.pub);
             } catch (e) {
                 console.error("Login Error:", e);
                 alert("Auth failed: " + e.message);
-                document.getElementById('login-btn').innerText = "[EXECUTE]";
+                document.getElementById('login-btn').innerText = "Authenticate";
             }
         }
 
@@ -395,9 +234,7 @@
             const soul = 'bm-' + Date.now() + '-' + Math.random().toString(36).substring(7);
 
             zen.get('~' + pair.pub).get('bookmarks').get(soul).put(bm, (ack) => {
-                if (ack && ack.err) {
-                    alert("Save failed: " + ack.err);
-                }
+                if (ack && ack.err) alert("Save failed: " + ack.err);
             }, { authenticator: pair });
 
             document.getElementById('bm-name').value = '';
@@ -419,12 +256,8 @@
 
         function loadBookmarks(pubKey) {
             if (!pubKey) return;
-            const container = document.getElementById('bookmarks-categories');
-            const nav = document.getElementById('category-nav');
+            const container = document.getElementById('bookmarks-container');
             container.innerHTML = '';
-            nav.innerHTML = '';
-            let innerLineCounter = 8;
-            
             const categories = {};
 
             zen.get('~' + pubKey).get('bookmarks').map().on((bm, id) => {
@@ -433,62 +266,58 @@
                     if (el) el.remove();
                     return;
                 }
-                
                 if (!bm.name || !bm.url) return;
                 const cat = bm.cat || 'general';
                 
                 if (!categories[cat]) {
-                    // Add to Nav
-                    const navItem = document.createElement('span');
-                    navItem.className = 'nav-item';
-                    navItem.innerText = cat;
-                    navItem.onclick = () => {
-                        document.getElementById(`sec-${cat}`).scrollIntoView({ behavior: 'smooth' });
-                    };
-                    nav.appendChild(navItem);
-
-                    // Create Section
-                    const secHeader = document.createElement('div');
-                    secHeader.className = 'section-header';
-                    secHeader.id = `sec-${cat}`;
-                    secHeader.innerText = `~/bookmarks/${cat}`;
-                    container.appendChild(secHeader);
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'col-span-1 md:col-span-4 mt-6';
+                    
+                    const title = document.createElement('h2');
+                    title.className = 'text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-6 flex items-center gap-3 after:content-[""] after:flex-1 after:h-px after:bg-outline-variant/30';
+                    title.innerHTML = `<span class="bg-primary-container text-on-primary-container p-2 rounded-lg inline-flex"><i class="fas fa-folder-open"></i></span> ${cat}`;
+                    wrapper.appendChild(title);
                     
                     const catList = document.createElement('div');
+                    catList.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4';
                     catList.id = `cat-${cat}`;
-                    container.appendChild(catList);
+                    wrapper.appendChild(catList);
+                    
+                    container.appendChild(wrapper);
                     categories[cat] = catList;
                 }
 
                 if (document.getElementById('bm-' + id)) return;
 
-                const line = document.createElement('div');
-                line.className = 'line';
-                line.id = 'bm-' + id;
+                const card = document.createElement('div');
+                card.className = 'm3-card m3-card-interactive p-6 flex flex-col items-start group relative';
+                card.id = 'bm-' + id;
+                card.onclick = () => window.open(bm.url, '_blank');
                 
-                const content = document.createElement('div');
-                content.className = 'content';
-                content.style.cursor = 'pointer';
-                content.onclick = () => window.open(bm.url, '_blank');
-                content.innerHTML = `<span class="keyword">link</span>(${id.substring(0, 4)}) { <span class="string">"${bm.name}"</span> } <span class="comment">// ${bm.url}</span>`;
-                
+                let icon = 'fas fa-link';
+                if(bm.url.includes('github.com')) icon = 'fab fa-github';
+                if(bm.url.includes('twitter.com') || bm.url.includes('x.com')) icon = 'fab fa-twitter';
+                if(bm.url.includes('youtube.com')) icon = 'fab fa-youtube';
+
+                card.innerHTML = `
+                    <div class="text-3xl text-primary mb-4 transition-transform duration-medium-2 ease-spring group-hover:scale-110 group-active:scale-95"><i class="${icon}"></i></div>
+                    <h3 class="text-lg font-semibold text-on-surface mb-1">${bm.name}</h3>
+                    <p class="text-sm text-on-surface-variant font-mono break-all">${bm.url}</p>
+                `;
+
                 if (isAuthenticated) {
-                    const delBtn = document.createElement('span');
-                    delBtn.innerText = ' [DEL]';
-                    delBtn.style.color = 'var(--gray)';
-                    delBtn.style.cursor = 'pointer';
-                    delBtn.style.fontSize = '10px';
+                    const delBtn = document.createElement('button');
+                    delBtn.className = 'absolute top-4 right-4 text-outline hover:text-error transition-colors p-2 rounded-full hover:bg-error-container hover:text-on-error-container';
+                    delBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                    delBtn.title = 'Delete Bookmark';
                     delBtn.onclick = (e) => {
                         e.stopPropagation();
                         deleteBookmark(id);
                     };
-                    content.appendChild(delBtn);
+                    card.appendChild(delBtn);
                 }
                 
-                line.innerHTML = `<div class="ln">${String(innerLineCounter++).padStart(2, '0')}</div>`;
-                line.appendChild(content);
-                
-                categories[cat].appendChild(line);
+                categories[cat].appendChild(card);
             });
         }
 
@@ -502,24 +331,14 @@
         window.logout = logout;
         window.addBookmark = addBookmark;
 
-        document.getElementById('user-input').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') document.getElementById('pass-input').focus();
-        });
-
-        document.getElementById('pass-input').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') login();
-        });
-
+        document.getElementById('user-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
+        document.getElementById('pass-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') login(); });
         document.getElementById('login-btn').addEventListener('click', login);
         document.getElementById('add-bm-btn').addEventListener('click', addBookmark);
 
-        // Auto-login on load if credentials exist in sessionStorage
         const savedUser = sessionStorage.getItem('zen_user');
         const savedPass = sessionStorage.getItem('zen_pass');
-        if (savedUser && savedPass) {
-            login();
-        }
+        if (savedUser && savedPass) login();
     </script>
 </body>
-
 </html>

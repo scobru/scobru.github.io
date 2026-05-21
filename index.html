@@ -4,274 +4,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musicForProgramming(); // Scobru</title>
+    <title>Scobru | Developer & Sound Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" />
-    <style>
-        :root {
-            --bg: #000;
-            --fg: #fff;
-            --gray: #888;
-            --accent: #555;
-            --highlight: #222;
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            /* M3E Color System */
+            --color-primary: oklch(0.55 0.2 250);
+            --color-on-primary: oklch(1 0 0);
+            --color-primary-container: oklch(0.9 0.05 250);
+            --color-on-primary-container: oklch(0.2 0.1 250);
+            
+            --color-surface: oklch(0.98 0.01 250);
+            --color-surface-dim: oklch(0.88 0.01 250);
+            --color-surface-container: oklch(0.94 0.01 250);
+            --color-surface-container-high: oklch(0.92 0.01 250);
+            --color-on-surface: oklch(0.2 0.02 250);
+            --color-on-surface-variant: oklch(0.45 0.03 250);
+            
+            --color-outline: oklch(0.5 0.02 250);
+            --color-outline-variant: oklch(0.8 0.01 250);
+
+            /* Typography */
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            /* Spacing & Radius */
+            --radius-xs: 0.25rem;
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+            /* Easing & Duration */
+            --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            
+            --duration-short-4: 200ms;
+            --duration-medium-2: 300ms;
         }
 
+        /* Dark Theme Override */
+        @media (prefers-color-scheme: dark) {
+            :root, [data-theme="dark"] {
+                --color-primary: oklch(0.7 0.15 250);
+                --color-on-primary: oklch(0.2 0.1 250);
+                --color-primary-container: oklch(0.3 0.1 250);
+                --color-on-primary-container: oklch(0.9 0.05 250);
+                
+                --color-surface: oklch(0.18 0.01 250);
+                --color-surface-dim: oklch(0.15 0.01 250);
+                --color-surface-container: oklch(0.22 0.01 250);
+                --color-surface-container-high: oklch(0.26 0.01 250);
+                --color-on-surface: oklch(0.9 0.01 250);
+                --color-on-surface-variant: oklch(0.7 0.02 250);
+                
+                --color-outline: oklch(0.5 0.02 250);
+                --color-outline-variant: oklch(0.35 0.02 250);
+                
+                --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+                --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+                --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+            }
+        }
+        
         [data-theme="light"] {
-            --bg: #fff;
-            --fg: #000;
-            --gray: #777;
-            --accent: #ccc;
-            --highlight: #f0f0f0;
-        }
-
-        * {
-            box-sizing: border-box;
+            /* Forced Light Theme Support via JS */
+            --color-primary: oklch(0.55 0.2 250);
+            --color-on-primary: oklch(1 0 0);
+            --color-primary-container: oklch(0.9 0.05 250);
+            --color-on-primary-container: oklch(0.2 0.1 250);
+            --color-surface: oklch(0.98 0.01 250);
+            --color-surface-dim: oklch(0.88 0.01 250);
+            --color-surface-container: oklch(0.94 0.01 250);
+            --color-surface-container-high: oklch(0.92 0.01 250);
+            --color-on-surface: oklch(0.2 0.02 250);
+            --color-on-surface-variant: oklch(0.45 0.03 250);
+            --color-outline: oklch(0.5 0.02 250);
+            --color-outline-variant: oklch(0.8 0.01 250);
+            --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--fg);
-            font-family: 'IBM Plex Mono', monospace;
-            margin: 0;
-            padding: 20px;
-            font-size: 13px;
-            line-height: 1.6;
+            background-color: var(--color-surface);
+            color: var(--color-on-surface);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        /* Base Card Pattern (M3E) */
+        .m3-card {
+            background-color: var(--color-surface-container);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-level-1);
+            transition: transform var(--duration-medium-2) var(--ease-spring),
+                        box-shadow var(--duration-short-4) var(--ease-standard);
         }
 
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .avatar-box {
-            width: 80px;
-            height: 80px;
-            border: 1px solid var(--accent);
-            padding: 4px;
-            flex-shrink: 0;
-        }
-
-        .avatar-box img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            filter: grayscale(100%);
-        }
-
-        .header-content {
-            flex: 1;
-        }
-
-        .meta {
-            color: var(--gray);
-            margin-bottom: 10px;
-            font-size: 11px;
-        }
-
-        .controls {
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .controls span {
+        .m3-card-interactive:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-level-3);
             cursor: pointer;
-            margin-right: 15px;
         }
 
-        .controls span:hover {
-            text-decoration: underline;
+        .m3-card-interactive:active {
+            transform: scale(0.98);
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+        
+        .m3-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            transition: all var(--duration-medium-2) var(--ease-spring);
         }
-
-        .line {
-            display: flex;
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-
-        .line:hover {
-            background-color: var(--highlight);
-        }
-
-        .ln {
-            color: var(--accent);
-            width: 40px;
-            text-align: right;
-            padding-right: 15px;
-            user-select: none;
-            flex-shrink: 0;
-        }
-
-        .content {
-            flex: 1;
-        }
-
-        .comment {
-            color: var(--gray);
-        }
-
-        .string {
-            color: var(--fg);
-        }
-
-        .keyword {
-            font-weight: 600;
-        }
-
-        .section-header {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: var(--gray);
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-
-        .link-item {
-            cursor: pointer;
-            display: block;
-        }
-
-        .link-item .title {
-            color: var(--fg);
-        }
-
-        .link-item .subtext {
-            color: var(--gray);
-            margin-left: 10px;
-        }
-
-        footer {
-            margin-top: 60px;
-            font-size: 11px;
-            color: var(--gray);
-            border-top: 1px solid var(--accent);
-            padding-top: 20px;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 15px;
-            background: var(--fg);
-            vertical-align: middle;
-            margin-left: 5px;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .avatar-box {
-                width: 60px;
-                height: 60px;
-            }
-
-            .ln {
-                width: 30px;
-                padding-right: 10px;
-            }
-
-            body {
-                padding: 10px;
-                font-size: 12px;
-            }
-
-            .controls span {
-                display: block;
-                margin-bottom: 5px;
-            }
+        
+        .m3-btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <header>
-            <div class="avatar-box">
-                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru" />
-            </div>
-            <div class="header-content">
-                <div class="meta">PROJECT: SCOBRU_WEBSITE // VERSION: 2.0.1 // STATUS: STABLE</div>
-                <div class="controls">
-                    <span onclick="toggleTheme()">[invert]</span>
-                    <span onclick="window.location.href='index-linktree.html'">[linktree]</span>
-                    <span onclick="window.location.href='index.html'">[exit]</span>
-                </div>
-                <div class="line">
-                    <div class="ln">01</div>
-                    <div class="content"><span class="keyword">function</span> <span
-                            class="string">initPortfolio</span>() {
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="ln">02</div>
-                    <div class="content"> <span class="comment">// Open Source Developer, Sound Designer &
-                            Teacher</span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="ln">03</div>
-                    <div class="content"> <span class="keyword">const</span> scobru = <span class="keyword">new</span>
-                        <span class="string">Human</span>({ <span class="string">"creative"</span>: <span
-                            class="keyword">true</span>, <span class="string">"tech"</span>: <span
-                            class="keyword">true</span> });
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="ln">04</div>
-                    <div class="content">}</div>
-                </div>
-            </div>
-        </header>
+<body
+    class="font-sans antialiased min-h-screen p-4 sm:p-10 flex justify-center selection:bg-primary-container selection:text-on-primary-container">
 
-        <div class="section-header">~/links/music_and_art</div>
-        <div id="links-container">
-            <!-- Dynamic links will be here to mimic the lines of code -->
+    <div class="max-w-5xl w-full">
+        <!-- Top Nav -->
+        <div class="flex justify-end gap-4 mb-8">
+            <button onclick="toggleTheme()"
+                class="m3-btn bg-surface-container-high px-6 py-3 text-on-surface shadow-level-1 hover:shadow-level-2 hover:bg-surface-dim font-medium text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <i class="fas fa-adjust mr-2"></i> Theme
+            </button>
         </div>
 
-        <div class="section-header">~/blog</div>
-        <div id="blog-container"></div>
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" id="main-grid">
+            <!-- Profile Card -->
+            <div
+                class="m3-card col-span-1 sm:col-span-2 md:col-span-4 p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-8 group">
+                <img src="https://pbs.twimg.com/profile_images/1486649866843529216/DSC3rQ3A_400x400.jpg" alt="Scobru"
+                    class="w-36 h-36 rounded-full object-cover border-4 border-surface-container-high shadow-level-2 transition-transform duration-medium-2 ease-spring group-hover:scale-105 group-hover:border-primary/30" />
+                <div class="text-center sm:text-left">
+                    <h1 class="text-4xl font-bold tracking-tight mb-2 text-on-surface">Francesco Bruno (Scobru)</h1>
+                    <p class="text-xl text-on-surface-variant mb-6">Open Source Developer, Sound Designer & Teacher</p>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+                        <span
+                            class="font-mono text-xs font-semibold px-4 py-1.5 rounded-full border border-outline text-on-surface-variant">VERSION:
+                            2.1.0</span>
+                        <span
+                            class="font-mono text-xs font-semibold px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container">STATUS:
+                            ONLINE</span>
+                        <span
+                            class="font-mono text-xs font-semibold px-4 py-1.5 rounded-full border border-outline text-on-surface-variant">CREATIVE</span>
+                        <span
+                            class="font-mono text-xs font-semibold px-4 py-1.5 rounded-full border border-outline text-on-surface-variant">TECH</span>
+                    </div>
+                </div>
+            </div>
 
-        <div class="section-header">~/links/apps_and_services</div>
-        <div id="apps-container"></div>
+            <!-- Dynamic Sections will be injected here -->
+        </div>
 
-        <div class="section-header">~/links/dev_tools</div>
-        <div id="dev-container"></div>
-
-
-
-        <div class="section-header">~/socials</div>
-        <div id="socials-container"></div>
-
-        <footer>
-            EOF // [2026-05-17] // SCOBRU.DEV <span class="cursor"></span>
+        <footer class="mt-20 mb-10 text-center flex items-center justify-center gap-3 text-on-surface-variant text-sm">
+            <span class="relative flex h-3 w-3">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <span class="font-mono">SYSTEM OPERATIONAL // SCOBRU.DEV</span>
         </footer>
     </div>
 
@@ -285,70 +198,92 @@
             }
         }
 
-        const sections = {
-            'links-container': [
-                { title: 'HOMOLOGO', sub: 'Songwriter, Pop, Electronic', url: 'https://homologomusic.bandcamp.com' },
-                { title: 'FADE', sub: 'Electronic', url: 'https://fademusik.bandcamp.com' },
-                { title: 'ZIMA BLUE', sub: 'Ambient, Experimental', url: 'https://zimablue.bandcamp.com' },
-                { title: 'AUDIUS', sub: 'All my music on Audius', url: 'https://audius.co/francescobruno' }
-            ],
-            'blog-container': [
+        const sections = [
+            {
+                id: 'music-and-art',
+                title: 'Music & Art',
+                cols: 'col-span-1 sm:col-span-2 md:col-span-2',
+                items: [
+                    { title: 'HOMOLOGO', sub: 'Songwriter, Pop, Electronic', url: 'https://homologomusic.bandcamp.com', icon: 'fas fa-record-vinyl' },
+                    { title: 'FADE', sub: 'Electronic', url: 'https://fademusik.bandcamp.com', icon: 'fas fa-wave-square' },
+                    { title: 'ZIMA BLUE', sub: 'Ambient, Experimental', url: 'https://zimablue.bandcamp.com', icon: 'fas fa-water' },
+                    { title: 'AUDIUS', sub: 'All my music on Audius', url: 'https://audius.co/francescobruno', icon: 'fas fa-headphones' }
+                ]
+            },
+            {
+                id: 'apps-and-services',
+                title: 'Apps & Services',
+                cols: 'col-span-1 sm:col-span-2 md:col-span-2',
+                items: [
+                    { title: 'ZEN KEEP', sub: 'End-to-end encrypted vault', url: 'apps/keep.html', icon: 'fas fa-key' },
+                    { title: 'ZEN NOTES', sub: 'Decentralized thoughts & notes', url: 'apps/notes.html', icon: 'fas fa-pen-nib' },
+                    { title: 'ZEN BOOKMARKS', sub: 'Decentralized bookmark manager', url: 'apps/bookmarks.html', icon: 'fas fa-bookmark' },
+                    { title: 'TUNECAMP', sub: 'Decentralized Music Streaming', url: 'https://scobru-tunecamp.vercel.app/', icon: 'fas fa-music' },
+                    { title: 'LINDA', sub: 'Encrypted P2P chat', url: 'https://scobru-linda.vercel.app/', icon: 'fas fa-comments' },
+                    { title: 'WORMHOLE', sub: 'Secure file transfer', url: 'https://scobru-wormhole.vercel.app/', icon: 'fas fa-file-export' },
+                ]
+            },
+            {
+                id: 'dev-tools',
+                title: 'Dev Tools & Open Source',
+                cols: 'col-span-1 sm:col-span-2 md:col-span-4',
+                items: [
+                    { title: 'DELAY', sub: 'Network node server', url: 'https://github.com/scobru/shogun-relay', icon: 'fas fa-network-wired' },
+                    { title: 'SMART CONTRACTS', sub: 'Solidity infrastructure', url: 'https://github.com/scobru/shogun-contracts', icon: 'fab fa-ethereum' }
+                ]
+            },
+            {
+                id: 'socials',
+                title: 'Connect',
+                cols: 'col-span-1 sm:col-span-2 md:col-span-4',
+                items: [
+                    { title: 'GITHUB', sub: 'scobru', url: 'https://github.com/scobru', icon: 'fab fa-github' },
+                    { title: 'TWITTER', sub: 'scobru1988', url: 'https://twitter.com/scobru1988', icon: 'fab fa-twitter' },
+                    { title: 'MASTODON', sub: '@scobru', url: 'https://livellosegreto.it/@scobru', icon: 'fab fa-mastodon' },
+                    { title: 'TELEGRAM', sub: 't.me/scobru', url: 'https://t.me/scobru', icon: 'fab fa-telegram' },
+                    { title: 'INSTAGRAM', sub: 'francescobruno', url: 'https://instagram.com/francescobruno', icon: 'fab fa-instagram' },
+                    { title: 'YOUTUBE', sub: 'scobru88', url: 'https://youtube.com/scobru88', icon: 'fab fa-youtube' },
+                    { title: 'EMAIL', sub: 'dev.scobru@pm.me', url: 'mailto:dev.scobru@pm.me', icon: 'fas fa-envelope' }
+                ]
+            }
+        ];
 
-                { title: 'NOTES.md', sub: 'My thoughts', url: 'apps/notes.html' },
-                { title: 'BOOKMARKS.md', sub: 'Decentralized bookmarks', url: 'apps/bookmarks.html' }
-            ],
-            'apps-container': [
-                { title: 'ZEN KEEP', sub: 'End-to-end encrypted vault', url: 'apps/keep.html' },
-                { title: 'ZEN NOTES', sub: 'Decentralized thoughts & notes', url: 'apps/notes.html' },
-                { title: 'ZEN BOOKMARKS', sub: 'Decentralized bookmark manager', url: 'apps/bookmarks.html' },
-                { title: 'TUNECAMP', sub: 'Decentralized Music Streaming', url: 'https://scobru-tunecamp.vercel.app/' },
-                { title: 'LINDA', sub: 'Encrypted P2P chat', url: 'https://scobru-linda.vercel.app/' },
-                { title: 'WORMHOLE', sub: 'Secure file transfer', url: 'https://scobru-wormhole.vercel.app/' },
-            ],
-            'dev-container': [
-                { title: 'DELAY', sub: 'Network node server', url: 'https://github.com/scobru/shogun-relay' },
-                { title: 'SMART CONTRACTS', sub: 'Solidity infrastructure', url: 'https://github.com/scobru/shogun-contracts' }
-            ],
+        function renderGrid() {
+            const gridContainer = document.getElementById('main-grid');
 
-            'socials-container': [
-                { title: 'GITHUB', sub: 'scobru', url: 'https://github.com/scobru', icon: 'fab fa-github' },
-                { title: 'TWITTER', sub: 'scobru1988', url: 'https://twitter.com/scobru1988', icon: 'fab fa-twitter' },
-                { title: 'MASTODON', sub: '@scobru@livellosegreto.it', url: 'https://livellosegreto.it/@scobru', icon: 'fab fa-mastodon' },
-                { title: 'TELEGRAM', sub: 't.me/scobru', url: 'https://t.me/scobru', icon: 'fab fa-telegram' },
-                { title: 'INSTAGRAM', sub: 'francescobruno', url: 'https://instagram.com/francescobruno', icon: 'fab fa-instagram' },
-                { title: 'YOUTUBE', sub: 'scobru88', url: 'https://youtube.com/scobru88', icon: 'fab fa-youtube' },
-                { title: 'EMAIL', sub: 'dev.scobru@pm.me', url: 'mailto:dev.scobru@pm.me', icon: 'fas fa-envelope' }
-            ]
-        };
+            sections.forEach(sec => {
+                const wrapper = document.createElement('div');
+                wrapper.className = sec.cols + ' mt-4';
 
-        let currentLine = 5;
+                const title = document.createElement('h2');
+                title.className = 'text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-6 flex items-center gap-3 after:content-[""] after:flex-1 after:h-px after:bg-outline-variant/30';
+                title.innerHTML = `<span class="bg-primary-container text-on-primary-container p-2 rounded-lg inline-flex"><i class="fas fa-folder-open"></i></span> ${sec.title}`;
+                wrapper.appendChild(title);
 
-        function renderLinks() {
-            for (const [id, items] of Object.entries(sections)) {
-                const container = document.getElementById(id);
-                items.forEach(item => {
-                    const lineDiv = document.createElement('div');
-                    lineDiv.className = 'line link-item';
-                    lineDiv.onclick = () => window.open(item.url, '_blank');
+                const innerGrid = document.createElement('div');
+                innerGrid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4';
 
-                    const iconHtml = item.icon ? `<i class="${item.icon}" style="margin-right: 10px; width: 15px; text-align: center;"></i>` : '';
+                sec.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'm3-card m3-card-interactive p-6 flex flex-col items-start group';
+                    card.onclick = () => window.open(item.url, item.url.startsWith('http') ? '_blank' : '_self');
 
-                    lineDiv.innerHTML = `
-                        <div class="ln">${String(currentLine++).padStart(2, '0')}</div>
-                        <div class="content">  <span class="keyword">import</span> { ${iconHtml}<span class="string">${item.title}</span> } <span class="keyword">from</span> <span class="comment">'${item.sub}'</span>;</div>
+                    const icon = item.icon || 'fas fa-link';
+
+                    card.innerHTML = `
+                        <div class="text-3xl text-primary mb-4 transition-transform duration-medium-2 ease-spring group-hover:scale-110 group-active:scale-95"><i class="${icon}"></i></div>
+                        <h3 class="text-lg font-semibold text-on-surface mb-1">${item.title}</h3>
+                        <p class="text-sm text-on-surface-variant">${item.sub}</p>
                     `;
-                    container.appendChild(lineDiv);
+                    innerGrid.appendChild(card);
                 });
 
-                // Add empty line between sections
-                const emptyLine = document.createElement('div');
-                emptyLine.className = 'line';
-                emptyLine.innerHTML = `<div class="ln">${String(currentLine++).padStart(2, '0')}</div><div class="content"></div>`;
-                container.appendChild(emptyLine);
-            }
+                wrapper.appendChild(innerGrid);
+                gridContainer.appendChild(wrapper);
+            });
         }
 
-        renderLinks();
+        renderGrid();
     </script>
 </body>
 
