@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZEN Keep | Scobru</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        crossorigin="anonymous" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
         @theme {
@@ -112,17 +116,22 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased min-h-screen p-4 sm:p-10 flex justify-center selection:bg-error-container selection:text-on-error-container">
+
+<body
+    class="font-sans antialiased min-h-screen p-4 sm:p-10 flex justify-center selection:bg-error-container selection:text-on-error-container">
     <div class="max-w-5xl w-full">
         <!-- Top Nav -->
         <div class="flex justify-end gap-4 mb-8">
-            <button onclick="toggleTheme()" class="m3-btn bg-surface-container-high px-6 py-3 text-on-surface shadow-level-1 hover:shadow-level-2 hover:bg-surface-dim font-medium text-sm">
+            <button onclick="toggleTheme()"
+                class="m3-btn bg-surface-container-high px-6 py-3 text-on-surface shadow-level-1 hover:shadow-level-2 hover:bg-surface-dim font-medium text-sm">
                 <i class="fas fa-adjust mr-2"></i> Theme
             </button>
-            <button id="logout-btn" onclick="logout()" class="hidden m3-btn border border-outline px-6 py-3 text-on-surface-variant hover:bg-surface-dim font-medium text-sm">
+            <button id="logout-btn" onclick="logout()"
+                class="hidden m3-btn border border-outline px-6 py-3 text-on-surface-variant hover:bg-surface-dim font-medium text-sm">
                 <i class="fas fa-lock mr-2"></i> Lock Vault
             </button>
-            <button onclick="window.location.href='../index.html'" class="m3-btn border border-outline px-6 py-3 text-error hover:bg-error/10 font-medium text-sm">
+            <button onclick="window.location.href='../index.html'"
+                class="m3-btn border border-outline px-6 py-3 text-error hover:bg-error/10 font-medium text-sm">
                 <i class="fas fa-arrow-left mr-2"></i> Back
             </button>
         </div>
@@ -130,30 +139,43 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <!-- Header Card -->
             <div class="m3-card col-span-1 md:col-span-4 p-8 flex flex-col sm:flex-row items-center gap-6">
-                <div class="w-20 h-20 rounded-2xl bg-error-container text-on-error-container flex items-center justify-center text-4xl shadow-level-1"><i class="fas fa-user-secret"></i></div>
+                <div
+                    class="w-20 h-20 rounded-2xl bg-error-container text-on-error-container flex items-center justify-center text-4xl shadow-level-1">
+                    <i class="fas fa-user-secret"></i>
+                </div>
                 <div class="text-center sm:text-left flex-1">
                     <h1 class="text-3xl font-bold tracking-tight mb-2 text-on-surface">ZEN Keep</h1>
                     <p class="text-on-surface-variant mb-4">End-to-End Encrypted Private Vault</p>
                     <div class="flex flex-wrap justify-center sm:justify-start gap-2">
-                        <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-outline text-on-surface-variant">DOC: KEEP.MD</span>
-                        <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-error text-error"><i class="fas fa-lock"></i> E2EE_ACTIVE</span>
+                        <span
+                            class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-outline text-on-surface-variant">DOC:
+                            KEEP.MD</span>
+                        <span
+                            class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-error text-error"><i
+                                class="fas fa-lock"></i> E2EE_ACTIVE</span>
                     </div>
                 </div>
             </div>
 
             <!-- Auth Section -->
             <div id="auth-section" class="m3-card col-span-1 md:col-span-4 p-8">
-                <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i class="fas fa-key text-error"></i> Unlock Vault</h3>
+                <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i class="fas fa-key text-error"></i>
+                    Unlock Vault</h3>
                 <p class="text-sm text-on-surface-variant mb-6">Enter credentials to decrypt your local data.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <input type="text" id="user-input" placeholder="Username" class="m3-input px-4 py-3 flex-1 focus:border-b-error">
-                    <input type="password" id="pass-input" placeholder="Password" class="m3-input px-4 py-3 flex-1 focus:border-b-error">
-                    <button id="login-btn" class="m3-btn bg-error text-on-error px-8 py-3 shadow-level-1 hover:shadow-level-2 hover:opacity-90 font-medium"><i class="fas fa-unlock mr-2"></i> Decrypt</button>
+                    <input type="text" id="user-input" placeholder="Username"
+                        class="m3-input px-4 py-3 flex-1 focus:border-b-error">
+                    <input type="password" id="pass-input" placeholder="Password"
+                        class="m3-input px-4 py-3 flex-1 focus:border-b-error">
+                    <button id="login-btn"
+                        class="m3-btn bg-error text-on-error px-8 py-3 shadow-level-1 hover:shadow-level-2 hover:opacity-90 font-medium"><i
+                            class="fas fa-unlock mr-2"></i> Decrypt</button>
                 </div>
             </div>
 
             <!-- Lock Screen -->
-            <div id="lock-screen" class="col-span-1 md:col-span-4 flex flex-col items-center justify-center p-16 text-center text-on-surface-variant bg-surface-container border border-dashed border-outline rounded-3xl mt-4">
+            <div id="lock-screen"
+                class="col-span-1 md:col-span-4 flex flex-col items-center justify-center p-16 text-center text-on-surface-variant bg-surface-container border border-dashed border-outline rounded-3xl mt-4">
                 <i class="fas fa-shield-alt text-5xl text-error mb-4"></i>
                 <h3 class="text-xl font-bold mb-2">VAULT IS LOCKED</h3>
                 <p class="text-sm">Your data is encrypted. Authenticate to view.</p>
@@ -162,26 +184,34 @@
             <div id="app-content" class="hidden col-span-1 md:col-span-4 contents">
                 <!-- Add Note Section -->
                 <div id="add-section" class="m3-card col-span-1 md:col-span-4 p-8">
-                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-2"><i class="fas fa-plus-circle text-error"></i> Secure New Data</h3>
+                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-2"><i
+                            class="fas fa-plus-circle text-error"></i> Secure New Data</h3>
                     <div class="flex flex-col gap-4">
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <input type="text" id="note-title" placeholder="Secret Title" class="m3-input px-4 py-3 flex-[2] focus:border-b-error">
-                            <input type="text" id="note-cat" placeholder="Tag" class="m3-input px-4 py-3 flex-1 focus:border-b-error">
+                            <input type="text" id="note-title" placeholder="Secret Title"
+                                class="m3-input px-4 py-3 flex-[2] focus:border-b-error">
+                            <input type="text" id="note-cat" placeholder="Tag"
+                                class="m3-input px-4 py-3 flex-1 focus:border-b-error">
                         </div>
-                        <textarea id="note-body" placeholder="Your private encrypted note..." class="m3-input px-4 py-3 min-h-[120px] resize-y focus:border-b-error"></textarea>
+                        <textarea id="note-body" placeholder="Your private encrypted note..."
+                            class="m3-input px-4 py-3 min-h-[120px] resize-y focus:border-b-error"></textarea>
                         <div class="flex justify-end">
-                            <button id="add-note-btn" class="m3-btn bg-error text-on-error px-8 py-3 shadow-level-1 hover:shadow-level-2 font-medium"><i class="fas fa-save mr-2"></i> Safe Store</button>
+                            <button id="add-note-btn"
+                                class="m3-btn bg-error text-on-error px-8 py-3 shadow-level-1 hover:shadow-level-2 font-medium"><i
+                                    class="fas fa-save mr-2"></i> Safe Store</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Notes Wrapper -->
                 <div id="notes-container" class="col-span-1 md:col-span-4 contents"></div>
             </div>
         </div>
 
         <footer class="mt-20 mb-10 text-center flex items-center justify-center gap-3 text-on-surface-variant text-sm">
-            <span class="relative flex h-3 w-3"><span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span></span>
+            <span class="relative flex h-3 w-3"><span id="status-ping"
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span
+                    id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span></span>
             <span class="font-mono">ZEN_ENTROPY_NETWORK // E2EE_ACTIVE</span>
         </footer>
     </div>
@@ -202,7 +232,10 @@
 
         const relays = ['wss://zen.akao.io/zen', 'wss://zen0.akao.io/zen', 'wss://zen1.akao.io/zen', 'wss://shogun-relay.scobrudot.dev/zen'];
         localStorage.removeItem('zenPeers');
-        zen = new ZEN(relays);
+
+        zen = new ZEN({
+            peers: relays,
+        });
 
         async function login() {
             const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
@@ -262,7 +295,7 @@
         function deleteNote(soul) {
             if (!isAuthenticated) return;
             if (!confirm("Permanently erase this note?")) return;
-            
+
             zen.get('~' + pair.pub).get('vault').get(soul).put(null, (ack) => {
                 if (ack && !ack.err) {
                     const el = document.getElementById('note-' + soul);
@@ -282,7 +315,7 @@
                     if (el) el.remove();
                     return;
                 }
-                
+
                 let title, body, cat;
                 try {
                     title = await ZEN.decrypt(note.title, pair);
@@ -292,37 +325,37 @@
                     console.warn("Could not decrypt note:", id);
                     return;
                 }
-                
+
                 if (!title || !body) return;
-                
+
                 if (!categories[cat]) {
                     const wrapper = document.createElement('div');
                     wrapper.className = 'col-span-1 md:col-span-4 mt-6';
-                    
+
                     const secHeader = document.createElement('h2');
                     secHeader.className = 'text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-6 flex items-center gap-3 after:content-[""] after:flex-1 after:h-px after:bg-outline-variant/30';
                     secHeader.innerHTML = `<span class="bg-error-container text-on-error-container p-2 rounded-lg inline-flex"><i class="fas fa-folder-open"></i></span> ${cat}`;
                     wrapper.appendChild(secHeader);
-                    
+
                     const catList = document.createElement('div');
                     catList.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4';
                     catList.id = `cat-${cat}`;
                     wrapper.appendChild(catList);
-                    
+
                     container.appendChild(wrapper);
                     categories[cat] = catList;
                 }
 
                 if (document.getElementById('note-' + id)) {
                     const existingContent = document.querySelector(`#note-${id} .note-text`);
-                    if(existingContent) existingContent.innerText = body;
+                    if (existingContent) existingContent.innerText = body;
                     return;
                 }
 
                 const card = document.createElement('div');
                 card.className = 'm3-card p-6 flex flex-col items-start relative group';
                 card.id = 'note-' + id;
-                
+
                 card.innerHTML = `
                     <div class="text-3xl text-error mb-4"><i class="fas fa-lock-open"></i></div>
                     <h3 class="text-lg font-semibold text-on-surface mb-2">${title}</h3>
@@ -340,7 +373,7 @@
                     };
                     card.appendChild(delBtn);
                 }
-                
+
                 categories[cat].appendChild(card);
             });
         }
@@ -365,4 +398,5 @@
         if (savedUser && savedPass) login();
     </script>
 </body>
+
 </html>
