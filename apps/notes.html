@@ -348,8 +348,13 @@
             'wss://zen0.akao.io/zen',
             'wss://zen1.akao.io/zen',
             'wss://shogun-relay.scobrudot.dev/zen'
-        ]
-
+        ];
+        
+        // Temporary fix: Clear zenPeers from localStorage to prevent the AXE plugin 
+        // from calling adopt() and mesh.hi() synchronously before websocket.js 
+        // initializes mesh.wire. This avoids the "e.wire is not a function" crash.
+        localStorage.removeItem('zenPeers');
+        
         zen = new ZEN(relays);
 
         loadNotes(PUBLIC_VIEW_KEY);
