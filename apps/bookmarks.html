@@ -342,10 +342,7 @@
             'wss://shogun-relay.scobrudot.dev/zen'
         ]
 
-        zen = new ZEN({
-            peers: relays,
-            localStorage: true
-        });
+        zen = new ZEN(relays);
 
         // Load public bookmarks on startup
         loadBookmarks('0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0');

@@ -352,10 +352,7 @@
             'wss://shogun-relay.scobrudot.dev/zen'
         ]
 
-        zen = new ZEN({
-            peers: relays,
-            localStorage: true
-        });
+        zen = new ZEN(relays);
 
         async function login() {
             const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
