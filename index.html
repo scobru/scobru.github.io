@@ -103,6 +103,28 @@
             background-color: var(--color-surface);
             color: var(--color-on-surface);
             transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        /* Subtle Animated Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -20%; left: -20%; width: 140%; height: 140%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 30% 70%, var(--color-primary-container) 0%, transparent 40%),
+                radial-gradient(circle at 70% 30%, var(--color-outline-variant) 0%, transparent 40%);
+            opacity: 0.3;
+            animation: bg-pan 25s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes bg-pan {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(3%, 4%) scale(1.05); }
+            100% { transform: translate(-2%, -3%) scale(1); }
         }
 
         /* Base Card Pattern (M3E) */
