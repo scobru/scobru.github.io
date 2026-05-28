@@ -7,220 +7,498 @@
     <title>ZEN Keep | Scobru</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        crossorigin="anonymous" />
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @theme {
-            --color-primary: oklch(0.55 0.2 250);
-            --color-on-primary: oklch(1 0 0);
-            --color-primary-container: oklch(0.9 0.05 250);
-            --color-on-primary-container: oklch(0.2 0.1 250);
-            --color-surface: oklch(0.98 0.01 250);
-            --color-surface-dim: oklch(0.88 0.01 250);
-            --color-surface-container: oklch(0.94 0.01 250);
-            --color-surface-container-high: oklch(0.92 0.01 250);
-            --color-on-surface: oklch(0.2 0.02 250);
-            --color-on-surface-variant: oklch(0.45 0.03 250);
-            --color-outline: oklch(0.5 0.02 250);
-            --color-outline-variant: oklch(0.8 0.01 250);
-            --color-error: oklch(0.55 0.25 25);
-            --color-error-container: oklch(0.9 0.1 25);
-            --color-on-error: oklch(1 0 0);
-
-            --font-sans: 'Inter', sans-serif;
-            --font-mono: 'IBM Plex Mono', monospace;
-
-            --radius-xs: 0.25rem;
-            --radius-sm: 0.5rem;
-            --radius-md: 0.75rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-            --radius-full: 9999px;
-
-            --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-
-            --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --duration-short-4: 200ms;
-            --duration-medium-2: 300ms;
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+    
+    <style>
+        :root {
+            /* Keep Accent is Glowing Cryptographic Red-Magenta */
+            --bg: #0b0b0c;
+            --fg: #f5f5f7;
+            --fg-muted: #888899;
+            --border: #222226;
+            --border-glow: rgba(255, 0, 85, 0.1);
+            --selection-bg: rgba(255, 0, 85, 0.2);
+            --selection-fg: #ff0055;
+            --accent: #ff0055;
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root, [data-theme="dark"] {
-                --color-primary: oklch(0.7 0.15 250);
-                --color-on-primary: oklch(0.2 0.1 250);
-                --color-primary-container: oklch(0.3 0.1 250);
-                --color-on-primary-container: oklch(0.9 0.05 250);
-                --color-surface: oklch(0.18 0.01 250);
-                --color-surface-dim: oklch(0.15 0.01 250);
-                --color-surface-container: oklch(0.22 0.01 250);
-                --color-surface-container-high: oklch(0.26 0.01 250);
-                --color-on-surface: oklch(0.9 0.01 250);
-                --color-on-surface-variant: oklch(0.7 0.02 250);
-                --color-outline: oklch(0.5 0.02 250);
-                --color-outline-variant: oklch(0.35 0.02 250);
-                --color-error: oklch(0.65 0.2 25);
-                --shadow-level-1: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-                --shadow-level-2: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.3);
-                --shadow-level-3: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
-            }
+        :root[data-theme="light"] {
+            --bg: #fdfdfc;
+            --fg: #1a1a24;
+            --fg-muted: #7a7a8a;
+            --border: #e2e2d9;
+            --border-glow: rgba(192, 0, 60, 0.1);
+            --selection-bg: rgba(192, 0, 60, 0.15);
+            --selection-fg: #c0003c;
+            --accent: #c0003c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            background-color: var(--color-surface);
-            color: var(--color-on-surface);
+            font-family: 'IBM Plex Mono', Courier, monospace;
+            background-color: var(--bg);
+            color: var(--fg);
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .m3-card {
-            background-color: var(--color-surface-container);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-level-1);
-            transition: transform var(--duration-medium-2) var(--ease-spring),
-                        box-shadow var(--duration-short-4) var(--ease-standard);
+        /* Subtle scanlines effect overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.05) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none;
         }
 
-        .m3-card-interactive:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-level-3);
-            cursor: pointer;
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
-        .m3-card-interactive:active { transform: scale(0.98); }
-        
-        .m3-btn {
+
+        /* Top Nav */
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        /* Retro button styles */
+        .retro-btn {
+            background-color: rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+            color: var(--fg-muted);
+            padding: 8px 16px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-full);
-            transition: all var(--duration-medium-2) var(--ease-spring);
+            gap: 8px;
+            user-select: none;
+            transition: all 0.2s ease;
         }
-        .m3-btn:active { transform: scale(0.95); }
 
-        .m3-input {
-            background-color: var(--color-surface-container-high);
-            border-bottom: 2px solid var(--color-outline);
-            border-radius: var(--radius-xs) var(--radius-xs) 0 0;
-            color: var(--color-on-surface);
-            transition: border-color var(--duration-short-4) var(--ease-standard);
+        .retro-btn:hover {
+            color: var(--fg);
+            border-color: var(--accent);
+            box-shadow: 0 0 5px var(--border-glow);
         }
-        .m3-input:focus {
-            border-bottom-color: var(--color-error); /* Use error color as accent for keep since it's private */
+
+        .retro-btn span {
+            color: var(--accent);
+        }
+
+        .retro-btn-accent {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Card block container */
+        .retro-card {
+            border: 1px solid var(--border);
+            padding: 24px;
+            background-color: rgba(0, 0, 0, 0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .retro-card::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: var(--bg);
+            padding: 0 5px;
+            font-size: 9px;
+            color: var(--fg-muted);
+            border: 1px solid var(--border);
+            text-transform: uppercase;
+        }
+
+        .retro-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-box {
+            font-size: 30px;
+            color: var(--accent);
+            width: 56px;
+            height: 56px;
+            border: 1px dashed var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-text h1 {
+            font-size: 22px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            color: var(--accent);
+        }
+
+        .header-text p {
+            font-size: 12px;
+            color: var(--fg-muted);
+        }
+
+        .meta-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border: 1px solid var(--border);
+            color: var(--fg-muted);
+            text-transform: uppercase;
+        }
+
+        .badge-accent {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Form styling */
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+
+        .retro-input {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            color: var(--fg);
+            padding: 10px 14px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .retro-input:focus {
             outline: none;
-            background-color: var(--color-surface-container-high);
+            border-color: var(--accent);
+            box-shadow: 0 0 5px var(--border-glow);
+        }
+
+        textarea.retro-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Items display */
+        .category-wrapper {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section-divider {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .section-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Item card */
+        .item-card {
+            border: 1px solid var(--border);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .item-card:hover {
+            border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 0 5px var(--border-glow);
+            transform: translateY(-2px);
+        }
+
+        .item-card-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .item-card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--fg);
+        }
+
+        .item-card p {
+            font-size: 13px;
+            color: var(--fg-muted);
+            line-height: 1.5;
+        }
+
+        .trash-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--fg-muted);
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.2s ease;
+            padding: 5px;
+        }
+
+        .trash-btn:hover {
+            color: var(--accent);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Selection */
+        ::selection {
+            background-color: var(--selection-bg);
+            color: var(--selection-fg);
+        }
+
+        /* Footers */
+        .retro-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--fg-muted);
+            font-size: 12px;
+        }
+
+        /* Note Zoom Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.is-open {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            font-size: 14px;
+            line-height: 1.6;
+            position: relative;
+            box-shadow: 0 0 15px var(--border-glow);
+        }
+
+        .modal-content::before {
+            content: "DECRYPTED.txt";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: var(--bg);
+            padding: 0 5px;
+            font-size: 9px;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            text-transform: uppercase;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--fg);
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .modal-text {
+            color: var(--fg);
+            margin-bottom: 25px;
+        }
+
+        .modal-close {
+            text-align: right;
         }
     </style>
 </head>
 
-<body
-    class="font-sans antialiased min-h-screen p-4 sm:p-10 flex justify-center selection:bg-error-container selection:text-on-error-container">
-    <div class="max-w-5xl w-full">
-        <!-- Top Nav -->
-        <div class="flex justify-end gap-4 mb-8">
-            <button onclick="toggleTheme()"
-                class="m3-btn bg-surface-container-high px-6 py-3 text-on-surface shadow-level-1 hover:shadow-level-2 hover:bg-surface-dim font-medium text-sm">
-                <i class="fas fa-adjust mr-2"></i> Theme
-            </button>
-            <button id="logout-btn" onclick="logout()"
-                class="hidden m3-btn border border-outline px-6 py-3 text-on-surface-variant hover:bg-surface-dim font-medium text-sm">
-                <i class="fas fa-lock mr-2"></i> Lock Vault
-            </button>
-            <button onclick="window.location.href='../index.html'"
-                class="m3-btn border border-outline px-6 py-3 text-error hover:bg-error/10 font-medium text-sm">
-                <i class="fas fa-arrow-left mr-2"></i> Back
-            </button>
-        </div>
+<body>
+    <div class="container">
+        <!-- Top Nav Controls -->
+        <nav class="top-nav">
+            <a class="retro-btn" onclick="toggleTheme()">[<span>theme</span>]</a>
+            <a class="retro-btn hidden" id="logout-btn" onclick="logout()">[<span>lock vault</span>]</a>
+            <a class="retro-btn" href="../index.html">[back]</a>
+        </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <!-- Header Card -->
-            <div class="m3-card col-span-1 md:col-span-4 p-8 flex flex-col sm:flex-row items-center gap-6">
-                <div
-                    class="w-20 h-20 rounded-2xl bg-error-container text-on-error-container flex items-center justify-center text-4xl shadow-level-1">
+        <!-- Header Card -->
+        <header class="retro-card" data-label="SYSTEM_PROFILE">
+            <div class="retro-card-header">
+                <div class="icon-box">
                     <i class="fas fa-user-secret"></i>
                 </div>
-                <div class="text-center sm:text-left flex-1">
-                    <h1 class="text-3xl font-bold tracking-tight mb-2 text-on-surface">ZEN Keep</h1>
-                    <p class="text-on-surface-variant mb-4">End-to-End Encrypted Private Vault</p>
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-2">
-                        <span
-                            class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-outline text-on-surface-variant">DOC:
-                            KEEP.MD</span>
-                        <span
-                            class="font-mono text-xs font-semibold px-3 py-1 rounded-full border border-error text-error"><i
-                                class="fas fa-lock"></i> E2EE_ACTIVE</span>
+                <div class="header-text">
+                    <h1>ZEN Keep</h1>
+                    <p>End-to-End Encrypted Private Vault</p>
+                    <div class="meta-badges">
+                        <span class="badge">DOC: KEEP.MD</span>
+                        <span class="badge badge-accent"><i class="fas fa-lock"></i> E2EE_ACTIVE</span>
                     </div>
                 </div>
             </div>
+        </header>
 
-            <!-- Auth Section -->
-            <div id="auth-section" class="m3-card col-span-1 md:col-span-4 p-8">
-                <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i class="fas fa-key text-error"></i>
-                    Unlock Vault</h3>
-                <p class="text-sm text-on-surface-variant mb-6">Enter credentials to decrypt your local data.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <input type="text" id="user-input" placeholder="Username"
-                        class="m3-input px-4 py-3 flex-1 focus:border-b-error">
-                    <input type="password" id="pass-input" placeholder="Password"
-                        class="m3-input px-4 py-3 flex-1 focus:border-b-error">
-                    <button id="login-btn"
-                        class="m3-btn bg-error text-on-error px-8 py-3 shadow-level-1 hover:shadow-level-2 hover:opacity-90 font-medium"><i
-                            class="fas fa-unlock mr-2"></i> Decrypt</button>
+        <!-- Authentication Section -->
+        <section class="retro-card" id="auth-section" data-label="VAULT.key">
+            <div class="header-text">
+                <h1 style="font-size: 16px;"><i class="fas fa-key" style="margin-right: 8px;"></i>Unlock Vault</h1>
+                <p>Enter credentials to decrypt your local data. Master credentials are required.</p>
+            </div>
+            <div class="form-row">
+                <input type="text" id="user-input" placeholder="Username" class="retro-input">
+                <input type="password" id="pass-input" placeholder="Password" class="retro-input">
+                <a class="retro-btn retro-btn-accent" id="login-btn" onclick="login()">[ decrypt ]</a>
+            </div>
+        </section>
+
+        <!-- Lock Screen Placeholder -->
+        <section class="retro-card" id="lock-screen" data-label="VAULT.status" style="text-align: center; padding: 40px;">
+            <i class="fas fa-shield-alt" style="font-size: 40px; color: var(--accent); margin-bottom: 12px;"></i>
+            <h3 style="text-transform: uppercase; font-size: 16px; margin-bottom: 6px;">Vault is Locked</h3>
+            <p style="font-size: 12px; color: var(--fg-muted);">Your local dataset is securely encrypted inside Gun graph database. Authenticate to view.</p>
+        </section>
+
+        <!-- Dynamic Main App Content -->
+        <div id="app-content" class="hidden" style="display: flex; flex-direction: column; gap: 24px;">
+            <!-- Secure storage creation -->
+            <section class="retro-card" id="add-section" data-label="STORAGE.write">
+                <div class="header-text">
+                    <h1 style="font-size: 16px;"><i class="fas fa-plus-circle" style="margin-right: 8px;"></i>Secure New Data</h1>
                 </div>
-            </div>
-
-            <!-- Lock Screen -->
-            <div id="lock-screen"
-                class="col-span-1 md:col-span-4 flex flex-col items-center justify-center p-16 text-center text-on-surface-variant bg-surface-container border border-dashed border-outline rounded-3xl mt-4">
-                <i class="fas fa-shield-alt text-5xl text-error mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">VAULT IS LOCKED</h3>
-                <p class="text-sm">Your data is encrypted. Authenticate to view.</p>
-            </div>
-
-            <div id="app-content" class="hidden col-span-1 md:col-span-4 contents">
-                <!-- Add Note Section -->
-                <div id="add-section" class="m3-card col-span-1 md:col-span-4 p-8">
-                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-2"><i
-                            class="fas fa-plus-circle text-error"></i> Secure New Data</h3>
-                    <div class="flex flex-col gap-4">
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <input type="text" id="note-title" placeholder="Secret Title"
-                                class="m3-input px-4 py-3 flex-[2] focus:border-b-error">
-                            <input type="text" id="note-cat" placeholder="Tag"
-                                class="m3-input px-4 py-3 flex-1 focus:border-b-error">
-                        </div>
-                        <textarea id="note-body" placeholder="Your private encrypted note..."
-                            class="m3-input px-4 py-3 min-h-[120px] resize-y focus:border-b-error"></textarea>
-                        <div class="flex justify-end">
-                            <button id="add-note-btn"
-                                class="m3-btn bg-error text-on-error px-8 py-3 shadow-level-1 hover:shadow-level-2 font-medium"><i
-                                    class="fas fa-save mr-2"></i> Safe Store</button>
-                        </div>
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                    <div class="form-row">
+                        <input type="text" id="note-title" placeholder="Secret Title" class="retro-input" style="flex: 2;">
+                        <input type="text" id="note-cat" placeholder="Tag / Category" class="retro-input">
+                    </div>
+                    <textarea id="note-body" placeholder="Your private encrypted note..." class="retro-input"></textarea>
+                    <div style="display: flex; justify-content: flex-end;">
+                        <a class="retro-btn retro-btn-accent" id="add-note-btn" onclick="addNote()">[ safe store ]</a>
                     </div>
                 </div>
+            </section>
 
-                <!-- Notes Wrapper -->
-                <div id="notes-container" class="col-span-1 md:col-span-4 contents"></div>
-            </div>
+            <!-- Decrypted Records Area -->
+            <div id="notes-container" class="category-wrapper"></div>
         </div>
 
-        <footer class="mt-20 mb-10 text-center flex items-center justify-center gap-3 text-on-surface-variant text-sm">
-            <span class="relative flex h-3 w-3"><span id="status-ping"
-                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span
-                    id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span></span>
-            <span class="font-mono">ZEN_ENTROPY_NETWORK // E2EE_ACTIVE</span>
+        <!-- Terminal Status Footer -->
+        <footer class="retro-footer">
+            <span style="position: relative; display: flex; h: 3; w: 3;">
+                <span id="status-ping" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block; background-color: #ff0055; box-shadow: 0 0 6px #ff0055;"></span>
+            </span>
+            <span class="font-mono" id="status-footer-text">ZEN_ENTROPY_NETWORK // E2EE_LOCKED</span>
         </footer>
     </div>
 
+    <!-- Storage and Theme configurations scripts -->
     <script>
-        function toggleTheme() {
-            const body = document.body;
-            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        function applyTheme() {
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
         }
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme();
+        }
+
+        document.addEventListener('DOMContentLoaded', applyTheme);
     </script>
 
     <script type="module">
@@ -244,7 +522,7 @@
 
             try {
                 const btn = document.getElementById('login-btn');
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Unlocking...';
+                btn.innerHTML = '[ unlocking... ]';
 
                 pair = await ZEN.pair(null, { seed: userInput + passInput });
                 isAuthenticated = true;
@@ -257,14 +535,17 @@
                 document.getElementById('app-content').classList.remove('hidden');
                 document.getElementById('logout-btn').classList.remove('hidden');
 
-                document.getElementById('status-ping').className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75';
-                document.getElementById('status-dot').className = 'relative inline-flex rounded-full h-3 w-3 bg-green-500';
+                // Update system indicator
+                const ping = document.getElementById('status-ping');
+                ping.style.backgroundColor = '#39ff14';
+                ping.style.boxShadow = '0 0 6px #39ff14';
+                document.getElementById('status-footer-text').textContent = 'ZEN_ENTROPY_NETWORK // E2EE_DECRYPTED';
 
                 loadNotes();
             } catch (e) {
                 console.error("Login Error:", e);
                 alert("Decryption failed: " + e.message);
-                document.getElementById('login-btn').innerHTML = '<i class="fas fa-unlock mr-2"></i> Decrypt';
+                document.getElementById('login-btn').innerHTML = '[ decrypt ]';
             }
         }
 
@@ -330,15 +611,15 @@
 
                 if (!categories[cat]) {
                     const wrapper = document.createElement('div');
-                    wrapper.className = 'col-span-1 md:col-span-4 mt-6';
+                    wrapper.className = 'category-wrapper';
 
-                    const secHeader = document.createElement('h2');
-                    secHeader.className = 'text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-6 flex items-center gap-3 after:content-[""] after:flex-1 after:h-px after:bg-outline-variant/30';
-                    secHeader.innerHTML = `<span class="bg-error-container text-on-error-container p-2 rounded-lg inline-flex"><i class="fas fa-folder-open"></i></span> ${cat}`;
+                    const secHeader = document.createElement('div');
+                    secHeader.className = 'section-divider';
+                    secHeader.textContent = cat;
                     wrapper.appendChild(secHeader);
 
                     const catList = document.createElement('div');
-                    catList.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4';
+                    catList.className = 'items-grid';
                     catList.id = `cat-${cat}`;
                     wrapper.appendChild(catList);
 
@@ -352,19 +633,30 @@
                     return;
                 }
 
+                const timestamp = note.timestamp || Date.now();
+                const dateStr = new Date(timestamp).toLocaleDateString(navigator.language || 'it-IT', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
                 const card = document.createElement('div');
-                card.className = 'm3-card p-6 flex flex-col items-start relative group';
+                card.className = 'item-card';
                 card.id = 'note-' + id;
+                card.onclick = () => openZoomModal(title, body, dateStr);
 
                 card.innerHTML = `
-                    <div class="text-3xl text-error mb-4"><i class="fas fa-lock-open"></i></div>
-                    <h3 class="text-lg font-semibold text-on-surface mb-2">${title}</h3>
-                    <p class="text-sm text-on-surface-variant whitespace-pre-wrap break-words note-text">${body}</p>
+                    <div class="item-card-icon"><i class="fas fa-lock-open"></i></div>
+                    <div style="font-size: 10px; color: var(--fg-muted); margin-bottom: 6px;">${dateStr}</div>
+                    <h3>${title}</h3>
+                    <p class="note-text" style="white-space: pre-wrap; font-family: 'IBM Plex Mono', monospace; word-break: break-word;">${body}</p>
                 `;
 
                 if (isAuthenticated) {
                     const delBtn = document.createElement('button');
-                    delBtn.className = 'absolute top-4 right-4 text-outline hover:text-error transition-colors p-2 rounded-full hover:bg-error-container hover:text-on-error-container';
+                    delBtn.className = 'trash-btn';
                     delBtn.innerHTML = '<i class="fas fa-trash"></i>';
                     delBtn.title = 'Erase Data';
                     delBtn.onclick = (e) => {
@@ -393,10 +685,38 @@
         document.getElementById('login-btn').addEventListener('click', login);
         document.getElementById('add-note-btn').addEventListener('click', addNote);
 
+        function openZoomModal(title, body, dateStr) {
+            document.getElementById('zoom-title').textContent = title;
+            document.getElementById('zoom-date').textContent = dateStr;
+            document.getElementById('zoom-body').innerText = body;
+            document.getElementById('zoom-modal').classList.add('is-open');
+        }
+
+        function closeZoomModal() {
+            document.getElementById('zoom-modal').classList.remove('is-open');
+        }
+
+        window.openZoomModal = openZoomModal;
+        window.closeZoomModal = closeZoomModal;
+
         const savedUser = sessionStorage.getItem('zen_user');
         const savedPass = sessionStorage.getItem('zen_pass');
         if (savedUser && savedPass) login();
     </script>
+
+    <!-- Note Zoom Modal Overlay -->
+    <div class="modal" id="zoom-modal" onclick="closeZoomModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-title" id="zoom-title">DECRYPTED_SECRET</div>
+            <div style="font-size: 11px; color: var(--fg-muted); margin-bottom: 15px;" id="zoom-date">--/--/--</div>
+            <div class="modal-text" id="zoom-body" style="white-space: pre-wrap; font-family: 'IBM Plex Mono', monospace; word-break: break-word; font-size: 15px; color: var(--fg); line-height: 1.6; max-height: 400px; overflow-y: auto; margin-bottom: 25px;">
+                <!-- Content injected dynamically -->
+            </div>
+            <div class="modal-close">
+                <a class="bracket-btn" onclick="closeZoomModal()">[<span>close</span>]</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
