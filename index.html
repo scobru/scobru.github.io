@@ -464,19 +464,6 @@
         <!-- Separation Green Dashes line -->
         <div class="dasher">----------------------------------------</div>
 
-        <!-- Synthesizer Control Deck -->
-        <div class="visualizer-container">
-            <canvas id="visualizer-canvas"></canvas>
-            <div class="control-deck">
-                <div class="control-bar-progress" id="progress-brackets">[----] [---] [----] [---] [----]</div>
-                <div class="control-bar-sub">
-                    <span id="timer-display">--:--:--</span>
-                    <a class="bracket-btn" id="audio-play-btn" onclick="toggleAudio()">[<span>play</span>]</a>
-                    <a class="bracket-btn" onclick="playRandomProject()">[random]</a>
-                </div>
-            </div>
-        </div>
-
         <!-- Terminal Brackets Actions / Links -->
         <div class="nav-links">
             <div class="nav-link-row">
@@ -488,6 +475,7 @@
             <div class="nav-link-row" style="margin-top: 4px;">
                 <a class="nav-link-btn" onclick="toggleTheme()">[<span data-i18n="invert_btn">invert</span>]</a>
                 <a class="nav-link-btn" onclick="toggleFullscreen()">[<span data-i18n="fullscreen_btn">fullscreen</span>]</a>
+                <a class="nav-link-btn" onclick="playRandomProject()">[random]</a>
             </div>
         </div>
 
@@ -496,8 +484,7 @@
             <div class="stats-line">// <span id="stat-proj-count">13</span> <span data-i18n="stats_projects">projects indexed</span></div>
             <div class="stats-line">// <span id="stat-conn-count">7</span> <span data-i18n="stats_connect">connections indexed</span></div>
             <div class="stats-line">// 7 <span data-i18n="stats_apps">mini apps operational</span></div>
-            <div class="stats-line">// 1 <span data-i18n="stats_synth">generative synth online</span></div>
-            <div class="stats-line">// <span data-i18n="stats_status">system status</span>: <span style="color: #39ff14;" id="sys-status">ONLINE</span></div>
+            <div class="stats-line">// <span data-i18n="stats_status">system status</span>: <span style="color: #39ff14;">ONLINE</span></div>
         </div>
 
         <!-- Cookie Prompt Dialog -->
@@ -552,7 +539,6 @@
                 stats_projects: "projects indexed",
                 stats_connect: "connections indexed",
                 stats_apps: "mini apps operational",
-                stats_synth: "generative synth online",
                 stats_status: "system status",
                 cookies_question: "Do you know cookies are a thing?",
                 cookie_modal_text: "This site uses no tracking cookies whatsoever. Your preferences (theme, language) are stored locally in your browser's localStorage. Full privacy guaranteed.",
@@ -570,7 +556,6 @@
                 stats_projects: "progetti indicizzati",
                 stats_connect: "collegamenti indicizzati",
                 stats_apps: "mini app operative",
-                stats_synth: "sintetizzatore online",
                 stats_status: "stato del sistema",
                 cookies_question: "Sai che esistono i cookie?",
                 cookie_modal_text: "Questo sito non utilizza alcun cookie di tracciamento o marketing. Le tue preferenze (tema, lingua) sono salvate localmente nel localStorage del tuo browser. Massima privacy garantita.",
@@ -1148,28 +1133,6 @@
         let currentLang = localStorage.getItem('lang') || 'en';
         let currentTheme = localStorage.getItem('theme') || 'dark';
         let selectedItemIndex = 0;
-        let isAudioPlaying = false;
-        let audioSeconds = 0;
-
-        // --- WEB AUDIO API NODE STORAGE ---
-        let audioCtx = null;
-        let synthInterval = null;
-        let timerInterval = null;
-        let synthNodes = [];
-        let analyser = null;
-        let delayNode = null;
-        let feedbackNode = null;
-        let delayFilter = null;
-        let mainGain = null;
-        let currentChordIndex = 0;
-
-        // Space chords for ambient synthesis (harmonic pads in minor frequencies)
-        const chords = [
-            [65.41, 130.81, 155.56, 196.00, 233.08, 293.66], // C Minor 9
-            [51.91, 103.83, 130.81, 155.56, 196.00, 233.08], // Ab Major 9
-            [43.65, 87.31, 103.83, 130.81, 155.56, 196.00],  // F Minor 9
-            [58.27, 116.54, 155.56, 174.61, 207.65, 261.63]  // Bb 9sus4
-        ];
 
         // --- THEME MANAGEMENT ---
         function applyTheme() {
@@ -1320,10 +1283,8 @@
             const visitText = currentLang === 'it' ? "visita" : "visit";
             const favText = currentLang === 'it' ? "preferito" : "favourite";
 
-            let playButtonHtml = `<a onclick="toggleAudio()" class="meta-btn" id="project-play-btn">[<span>play</span>]</a>`;
-            if (item.category !== 'music') {
-                playButtonHtml = `<a href="${item.url}" target="${item.url.startsWith('http') ? '_blank' : '_self'}" class="meta-btn">[<span>${visitText}</span>]</a>`;
-            }
+            // All items now show a direct visit button
+            const playButtonHtml = `<a href="${item.url}" target="${item.url.startsWith('http') ? '_blank' : '_self'}" class="meta-btn">[<span>${visitText}</span>]</a>`;
 
             // Build bullet points as plain text rows (no standard bullet points matching track rows)
             const bulletsHtml = details.features.map((feat) => {
@@ -1336,18 +1297,13 @@
             let embedHtml = "";
             if (item.trackTitle && item.trackUrl) {
                 const trackText = currentLang === 'it' ? "TRACCIA" : "TRACK";
-                const playSynthText = currentLang === 'it' ? "avvia sintetizzatore" : "play synthesizer";
                 const bandcampText = currentLang === 'it' ? "ascolta su bandcamp" : "listen on bandcamp";
                 
                 embedHtml = `
-                    <div class="custom-player-widget" style="border: 1px dashed var(--fg-muted); padding: 20px; margin-top: 15px; margin-bottom: 25px; background: rgba(255, 255, 255, 0.01); border-radius: 2px;">
-                        <div style="font-size: 12px; color: var(--syntax-comment); margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase;">// DECK ROUTING: GENERATIVE SYNTH CHANNEL</div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+                    <div class="custom-player-widget" style="border: 1px dashed var(--fg-muted); padding: 18px; margin-top: 15px; margin-bottom: 25px; background: rgba(255, 255, 255, 0.01); border-radius: 2px;">
+                        <div style="font-size: 12px; color: var(--syntax-comment); margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase;">// EXTERNAL LINK: BANDCAMP TRACK</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                             <span style="font-size: 15px; font-weight: 500; color: var(--fg-header); letter-spacing: 0.5px;">${trackText}: ${item.trackTitle}</span>
-                            <span style="color: var(--color-music); font-size: 13px;">[126.26 MHz]</span>
-                        </div>
-                        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
-                            <a onclick="toggleAudio()" class="bracket-btn" id="widget-play-btn" style="font-size: 14px; cursor: pointer; color: var(--color-apps);">[<span>${playSynthText}</span>]</a>
                             <a href="${item.trackUrl}" target="_blank" class="bracket-btn" style="font-size: 14px; cursor: pointer; color: var(--color-music);">[<span>${bandcampText}</span>]</a>
                         </div>
                     </div>
@@ -1461,269 +1417,6 @@
             }
         }
 
-        // --- WEB AUDIO API AMBIENT SYNTHESIZER ENGINE ---
-        function initAudio() {
-            if (audioCtx) return;
-            
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            audioCtx = new AudioContext();
-            
-            analyser = audioCtx.createAnalyser();
-            analyser.fftSize = 256;
-            
-            mainGain = audioCtx.createGain();
-            mainGain.gain.setValueAtTime(0, audioCtx.currentTime);
-            
-            // Wide space feedback delay line
-            delayNode = audioCtx.createDelay(1.0);
-            delayNode.delayTime.setValueAtTime(0.6, audioCtx.currentTime); 
-            
-            feedbackNode = audioCtx.createGain();
-            feedbackNode.gain.setValueAtTime(0.55, audioCtx.currentTime); 
-            
-            delayFilter = audioCtx.createBiquadFilter();
-            delayFilter.type = 'lowpass';
-            delayFilter.frequency.setValueAtTime(900, audioCtx.currentTime); 
-            
-            delayNode.connect(delayFilter);
-            delayFilter.connect(feedbackNode);
-            feedbackNode.connect(delayNode);
-            
-            mainGain.connect(analyser);
-            mainGain.connect(delayNode);
-            feedbackNode.connect(mainGain);
-            
-            analyser.connect(audioCtx.destination);
-        }
-
-        function startSynth() {
-            initAudio();
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            
-            isAudioPlaying = true;
-            document.getElementById('sys-status').style.color = '#ff0055';
-            document.getElementById('sys-status').textContent = currentLang === 'it' ? 'IN RIPRODUZIONE' : 'PLAYING';
-            
-            // Anchor volume ramp safely and increase gain to an audible level (0.8)
-            mainGain.gain.setValueAtTime(mainGain.gain.value, audioCtx.currentTime);
-            mainGain.gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + 2.0); 
-            
-            playNextChord();
-            synthInterval = setInterval(playNextChord, 8000); 
-            
-            startTimer();
-            updatePlayBtnState();
-        }
-
-        function stopSynth() {
-            if (!isAudioPlaying) return;
-            isAudioPlaying = false;
-            
-            document.getElementById('sys-status').style.color = '#39ff14';
-            document.getElementById('sys-status').textContent = 'ONLINE';
-            
-            // Anchor volume ramp before stopping
-            if (mainGain) {
-                mainGain.gain.setValueAtTime(mainGain.gain.value, audioCtx.currentTime);
-                mainGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
-            }
-            
-            setTimeout(() => {
-                if (!isAudioPlaying) {
-                    clearInterval(synthInterval);
-                    stopActiveNotes();
-                }
-            }, 1800);
-            
-            stopTimer();
-            updatePlayBtnState();
-        }
-
-        function stopActiveNotes() {
-            synthNodes.forEach(node => {
-                try { node.osc.stop(); } catch(e) {}
-                try { node.lfo.stop(); } catch(e) {}
-            });
-            synthNodes = [];
-        }
-
-        function playNextChord() {
-            const now = audioCtx.currentTime;
-            const chordFreqs = chords[currentChordIndex];
-            
-            // Gentle notes release
-            synthNodes.forEach(node => {
-                node.gain.gain.setValueAtTime(node.gain.gain.value, now);
-                node.gain.gain.linearRampToValueAtTime(0, now + 1.8);
-                try { node.osc.stop(now + 2.2); } catch(e) {}
-                try { node.lfo.stop(now + 2.2); } catch(e) {}
-            });
-            synthNodes = [];
-            
-            // Build rich additive spatial chord with standard, audible max volumes
-            chordFreqs.forEach((freq, idx) => {
-                const osc = audioCtx.createOscillator();
-                const nodeGain = audioCtx.createGain();
-                
-                // Deep low triangles, soft high sine waves
-                osc.type = idx < 2 ? 'triangle' : 'sine';
-                osc.frequency.setValueAtTime(freq, now);
-                
-                // Super detuning chorus
-                osc.detune.setValueAtTime((Math.random() - 0.5) * 8, now);
-                
-                nodeGain.gain.setValueAtTime(0, now);
-                const swellTime = 1.8 + Math.random() * 1.5;
-                const maxVol = (idx < 2 ? 0.35 : 0.2) / chordFreqs.length;
-                nodeGain.gain.linearRampToValueAtTime(maxVol, now + swellTime);
-                
-                // Drift modulation Tape wow/flutter
-                const lfo = audioCtx.createOscillator();
-                const lfoGain = audioCtx.createGain();
-                lfo.frequency.setValueAtTime(0.08 + Math.random() * 0.08, now);
-                lfoGain.gain.setValueAtTime(1.8, now);
-                
-                lfo.connect(lfoGain);
-                lfoGain.connect(osc.detune);
-                lfo.start(now);
-                
-                osc.connect(nodeGain);
-                nodeGain.connect(mainGain);
-                
-                osc.start(now);
-                synthNodes.push({ osc, gain: nodeGain, lfo });
-            });
-            
-            currentChordIndex = (currentChordIndex + 1) % chords.length;
-        }
-
-        // Timer actions
-        function startTimer() {
-            audioSeconds = 0;
-            updateTimerDisplay();
-            timerInterval = setInterval(() => {
-                audioSeconds++;
-                updateTimerDisplay();
-                animateBracketsProgress();
-            }, 1000);
-        }
-
-        function stopTimer() {
-            clearInterval(timerInterval);
-        }
-
-        function updateTimerDisplay() {
-            const hrs = Math.floor(audioSeconds / 3600).toString().padStart(2, '0');
-            const mins = Math.floor((audioSeconds % 3600) / 60).toString().padStart(2, '0');
-            const secs = (audioSeconds % 60).toString().padStart(2, '0');
-            document.getElementById('timer-display').textContent = `${hrs}:${mins}:${secs}`;
-        }
-
-        // Bracket progress bars animations
-        function animateBracketsProgress() {
-            const container = document.getElementById('progress-brackets');
-            const blocks = ["[----]", "[---]", "[----]", "[---]", "[----]"];
-            const activeIdx = Math.floor(audioSeconds / 2) % 5;
-            
-            const animated = blocks.map((block, idx) => {
-                if (idx === activeIdx) {
-                    return block.replace(/-/g, '=');
-                }
-                return block;
-            }).join(' ');
-            
-            container.textContent = animated;
-        }
-
-        function updatePlayBtnState() {
-            const audioBtn = document.getElementById('audio-play-btn');
-            const projBtn = document.getElementById('project-play-btn');
-            const widgetBtn = document.getElementById('widget-play-btn');
-            
-            const pauseText = currentLang === 'it' ? "pausa" : "pause";
-            const playSynthText = currentLang === 'it' ? "avvia sintetizzatore" : "play synthesizer";
-            
-            if (isAudioPlaying) {
-                audioBtn.innerHTML = `[<span>pause</span>]`;
-                if (projBtn) projBtn.innerHTML = `[<span>pause</span>]`;
-                if (widgetBtn) widgetBtn.innerHTML = `[<span>${pauseText}</span>]`;
-            } else {
-                audioBtn.innerHTML = `[<span>play</span>]`;
-                if (projBtn) projBtn.innerHTML = `[<span>play</span>]`;
-                if (widgetBtn) widgetBtn.innerHTML = `[<span>${playSynthText}</span>]`;
-            }
-        }
-
-        function toggleAudio() {
-            if (isAudioPlaying) {
-                stopSynth();
-            } else {
-                startSynth();
-            }
-        }
-
-        // --- REAL-TIME RETRO CANVAS VISUALIZER ---
-        function initCanvasVisualizer() {
-            const canvas = document.getElementById('visualizer-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Sync pixel ratio
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = canvas.clientWidth * dpr;
-            canvas.height = canvas.clientHeight * dpr;
-            ctx.scale(dpr, dpr);
-
-            function draw() {
-                requestAnimationFrame(draw);
-                const w = canvas.width / dpr;
-                const h = canvas.height / dpr;
-                
-                ctx.clearRect(0, 0, w, h);
-                
-                // Color matches green dash separator
-                ctx.strokeStyle = currentTheme === 'light' ? '#b8005b' : '#39ff14';
-                ctx.lineWidth = 1.2;
-
-                if (isAudioPlaying && analyser) {
-                    const bufferLength = analyser.frequencyBinCount;
-                    const dataArray = new Uint8Array(bufferLength);
-                    analyser.getByteTimeDomainData(dataArray);
-                    
-                    ctx.beginPath();
-                    const sliceWidth = w / bufferLength;
-                    let x = 0;
-                    
-                    for (let i = 0; i < bufferLength; i++) {
-                        const v = dataArray[i] / 128.0;
-                        const y = (v * h) / 2;
-                        
-                        if (i === 0) {
-                            ctx.moveTo(x, y);
-                        } else {
-                            ctx.lineTo(x, y);
-                        }
-                        x += sliceWidth;
-                    }
-                    ctx.lineTo(w, h / 2);
-                    ctx.stroke();
-                } else {
-                    // Small slow wave for visual feedback
-                    ctx.beginPath();
-                    ctx.moveTo(0, h / 2);
-                    const time = Date.now() * 0.0025;
-                    for (let x = 0; x < w; x++) {
-                        const y = h / 2 + Math.sin(x * 0.035 + time) * 3.0 * Math.cos(x * 0.012 + time * 0.35);
-                        ctx.lineTo(x, y);
-                    }
-                    ctx.stroke();
-                }
-            }
-            
-            draw();
-        }
-
         // --- APP INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
             // Apply storage configurations
@@ -1737,21 +1430,6 @@
             
             // Select default app
             selectItem(0);
-            
-            // Run canvas
-            initCanvasVisualizer();
-        });
-
-        // Sync visualizer on window resize
-        window.addEventListener('resize', () => {
-            const canvas = document.getElementById('visualizer-canvas');
-            if (canvas) {
-                const dpr = window.devicePixelRatio || 1;
-                canvas.width = canvas.clientWidth * dpr;
-                canvas.height = canvas.clientHeight * dpr;
-                const ctx = canvas.getContext('2d');
-                ctx.scale(dpr, dpr);
-            }
         });
     </script>
 </body>
