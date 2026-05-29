@@ -801,7 +801,8 @@
                 sub: "Songwriter, Pop, Electronic",
                 url: "https://homologomusic.bandcamp.com",
                 source: "https://audius.co/francescobruno",
-                embed: `<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1262646913/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://homologomusic.bandcamp.com/track/nulla-che-vale-aspettare">NULLA CHE VALE ASPETTARE by Homologo</a></iframe>`,
+                trackTitle: "NULLA CHE VALE ASPETTARE",
+                trackUrl: "https://homologomusic.bandcamp.com/track/nulla-che-vale-aspettare",
                 details: {
                     en: {
                         desc: "",
@@ -820,7 +821,8 @@
                 sub: "Electronic",
                 url: "https://fademusik.bandcamp.com",
                 source: "https://audius.co/francescobruno",
-                embed: `<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1767537207/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://fademusik.bandcamp.com/track/everybodys-changing-keane-cover">Everybody&#39;s Changing [Keane Cover] by Fade</a></iframe>`,
+                trackTitle: "Everybody's Changing [Keane Cover]",
+                trackUrl: "https://fademusik.bandcamp.com/track/everybodys-changing-keane-cover",
                 details: {
                     en: {
                         desc: "",
@@ -839,7 +841,8 @@
                 sub: "Ambient, Experimental",
                 url: "https://zimablue.bandcamp.com",
                 source: "https://audius.co/francescobruno",
-                embed: `<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3243800045/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://zimablue.bandcamp.com/track/ut-li">Utúlië by Zima Blue</a></iframe>`,
+                trackTitle: "Utúlië",
+                trackUrl: "https://zimablue.bandcamp.com/track/ut-li",
                 details: {
                     en: {
                         desc: "",
@@ -1331,8 +1334,24 @@
             const titlePrefix = item.category === 'zen' ? 'Zen App' : item.category === 'apps' ? 'Project' : item.category === 'music' ? 'Music' : item.category === 'dev' ? 'Tool' : 'Link';
 
             let embedHtml = "";
-            if (item.embed) {
-                embedHtml = `<div class="project-embed" style="margin-top: 15px; margin-bottom: 25px; max-width: 100%; overflow: hidden;">${item.embed}</div>`;
+            if (item.trackTitle && item.trackUrl) {
+                const trackText = currentLang === 'it' ? "TRACCIA" : "TRACK";
+                const playSynthText = currentLang === 'it' ? "avvia sintetizzatore" : "play synthesizer";
+                const bandcampText = currentLang === 'it' ? "ascolta su bandcamp" : "listen on bandcamp";
+                
+                embedHtml = `
+                    <div class="custom-player-widget" style="border: 1px dashed var(--fg-muted); padding: 20px; margin-top: 15px; margin-bottom: 25px; background: rgba(255, 255, 255, 0.01); border-radius: 2px;">
+                        <div style="font-size: 12px; color: var(--syntax-comment); margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase;">// DECK ROUTING: GENERATIVE SYNTH CHANNEL</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+                            <span style="font-size: 15px; font-weight: 500; color: var(--fg-header); letter-spacing: 0.5px;">${trackText}: ${item.trackTitle}</span>
+                            <span style="color: var(--color-music); font-size: 13px;">[126.26 MHz]</span>
+                        </div>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+                            <a onclick="toggleAudio()" class="bracket-btn" id="widget-play-btn" style="font-size: 14px; cursor: pointer; color: var(--color-apps);">[<span>${playSynthText}</span>]</a>
+                            <a href="${item.trackUrl}" target="_blank" class="bracket-btn" style="font-size: 14px; cursor: pointer; color: var(--color-music);">[<span>${bandcampText}</span>]</a>
+                        </div>
+                    </div>
+                `;
             }
 
             container.innerHTML = `
@@ -1617,13 +1636,19 @@
         function updatePlayBtnState() {
             const audioBtn = document.getElementById('audio-play-btn');
             const projBtn = document.getElementById('project-play-btn');
+            const widgetBtn = document.getElementById('widget-play-btn');
+            
+            const pauseText = currentLang === 'it' ? "pausa" : "pause";
+            const playSynthText = currentLang === 'it' ? "avvia sintetizzatore" : "play synthesizer";
             
             if (isAudioPlaying) {
                 audioBtn.innerHTML = `[<span>pause</span>]`;
                 if (projBtn) projBtn.innerHTML = `[<span>pause</span>]`;
+                if (widgetBtn) widgetBtn.innerHTML = `[<span>${pauseText}</span>]`;
             } else {
                 audioBtn.innerHTML = `[<span>play</span>]`;
                 if (projBtn) projBtn.innerHTML = `[<span>play</span>]`;
+                if (widgetBtn) widgetBtn.innerHTML = `[<span>${playSynthText}</span>]`;
             }
         }
 
