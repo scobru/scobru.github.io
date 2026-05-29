@@ -1506,8 +1506,9 @@
             document.getElementById('sys-status').style.color = '#ff0055';
             document.getElementById('sys-status').textContent = currentLang === 'it' ? 'IN RIPRODUZIONE' : 'PLAYING';
             
-            // Soft envelope swell
-            mainGain.gain.linearRampToValueAtTime(0.24, audioCtx.currentTime + 2.0); 
+            // Anchor volume ramp safely and increase gain to an audible level (0.8)
+            mainGain.gain.setValueAtTime(mainGain.gain.value, audioCtx.currentTime);
+            mainGain.gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + 2.0); 
             
             playNextChord();
             synthInterval = setInterval(playNextChord, 8000); 
@@ -1523,7 +1524,9 @@
             document.getElementById('sys-status').style.color = '#39ff14';
             document.getElementById('sys-status').textContent = 'ONLINE';
             
+            // Anchor volume ramp before stopping
             if (mainGain) {
+                mainGain.gain.setValueAtTime(mainGain.gain.value, audioCtx.currentTime);
                 mainGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
             }
             
@@ -1552,13 +1555,14 @@
             
             // Gentle notes release
             synthNodes.forEach(node => {
+                node.gain.gain.setValueAtTime(node.gain.gain.value, now);
                 node.gain.gain.linearRampToValueAtTime(0, now + 1.8);
                 try { node.osc.stop(now + 2.2); } catch(e) {}
                 try { node.lfo.stop(now + 2.2); } catch(e) {}
             });
             synthNodes = [];
             
-            // Build rich additive spatial chord
+            // Build rich additive spatial chord with standard, audible max volumes
             chordFreqs.forEach((freq, idx) => {
                 const osc = audioCtx.createOscillator();
                 const nodeGain = audioCtx.createGain();
@@ -1572,7 +1576,7 @@
                 
                 nodeGain.gain.setValueAtTime(0, now);
                 const swellTime = 1.8 + Math.random() * 1.5;
-                const maxVol = (idx < 2 ? 0.07 : 0.035) / chordFreqs.length;
+                const maxVol = (idx < 2 ? 0.35 : 0.2) / chordFreqs.length;
                 nodeGain.gain.linearRampToValueAtTime(maxVol, now + swellTime);
                 
                 // Drift modulation Tape wow/flutter
