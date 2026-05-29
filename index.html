@@ -801,6 +801,7 @@
                 sub: "Songwriter, Pop, Electronic",
                 url: "https://homologomusic.bandcamp.com",
                 source: "https://audius.co/francescobruno",
+                embed: `<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1262646913/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://homologomusic.bandcamp.com/track/nulla-che-vale-aspettare">NULLA CHE VALE ASPETTARE by Homologo</a></iframe>`,
                 details: {
                     en: {
                         desc: "",
@@ -819,6 +820,7 @@
                 sub: "Electronic",
                 url: "https://fademusik.bandcamp.com",
                 source: "https://audius.co/francescobruno",
+                embed: `<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1767537207/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://fademusik.bandcamp.com/track/everybodys-changing-keane-cover">Everybody&#39;s Changing [Keane Cover] by Fade</a></iframe>`,
                 details: {
                     en: {
                         desc: "",
@@ -837,6 +839,7 @@
                 sub: "Ambient, Experimental",
                 url: "https://zimablue.bandcamp.com",
                 source: "https://audius.co/francescobruno",
+                embed: `<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3243800045/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://zimablue.bandcamp.com/track/ut-li">Utúlië by Zima Blue</a></iframe>`,
                 details: {
                     en: {
                         desc: "",
@@ -1327,6 +1330,11 @@
             // Format title into 2 massive lines matching the exact typography of musicforprogramming
             const titlePrefix = item.category === 'zen' ? 'Zen App' : item.category === 'apps' ? 'Project' : item.category === 'music' ? 'Music' : item.category === 'dev' ? 'Tool' : 'Link';
 
+            let embedHtml = "";
+            if (item.embed) {
+                embedHtml = `<div class="project-embed" style="margin-top: 15px; margin-bottom: 25px; max-width: 100%; overflow: hidden;">${item.embed}</div>`;
+            }
+
             container.innerHTML = `
                 <div class="project-deck">
                     <div class="project-header-container">
@@ -1343,6 +1351,8 @@
                     <div class="dasher" style="margin: 25px 0 25px 0;">--------------------------------------------------</div>
                     
                     <p class="project-description">${details.desc}</p>
+                    
+                    ${embedHtml}
                     
                     <div class="project-tracklist">
                         ${bulletsHtml}
