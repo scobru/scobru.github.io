@@ -1,1333 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scobru | Developer & Sound Designer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
-    
-    <style>
-        /* CSS Core and Design System matching musicforprogramming.net */
-        :root {
-            /* Palette: Dark Mode (Default) */
-            --bg: #090a0c;
-            --fg: #f5f5f7;
-            --fg-header: #ffffff;
-            --fg-muted: #9ba0a5;
-            
-            /* Syntax highlighting colors */
-            --syntax-keyword: #4ba3e3;
-            --syntax-fn: #b48ead;
-            --syntax-param: #e5cbd7;
-            --syntax-str: #a3be8c;
-            --syntax-comment: #526356;
-            --syntax-num: #ffd600;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scobru — links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-            /* Category neon accents */
-            --color-zen: #00e5ff; /* Cyan */
-            --color-apps: #39ff14; /* Neon green */
-            --color-music: #ff007f; /* Magenta */
-            --color-dev: #ffab40; /* Orange */
-            --color-connect: #ffd600; /* Yellow */
-            
-            --dash-color: #39ff14; /* Green dashes */
-        }
+    :root {
+      --bg: #090a0c;
+      --fg: #f5f5f7;
+      --fg-muted: #9ba0a5;
+      --fg-dim: #4a4f54;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.16);
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(255,255,255,0.07);
 
-        /* Light Mode Inverted Colors matching the [invert] button function */
-        :root[data-theme="light"] {
-            --bg: #fdfdfa;
-            --fg: #1a1a24;
-            --fg-header: #000000;
-            --fg-muted: #6a6a7a;
-            
-            --syntax-keyword: #0000ff;
-            --syntax-fn: #a31515;
-            --syntax-param: #af5f00;
-            --syntax-str: #2c8c12;
-            --syntax-comment: #808080;
-            --syntax-num: #a900b8;
+      --zen:     #00e5ff;
+      --apps:    #39ff14;
+      --music:   #ff007f;
+      --connect: #ffd600;
+    }
 
-            --color-zen: #007a8a; /* Cyan */
-            --color-apps: #207d09; /* Green */
-            --color-music: #b8005b; /* Magenta */
-            --color-dev: #b86200; /* Orange */
-            --color-connect: #a95a00; /* Yellow */
-            
-            --dash-color: #b8005b;
-        }
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1rem 4rem;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .lt-wrap {
+      width: 100%;
+      max-width: 480px;
+    }
 
-        body {
-            font-family: 'IBM Plex Mono', monospace;
-            background-color: var(--bg);
-            color: var(--fg);
-            height: 100vh;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 290px 1fr 300px;
-            grid-template-rows: 100%;
-            padding: 40px 50px;
-            gap: 50px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+    /* ── Header ── */
+    .lt-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
 
-        /* Selection */
-        ::selection {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--fg-header);
-        }
+    .lt-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--fg);
+      letter-spacing: -1px;
+    }
 
-        /* Scrollbars styling */
-        ::-webkit-scrollbar {
-            width: 4px;
-            height: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--fg-muted);
-            opacity: 0.3;
-        }
+    .lt-name {
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 6px;
+    }
 
-        /* Column Layouts - completely borderless floating text */
-        .column {
-            height: 100%;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
+    .lt-bio {
+      font-size: 12px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto;
+    }
 
-        /* LEFT SIDEBAR - Bio and Controls */
-        .left-sidebar {
-            gap: 20px;
-        }
+    /* ── Section ── */
+    .lt-section {
+      margin-bottom: 1.75rem;
+    }
 
-        /* Free floating code */
-        .code-container {
-            font-size: 14px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            margin-bottom: 5px;
-        }
+    .lt-section-label {
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+      padding-left: 2px;
+    }
 
-        .syntax-keyword { color: var(--syntax-keyword); }
-        .syntax-fn { color: var(--syntax-fn); }
-        .syntax-param { color: var(--syntax-param); }
-        .syntax-str { color: var(--syntax-str); }
-        .syntax-comment { color: var(--syntax-comment); }
-        .syntax-num { color: var(--syntax-num); }
+    /* ── Link card ── */
+    .lt-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: background 0.15s, border-color 0.15s;
+    }
 
-        /* Dasher Separators */
-        .dasher {
-            color: var(--dash-color);
-            letter-spacing: 0px;
-            font-size: 14px;
-            user-select: none;
-            margin-bottom: 5px;
-        }
+    .lt-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+    }
 
-        .visualizer-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .lt-link-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
 
-        #visualizer-canvas {
-            width: 100%;
-            height: 50px;
-            background-color: transparent;
-        }
+    .lt-link-text { flex: 1; min-width: 0; }
 
-        .control-deck {
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+    .lt-link-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        .control-bar-progress {
-            color: var(--fg-muted);
-            letter-spacing: 2px;
-            font-weight: normal;
-        }
+    .lt-link-sub {
+      font-size: 11px;
+      color: var(--fg-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        .control-bar-sub {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
+    .lt-link-arrow {
+      color: var(--fg-dim);
+      font-size: 15px;
+      flex-shrink: 0;
+    }
 
-        .bracket-btn {
-            color: var(--fg-muted);
-            text-decoration: none;
-            cursor: pointer;
-            user-select: none;
-        }
+    /* ── Icon bg tints ── */
+    .ic-zen     { background: rgba(0,229,255,0.1);   color: var(--zen);     }
+    .ic-apps    { background: rgba(57,255,20,0.1);   color: var(--apps);    }
+    .ic-music   { background: rgba(255,0,127,0.1);   color: var(--music);   }
+    .ic-connect { background: rgba(255,214,0,0.1);   color: var(--connect); }
 
-        .bracket-btn span {
-            color: var(--color-apps);
-        }
+    /* ── Footer ── */
+    .lt-footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--fg-dim);
+      margin-top: 2rem;
+    }
 
-        .bracket-btn:hover {
-            color: var(--fg-header);
-        }
-
-        .nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .nav-link-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .nav-link-btn {
-            font-size: 14px;
-            color: var(--fg-muted);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .nav-link-btn:hover {
-            color: var(--fg-header);
-        }
-
-        .stats-block {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            font-size: 14px;
-            color: var(--syntax-comment);
-        }
-
-        .cookie-prompt {
-            font-size: 13px;
-            margin-top: 15px;
-        }
-
-        .cookie-question {
-            color: #ffd600;
-            margin-bottom: 6px;
-        }
-
-        .cookie-answers {
-            display: flex;
-            gap: 10px;
-        }
-
-        /* CENTER CONSOLE - Selected Project View */
-        .center-console {
-            padding-top: 10px;
-        }
-
-        .project-deck {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-header-container {
-            margin-bottom: 25px;
-        }
-
-        /* HUGE typography matching musicforprogramming */
-        .project-header-top {
-            font-size: 56px;
-            font-weight: normal;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            color: var(--fg-header);
-            text-transform: uppercase;
-        }
-
-        .project-header-sub {
-            font-size: 56px;
-            font-weight: normal;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            color: var(--fg-header);
-        }
-
-        .project-meta-controls {
-            display: flex;
-            gap: 18px;
-            font-size: 14px;
-            margin-top: 25px;
-        }
-
-        .meta-btn {
-            color: var(--fg-muted);
-            text-decoration: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .meta-btn:hover {
-            color: var(--fg-header);
-        }
-
-        .meta-btn.btn-active {
-            color: var(--syntax-str);
-        }
-
-        .meta-btn span {
-            color: var(--color-apps);
-        }
-
-        .project-description {
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: var(--fg-muted);
-        }
-
-        .project-tracklist {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Plain text lists - no bullet numbers matching musicforprogramming tracks */
-        .tracklist-item {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--fg);
-            transition: color 0.1s ease;
-        }
-
-        .tracklist-item:hover {
-            color: var(--fg-header);
-        }
-
-        /* RIGHT SIDEBAR - Project Index Right Aligned */
-        .right-sidebar {
-            text-align: right;
-            padding-right: 5px;
-        }
-
-        .catalog-title {
-            font-size: 14px;
-            color: var(--fg-header);
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .catalog-scroll {
-            flex: 1;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            padding-left: 10px;
-        }
-
-        .category-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .catalog-item {
-            font-size: 14px;
-            text-decoration: none;
-            color: var(--fg-muted);
-            cursor: pointer;
-            display: block;
-            line-height: 1.5;
-            transition: color 0.1s ease;
-        }
-
-        .catalog-item:hover {
-            color: var(--fg-header);
-        }
-
-        /* Neon active highlighting */
-        .catalog-item.active {
-            color: var(--fg-header) !important;
-            text-shadow: 0 0 1px var(--fg-header);
-        }
-
-        .catalog-item.active-zen { color: var(--color-zen) !important; }
-        .catalog-item.active-apps { color: var(--color-apps) !important; }
-        .catalog-item.active-music { color: var(--color-music) !important; }
-        .catalog-item.active-dev { color: var(--color-dev) !important; }
-        .catalog-item.active-connect { color: var(--color-connect) !important; }
-
-        /* Cookie modal box */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.is-open {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: var(--bg);
-            border: 1px solid var(--fg-muted);
-            max-width: 500px;
-            width: 100%;
-            padding: 30px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .modal-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: var(--fg-header);
-            border-bottom: 1px dashed var(--fg-muted);
-            padding-bottom: 8px;
-        }
-
-        .modal-text {
-            color: var(--fg-muted);
-            margin-bottom: 25px;
-        }
-
-        .modal-close {
-            text-align: right;
-        }
-
-        /* RESPONSIVENESS */
-        @media (max-width: 1080px) {
-            body {
-                grid-template-columns: 260px 1fr;
-                grid-template-rows: auto;
-                height: auto;
-                overflow-y: auto;
-                padding: 30px;
-                gap: 30px;
-            }
-            .column {
-                height: auto;
-            }
-            .right-sidebar {
-                grid-column: 1 / span 2;
-                text-align: left;
-                height: auto;
-                max-height: 500px;
-                margin-top: 30px;
-            }
-            .catalog-scroll {
-                max-height: 400px;
-            }
-            .catalog-title {
-                flex-direction: row-reverse;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-            .right-sidebar {
-                grid-column: 1;
-            }
-        }
-    </style>
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      body { padding: 2rem 1rem 3rem; }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- LEFT COLUMN -->
-    <aside class="column left-sidebar">
-        <!-- Interactive Code Bio -->
-        <div class="code-container" id="code-bio"></div>
 
-        <!-- Separation Green Dashes line -->
-        <div class="dasher">----------------------------------------</div>
+<main class="lt-wrap">
 
-        <!-- Terminal Brackets Actions / Links -->
-        <div class="nav-links">
-            <div class="nav-link-row">
-                <a class="nav-link-btn" onclick="showAboutInfo()">[<span data-i18n="about_btn">about</span>]</a>
-                <a class="nav-link-btn" href="https://github.com/scobru" target="_blank">[github]</a>
-                <a class="nav-link-btn" href="mailto:dev.scobru@pm.me">[<span data-i18n="email_btn">email</span>]</a>
-                <a class="nav-link-btn" onclick="toggleLanguage()">[<span id="lang-btn-text">lang: IT</span>]</a>
-            </div>
-            <div class="nav-link-row" style="margin-top: 4px;">
-                <a class="nav-link-btn" onclick="toggleTheme()">[<span data-i18n="invert_btn">invert</span>]</a>
-                <a class="nav-link-btn" onclick="toggleFullscreen()">[<span data-i18n="fullscreen_btn">fullscreen</span>]</a>
-                <a class="nav-link-btn" onclick="playRandomProject()">[random]</a>
-            </div>
-        </div>
+  <header class="lt-header">
+    <div class="lt-avatar">SB</div>
+    <div class="lt-name">scobru</div>
+    <div class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative tech.</div>
+  </header>
 
-        <!-- Custom retro operational statistics as comments -->
-        <div class="stats-block">
-            <div class="stats-line">// <span id="stat-proj-count">13</span> <span data-i18n="stats_projects">projects indexed</span></div>
-            <div class="stats-line">// <span id="stat-conn-count">7</span> <span data-i18n="stats_connect">connections indexed</span></div>
-            <div class="stats-line">// 7 <span data-i18n="stats_apps">mini apps operational</span></div>
-            <div class="stats-line">// <span data-i18n="stats_status">system status</span>: <span style="color: #39ff14;">ONLINE</span></div>
-        </div>
+  <!-- ZEN APPS -->
+  <section class="lt-section">
+    <div class="lt-section-label">// zen cryptic apps</div>
 
-        <!-- Cookie Prompt Dialog -->
-        <div class="cookie-prompt" id="cookie-prompt-box">
-            <div class="cookie-question" data-i18n="cookies_question">Do you know cookies are a thing?</div>
-            <div class="cookie-answers">
-                <a class="bracket-btn" onclick="answerCookie('yes')">[<span>yes</span>]</a>
-                <a class="bracket-btn" onclick="answerCookie('no')">[<span>no</span>]</a>
-                <a class="bracket-btn" onclick="answerCookie('explain')">[<span>what is it?</span>]</a>
-            </div>
-        </div>
-    </aside>
+    <a class="lt-link" href="apps/keep.html">
+      <div class="lt-link-icon ic-zen"><i class="ti ti-lock"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Zen Keep</div>
+        <div class="lt-link-sub">Zero-knowledge encryption vault</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-    <!-- CENTER COLUMN - MAIN DECK -->
-    <main class="column center-console">
-        <div class="project-deck" id="project-container">
-            <!-- Dynamically populated selected project details -->
-        </div>
-    </main>
+    <a class="lt-link" href="apps/notes.html">
+      <div class="lt-link-icon ic-zen"><i class="ti ti-notes"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Zen Notes</div>
+        <div class="lt-link-sub">Decentralized offline-first workspace</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-    <!-- RIGHT COLUMN - PROJECT INDEX (RIGHT ALIGNED) -->
-    <aside class="column right-sidebar">
-        <div class="catalog-title">
-            <span id="index-stats">20 ITEMS</span>
-            <span>INDEX CATALOG</span>
-        </div>
-        <div class="catalog-scroll" id="catalog-list">
-            <!-- Dynamically populated monospace catalog lists grouped by category -->
-        </div>
-    </aside>
+    <a class="lt-link" href="apps/bookmarks.html">
+      <div class="lt-link-icon ic-zen"><i class="ti ti-bookmark"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Zen Bookmarks</div>
+        <div class="lt-link-sub">Decentralized bookmark manager</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
+  </section>
 
-    <!-- Cookie modal box -->
-    <div class="modal" id="cookie-modal">
-        <div class="modal-content">
-            <div class="modal-title">Cookie Ledger</div>
-            <div class="modal-text" data-i18n="cookie_modal_text">This site uses no tracking cookies whatsoever. Your preferences (theme, language) are stored locally in your browser's localStorage. Full privacy guaranteed.</div>
-            <div class="modal-close">
-                <a class="bracket-btn" onclick="closeCookieModal()">[<span>close</span>]</a>
-            </div>
-        </div>
-    </div>
+  <!-- WEB APPS -->
+  <section class="lt-section">
+    <div class="lt-section-label">// web apps &amp; projects</div>
 
-    <!-- Scripting & App Logic -->
-    <script>
-        // --- TRANSLATION ENGINE DATA ---
-        const translations = {
-            en: {
-                about_btn: "about",
-                email_btn: "email",
-                invert_btn: "invert",
-                fullscreen_btn: "fullscreen",
-                stats_projects: "projects indexed",
-                stats_connect: "connections indexed",
-                stats_apps: "mini apps operational",
-                stats_status: "system status",
-                cookies_question: "Do you know cookies are a thing?",
-                cookie_modal_text: "This site uses no tracking cookies whatsoever. Your preferences (theme, language) are stored locally in your browser's localStorage. Full privacy guaranteed.",
-                about_title: "System Operator:",
-                about_desc: "Francesco Bruno (Scobru) is a multidisciplinary sound artist and engineer based in Italy. Actively working at the intersection of open-source development, peer-to-peer networks, audio synthesis, and creative tech.",
-                about_bullet_1: "P2P Architect: building secure communication and graph storage nodes.",
-                about_bullet_2: "Sound Explorer: designing synthesizers, algorithmic loops, and generative media.",
-                about_bullet_3: "Active Educator: lecturing digital systems, architectures, and creative coding."
-            },
-            it: {
-                about_btn: "chi sono",
-                email_btn: "contatti",
-                invert_btn: "inverti",
-                fullscreen_btn: "schermo intero",
-                stats_projects: "progetti indicizzati",
-                stats_connect: "collegamenti indicizzati",
-                stats_apps: "mini app operative",
-                stats_status: "stato del sistema",
-                cookies_question: "Sai che esistono i cookie?",
-                cookie_modal_text: "Questo sito non utilizza alcun cookie di tracciamento o marketing. Le tue preferenze (tema, lingua) sono salvate localmente nel localStorage del tuo browser. Massima privacy garantita.",
-                about_title: "Operatore di Sistema:",
-                about_desc: "Francesco Bruno (Scobru) è un artista sonoro ed ingegnere multidisciplinare con sede in Italia. Lavora attivamente all'intersezione tra sviluppo open source, reti peer-to-peer, sintesi audio e tecnologie creative.",
-                about_bullet_1: "Architetto P2P: progetta nodi di comunicazione sicura e grafi decentralizzati.",
-                about_bullet_2: "Esploratore Sonoro: progetta sintetizzatori, loop algoritmici e media generativi.",
-                about_bullet_3: "Formatore Attivo: insegna sistemi digitali, architetture informatiche e creative coding."
-            }
-        };
+    <a class="lt-link" href="https://scobru-tunecamp.vercel.app/" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-apps"><i class="ti ti-music"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Tunecamp</div>
+        <div class="lt-link-sub">Decentralized music streaming</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        // --- PROJECTS AND LINKS INDEX DATA ---
-        const items = [
-            {
-                id: "01",
-                category: "zen",
-                title: "Zen Keep",
-                sub: "Zero-knowledge encryption vault",
-                url: "apps/keep.html",
-                source: "https://github.com/scobru/zen",
-                details: {
-                    en: {
-                        desc: "An offline-first, zero-knowledge credentials and sensitive data vault built on ZEN. Employs client-side encryption key derivation and local state replication.",
-                        features: [
-                            "Browser-side zero-knowledge encryption using WebCrypto API",
-                            "AES-GCM 256-bit key derivation from user master keys",
-                            "Local browser storage sharding and offline-first data replication",
-                            "Zero dependencies runtime powered by zen.js database engine",
-                            "Secure encrypted backups with P2P storage export options"
-                        ]
-                    },
-                    it: {
-                        desc: "Un caveau di credenziali e dati sensibili offline-first e zero-knowledge basato su ZEN. Impiega la derivazione delle chiavi di crittografia lato client e la replicazione dello stato locale.",
-                        features: [
-                            "Crittografia zero-knowledge lato browser tramite WebCrypto API",
-                            "Derivazione di chiavi AES-GCM a 256 bit da password master",
-                            "Sharding dell'archiviazione locale del browser e sincronizzazione offline-first",
-                            "Runtime a zero dipendenze basato sull'engine di database zen.js",
-                            "Backup crittografati sicuri con opzioni di esportazione P2P"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "02",
-                category: "zen",
-                title: "Zen Notes",
-                sub: "Decentralized offline-first workspace",
-                url: "apps/notes.html",
-                source: "https://github.com/scobru/zen",
-                details: {
-                    en: {
-                        desc: "A decentralized Markdown editor and workspace running on the ZEN database engine. Implements offline-first state synchronization and local storage sharding.",
-                        features: [
-                            "WASM-based local-first Markdown engine with live preview",
-                            "Real-time state convergence via HAM CRDT conflict resolution",
-                            "Zero-knowledge end-to-edge encryption via SEA keypairs",
-                            "Local-first storage sharding for high-speed offline access",
-                            "Fast decentralized index search and P2P sync channels"
-                        ]
-                    },
-                    it: {
-                        desc: "Un editor e spazio di lavoro Markdown decentralizzato basato sull'engine del database ZEN. Implementa la sincronizzazione dello stato offline-first e lo sharding dell'archiviazione locale.",
-                        features: [
-                            "Engine Markdown local-first basato su WASM con anteprima live",
-                            "Convergenza di stato in tempo reale tramite risoluzione conflitti HAM CRDT",
-                            "Crittografia end-to-edge zero-knowledge tramite coppie di chiavi SEA",
-                            "Sharding dell'archiviazione local-first per accesso offline ultra-veloce",
-                            "Ricerca rapida nell'indice decentralizzato e canali di sincronizzazione P2P"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "03",
-                category: "zen",
-                title: "Zen Bookmarks",
-                sub: "Decentralized browser bookmark manager",
-                url: "apps/bookmarks.html",
-                source: "https://github.com/scobru/zen",
-                details: {
-                    en: {
-                        desc: "A secure, private, and decentralized bookmarks catalog running on ZEN. Designed for cryptographic data sovereignty and client-side sharding.",
-                        features: [
-                            "Private bookmark sharding mapped directly on the ZEN P2P graph",
-                            "End-to-edge client-side encryption protecting user catalog lists",
-                            "Fast semantic tagging and category search tools",
-                            "Import/export support for traditional browser bookmark indexes",
-                            "Complete digital sovereignty with zero third-party telemetry"
-                        ]
-                    },
-                    it: {
-                        desc: "Un catalogo di segnalibri sicuro, privato e decentralizzato gestito su ZEN. Progettato per la sovranità crittografica dei dati e lo sharding lato client.",
-                        features: [
-                            "Sharding privato dei segnalibri mappato direttamente sul grafo P2P di ZEN",
-                            "Crittografia client-side end-to-edge per proteggere i segnalibri dell'utente",
-                            "Tagging semantico rapido e strumenti di ricerca per categoria",
-                            "Supporto all'importazione/esportazione di indici da browser tradizionali",
-                            "Massima sovranità digitale con zero telemetria di terze parti"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "04",
-                category: "apps",
-                title: "Tunecamp",
-                sub: "Decentralized media & federated music streaming",
-                url: "https://scobru-tunecamp.vercel.app/",
-                source: "https://github.com/scobru/tunecamp",
-                details: {
-                    en: {
-                        desc: "Tunecamp is the media-centric application of the Shogun ecosystem, created by scobru. It provides a decentralized alternative to traditional music streaming platforms, emphasizing artist sovereignty and self-hosting.",
-                        features: [
-                            "Hybrid Federation: ZEN for P2P discovery + ActivityPub (Fedify) + REST",
-                            "Monetization: Base Network splits (85/15) via EIP-1167 minimal proxies",
-                            "AI-driven metadata enrichment, recommendation & mood tagging via OpenRouter",
-                            "Zen-first Session Roaming authentication using edge SEA credentials",
-                            "Full Subsonic API (v1.16.1) compatibility for modular audio player clients"
-                        ]
-                    },
-                    it: {
-                        desc: "Tunecamp è l'applicazione media-centrica dell'ecosistema Shogun, creata da scobru. Fornisce un'alternativa decentralizzata alle tradizionali piattaforme di streaming musicale, ponendo l'accento sulla sovranità dell'artista e sull'auto-hosting.",
-                        features: [
-                            "Federazione Ibrida: ZEN per scoperta P2P + ActivityPub (Fedify) + REST",
-                            "Monetizzazione: Split dei ricavi su Base L2 (85/15) via proxy minimali EIP-1167",
-                            "Arricchimento metadati con AI OpenRouter per raccomandazioni e tag automatici",
-                            "Autenticazione Zen-first Session Roaming con credenziali SEA lato client",
-                            "Piena compatibilità con le API Subsonic (v1.16.1) per player audio esterni"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "05",
-                category: "apps",
-                title: "Linda Chat",
-                sub: "Decentralized TPRE & PQ resistant messenger",
-                url: "https://scobru-linda.vercel.app/",
-                source: "https://github.com/scobru/linda",
-                details: {
-                    en: {
-                        desc: "Linda is the primary messaging application of the Shogun ecosystem, created by scobru. It provides a secure, decentralized, and high-performance communication experience.",
-                        features: [
-                            "Unified TPRE model using NuCypher Umbral for secure cryptographic group rooms",
-                            "Hybrid Post-Quantum Resistance implemented via ML-KEM-768 (Kyber)",
-                            "No central database footprint: fully ephemeral peer-to-peer logs",
-                            "WebRTC direct channels with automatic Wormhole asynchronous fallback relays",
-                            "Premium high-density visual design built on OLED Black aesthetics"
-                        ]
-                    },
-                    it: {
-                        desc: "Linda è l'applicazione di messaggistica principale dell'ecosistema Shogun, creata da scobru. Offre un'esperienza di comunicazione sicura, decentralizzata e ad alte prestazioni.",
-                        features: [
-                            "Modello TPRE unificato con NuCypher Umbral per stanze di gruppo crittografate",
-                            "Resistenza Ibrida Post-Quantum implementata tramite ML-KEM-768 (Kyber)",
-                            "Nessuna impronta su database centrali: log P2P completamente effimeri",
-                            "Canali diretti WebRTC con fallback asincrono automatico su relay Wormhole",
-                            "Design visivo premium ad alta densità basato su estetica OLED Black"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "06",
-                category: "apps",
-                title: "Wormhole",
-                sub: "Shared-core isomorphic E2EE file transfer",
-                url: "https://scobru-wormhole.vercel.app/",
-                source: "https://github.com/scobru/wormhole",
-                details: {
-                    en: {
-                        desc: "Wormhole is a high-performance, decentralized P2P file transfer and encrypted messaging tool within the Scobru Ecosystem. It provides end-to-end encrypted (E2EE) sharing through both a CLI interface and a modern web dashboard.",
-                        features: [
-                            "Shared core managing client-side AES-GCM encryption and ZEN signaling",
-                            "Mnemonic key sharing codes (e.g., 5-brave-fire) derived from keys",
-                            "Hybrid transport: ZEN for metadata + IPFS Relay for blind ephemeral chunk storage",
-                            "Zero data trace: automatic file unpinning on Relay post-transfer or timeout",
-                            "Automatic LAN peer discovery on local networks via UDP Multicast"
-                        ]
-                    },
-                    it: {
-                        desc: "Wormhole è uno strumento decentralizzato ad alte prestazioni per il trasferimento di file P2P e la messaggistica crittografata all'interno dell'Ecosistema Scobru. Fornisce condivisione crittografata end-to-end (E2EE) sia tramite interfaccia CLI che tramite una moderna dashboard web.",
-                        features: [
-                            "Core condiviso che gestisce crittografia AES-GCM client-side e segnalazione ZEN",
-                            "Codici di condivisione mnemonici (es. 5-brave-fire) derivati dalle chiavi",
-                            "Trasporto ibrido: ZEN per metadati + IPFS Relay per memorizzazione blind temporanea",
-                            "Zero impronte dati: pulizia automatica su IPFS Relay post-trasferimento o timeout",
-                            "Scoperta automatica dei peer su reti locali tramite UDP Multicast"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "07",
-                category: "apps",
-                title: "Nullroute",
-                sub: "EVM Stealth payment transaction hub",
-                url: "https://scobru-nullroute.vercel.app/",
-                source: "https://github.com/scobru/uniswap-ai-trader",
-                details: {
-                    en: {
-                        desc: "A premium private payment hub built on EVM/Base chains using stealth addresses. Derives deterministic spending/viewing keys from your ZEN identity.",
-                        features: [
-                            "ERC-5564 Stealth Addresses (Fluidkey Stealth Account Kit) for unlinked payments",
-                            "Low-CPU scanning via View Tags derived from keccak256 shared secrets",
-                            "Deterministic key derivation (Neural, Spending, Viewing keys) from Zen seaEpriv",
-                            "Universal User Shim in DataBase class monkey-patching Zen for compatibility",
-                            "Seamless shared session auth restoration across Linda and Null Route environments"
-                        ]
-                    },
-                    it: {
-                        desc: "Un hub di pagamenti privati premium costruito su catene EVM/Base tramite Stealth Addresses. Deriva chiavi deterministiche di spesa e visualizzazione dalla tua identità ZEN.",
-                        features: [
-                            "Stealth Addresses ERC-5564 (Fluidkey Stealth Account Kit) per transazioni anonime",
-                            "Scansione a basso consumo CPU tramite View Tags generati da segreti condivisi",
-                            "Derivazione deterministica delle chiavi (Neurale, Spesa, Vista) da Zen seaEpriv",
-                            "Universal User Shim in classe DataBase con monkey-patching Zen per compatibilità",
-                            "Ripristino fluido della sessione condivisa tra gli ambienti Linda e Null Route"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "08",
-                category: "music",
-                title: "Homologo",
-                sub: "Songwriter, Pop, Electronic",
-                url: "https://homologomusic.bandcamp.com",
-                source: "https://audius.co/francescobruno",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "09",
-                category: "music",
-                title: "Fade",
-                sub: "Electronic",
-                url: "https://fademusik.bandcamp.com",
-                source: "https://audius.co/francescobruno",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "10",
-                category: "music",
-                title: "Zima Blue",
-                sub: "Ambient, Experimental",
-                url: "https://zimablue.bandcamp.com",
-                source: "https://audius.co/francescobruno",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "11",
-                category: "music",
-                title: "Audius Profile",
-                sub: "All music on decentralized web3",
-                url: "https://audius.co/francescobruno",
-                source: "https://audius.co/francescobruno",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "12",
-                category: "dev",
-                title: "Delay Server",
-                sub: "Unified infrastructure connection hub",
-                // url: "https://github.com/scobru/shogun-relay", // removed shogun reference
-                // source: "https://github.com/scobru/shogun-relay", // removed shogun reference
-                details: {
-                    en: {
-                        desc: "The primary Shogun network node and unified connection hub. Integrates ZEN signaling, SQLite memory sharding, and blind persistence IPFS gateway APIs.",
-                        features: [
-                            "High-throughput ZEN signaling backbone node for decentralized sync",
-                            "Fast SQLite memory sharding and persistent key-value caching layers",
-                            "Blind persistence REST APIs for Wormhole and Linda binary relays",
-                            "Timing-safe constant-time SHA-256 admin token authentication",
-                            "UserLockManager concurrency synchronization protecting user processes"
-                        ]
-                    },
-                    it: {
-                        desc: "Il nodo di rete primario dell'ecosistema Shogun e hub di connessione unificato. Integra la segnalazione ZEN, lo sharding di memoria SQLite e le API gateway IPFS per la persistenza cieca.",
-                        features: [
-                            "Nodo backbone di segnalazione ZEN ad alto rendimento per sincro decentralizzata",
-                            "Sincronizzazione rapida via SQLite memory sharding e livelli di cache KV",
-                            "API REST per persistenza cieca su IPFS per i relay binari di Wormhole e Linda",
-                            "Autenticazione sicura a tempo costante SHA-256 contro attacchi temporali",
-                            "UserLockManager per la sincronizzazione concorrente delle operazioni utente"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "13",
-                category: "dev",
-                title: "Smart Contracts",
-                sub: "Base L2 Solidity infrastructure",
-                // url: "https://github.com/scobru/shogun-contracts", // removed shogun reference
-                // source: "https://github.com/scobru/shogun-contracts", // removed shogun reference
-                details: {
-                    en: {
-                        desc: "Gas-optimized Solidity registry and settlement contracts powering decentralized identity, minimal checkout proxies, and permissionless revenue splits.",
-                        features: [
-                            "Solidity decentralized identity registries and proxy licensing contracts",
-                            "EIP-1167 minimal proxy factories for ultra-low cost checkout deployment",
-                            "Permissionless, on-chain automated payment splits and fee handling",
-                            "Extensively tested and verified via Foundry and Hardhat test vectors",
-                            "Deeply optimized execution using Yul assembly and EVM bytecode"
-                        ]
-                    },
-                    it: {
-                        desc: "Contratti Solidity di registro e regolamento ottimizzati per il gas, che gestiscono l'identità decentralizzata, proxy minimi per checkout e split automatici dei ricavi.",
-                        features: [
-                            "Smart contract Solidity per registri identità e licenze proxy decentralizzate",
-                            "Fabbrica di proxy minimali EIP-1167 per deploy checkout a bassissimo costo",
-                            "Split automatico e senza intermediari dei pagamenti e delle fee on-chain",
-                            "Testati in modo estensivo e verificati con suite Foundry e Hardhat",
-                            "Esecuzione ottimizzata tramite Yul assembly e bytecode EVM"
-                        ]
-                    }
-                }
-            },
-            {
-                id: "14",
-                category: "connect",
-                title: "GitHub Profile",
-                sub: "Open source profile",
-                url: "https://github.com/scobru",
-                source: "https://github.com/scobru",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "15",
-                category: "connect",
-                title: "Twitter (X)",
-                sub: "scobru1988",
-                url: "https://twitter.com/scobru1988",
-                source: "https://twitter.com/scobru1988",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "16",
-                category: "connect",
-                title: "Mastodon",
-                sub: "@scobru@livellosegreto.it",
-                url: "https://livellosegreto.it/@scobru",
-                source: "https://livellosegreto.it/@scobru",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "17",
-                category: "connect",
-                title: "Telegram Chat",
-                sub: "t.me/scobru",
-                url: "https://t.me/scobru",
-                source: "https://t.me/scobru",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "18",
-                category: "connect",
-                title: "Instagram",
-                sub: "francescobruno",
-                url: "https://instagram.com/francescobruno",
-                source: "https://instagram.com/francescobruno",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "19",
-                category: "connect",
-                title: "YouTube Channel",
-                sub: "scobru88",
-                url: "https://youtube.com/scobru88",
-                source: "https://youtube.com/scobru88",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            },
-            {
-                id: "20",
-                category: "connect",
-                title: "Email Direct",
-                sub: "dev.scobru@pm.me",
-                url: "mailto:dev.scobru@pm.me",
-                source: "mailto:dev.scobru@pm.me",
-                details: {
-                    en: {
-                        desc: "",
-                        features: []
-                    },
-                    it: {
-                        desc: "",
-                        features: []
-                    }
-                }
-            }
-        ];
+    <a class="lt-link" href="https://scobru-linda.vercel.app/" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-apps"><i class="ti ti-message-circle"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Linda Chat</div>
+        <div class="lt-link-sub">TPRE &amp; post-quantum messenger</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        // --- CORE APPLICATION STATE ---
-        let currentLang = localStorage.getItem('lang') || 'en';
-        let currentTheme = localStorage.getItem('theme') || 'dark';
-        let selectedItemIndex = 0;
+    <a class="lt-link" href="https://scobru-wormhole.vercel.app/" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-apps"><i class="ti ti-transfer"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Wormhole</div>
+        <div class="lt-link-sub">E2EE P2P file transfer</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        // --- THEME MANAGEMENT ---
-        function applyTheme() {
-            if (currentTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', 'light');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-            }
-        }
+    <a class="lt-link" href="https://scobru-nullroute.vercel.app/" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-apps"><i class="ti ti-eye-off"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Nullroute</div>
+        <div class="lt-link-sub">EVM stealth payment hub</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
+  </section>
 
-        function toggleTheme() {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', currentTheme);
-            applyTheme();
-        }
+  <!-- MUSIC -->
+  <section class="lt-section">
+    <div class="lt-section-label">// music &amp; art</div>
 
-        // --- LOCALIZATION HANDLER ---
-        function applyLocalization() {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang] && translations[currentLang][key]) {
-                    el.textContent = translations[currentLang][key];
-                }
-            });
+    <a class="lt-link" href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Homologo</div>
+        <div class="lt-link-sub">Songwriter, Pop, Electronic</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-            // Update on-page toggle text
-            document.getElementById('lang-btn-text').textContent = `lang: ${currentLang.toUpperCase()}`;
+    <a class="lt-link" href="https://fademusik.bandcamp.com" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Fade</div>
+        <div class="lt-link-sub">Electronic</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-            // Re-render components with localized text
-            renderCodeBio();
-            renderSelectedProject();
-            renderCatalog();
-        }
+    <a class="lt-link" href="https://zimablue.bandcamp.com" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Zima Blue</div>
+        <div class="lt-link-sub">Ambient, Experimental</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'it' : 'en';
-            localStorage.setItem('lang', currentLang);
-            applyLocalization();
-        }
+    <a class="lt-link" href="https://audius.co/francescobruno" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-music"><i class="ti ti-player-play"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Audius Profile</div>
+        <div class="lt-link-sub">All music on decentralized web3</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
+  </section>
 
-        // --- FULLSCREEN CONTROLLER ---
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {});
-            } else {
-                document.exitFullscreen();
-            }
-        }
+  <!-- CONNECT -->
+  <section class="lt-section">
+    <div class="lt-section-label">// connect</div>
 
-        // --- INTERACTIVE COOKIE CONTROLLER ---
-        function answerCookie(type) {
-            const promptBox = document.getElementById('cookie-prompt-box');
-            if (type === 'yes' || type === 'no') {
-                promptBox.style.display = 'none';
-                localStorage.setItem('cookies-answered', 'true');
-            } else if (type === 'explain') {
-                document.getElementById('cookie-modal').classList.add('is-open');
-            }
-        }
+    <a class="lt-link" href="https://github.com/scobru" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-github"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">GitHub</div>
+        <div class="lt-link-sub">scobru</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        function closeCookieModal() {
-            document.getElementById('cookie-modal').classList.remove('is-open');
-        }
+    <a class="lt-link" href="https://twitter.com/scobru1988" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-x"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Twitter (X)</div>
+        <div class="lt-link-sub">scobru1988</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        // --- CODE BIO RENDERING ---
-        function renderCodeBio() {
-            const container = document.getElementById('code-bio');
-            const codeText = currentLang === 'en' 
-                ? `function musicFor(task = 'programming') {\n  return 'A series of mixes intended for listening while \${task} to focus the brain and inspire the mind.';\n}`
-                : `function musicaPer(compito = 'programmare') {\n  return 'Una serie di mix concepiti per l\\'ascolto durante il \${compito} per focalizzare la mente.';\n}`;
-            
-            // Generate syntax highlighted text
-            const highlighted = codeText
-                .replace(/(function|return)/g, '<span class="syntax-keyword">$1</span>')
-                .replace(/(musicFor|musicaPer)/g, '<span class="syntax-fn">$1</span>')
-                .replace(/(task|compito|'programming'|'programmare')/g, match => {
-                    if (match === 'task' || match === 'compito') return '<span class="syntax-param">task</span>';
-                    return `<span class="syntax-str">${match}</span>`;
-                })
-                .replace(/'([^']+)'/g, '<span class="syntax-str">\'$1\'</span>');
-            
-            container.innerHTML = highlighted;
-        }
+    <a class="lt-link" href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-mastodon"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Mastodon</div>
+        <div class="lt-link-sub">@scobru@livellosegreto.it</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-        // --- CATALOG RENDERING ---
-        function renderCatalog() {
-            const container = document.getElementById('catalog-list');
-            container.innerHTML = "";
+    <a class="lt-link" href="https://t.me/scobru" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-telegram"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Telegram</div>
+        <div class="lt-link-sub">t.me/scobru</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-            const categories = {
-                zen: { title: "ZEN Cryptic Apps", class: "category-zen" },
-                apps: { title: "Web Apps & Projects", class: "category-apps" },
-                music: { title: "Music & Art", class: "category-music" },
-                dev: { title: "Dev Tools", class: "category-dev" },
-                connect: { title: "Connect Links", class: "category-connect" }
-            };
+    <a class="lt-link" href="https://instagram.com/francescobruno" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-instagram"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Instagram</div>
+        <div class="lt-link-sub">francescobruno</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-            // Loop categories
-            Object.keys(categories).forEach(catKey => {
-                const catGroup = document.createElement('div');
-                catGroup.className = "category-group";
+    <a class="lt-link" href="https://youtube.com/scobru88" target="_blank" rel="noopener">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-youtube"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">YouTube</div>
+        <div class="lt-link-sub">scobru88</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
 
-                const groupItems = items.filter(i => i.category === catKey);
-                groupItems.forEach(item => {
-                    const itemIndex = items.indexOf(item);
-                    const itemBtn = document.createElement('a');
-                    
-                    // Highlights matching category
-                    itemBtn.className = `catalog-item`;
-                    if (itemIndex === selectedItemIndex) {
-                        itemBtn.className += ` active active-${item.category}`;
-                    }
+    <a class="lt-link" href="mailto:dev.scobru@pm.me">
+      <div class="lt-link-icon ic-connect"><i class="ti ti-mail"></i></div>
+      <div class="lt-link-text">
+        <div class="lt-link-title">Email</div>
+        <div class="lt-link-sub">dev.scobru@pm.me</div>
+      </div>
+      <i class="ti ti-arrow-right lt-link-arrow"></i>
+    </a>
+  </section>
 
-                    // Format name right-aligned
-                    itemBtn.innerHTML = `${item.id}: ${item.title}`;
-                    itemBtn.onclick = () => selectItem(itemIndex);
-                    catGroup.appendChild(itemBtn);
-                });
+  <footer class="lt-footer">// 20 items indexed &nbsp;·&nbsp; system: <span style="color:#39ff14;">online</span></footer>
 
-                container.appendChild(catGroup);
-            });
+</main>
 
-            // Update stats badges dynamically
-            const projectCount = items.filter(i => i.category !== 'connect').length;
-            const connectCount = items.filter(i => i.category === 'connect').length;
-            const totalCount = items.length;
-
-            const itemsText = currentLang === 'it' ? 'ELEMENTI' : 'ITEMS';
-            document.getElementById('index-stats').textContent = `${totalCount} ${itemsText}`;
-            
-            document.getElementById('stat-proj-count').textContent = projectCount;
-            document.getElementById('stat-conn-count').textContent = connectCount;
-        }
-
-        // --- SELECTED PROJECT RENDERING ---
-        function renderSelectedProject() {
-            const container = document.getElementById('project-container');
-            const item = items[selectedItemIndex];
-            const details = item.details[currentLang] || item.details['en'];
-
-            let sourceButtonHtml = "";
-            if (item.source) {
-                const sourceText = currentLang === 'it' ? "codice" : "source";
-                sourceButtonHtml = `<a href="${item.source}" target="_blank" class="meta-btn">[<span>${sourceText}</span>]</a>`;
-            }
-
-            const visitText = currentLang === 'it' ? "visita" : "visit";
-            const favText = currentLang === 'it' ? "preferito" : "favourite";
-
-            // All items now show a direct visit button
-            const playButtonHtml = `<a href="${item.url}" target="${item.url.startsWith('http') ? '_blank' : '_self'}" class="meta-btn">[<span>${visitText}</span>]</a>`;
-
-            // Build bullet points as plain text rows (no standard bullet points matching track rows)
-            const bulletsHtml = details.features.map((feat) => {
-                return `<div class="tracklist-item">${feat}</div>`;
-            }).join('');
-
-            // Format title into 2 massive lines matching the exact typography of musicforprogramming
-            const titlePrefix = item.category === 'zen' ? 'Zen App' : item.category === 'apps' ? 'Project' : item.category === 'music' ? 'Music' : item.category === 'dev' ? 'Tool' : 'Link';
-
-            let embedHtml = "";
-            
-
-            container.innerHTML = `
-                <div class="project-deck">
-                    <div class="project-header-container">
-                        <div class="project-header-top">${titlePrefix} ${item.id}:</div>
-                        <div class="project-header-sub" style="color: var(--color-${item.category});">${item.title}</div>
-                    </div>
-                    
-                    <div class="project-meta-controls">
-                        ${playButtonHtml}
-                        ${sourceButtonHtml}
-                        <a onclick="toggleFav(${selectedItemIndex})" class="meta-btn" id="fav-btn-${item.id}">[<span>${favText}</span>]</a>
-                    </div>
-                    
-                    <div class="dasher" style="margin: 25px 0 25px 0;">--------------------------------------------------</div>
-                    
-                    <p class="project-description">${details.desc}</p>
-                    
-                    ${embedHtml}
-                    
-                    <div class="project-tracklist">
-                        ${bulletsHtml}
-                    </div>
-                </div>
-            `;
-
-            updateFavState(item.id);
-        }
-
-        // Select item by index
-        function selectItem(index) {
-            selectedItemIndex = index;
-            renderCatalog();
-            renderSelectedProject();
-        }
-
-        // Show Scobru bio on click
-        function showAboutInfo() {
-            const container = document.getElementById('project-container');
-            const aboutTitle = translations[currentLang].about_title;
-            const aboutDesc = translations[currentLang].about_desc;
-            
-            const bullets = [
-                translations[currentLang].about_bullet_1,
-                translations[currentLang].about_bullet_2,
-                translations[currentLang].about_bullet_3
-            ];
-
-            const bulletsHtml = bullets.map((feat) => {
-                return `<div class="tracklist-item">${feat}</div>`;
-            }).join('');
-
-            container.innerHTML = `
-                <div class="project-deck">
-                    <div class="project-header-container">
-                        <div class="project-header-top">Operator:</div>
-                        <div class="project-header-sub">Francesco Bruno</div>
-                    </div>
-                    
-                    <div class="project-meta-controls">
-                        <span class="meta-btn">[<span>about scobru</span>]</span>
-                    </div>
-                    
-                    <div class="dasher" style="margin: 25px 0 25px 0;">--------------------------------------------------</div>
-                    
-                    <p class="project-description">${aboutDesc}</p>
-                    
-                    <div class="project-tracklist">
-                        ${bulletsHtml}
-                    </div>
-                </div>
-            `;
-            
-            // Remove active classes in catalog list
-            document.querySelectorAll('.catalog-item').forEach(el => el.classList.remove('active'));
-        }
-
-        // Play random project
-        function playRandomProject() {
-            const randIdx = Math.floor(Math.random() * items.length);
-            selectItem(randIdx);
-        }
-
-        // Favourites toggler (localStorage based)
-        function toggleFav(idx) {
-            const item = items[idx];
-            const favs = JSON.parse(localStorage.getItem('fav-projects') || '{}');
-            if (favs[item.id]) {
-                delete favs[item.id];
-            } else {
-                favs[item.id] = true;
-            }
-            localStorage.setItem('fav-projects', JSON.stringify(favs));
-            updateFavState(item.id);
-        }
-
-        function updateFavState(id) {
-            const favBtn = document.getElementById(`fav-btn-${id}`);
-            if (!favBtn) return;
-            const favs = JSON.parse(localStorage.getItem('fav-projects') || '{}');
-            if (favs[id]) {
-                favBtn.classList.add('btn-active');
-            } else {
-                favBtn.classList.remove('btn-active');
-            }
-        }
-
-        // --- APP INITIALIZATION ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // Apply storage configurations
-            applyTheme();
-            applyLocalization();
-            
-            // Check cookies answer
-            if (localStorage.getItem('cookies-answered')) {
-                document.getElementById('cookie-prompt-box').style.display = 'none';
-            }
-            
-            // Select default app
-            selectItem(0);
-        });
-    </script>
 </body>
-
 </html>
