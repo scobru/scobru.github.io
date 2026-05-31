@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,27 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #090a0c;
       --fg: #f5f5f7;
       --fg-muted: #9ba0a5;
       --fg-dim: #4a4f54;
-      --border: rgba(255,255,255,0.08);
-      --border-hover: rgba(255,255,255,0.16);
-      --surface: rgba(255,255,255,0.04);
-      --surface-hover: rgba(255,255,255,0.07);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.16);
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-hover: rgba(255, 255, 255, 0.07);
 
-      --zen:     #00e5ff;
-      --apps:    #39ff14;
-      --music:   #ff007f;
+      --zen: #00e5ff;
+      --apps: #39ff14;
+      --music: #ff007f;
       --connect: #ffd600;
     }
 
@@ -73,7 +80,7 @@
     }
 
     .lt-bio {
-      font-size: 12px;
+      font-size: 16px;
       color: var(--fg-muted);
       line-height: 1.6;
       max-width: 320px;
@@ -86,7 +93,7 @@
     }
 
     .lt-section-label {
-      font-size: 11px;
+      font-size: 15px;
       color: var(--fg-dim);
       letter-spacing: 0.06em;
       margin-bottom: 10px;
@@ -124,7 +131,10 @@
       font-size: 16px;
     }
 
-    .lt-link-text { flex: 1; min-width: 0; }
+    .lt-link-text {
+      flex: 1;
+      min-width: 0;
+    }
 
     .lt-link-title {
       font-size: 13px;
@@ -151,10 +161,25 @@
     }
 
     /* ── Icon bg tints ── */
-    .ic-zen     { background: rgba(0,229,255,0.1);   color: var(--zen);     }
-    .ic-apps    { background: rgba(57,255,20,0.1);   color: var(--apps);    }
-    .ic-music   { background: rgba(255,0,127,0.1);   color: var(--music);   }
-    .ic-connect { background: rgba(255,214,0,0.1);   color: var(--connect); }
+    .ic-zen {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--zen);
+    }
+
+    .ic-apps {
+      background: rgba(57, 255, 20, 0.1);
+      color: var(--apps);
+    }
+
+    .ic-music {
+      background: rgba(255, 0, 127, 0.1);
+      color: var(--music);
+    }
+
+    .ic-connect {
+      background: rgba(255, 214, 0, 0.1);
+      color: var(--connect);
+    }
 
     /* ── Footer ── */
     .lt-footer {
@@ -166,209 +191,216 @@
 
     /* ── Responsive ── */
     @media (max-width: 520px) {
-      body { padding: 2rem 1rem 3rem; }
+      body {
+        padding: 2rem 1rem 3rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<main class="lt-wrap">
+  <main class="lt-wrap">
 
-  <header class="lt-header">
-    <div class="lt-avatar">SB</div>
-    <div class="lt-name">scobru</div>
-    <div class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative tech.</div>
-  </header>
+    <header class="lt-header">
+      <div class="lt-avatar">SB</div>
+      <div class="lt-name">scobru</div>
+      <div class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis,
+        creative tech.</div>
+    </header>
 
-  <!-- ZEN APPS -->
-  <section class="lt-section">
-    <div class="lt-section-label">// zen cryptic apps</div>
+    <!-- ZEN APPS -->
+    <section class="lt-section">
+      <div class="lt-section-label">// zen cryptic apps</div>
 
-    <a class="lt-link" href="apps/keep.html">
-      <div class="lt-link-icon ic-zen"><i class="ti ti-lock"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Zen Keep</div>
-        <div class="lt-link-sub">Zero-knowledge encryption vault</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="apps/keep.html">
+        <div class="lt-link-icon ic-zen"><i class="ti ti-lock"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Zen Keep</div>
+          <div class="lt-link-sub">Zero-knowledge encryption vault</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="apps/notes.html">
-      <div class="lt-link-icon ic-zen"><i class="ti ti-notes"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Zen Notes</div>
-        <div class="lt-link-sub">Decentralized offline-first workspace</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="apps/notes.html">
+        <div class="lt-link-icon ic-zen"><i class="ti ti-notes"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Zen Notes</div>
+          <div class="lt-link-sub">Decentralized offline-first workspace</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="apps/bookmarks.html">
-      <div class="lt-link-icon ic-zen"><i class="ti ti-bookmark"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Zen Bookmarks</div>
-        <div class="lt-link-sub">Decentralized bookmark manager</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
-  </section>
+      <a class="lt-link" href="apps/bookmarks.html">
+        <div class="lt-link-icon ic-zen"><i class="ti ti-bookmark"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Zen Bookmarks</div>
+          <div class="lt-link-sub">Decentralized bookmark manager</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
+    </section>
 
-  <!-- WEB APPS -->
-  <section class="lt-section">
-    <div class="lt-section-label">// web apps &amp; projects</div>
+    <!-- WEB APPS -->
+    <section class="lt-section">
+      <div class="lt-section-label">// web apps &amp; projects</div>
 
-    <a class="lt-link" href="https://scobru-tunecamp.vercel.app/" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-apps"><i class="ti ti-music"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Tunecamp</div>
-        <div class="lt-link-sub">Decentralized music streaming</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://scobru-tunecamp.vercel.app/" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-apps"><i class="ti ti-music"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Tunecamp</div>
+          <div class="lt-link-sub">Decentralized music streaming</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://scobru-linda.vercel.app/" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-apps"><i class="ti ti-message-circle"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Linda Chat</div>
-        <div class="lt-link-sub">TPRE &amp; post-quantum messenger</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://scobru-linda.vercel.app/" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-apps"><i class="ti ti-message-circle"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Linda Chat</div>
+          <div class="lt-link-sub">TPRE &amp; post-quantum messenger</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://scobru-wormhole.vercel.app/" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-apps"><i class="ti ti-transfer"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Wormhole</div>
-        <div class="lt-link-sub">E2EE P2P file transfer</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://scobru-wormhole.vercel.app/" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-apps"><i class="ti ti-transfer"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Wormhole</div>
+          <div class="lt-link-sub">E2EE P2P file transfer</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://scobru-nullroute.vercel.app/" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-apps"><i class="ti ti-eye-off"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Nullroute</div>
-        <div class="lt-link-sub">EVM stealth payment hub</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
-  </section>
+      <a class="lt-link" href="https://scobru-nullroute.vercel.app/" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-apps"><i class="ti ti-eye-off"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Nullroute</div>
+          <div class="lt-link-sub">EVM stealth payment hub</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
+    </section>
 
-  <!-- MUSIC -->
-  <section class="lt-section">
-    <div class="lt-section-label">// music &amp; art</div>
+    <!-- MUSIC -->
+    <section class="lt-section">
+      <div class="lt-section-label">// music &amp; art</div>
 
-    <a class="lt-link" href="https://sudorecords.scobrudot.dev" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Sudo Records</div>
-        <div class="lt-link-sub">Record Label based hosted on Tunecamp</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://sudorecords.scobrudot.dev" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Sudo Records</div>
+          <div class="lt-link-sub">Record Label based hosted on Tunecamp</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Homologo</div>
-        <div class="lt-link-sub">Songwriter, Pop, Electronic</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Homologo</div>
+          <div class="lt-link-sub">Songwriter, Pop, Electronic</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://fademusik.bandcamp.com" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Fade</div>
-        <div class="lt-link-sub">Electronic</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://fademusik.bandcamp.com" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Fade</div>
+          <div class="lt-link-sub">Electronic</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://zimablue.bandcamp.com" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Zima Blue</div>
-        <div class="lt-link-sub">Ambient, Experimental</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://zimablue.bandcamp.com" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Zima Blue</div>
+          <div class="lt-link-sub">Ambient, Experimental</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
+    </section>
 
-    <a class="lt-link" href="https://audius.co/francescobruno" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-music"><i class="ti ti-player-play"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Audius</div>
-        <div class="lt-link-sub">All music on decentralized web3</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
 
-     <a class="lt-link" href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=50178c1b2b3a4278" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-music"><i class="ti ti-player-play"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Spotify</div>
-        <div class="lt-link-sub">All music on spotify</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
-  </section>
+    <!-- CONNECT -->
+    <section class="lt-section">
+      <div class="lt-section-label">// connect</div>
 
-  <!-- CONNECT -->
-  <section class="lt-section">
-    <div class="lt-section-label">// connect</div>
+      <a class="lt-link" href="https://github.com/scobru" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-brand-github"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">GitHub</div>
+          <div class="lt-link-sub">scobru</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://github.com/scobru" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-github"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">GitHub</div>
-        <div class="lt-link-sub">scobru</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://twitter.com/scobru1988" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-brand-x"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Twitter (X)</div>
+          <div class="lt-link-sub">scobru1988</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://twitter.com/scobru1988" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-x"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Twitter (X)</div>
-        <div class="lt-link-sub">scobru1988</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-brand-mastodon"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Mastodon</div>
+          <div class="lt-link-sub">@scobru@livellosegreto.it</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-mastodon"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Mastodon</div>
-        <div class="lt-link-sub">@scobru@livellosegreto.it</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://t.me/scobru" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-brand-telegram"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Telegram</div>
+          <div class="lt-link-sub">t.me/scobru</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://t.me/scobru" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-telegram"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Telegram</div>
-        <div class="lt-link-sub">t.me/scobru</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://instagram.com/francescobruno" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-brand-instagram"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Instagram</div>
+          <div class="lt-link-sub">francescobruno</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://instagram.com/francescobruno" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-instagram"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">Instagram</div>
-        <div class="lt-link-sub">francescobruno</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://youtube.com/scobru88" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-brand-youtube"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">YouTube</div>
+          <div class="lt-link-sub">scobru88</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
 
-    <a class="lt-link" href="https://youtube.com/scobru88" target="_blank" rel="noopener">
-      <div class="lt-link-icon ic-connect"><i class="ti ti-brand-youtube"></i></div>
-      <div class="lt-link-text">
-        <div class="lt-link-title">YouTube</div>
-        <div class="lt-link-sub">scobru88</div>
-      </div>
-      <i class="ti ti-arrow-right lt-link-arrow"></i>
-    </a>
+      <a class="lt-link" href="https://audius.co/francescobruno" target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-player-play"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Audius</div>
+          <div class="lt-link-sub">All music on decentralized web3</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
+
+      <a class="lt-link" href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=50178c1b2b3a4278"
+        target="_blank" rel="noopener">
+        <div class="lt-link-icon ic-connect"><i class="ti ti-player-play"></i></div>
+        <div class="lt-link-text">
+          <div class="lt-link-title">Spotify</div>
+          <div class="lt-link-sub">All music on spotify</div>
+        </div>
+        <i class="ti ti-arrow-right lt-link-arrow"></i>
+      </a>
+    </section>
 
     <a class="lt-link" href="mailto:dev.scobru@pm.me">
       <div class="lt-link-icon ic-connect"><i class="ti ti-mail"></i></div>
@@ -378,11 +410,13 @@
       </div>
       <i class="ti ti-arrow-right lt-link-arrow"></i>
     </a>
-  </section>
+    </section>
 
-  <footer class="lt-footer">// 20 items indexed &nbsp;·&nbsp; system: <span style="color:#39ff14;">online</span></footer>
+    <footer class="lt-footer">// 20 items indexed &nbsp;·&nbsp; system: <span style="color:#39ff14;">online</span>
+    </footer>
 
-</main>
+  </main>
 
 </body>
+
 </html>
