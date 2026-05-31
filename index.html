@@ -786,8 +786,6 @@
                 sub: "Songwriter, Pop, Electronic",
                 url: "https://homologomusic.bandcamp.com",
                 source: "https://audius.co/francescobruno",
-                trackTitle: "NULLA CHE VALE ASPETTARE",
-                trackUrl: "https://homologomusic.bandcamp.com/track/nulla-che-vale-aspettare",
                 details: {
                     en: {
                         desc: "",
@@ -806,8 +804,6 @@
                 sub: "Electronic",
                 url: "https://fademusik.bandcamp.com",
                 source: "https://audius.co/francescobruno",
-                trackTitle: "Everybody's Changing [Keane Cover]",
-                trackUrl: "https://fademusik.bandcamp.com/track/everybodys-changing-keane-cover",
                 details: {
                     en: {
                         desc: "",
@@ -826,8 +822,6 @@
                 sub: "Ambient, Experimental",
                 url: "https://zimablue.bandcamp.com",
                 source: "https://audius.co/francescobruno",
-                trackTitle: "Utúlië",
-                trackUrl: "https://zimablue.bandcamp.com/track/ut-li",
                 details: {
                     en: {
                         desc: "",
@@ -1211,20 +1205,7 @@
             const titlePrefix = item.category === 'zen' ? 'Zen App' : item.category === 'apps' ? 'Project' : item.category === 'music' ? 'Music' : item.category === 'dev' ? 'Tool' : 'Link';
 
             let embedHtml = "";
-            if (item.trackTitle && item.trackUrl) {
-                const trackText = currentLang === 'it' ? "TRACCIA" : "TRACK";
-                const bandcampText = currentLang === 'it' ? "ascolta su bandcamp" : "listen on bandcamp";
-                
-                embedHtml = `
-                    <div class="custom-player-widget" style="border: 1px dashed var(--fg-muted); padding: 18px; margin-top: 15px; margin-bottom: 25px; background: rgba(255, 255, 255, 0.01); border-radius: 2px;">
-                        <div style="font-size: 12px; color: var(--syntax-comment); margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase;">// EXTERNAL LINK: BANDCAMP TRACK</div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                            <span style="font-size: 15px; font-weight: 500; color: var(--fg-header); letter-spacing: 0.5px;">${trackText}: ${item.trackTitle}</span>
-                            <a href="${item.trackUrl}" target="_blank" class="bracket-btn" style="font-size: 14px; cursor: pointer; color: var(--color-music);">[<span>${bandcampText}</span>]</a>
-                        </div>
-                    </div>
-                `;
-            }
+            
 
             container.innerHTML = `
                 <div class="project-deck">
