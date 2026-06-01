@@ -28,6 +28,17 @@ All data is stored in the decentralized peer-to-peer graph database across vario
 2. A public view cryptographic key fetches the indexed links from the P2P relays.
 3. The DOM is rendered and sorted chronologically on-the-fly.
 
+## 🌐 Recommended P2P Relays
+
+This portal is pre-configured to sync across the following recommended decentralized peer-to-peer relays:
+- `wss://delay.scobrudot.dev/zen`
+- `wss://zen.akao.io:8420/zen`
+- `wss://zen0.akao.io:8420/zen`
+- `wss://zen1.akao.io:8420/zen`
+
+### 🚀 Spin Up Your Own Relay
+To ensure maximum availability, data longevity, and self-sovereignty, you can run your own dedicated peer. Check out the [ZEN Relay Deployment Guide](https://github.com/akaoio/zen#deploy-a-relay-peer) to deploy your own relay with one single command.
+
 ## Setup Your Own
 
 1. **Clone the repository**:
