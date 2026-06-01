@@ -1,6 +1,6 @@
 # scobru.dev — Decentralized Linktree Portal
 
-This is the personal website of **Francesco Bruno (scobru)**, a developer and sound designer. It also functions as a fully open-source, serverless, and decentralized **Linktree clone template** that anyone can use to deploy their own landing page.
+This is the personal website of **Francesco Bruno (scobru)**, a developer and sound designer. This portal is built using **[ZenTree](https://github.com/scobru/zentree)**—a fully open-source, serverless, and decentralized Linktree template that anyone can fork to deploy their own landing page.
 
 Deployed with pure HTML, CSS, and powered by **ZEN**—a decentralized, zero-config graph database.
 
