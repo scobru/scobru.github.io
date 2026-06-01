@@ -415,6 +415,117 @@
         min-height: 100vh;
       }
     }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Auth & Admin Panel Styles */
+    .admin-section {
+      margin-top: 1.5rem;
+      border-top: 1px dashed var(--card-border);
+      padding-top: 1.5rem;
+    }
+
+    .admin-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+
+    .lt-card-body {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
+    }
+
+    .lt-card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .lt-form-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .lt-form-row:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+      .lt-form-row {
+        flex-direction: column;
+      }
+    }
+
+    .lt-input {
+      background-color: var(--badge-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-primary);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lt-input:focus {
+      outline: none;
+      border-color: var(--apps);
+      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+    }
+
+    .lt-btn {
+      background: var(--apps);
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+    }
+
+    .lt-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .lt-btn:active {
+      transform: translateY(0);
+    }
+
+    .lt-link-action.trash-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .lt-link-action.trash-btn:hover {
+      color: #e01e37 !important;
+      background: rgba(224, 30, 55, 0.15) !important;
+    }
   </style>
 </head>
 
@@ -456,164 +567,75 @@
     <!-- MUSIC & ART SECTION -->
     <section class="lt-section" aria-labelledby="sec-music">
       <h2 class="lt-section-title" id="sec-music">music &amp; art</h2>
-
-      <a class="lt-link" id="lnk-sudo-records" href="https://sudorecords.scobrudot.dev" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Sudo Records</span>
-          <span class="lt-link-subtitle">Record Label hosted on Tunecamp</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-homologo" href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Homologo</span>
-          <span class="lt-link-subtitle">Songwriter, Pop, Electronic</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-fade" href="https://fademusik.bandcamp.com" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Fade</span>
-          <span class="lt-link-subtitle">Electronic / Synth music</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-zima-blue" href="https://zimablue.bandcamp.com" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-music"><i class="ti ti-headphones"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Zima Blue</span>
-          <span class="lt-link-subtitle">Ambient, Experimental soundscapes</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
+      <div id="links-music"></div>
     </section>
 
     <!-- WEB APPS SECTION -->
     <section class="lt-section" aria-labelledby="sec-apps">
       <h2 class="lt-section-title" id="sec-apps">web apps &amp; projects</h2>
-
-      <a class="lt-link" id="lnk-tunecamp" href="https://scobru-tunecamp.vercel.app/" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-apps"><i class="ti ti-music"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Tunecamp</span>
-          <span class="lt-link-subtitle">Decentralized music streaming</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-linda" href="https://scobru-linda.vercel.app/" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-apps"><i class="ti ti-message-circle"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Linda Chat</span>
-          <span class="lt-link-subtitle">TPRE &amp; post-quantum messenger</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-wormhole" href="https://scobru-wormhole.vercel.app/" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-apps"><i class="ti ti-transfer"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Wormhole</span>
-          <span class="lt-link-subtitle">E2EE P2P file transfer</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-nullroute" href="https://scobru-nullroute.vercel.app/" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-apps"><i class="ti ti-eye-off"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Nullroute</span>
-          <span class="lt-link-subtitle">EVM stealth payment hub</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
+      <div id="links-apps"></div>
     </section>
 
     <!-- ZEN APPS SECTION -->
     <section class="lt-section" aria-labelledby="sec-zen">
-      <h2 class="lt-section-title" id="sec-zen">zen cryptic apps</h2>
-
-      <a class="lt-link" id="lnk-zen-keep" href="apps/keep.html">
-        <div class="lt-link-icon ic-zen"><i class="ti ti-lock"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Keep</span>
-          <span class="lt-link-subtitle">Zero-knowledge encryption vault</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-zen-notes" href="apps/notes.html">
-        <div class="lt-link-icon ic-zen"><i class="ti ti-notes"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Notes</span>
-          <span class="lt-link-subtitle">Decentralized offline-first workspace</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
-
-      <a class="lt-link" id="lnk-zen-bookmarks" href="apps/bookmarks.html">
-        <div class="lt-link-icon ic-zen"><i class="ti ti-bookmark"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Bookmarks</span>
-          <span class="lt-link-subtitle">Decentralized bookmark manager</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
+      <h2 class="lt-section-title" id="sec-zen">apps</h2>
+      <div id="links-zen"></div>
     </section>
 
     <!-- CONNECT SECTION -->
     <section class="lt-section" aria-labelledby="sec-connect">
       <h2 class="lt-section-title" id="sec-connect">connect</h2>
+      <div id="links-connect"></div>
+    </section>
 
-      <a class="lt-link" id="lnk-audius" href="https://audius.co/francescobruno" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-connect"><i class="ti ti-player-play"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Audius</span>
-          <span class="lt-link-subtitle">All music on decentralized web3 network</span>
+    <!-- Admin Settings Section -->
+    <section class="admin-section">
+      <div class="admin-title" id="admin-toggle">
+        <i class="ti ti-settings"></i> Manage Portal <i class="ti ti-chevron-down" id="admin-chevron" style="transition: transform 0.2s; font-size: 11px; margin-left: 4px; transform: rotate(-90deg);"></i>
+      </div>
+      <div class="lt-card-body hidden" id="admin-body">
+        <!-- Auth Form -->
+        <div id="auth-form">
+          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master Credentials to modify links.</p>
+          <div class="lt-form-row">
+            <input type="text" id="user-input" placeholder="Username" class="lt-input">
+            <input type="password" id="pass-input" placeholder="Password" class="lt-input">
+            <button class="lt-btn" id="login-btn">Authenticate</button>
+          </div>
         </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
+        
+        <!-- Management Panel -->
+        <div id="mgmt-panel" class="hidden">
+          <p class="lt-card-desc"><i class="ti ti-pencil" style="color:var(--apps);"></i> Add new link to portal.</p>
+          <div class="lt-form-row">
+            <input type="text" id="link-title" placeholder="Title (e.g. Sudo Records)" class="lt-input">
+            <input type="text" id="link-subtitle" placeholder="Subtitle (e.g. Record Label)" class="lt-input">
+          </div>
+          <div class="lt-form-row">
+            <input type="text" id="link-url" placeholder="URL (https://...)" class="lt-input">
+            <select id="link-cat" class="lt-input" style="height: 46px;">
+              <option value="music">Music & Art</option>
+              <option value="apps">Web Apps & Projects</option>
+              <option value="zen">Apps (Zen Cryptic)</option>
+              <option value="connect">Connect</option>
+            </select>
+          </div>
+          <div class="lt-form-row">
+            <input type="text" id="link-icon" placeholder="Icon (e.g. ti ti-headphones)" class="lt-input">
+            <select id="link-icon-color" class="lt-input" style="height: 46px;">
+              <option value="music">Music (Red)</option>
+              <option value="apps">Apps (Green)</option>
+              <option value="zen">Zen (Cyan)</option>
+              <option value="connect">Connect (Orange)</option>
+            </select>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 8px; flex-wrap: wrap;">
+            <button class="lt-btn" id="logout-btn" style="background: var(--text-muted);">Logout</button>
+            <button class="lt-btn" id="seed-btn" style="background: #ffb703; color: #121212;">Seed Defaults</button>
+            <button class="lt-btn" id="add-link-btn">Add Link</button>
+          </div>
         </div>
-      </a>
-
-      <a class="lt-link" id="lnk-spotify" href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=50178c1b2b3a4278" target="_blank" rel="noopener">
-        <div class="lt-link-icon ic-connect"><i class="ti ti-player-play"></i></div>
-        <div class="lt-link-content">
-          <span class="lt-link-title">Spotify</span>
-          <span class="lt-link-subtitle">All music and curated playlists on Spotify</span>
-        </div>
-        <div class="lt-link-action">
-          <i class="ti ti-dots-vertical"></i>
-        </div>
-      </a>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -685,6 +707,273 @@
     });
   </script>
 
+  <script type="module">
+    import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
+
+    const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
+
+    let zen;
+    let pair;
+    let isAuthenticated = false;
+
+    const relays = ["wss://delay.scobrudot.dev/zen", "wss://zen.akao.io:8420/zen", "wss://zen0.akao.io:8420/zen", "wss://zen1.akao.io:8420/zen"];
+    localStorage.removeItem('zenPeers');
+
+    zen = new ZEN({
+      peers: relays,
+    });
+
+    // Auto-load public links initially
+    loadLinks(PUBLIC_VIEW_KEY);
+
+    // Dynamic Link Renderer
+    function loadLinks(pubKey) {
+      if (!pubKey) return;
+      
+      // Clear containers for a new user/key loading
+      document.getElementById('links-music').innerHTML = '';
+      document.getElementById('links-apps').innerHTML = '';
+      document.getElementById('links-zen').innerHTML = '';
+      document.getElementById('links-connect').innerHTML = '';
+
+      zen.get('~' + pubKey).get('portal_links').map().on((link, id) => {
+        const linkElId = 'lnk-' + id;
+        
+        // Handle deletion
+        if (!link) {
+          const el = document.getElementById(linkElId);
+          if (el) el.remove();
+          updateCount();
+          return;
+        }
+
+        if (!link.title || !link.url) return;
+
+        const cat = link.cat || 'apps';
+        const container = document.getElementById('links-' + cat);
+        if (!container) return;
+
+        let el = document.getElementById(linkElId);
+        if (!el) {
+          el = document.createElement('a');
+          el.id = linkElId;
+          el.className = 'lt-link';
+          el.target = '_blank';
+          el.rel = 'noopener';
+          container.appendChild(el);
+        }
+
+        el.href = link.url;
+        
+        const iconClass = link.icon || 'ti ti-link';
+        const iconColor = link.iconColor || 'apps';
+        
+        // Render action block depending on Auth
+        let actionMarkup = `<div class="lt-link-action"><i class="ti ti-dots-vertical"></i></div>`;
+        if (isAuthenticated) {
+          actionMarkup = `
+            <button class="lt-link-action trash-btn" title="Delete Link">
+              <i class="ti ti-trash" style="color: #e01e37;"></i>
+            </button>
+          `;
+        }
+
+        el.innerHTML = `
+          <div class="lt-link-icon ic-${iconColor}"><i class="${iconClass}"></i></div>
+          <div class="lt-link-content">
+            <span class="lt-link-title">${link.title}</span>
+            <span class="lt-link-subtitle">${link.subtitle || ''}</span>
+          </div>
+          ${actionMarkup}
+        `;
+
+        // If authenticated, setup trash button listener
+        if (isAuthenticated) {
+          const trash = el.querySelector('.trash-btn');
+          if (trash) {
+            trash.onclick = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              deleteLink(id);
+            };
+          }
+        }
+
+        // Apply dynamic sorting by timestamp
+        el.setAttribute('data-timestamp', link.timestamp || Date.now());
+        const children = Array.from(container.children);
+        children.sort((a, b) => parseInt(a.getAttribute('data-timestamp')) - parseInt(b.getAttribute('data-timestamp')));
+        children.forEach(child => container.appendChild(child));
+
+        updateCount();
+      });
+    }
+
+    function updateCount() {
+      const footer = document.querySelector('.lt-footer');
+      if (footer) {
+        const total = document.querySelectorAll('.lt-link').length;
+        footer.innerHTML = `// ${total} items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight: 500;">online</span>`;
+      }
+    }
+
+    // Authenticate Flow
+    async function login() {
+      const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
+      const passInput = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
+      if (!userInput || !passInput) return;
+
+      try {
+        const btn = document.getElementById('login-btn');
+        btn.innerHTML = 'Authenticating...';
+
+        pair = await ZEN.pair(null, { seed: userInput + passInput });
+        isAuthenticated = true;
+
+        sessionStorage.setItem('zen_user', userInput);
+        sessionStorage.setItem('zen_pass', passInput);
+
+        document.getElementById('auth-form').classList.add('hidden');
+        document.getElementById('mgmt-panel').classList.remove('hidden');
+
+        // Toggle admin panel title styling to show logged in state
+        const title = document.getElementById('admin-toggle');
+        title.innerHTML = `<i class="ti ti-settings" style="color:var(--apps);"></i> Manage Portal (Authenticated) <i class="ti ti-chevron-down" id="admin-chevron" style="transition: transform 0.2s; font-size: 11px; margin-left: 4px;"></i>`;
+
+        // Reload links using active writer key
+        loadLinks(pair.pub);
+      } catch (e) {
+        console.error("Auth Error:", e);
+        alert("Auth failed: " + e.message);
+        document.getElementById('login-btn').innerText = "Authenticate";
+      }
+    }
+
+    // Add Link Function
+    function addLink() {
+      if (!isAuthenticated) return;
+      const title = document.getElementById('link-title').value;
+      const subtitle = document.getElementById('link-subtitle').value;
+      const url = document.getElementById('link-url').value;
+      const cat = document.getElementById('link-cat').value;
+      const icon = document.getElementById('link-icon').value || 'ti ti-link';
+      const iconColor = document.getElementById('link-icon-color').value;
+
+      if (!title || !url) {
+        alert("Title and URL are required!");
+        return;
+      }
+
+      const link = {
+        title,
+        subtitle,
+        url,
+        cat,
+        icon,
+        iconColor,
+        timestamp: Date.now()
+      };
+
+      const soul = 'lnk-' + Date.now() + '-' + Math.random().toString(36).substring(7);
+
+      zen.get('~' + pair.pub).get('portal_links').get(soul).put(link, (ack) => {
+        if (ack && ack.err) {
+          alert("Save failed: " + ack.err);
+        } else {
+          showToast("Link added successfully!");
+          document.getElementById('link-title').value = '';
+          document.getElementById('link-subtitle').value = '';
+          document.getElementById('link-url').value = '';
+          document.getElementById('link-icon').value = '';
+        }
+      }, { authenticator: pair });
+    }
+
+    // Delete Link Function
+    function deleteLink(soul) {
+      if (!isAuthenticated) return;
+      if (!confirm("Are you sure you want to delete this link?")) return;
+
+      zen.get('~' + pair.pub).get('portal_links').get(soul).put(null, (ack) => {
+        if (ack && ack.err) {
+          alert("Delete failed: " + ack.err);
+        } else {
+          showToast("Link deleted successfully!");
+        }
+      }, { authenticator: pair });
+    }
+
+    // Logout Function
+    function logout() {
+      sessionStorage.removeItem('zen_user');
+      sessionStorage.removeItem('zen_pass');
+      window.location.reload();
+    }
+
+    // Migration / Seeding Script
+    function seedDefaults() {
+      if (!isAuthenticated) return;
+      if (!confirm("Seed default links to your portal database? This will publish initial links.")) return;
+
+      const initialLinks = [
+        { title: "Sudo Records", subtitle: "Record Label hosted on Tunecamp", url: "https://sudorecords.scobrudot.dev", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000001 },
+        { title: "Homologo", subtitle: "Songwriter, Pop, Electronic", url: "https://homologomusic.bandcamp.com", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000002 },
+        { title: "Fade", subtitle: "Electronic / Synth music", url: "https://fademusik.bandcamp.com", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000003 },
+        { title: "Zima Blue", subtitle: "Ambient, Experimental soundscapes", url: "https://zimablue.bandcamp.com", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000004 },
+        { title: "Tunecamp", subtitle: "Decentralized music streaming", url: "https://scobru-tunecamp.vercel.app/", cat: "apps", icon: "ti ti-music", iconColor: "apps", timestamp: 1600000000005 },
+        { title: "Linda Chat", subtitle: "TPRE & post-quantum messenger", url: "https://scobru-linda.vercel.app/", cat: "apps", icon: "ti ti-message-circle", iconColor: "apps", timestamp: 1600000000006 },
+        { title: "Wormhole", subtitle: "E2EE P2P file transfer", url: "https://scobru-wormhole.vercel.app/", cat: "apps", icon: "ti ti-transfer", iconColor: "apps", timestamp: 1600000000007 },
+        { title: "Nullroute", subtitle: "EVM stealth payment hub", url: "https://scobru-nullroute.vercel.app/", cat: "apps", icon: "ti ti-eye-off", iconColor: "apps", timestamp: 1600000000008 },
+        { title: "Keep", subtitle: "Zero-knowledge encryption vault", url: "apps/keep.html", cat: "zen", icon: "ti ti-lock", iconColor: "zen", timestamp: 1600000000009 },
+        { title: "Notes", subtitle: "Decentralized offline-first workspace", url: "apps/notes.html", cat: "zen", icon: "ti ti-notes", iconColor: "zen", timestamp: 1600000000010 },
+        { title: "Bookmarks", subtitle: "Decentralized bookmark manager", url: "apps/bookmarks.html", cat: "zen", icon: "ti ti-bookmark", iconColor: "zen", timestamp: 1600000000011 },
+        { title: "Audius", subtitle: "All music on decentralized web3 network", url: "https://audius.co/francescobruno", cat: "connect", icon: "ti ti-player-play", iconColor: "connect", timestamp: 1600000000012 },
+        { title: "Spotify", subtitle: "All music and curated playlists on Spotify", url: "https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=50178c1b2b3a4278", cat: "connect", icon: "ti ti-player-play", iconColor: "connect", timestamp: 1600000000013 }
+      ];
+
+      let count = 0;
+      initialLinks.forEach((link, idx) => {
+        const soul = 'lnk-init-' + idx;
+        zen.get('~' + pair.pub).get('portal_links').get(soul).put(link, (ack) => {
+          if (!ack.err) {
+            count++;
+            if (count === initialLinks.length) {
+              showToast("Seeded 13 default links successfully!");
+            }
+          }
+        }, { authenticator: pair });
+      });
+    }
+
+    // Collapsible Admin Panel Interaction
+    const adminToggle = document.getElementById('admin-toggle');
+    const adminBody = document.getElementById('admin-body');
+    const adminChevron = document.getElementById('admin-chevron');
+
+    if (adminToggle && adminBody) {
+      adminToggle.addEventListener('click', () => {
+        adminBody.classList.toggle('hidden');
+        if (adminBody.classList.contains('hidden')) {
+          adminChevron.style.transform = 'rotate(-90deg)';
+        } else {
+          adminChevron.style.transform = '';
+        }
+      });
+    }
+
+    // Keyboard navigation and event listeners
+    document.getElementById('user-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
+    document.getElementById('pass-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') login(); });
+    document.getElementById('login-btn').addEventListener('click', login);
+    document.getElementById('add-link-btn').addEventListener('click', addLink);
+    document.getElementById('logout-btn').addEventListener('click', logout);
+    document.getElementById('seed-btn').addEventListener('click', seedDefaults);
+
+    // Auto login if session credentials exist
+    const savedUser = sessionStorage.getItem('zen_user');
+    const savedPass = sessionStorage.getItem('zen_pass');
+    if (savedUser && savedPass) login();
+  </script>
 </body>
 
 </html>
