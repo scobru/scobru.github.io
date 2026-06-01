@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenTree // Key Derivation Utility</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --font-sans: 'Outfit', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --accent: #2ec4b6;
+      --accent-glow: rgba(46, 196, 182, 0.15);
+      --bg: #090a0c;
+      --card-bg: #121316;
+      --card-border: rgba(255, 255, 255, 0.06);
+      --text-primary: #f5f5f7;
+      --text-secondary: #9ba0a5;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 480px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.25rem;
+    }
+    p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    .input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      color: var(--text-primary);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .btn {
+      width: 100%;
+      background: var(--accent);
+      color: #121212;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+    .result-container {
+      margin-top: 2rem;
+      border-top: 1px dashed var(--card-border);
+      padding-top: 1.5rem;
+    }
+    .result-box {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1rem;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .result-box:hover {
+      border-color: var(--accent);
+      background: rgba(46, 196, 182, 0.02);
+    }
+    .pubkey-text {
+      flex: 1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-primary);
+      word-break: break-all;
+      line-height: 1.4;
+    }
+    .copy-icon {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+    .result-box:hover .copy-icon {
+      color: var(--accent);
+    }
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(255, 255, 255, 0.95);
+      color: #121212;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="icon"><i class="ti ti-key"></i></div>
+      <h1>Key Generator</h1>
+      <p>Derive your ZEN cryptographic public key locally from your credentials.</p>
+    </div>
+    
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" class="input" placeholder="e.g. alice">
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="input" placeholder="••••••••">
+    </div>
+    
+    <button class="btn" id="derive-btn">Derive Public Key</button>
+    
+    <div id="result-area" class="result-container hidden">
+      <label>Your Public View Key (PUBLIC_VIEW_KEY)</label>
+      <div class="result-box" id="copy-btn" title="Click to copy key">
+        <span class="pubkey-text" id="pubkey-display"></span>
+        <i class="ti ti-copy copy-icon"></i>
+      </div>
+      <p style="font-size: 11px; margin-top: 8px; text-align: center; color: var(--text-secondary);">
+        Copy and paste this into the <code>PUBLIC_VIEW_KEY</code> constant in your files.
+      </p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <i class="ti ti-circle-check" style="color: var(--accent);"></i> Copied to clipboard!
+  </div>
+
+  <script type="module">
+    import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
+
+    const deriveBtn = document.getElementById('derive-btn');
+    const resultArea = document.getElementById('result-area');
+    const pubkeyDisplay = document.getElementById('pubkey-display');
+    const copyBtn = document.getElementById('copy-btn');
+    const toast = document.getElementById('toast');
+
+    deriveBtn.addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        alert("Both fields are required!");
+        return;
+      }
+
+      deriveBtn.innerText = "Deriving key...";
+      deriveBtn.disabled = true;
+
+      try {
+        // Derive keypair deterministically in-browser
+        const pair = await ZEN.pair(null, { seed: username + password });
+        pubkeyDisplay.textContent = pair.pub;
+        resultArea.classList.remove('hidden');
+      } catch (e) {
+        console.error(e);
+        alert("Failed to derive pair: " + e.message);
+      } finally {
+        deriveBtn.innerText = "Derive Public Key";
+        deriveBtn.disabled = false;
+      }
+    });
+
+    copyBtn.addEventListener('click', () => {
+      const key = pubkeyDisplay.textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }).catch(err => {
+        // Fallback copy
+        const el = document.createElement('textarea');
+        el.value = key;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    });
+
+    // Keyboard handlers
+    document.getElementById('username').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('password').focus();
+    });
+    document.getElementById('password').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') deriveBtn.click();
+    });
+  </script>
+</body>
+</html>
