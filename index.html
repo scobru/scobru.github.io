@@ -4,14 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>scobru — links</title>
-  <meta name="description" content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
-  
+  <title>scobru</title>
+  <meta name="description"
+    content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  
+
   <style>
     *,
     *::before,
@@ -25,7 +29,7 @@
       /* Shared Tokens */
       --font-sans: 'Outfit', sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
-      
+
       --zen: #00b4d8;
       --apps: #2ec4b6;
       --music: #e01e37;
@@ -256,9 +260,9 @@
       color: var(--text-primary);
       box-shadow: var(--card-shadow);
       transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  background-color 0.2s ease,
-                  border-color 0.2s ease,
-                  box-shadow 0.2s ease;
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .lt-link:hover {
@@ -407,6 +411,7 @@
         padding: 0;
         background: var(--bg-card);
       }
+
       .lt-card {
         border-radius: 0;
         box-shadow: none;
@@ -532,7 +537,7 @@
 <body>
 
   <main class="lt-card">
-    
+
     <!-- Top Action Bar -->
     <div class="lt-top-bar">
       <button class="lt-action-btn" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
@@ -546,21 +551,29 @@
     <!-- Profile Header -->
     <header class="lt-header">
       <div class="lt-avatar-container">
-        <img class="lt-avatar" src="https://avatars.githubusercontent.com/u/1079164?v=4" alt="scobru avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <img class="lt-avatar" src="https://avatars.githubusercontent.com/u/1079164?v=4" alt="scobru avatar"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="lt-avatar-fallback" style="display:none;">SB</div>
       </div>
       <h1 class="lt-name">scobru</h1>
-      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative tech.</p>
+      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative
+        tech.</p>
     </header>
 
     <!-- Centered Social Row (Linktree Style) -->
     <div class="lt-social-row">
-      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
-      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
-      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i class="ti ti-brand-mastodon"></i></a>
-      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
-      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i
+          class="ti ti-brand-github"></i></a>
+      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i
+          class="ti ti-brand-x"></i></a>
+      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i
+          class="ti ti-brand-mastodon"></i></a>
+      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i
+          class="ti ti-brand-telegram"></i></a>
+      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i
+          class="ti ti-brand-instagram"></i></a>
+      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i
+          class="ti ti-brand-youtube"></i></a>
       <a href="mailto:dev.scobru@pm.me" aria-label="Email"><i class="ti ti-mail"></i></a>
     </div>
 
@@ -591,19 +604,21 @@
     <!-- Admin Settings Section -->
     <section class="admin-section">
       <div class="admin-title" id="admin-toggle">
-        <i class="ti ti-settings"></i> Manage Portal <i class="ti ti-chevron-down" id="admin-chevron" style="transition: transform 0.2s; font-size: 11px; margin-left: 4px; transform: rotate(-90deg);"></i>
+        <i class="ti ti-settings"></i> Manage Portal <i class="ti ti-chevron-down" id="admin-chevron"
+          style="transition: transform 0.2s; font-size: 11px; margin-left: 4px; transform: rotate(-90deg);"></i>
       </div>
       <div class="lt-card-body hidden" id="admin-body">
         <!-- Auth Form -->
         <div id="auth-form">
-          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master Credentials to modify links.</p>
+          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master
+            Credentials to modify links.</p>
           <div class="lt-form-row">
             <input type="text" id="user-input" placeholder="Username" class="lt-input">
             <input type="password" id="pass-input" placeholder="Password" class="lt-input">
             <button class="lt-btn" id="login-btn">Authenticate</button>
           </div>
         </div>
-        
+
         <!-- Management Panel -->
         <div id="mgmt-panel" class="hidden">
           <p class="lt-card-desc"><i class="ti ti-pencil" style="color:var(--apps);"></i> Add new link to portal.</p>
@@ -629,7 +644,8 @@
               <option value="connect">Connect (Orange)</option>
             </select>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 8px; flex-wrap: wrap;">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 8px; flex-wrap: wrap;">
             <button class="lt-btn" id="logout-btn" style="background: var(--text-muted);">Logout</button>
             <button class="lt-btn" id="seed-btn" style="background: #ffb703; color: #121212;">Seed Defaults</button>
             <button class="lt-btn" id="add-link-btn">Add Link</button>
@@ -640,9 +656,12 @@
 
     <!-- Footer -->
     <footer class="lt-footer" style="display: flex; flex-direction: column; align-items: center;">
-      <div>// 13 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight: 500;">online</span></div>
+      <div>// 13 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight: 500;">online</span>
+      </div>
       <div style="font-size: 10px; opacity: 0.7; margin-top: 6px; font-family: var(--font-sans);">
-        built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener" style="color: var(--apps); text-decoration: none; font-weight: 500;"><i class="ti ti-brand-github" style="font-size: 10px; vertical-align: middle;"></i> ZenTree</a>
+        built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener"
+          style="color: var(--apps); text-decoration: none; font-weight: 500;"><i class="ti ti-brand-github"
+            style="font-size: 10px; vertical-align: middle;"></i> ZenTree</a>
       </div>
     </footer>
 
@@ -664,7 +683,7 @@
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      
+
       // Rotate effect on click
       themeToggle.style.transform = 'scale(0.8) rotate(180deg)';
       setTimeout(() => {
@@ -681,12 +700,12 @@
         document.body.appendChild(toast);
       }
       toast.innerHTML = `<i class="ti ti-circle-check" style="color: var(--apps); font-size: 16px;"></i> ${message}`;
-      
+
       // Force a reflow
       toast.offsetHeight;
-      
+
       toast.classList.add('show');
-      
+
       setTimeout(() => {
         toast.classList.remove('show');
       }, 2500);
@@ -732,7 +751,7 @@
     // Dynamic Link Renderer
     function loadLinks(pubKey) {
       if (!pubKey) return;
-      
+
       // Clear containers for a new user/key loading
       document.getElementById('links-music').innerHTML = '';
       document.getElementById('links-apps').innerHTML = '';
@@ -741,7 +760,7 @@
 
       zen.get('~' + pubKey).get('portal_links').map().on((link, id) => {
         const linkElId = 'lnk-' + id;
-        
+
         // Handle deletion
         if (!link) {
           const el = document.getElementById(linkElId);
@@ -767,10 +786,10 @@
         }
 
         el.href = link.url;
-        
+
         const iconClass = link.icon || 'ti ti-link';
         const iconColor = link.iconColor || 'apps';
-        
+
         // Render action block depending on Auth
         let actionMarkup = `<div class="lt-link-action"><i class="ti ti-dots-vertical"></i></div>`;
         if (isAuthenticated) {
