@@ -278,6 +278,7 @@
       border-radius: 12px;
       font-family: var(--font-sans);
       font-size: 14px;
+      flex: 1;
       width: 100%;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -493,9 +494,9 @@
     <!-- Authentication Section -->
     <section class="lt-section" id="auth-section">
       <h2 class="lt-section-title" id="auth-toggle" style="cursor: pointer; user-select: none;">
-        authentication required <i class="ti ti-chevron-down" id="auth-chevron" style="transition: transform 0.2s; font-size: 14px; margin-left: 4px;"></i>
+        authentication required <i class="ti ti-chevron-down" id="auth-chevron" style="transition: transform 0.2s; font-size: 14px; margin-left: 4px; transform: rotate(-90deg);"></i>
       </h2>
-      <div class="lt-card-body" id="auth-body">
+      <div class="lt-card-body hidden" id="auth-body">
         <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--accent);"></i> Log in using Master Credentials to write, edit, or delete bookmarks.</p>
         <div class="lt-form-row">
           <input type="text" id="user-input" placeholder="Username" class="lt-input">
