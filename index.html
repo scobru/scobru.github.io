@@ -966,7 +966,7 @@
       if (!title || !url) { alert('Title and URL are required!'); return; }
       const existing = linksCache[soul] || {};
       zen.get('~' + pair.pub).get('portal_links').get(soul).put(
-        { ...existing, title, subtitle, url, cat, icon, iconColor },
+        { title, subtitle, url, cat, icon, iconColor, timestamp: existing.timestamp || Date.now() },
         (ack) => {
           if (ack && ack.err) alert('Save failed: ' + ack.err);
           else { showToast('Link updated!'); closeEditModal(); }
