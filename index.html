@@ -299,6 +299,25 @@
     .sec-admin-item-order { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); min-width: 16px; }
     .sec-admin-item-name  { flex: 1; font-weight: 500; color: var(--text-primary); }
     .sec-admin-item .sec-btn { width: 24px; height: 24px; font-size: 12px; }
+
+    /* ── Icon Picker ── */
+    .icon-picker-wrap { margin-bottom: 12px; }
+    .icon-picker-label { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 6px; display: block; }
+    .icon-picker-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; background: var(--badge-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 8px; }
+    .icon-opt { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid transparent; cursor: pointer; font-size: 16px; color: var(--text-secondary); background: none; transition: all 0.15s; }
+    .icon-opt:hover { background: var(--badge-bg-hover); color: var(--text-primary); }
+    .icon-opt.selected { background: rgba(46,196,182,0.15); border-color: var(--apps); color: var(--apps); }
+
+    /* ── Edit Modal ── */
+    .edit-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(8px); z-index: 10000; align-items: center; justify-content: center; padding: 20px; }
+    .edit-modal.is-open { display: flex; }
+    .edit-modal-content { background: var(--bg-card); border: 1px solid var(--card-border); max-width: 520px; width: 100%; border-radius: 24px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .edit-modal-title { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed var(--card-border); }
+
+    /* ── Link actions (auth) ── */
+    .link-actions { display: flex; gap: 4px; flex-shrink: 0; }
+    .lt-link-action.edit-btn { border: none; background: none; cursor: pointer; }
+    .lt-link-action.edit-btn:hover { color: var(--apps) !important; background: rgba(46,196,182,0.15) !important; }
   </style>
 </head>
 
@@ -384,8 +403,12 @@
               <option value="">Loading sections…</option>
             </select>
           </div>
+          <input type="hidden" id="link-icon" value="ti ti-link">
+          <div class="icon-picker-wrap">
+            <span class="icon-picker-label">// icon</span>
+            <div class="icon-picker-grid" id="add-icon-picker"></div>
+          </div>
           <div class="lt-form-row">
-            <input type="text" id="link-icon" placeholder="Icon (e.g. ti ti-headphones)" class="lt-input">
             <select id="link-icon-color" class="lt-input" style="height:46px;">
               <option value="music">Red</option>
               <option value="apps">Teal</option>
@@ -476,6 +499,7 @@
     let zen, pair;
     let isAuthenticated = false;
     const sectionsMap = {};
+    const linksCache = {};
 
     zen = new ZEN({ peers: ["wss://delay.scobrudot.dev/zen"] });
     localStorage.removeItem('zenPeers');
@@ -685,6 +709,7 @@
         }
         if (!link.title || !link.url) return;
 
+        linksCache[id] = link;
         const cat = link.cat || 'apps';
         if (!document.getElementById('links-' + cat)) ensureSectionShell(cat);
         const container = document.getElementById('links-' + cat);
@@ -702,7 +727,10 @@
         const iconClass  = link.icon || 'ti ti-link';
         const iconColor  = link.iconColor || 'apps';
         const action = isAuthenticated
-          ? `<button class="lt-link-action trash-btn" title="Delete"><i class="ti ti-trash" style="color:#e01e37;"></i></button>`
+          ? `<div class="link-actions">
+              <button class="lt-link-action edit-btn" title="Edit"><i class="ti ti-pencil"></i></button>
+              <button class="lt-link-action trash-btn" title="Delete"><i class="ti ti-trash" style="color:#e01e37;"></i></button>
+            </div>`
           : `<div class="lt-link-action"><i class="ti ti-dots-vertical"></i></div>`;
 
         el.innerHTML = `
@@ -716,6 +744,8 @@
         if (isAuthenticated) {
           const trash = el.querySelector('.trash-btn');
           if (trash) trash.onclick = (e) => { e.preventDefault(); e.stopPropagation(); deleteLink(id); };
+          const editBtn = el.querySelector('.edit-btn');
+          if (editBtn) editBtn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openEditModal(id); };
         }
 
         el.setAttribute('data-timestamp', link.timestamp || 0);
@@ -768,7 +798,8 @@
             document.getElementById('link-title').value = '';
             document.getElementById('link-subtitle').value = '';
             document.getElementById('link-url').value = '';
-            document.getElementById('link-icon').value = '';
+            document.getElementById('link-icon').value = 'ti ti-link';
+            initIconPicker('add-icon-picker', 'link-icon');
           }
         }, { authenticator: pair }
       );
@@ -803,6 +834,7 @@
         loadLinks(pair.pub);
         rebuildSectionDropdown();
         rebuildSecAdminList();
+        initIconPicker('add-icon-picker', 'link-icon');
       } catch (e) {
         alert('Auth failed: ' + e.message);
         document.getElementById('login-btn').innerText = 'Authenticate';
@@ -865,6 +897,85 @@
       return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
+    // ── ICON PICKER + EDIT MODAL ──────────────────────────────
+
+    const ICONS = [
+      'ti ti-link','ti ti-world','ti ti-brand-github','ti ti-brand-x','ti ti-brand-instagram',
+      'ti ti-brand-youtube','ti ti-brand-telegram','ti ti-brand-discord','ti ti-brand-mastodon',
+      'ti ti-headphones','ti ti-music','ti ti-player-play','ti ti-notes','ti ti-bookmark',
+      'ti ti-lock','ti ti-key','ti ti-shield','ti ti-message-circle','ti ti-mail',
+      'ti ti-star','ti ti-heart','ti ti-code','ti ti-terminal','ti ti-apps',
+      'ti ti-transfer','ti ti-eye-off','ti ti-wallet','ti ti-palette','ti ti-pencil',
+      'ti ti-photo','ti ti-video','ti ti-microphone'
+    ];
+
+    function initIconPicker(gridId, hiddenId) {
+      const grid = document.getElementById(gridId);
+      const hidden = document.getElementById(hiddenId);
+      if (!grid || !hidden) return;
+      grid.innerHTML = '';
+      ICONS.forEach(icon => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'icon-opt' + (hidden.value === icon ? ' selected' : '');
+        btn.innerHTML = `<i class="${icon}"></i>`;
+        btn.title = icon.replace('ti ti-', '');
+        btn.onclick = () => {
+          hidden.value = icon;
+          grid.querySelectorAll('.icon-opt').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        };
+        grid.appendChild(btn);
+      });
+    }
+
+    function openEditModal(soul) {
+      const link = linksCache[soul];
+      if (!link || !isAuthenticated) return;
+      document.getElementById('edit-soul').value = soul;
+      document.getElementById('edit-title').value = link.title || '';
+      document.getElementById('edit-subtitle').value = link.subtitle || '';
+      document.getElementById('edit-url').value = link.url || '';
+      document.getElementById('edit-icon').value = link.icon || 'ti ti-link';
+      const catSel = document.getElementById('edit-cat');
+      catSel.innerHTML = '';
+      Object.entries(sectionsMap).sort(([,a],[,b]) => (a.order||0)-(b.order||0)).forEach(([sid, sec]) => {
+        const o = document.createElement('option');
+        o.value = sid; o.textContent = sec.name;
+        if (sid === link.cat) o.selected = true;
+        catSel.appendChild(o);
+      });
+      document.getElementById('edit-icon-color').value = link.iconColor || 'apps';
+      initIconPicker('edit-icon-picker', 'edit-icon');
+      document.getElementById('edit-modal').classList.add('is-open');
+    }
+
+    function closeEditModal() {
+      document.getElementById('edit-modal').classList.remove('is-open');
+    }
+
+    function saveEdit() {
+      if (!isAuthenticated) return;
+      const soul = document.getElementById('edit-soul').value;
+      const title = document.getElementById('edit-title').value.trim();
+      const subtitle = document.getElementById('edit-subtitle').value.trim();
+      const url = document.getElementById('edit-url').value.trim();
+      const cat = document.getElementById('edit-cat').value;
+      const icon = document.getElementById('edit-icon').value || 'ti ti-link';
+      const iconColor = document.getElementById('edit-icon-color').value;
+      if (!title || !url) { alert('Title and URL are required!'); return; }
+      const existing = linksCache[soul] || {};
+      zen.get('~' + pair.pub).get('portal_links').get(soul).put(
+        { ...existing, title, subtitle, url, cat, icon, iconColor },
+        (ack) => {
+          if (ack && ack.err) alert('Save failed: ' + ack.err);
+          else { showToast('Link updated!'); closeEditModal(); }
+        }, { authenticator: pair }
+      );
+    }
+
+    window.closeEditModal = closeEditModal;
+
     // ── EVENT LISTENERS ───────────────────────────────────────
 
     document.getElementById('user-input').addEventListener('keydown',  e => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
@@ -875,6 +986,7 @@
     document.getElementById('seed-btn').addEventListener('click', seedDefaults);
     document.getElementById('add-sec-btn').addEventListener('click', addSection);
     document.getElementById('sec-name-input').addEventListener('keydown', e => { if (e.key === 'Enter') addSection(); });
+    document.getElementById('save-edit-btn').addEventListener('click', saveEdit);
 
     // Auto login from session
     const savedUser = sessionStorage.getItem('zen_user');
@@ -882,5 +994,37 @@
     if (savedUser && savedPass) login();
 
   </script>
+<!-- Edit Link Modal -->
+<div class="edit-modal" id="edit-modal" onclick="closeEditModal()">
+  <div class="edit-modal-content" onclick="event.stopPropagation()">
+    <div class="edit-modal-title"><i class="ti ti-pencil" style="color:var(--apps);"></i> Edit Link</div>
+    <input type="hidden" id="edit-soul">
+    <div class="lt-form-row">
+      <input type="text" id="edit-title" placeholder="Title" class="lt-input">
+      <input type="text" id="edit-subtitle" placeholder="Subtitle" class="lt-input">
+    </div>
+    <div class="lt-form-row">
+      <input type="text" id="edit-url" placeholder="URL" class="lt-input">
+      <select id="edit-cat" class="lt-input" style="height:46px;"></select>
+    </div>
+    <input type="hidden" id="edit-icon" value="ti ti-link">
+    <div class="icon-picker-wrap">
+      <span class="icon-picker-label">// icon</span>
+      <div class="icon-picker-grid" id="edit-icon-picker"></div>
+    </div>
+    <div class="lt-form-row">
+      <select id="edit-icon-color" class="lt-input" style="height:46px;">
+        <option value="music">Red</option>
+        <option value="apps">Teal</option>
+        <option value="zen">Cyan</option>
+        <option value="connect">Gold</option>
+      </select>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
+      <button class="lt-btn" style="background:var(--text-muted);" onclick="closeEditModal()">Cancel</button>
+      <button class="lt-btn" id="save-edit-btn">Save Changes</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
