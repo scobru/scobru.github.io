@@ -5,73 +5,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>scobru</title>
-  <meta name="description"
-    content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
+  <meta name="description" content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Shared Tokens */
       --font-sans: 'Outfit', sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
-
-      --zen: #00b4d8;
-      --apps: #2ec4b6;
-      --music: #e01e37;
+      --zen:     #00b4d8;
+      --apps:    #2ec4b6;
+      --music:   #e01e37;
       --connect: #ffb703;
     }
 
-    /* Light Theme (matching reference screenshot) */
     [data-theme="light"] {
-      --bg-outer: #f5f6f8;
-      --bg-card: #ffffff;
-      --text-primary: #121212;
-      --text-secondary: #5e6670;
-      --text-muted: #8c96a3;
-      --card-bg: #ffffff;
-      --card-bg-hover: #f8f9fa;
-      --card-border: rgba(0, 0, 0, 0.08);
-      --card-border-hover: rgba(0, 0, 0, 0.16);
-      --container-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
-      --badge-bg: #f1f3f5;
-      --badge-bg-hover: #e9ecef;
-      --avatar-ring: linear-gradient(135deg, #00b4d8, #e01e37);
+      --bg-outer:          #f5f6f8;
+      --bg-card:           #ffffff;
+      --text-primary:      #121212;
+      --text-secondary:    #5e6670;
+      --text-muted:        #8c96a3;
+      --card-bg:           #ffffff;
+      --card-bg-hover:     #f8f9fa;
+      --card-border:       rgba(0,0,0,0.08);
+      --card-border-hover: rgba(0,0,0,0.16);
+      --container-shadow:  0 20px 40px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
+      --card-shadow:       0 4px 12px rgba(0,0,0,0.02);
+      --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.06);
+      --badge-bg:          #f1f3f5;
+      --badge-bg-hover:    #e9ecef;
+      --avatar-ring:       linear-gradient(135deg, #00b4d8, #e01e37);
     }
 
-    /* Dark Theme */
     [data-theme="dark"] {
-      --bg-outer: #090a0c;
-      --bg-card: #121316;
-      --text-primary: #f5f5f7;
-      --text-secondary: #9ba0a5;
-      --text-muted: #4a4f54;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-bg-hover: rgba(255, 255, 255, 0.06);
-      --card-border: rgba(255, 255, 255, 0.06);
-      --card-border-hover: rgba(255, 255, 255, 0.12);
-      --container-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.2);
-      --badge-bg: rgba(255, 255, 255, 0.05);
-      --badge-bg-hover: rgba(255, 255, 255, 0.1);
-      --avatar-ring: linear-gradient(135deg, #2ec4b6, #ffb703);
+      --bg-outer:          #090a0c;
+      --bg-card:           #121316;
+      --text-primary:      #f5f5f7;
+      --text-secondary:    #9ba0a5;
+      --text-muted:        #4a4f54;
+      --card-bg:           rgba(255,255,255,0.03);
+      --card-bg-hover:     rgba(255,255,255,0.06);
+      --card-border:       rgba(255,255,255,0.06);
+      --card-border-hover: rgba(255,255,255,0.12);
+      --container-shadow:  0 30px 60px rgba(0,0,0,0.4);
+      --card-shadow:       0 4px 12px rgba(0,0,0,0.1);
+      --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.2);
+      --badge-bg:          rgba(255,255,255,0.05);
+      --badge-bg-hover:    rgba(255,255,255,0.1);
+      --avatar-ring:       linear-gradient(135deg, #2ec4b6, #ffb703);
     }
 
     body {
@@ -79,459 +66,239 @@
       background: var(--bg-outer);
       color: var(--text-primary);
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 3rem 1rem 4rem;
       transition: background 0.4s ease, color 0.4s ease;
     }
 
-    /* ── Linktree Canvas ── */
     .lt-card {
       background: var(--bg-card);
-      width: 100%;
-      max-width: 580px;
+      width: 100%; max-width: 580px;
       border-radius: 32px;
       box-shadow: var(--container-shadow);
       padding: 2rem 1.5rem;
-      position: relative;
       border: 1px solid var(--card-border);
       transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* ── Top Floating Action Bar ── */
     .lt-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 1.5rem;
     }
 
     .lt-action-btn {
-      background: var(--badge-bg);
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text-primary);
-      font-size: 18px;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s ease, color 0.2s ease;
+      background: var(--badge-bg); border: none;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-primary); font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275), background 0.2s ease;
     }
+    .lt-action-btn:hover  { transform: scale(1.08); background: var(--badge-bg-hover); }
+    .lt-action-btn:active { transform: scale(0.95); }
 
-    .lt-action-btn:hover {
-      transform: scale(1.08);
-      background: var(--badge-bg-hover);
-    }
-
-    .lt-action-btn:active {
-      transform: scale(0.95);
-    }
-
-    /* ── Header ── */
-    .lt-header {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
+    .lt-header { text-align: center; margin-bottom: 1.5rem; }
 
     .lt-avatar-container {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      margin: 0 auto 1.25rem;
-      padding: 3px;
+      width: 96px; height: 96px; border-radius: 50%;
+      margin: 0 auto 1.25rem; padding: 3px;
       background: var(--avatar-ring);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
-
     .lt-avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      background: var(--bg-card);
-      border: 2px solid var(--bg-card);
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; background: var(--bg-card); border: 2px solid var(--bg-card);
     }
-
     .lt-avatar-fallback {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--badge-bg);
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 24px;
-      font-weight: 500;
-      letter-spacing: -1px;
+      width: 100%; height: 100%; border-radius: 50%;
+      background: var(--badge-bg); color: var(--text-primary);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 24px; font-weight: 500; letter-spacing: -1px;
     }
 
-    .lt-name {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
+    .lt-name { font-size: 22px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .lt-bio  { font-size: 15px; color: var(--text-secondary); line-height: 1.5; max-width: 380px; margin: 0 auto; }
 
-    .lt-bio {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      max-width: 380px;
-      margin: 0 auto;
-      font-weight: 400;
-    }
-
-    /* ── Social Row ── */
     .lt-social-row {
-      display: flex;
-      justify-content: center;
-      gap: 1.25rem;
-      margin: 1rem auto 2rem;
-      flex-wrap: wrap;
-      max-width: 400px;
+      display: flex; justify-content: center; gap: 1.25rem;
+      margin: 1rem auto 2rem; flex-wrap: wrap; max-width: 400px;
     }
-
     .lt-social-row a {
-      color: var(--text-secondary);
-      font-size: 22px;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
+      color: var(--text-secondary); font-size: 22px; text-decoration: none;
+      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275), color 0.2s ease;
+      display: inline-flex; align-items: center;
     }
+    .lt-social-row a:hover { transform: scale(1.2) translateY(-2px); color: var(--text-primary); }
 
-    .lt-social-row a:hover {
-      transform: scale(1.2) translateY(-2px);
-      color: var(--text-primary);
-    }
+    /* ── Section title ── */
+    .lt-section { margin-bottom: 0.5rem; }
 
-    /* ── Section Title ── */
     .lt-section-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
+      font-size: 14px; font-weight: 600; color: var(--text-primary);
       text-transform: capitalize;
       margin: 2.25rem 0 1rem;
-      text-align: center;
-      letter-spacing: 0.05em;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-
     .lt-section-title::before,
     .lt-section-title::after {
-      content: "";
-      height: 1px;
-      flex: 1;
-      background: var(--card-border);
-      max-width: 60px;
+      content: ""; height: 1px; flex: 1;
+      background: var(--card-border); max-width: 60px;
     }
 
-    .lt-section {
-      margin-bottom: 0.5rem;
-    }
+    .sec-name { white-space: nowrap; }
 
-    /* ── Link Card ── */
+    /* Section admin inline controls */
+    .sec-actions { display: none; align-items: center; gap: 3px; }
+    .lt-section.has-auth .sec-actions { display: inline-flex; }
+
+    .sec-btn {
+      background: none; border: none;
+      width: 22px; height: 22px; border-radius: 6px;
+      cursor: pointer; color: var(--text-muted); font-size: 11px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, color 0.15s; padding: 0; flex-shrink: 0;
+    }
+    .sec-btn:hover          { background: var(--badge-bg); color: var(--text-primary); }
+    .sec-btn.del:hover      { background: rgba(224,30,55,0.1); color: var(--music); }
+    .sec-btn.confirm:hover  { background: rgba(46,196,182,0.1); color: var(--apps); }
+
+    /* Inline rename row */
+    .sec-rename-row { display: none; align-items: center; gap: 6px; margin: 2rem 0 1rem; }
+    .lt-section.renaming .lt-section-title { display: none; }
+    .lt-section.renaming .sec-rename-row   { display: flex; }
+
+    .sec-rename-input {
+      flex: 1; background: var(--badge-bg);
+      border: 1px solid var(--apps); color: var(--text-primary);
+      padding: 7px 12px; border-radius: 10px;
+      font-family: var(--font-sans); font-size: 13px;
+      box-shadow: 0 0 0 3px rgba(46,196,182,0.15);
+    }
+    .sec-rename-input:focus { outline: none; }
+
+    /* ── Link card ── */
     .lt-link {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 12px 16px;
-      margin-bottom: 12px;
-      text-decoration: none;
-      color: var(--text-primary);
+      display: flex; align-items: center; gap: 16px;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 18px; padding: 12px 16px; margin-bottom: 12px;
+      text-decoration: none; color: var(--text-primary);
       box-shadow: var(--card-shadow);
-      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.25,0.46,0.45,0.94),
+                  background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
-
-    .lt-link:hover {
-      transform: translateY(-2px);
-      background: var(--card-bg-hover);
-      border-color: var(--card-border-hover);
-      box-shadow: var(--card-shadow-hover);
-    }
-
-    .lt-link:active {
-      transform: translateY(0);
-    }
+    .lt-link:hover  { transform: translateY(-2px); background: var(--card-bg-hover); border-color: var(--card-border-hover); box-shadow: var(--card-shadow-hover); }
+    .lt-link:active { transform: translateY(0); }
 
     .lt-link-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 18px;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
     }
+    .lt-link:hover .lt-link-icon { transform: scale(1.08); }
 
-    .lt-link:hover .lt-link-icon {
-      transform: scale(1.08);
-    }
-
-    .lt-link-content {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .lt-link-title {
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .lt-link-subtitle {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    .lt-link-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .lt-link-title   { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lt-link-subtitle { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     .lt-link-action {
-      color: var(--text-muted);
-      font-size: 16px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
+      color: var(--text-muted); font-size: 16px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%;
       transition: background-color 0.2s, color 0.2s;
     }
+    .lt-link:hover .lt-link-action { color: var(--text-primary); background: var(--badge-bg); }
 
-    .lt-link:hover .lt-link-action {
-      color: var(--text-primary);
-      background: var(--badge-bg);
-    }
+    .ic-zen     { background: rgba(0,180,216,0.08);  color: var(--zen); }
+    .ic-apps    { background: rgba(46,196,182,0.08); color: var(--apps); }
+    .ic-music   { background: rgba(224,30,55,0.08);  color: var(--music); }
+    .ic-connect { background: rgba(255,183,3,0.08);  color: var(--connect); }
 
-    /* ── Icon tints ── */
-    .ic-zen {
-      background: rgba(0, 180, 216, 0.08);
-      color: var(--zen);
-    }
-
-    .ic-apps {
-      background: rgba(46, 196, 182, 0.08);
-      color: var(--apps);
-    }
-
-    .ic-music {
-      background: rgba(224, 30, 55, 0.08);
-      color: var(--music);
-    }
-
-    .ic-connect {
-      background: rgba(255, 183, 3, 0.08);
-      color: var(--connect);
-    }
-
-    /* ── Toast Notification ── */
+    /* ── Toast ── */
     .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
+      position: fixed; bottom: 2rem; left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: rgba(18, 19, 22, 0.9);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      opacity: 0;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18,19,22,0.9); color: #fff;
+      padding: 12px 24px; border-radius: 50px;
+      font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      backdrop-filter: blur(8px); z-index: 1000; opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), opacity 0.4s;
+      pointer-events: none; display: flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    [data-theme="light"] .toast {
-      background: rgba(255, 255, 255, 0.95);
-      color: #121212;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    [data-theme="light"] .toast { background: rgba(255,255,255,0.95); color: #121212; border-color: rgba(0,0,0,0.05); }
 
     /* ── Footer ── */
     .lt-footer {
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2.5rem;
-      border-top: 1px dashed var(--card-border);
-      padding-top: 1.5rem;
+      text-align: center; font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); margin-top: 2.5rem;
+      border-top: 1px dashed var(--card-border); padding-top: 1.5rem;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 600px) {
-      body {
-        padding: 0;
-        background: var(--bg-card);
-      }
-
-      .lt-card {
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        padding: 1.5rem 1rem;
-        min-height: 100vh;
-      }
+      body { padding: 0; background: var(--bg-card); }
+      .lt-card { border-radius: 0; box-shadow: none; border: none; padding: 1.5rem 1rem; min-height: 100vh; }
     }
 
-    .hidden {
-      display: none !important;
-    }
+    .hidden { display: none !important; }
 
-    /* Auth & Admin Panel Styles */
-    .admin-section {
-      margin-top: 1.5rem;
-      border-top: 1px dashed var(--card-border);
-      padding-top: 1.5rem;
-    }
+    /* ── Admin ── */
+    .admin-section { margin-top: 1.5rem; border-top: 1px dashed var(--card-border); padding-top: 1.5rem; }
 
     .admin-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      user-select: none;
+      font-size: 13px; font-weight: 600; color: var(--text-secondary);
+      text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.08em;
+      cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none;
     }
 
     .lt-card-body {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-      margin-bottom: 16px;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 20px; box-shadow: var(--card-shadow);
+      transition: all 0.3s ease; margin-bottom: 16px;
     }
 
-    .lt-card-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
+    .lt-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px; }
 
-    .lt-form-row {
-      display: flex;
-      gap: 12px;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    .lt-form-row:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 640px) {
-      .lt-form-row {
-        flex-direction: column;
-      }
-    }
+    .lt-form-row { display: flex; gap: 12px; width: 100%; margin-bottom: 12px; }
+    .lt-form-row:last-child { margin-bottom: 0; }
+    @media (max-width: 640px) { .lt-form-row { flex-direction: column; } }
 
     .lt-input {
-      background-color: var(--badge-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-primary);
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      flex: 1;
-      width: 100%;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: var(--badge-bg); border: 1px solid var(--card-border);
+      color: var(--text-primary); padding: 12px 16px; border-radius: 12px;
+      font-family: var(--font-sans); font-size: 14px; flex: 1; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-
-    .lt-input:focus {
-      outline: none;
-      border-color: var(--apps);
-      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
-    }
+    .lt-input:focus { outline: none; border-color: var(--apps); box-shadow: 0 0 0 3px rgba(46,196,182,0.15); }
 
     .lt-btn {
-      background: var(--apps);
-      color: #ffffff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+      background: var(--apps); color: #fff; border: none;
+      padding: 12px 24px; border-radius: 12px;
+      font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+      cursor: pointer; white-space: nowrap;
+      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275), filter 0.2s;
     }
+    .lt-btn:hover  { transform: translateY(-2px); filter: brightness(1.1); }
+    .lt-btn:active { transform: translateY(0); }
 
-    .lt-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-    }
+    .lt-link-action.trash-btn { border: none; background: none; cursor: pointer; }
+    .lt-link-action.trash-btn:hover { color: #e01e37 !important; background: rgba(224,30,55,0.15) !important; }
 
-    .lt-btn:active {
-      transform: translateY(0);
-    }
+    .mgmt-divider { border: none; border-top: 1px dashed var(--card-border); margin: 16px 0; }
 
-    .lt-link-action.trash-btn {
-      border: none;
-      background: none;
-      cursor: pointer;
+    /* Sections list in admin */
+    .sec-admin-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+    .sec-admin-item {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--badge-bg); border-radius: 10px;
+      padding: 8px 12px; font-size: 13px;
     }
-
-    .lt-link-action.trash-btn:hover {
-      color: #e01e37 !important;
-      background: rgba(224, 30, 55, 0.15) !important;
-    }
+    .sec-admin-item-order { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); min-width: 16px; }
+    .sec-admin-item-name  { flex: 1; font-weight: 500; color: var(--text-primary); }
+    .sec-admin-item .sec-btn { width: 24px; height: 24px; font-size: 12px; }
   </style>
 </head>
 
@@ -557,62 +324,34 @@
         <div class="lt-avatar-fallback" style="display:none;">SB</div>
       </div>
       <h1 class="lt-name">scobru</h1>
-      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative
-        tech.</p>
+      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative tech.</p>
     </header>
 
-    <!-- Centered Social Row (Linktree Style) -->
+    <!-- Social Row -->
     <div class="lt-social-row">
-      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i
-          class="ti ti-brand-github"></i></a>
-      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i
-          class="ti ti-brand-x"></i></a>
-      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i
-          class="ti ti-brand-mastodon"></i></a>
-      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i
-          class="ti ti-brand-telegram"></i></a>
-      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i
-          class="ti ti-brand-instagram"></i></a>
-      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i
-          class="ti ti-brand-youtube"></i></a>
+      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
+      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
+      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i class="ti ti-brand-mastodon"></i></a>
+      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
+      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
       <a href="mailto:dev.scobru@pm.me" aria-label="Email"><i class="ti ti-mail"></i></a>
     </div>
 
-    <!-- MUSIC & ART SECTION -->
-    <section class="lt-section" aria-labelledby="sec-music">
-      <h2 class="lt-section-title" id="sec-music">music &amp; art</h2>
-      <div id="links-music"></div>
-    </section>
+    <!-- Dynamic sections rendered here by JS -->
+    <div id="sections-container"></div>
 
-    <!-- WEB APPS SECTION -->
-    <section class="lt-section" aria-labelledby="sec-apps">
-      <h2 class="lt-section-title" id="sec-apps">web apps &amp; projects</h2>
-      <div id="links-apps"></div>
-    </section>
-
-    <!-- ZEN APPS SECTION -->
-    <section class="lt-section" aria-labelledby="sec-zen">
-      <h2 class="lt-section-title" id="sec-zen">apps</h2>
-      <div id="links-zen"></div>
-    </section>
-
-    <!-- CONNECT SECTION -->
-    <section class="lt-section" aria-labelledby="sec-connect">
-      <h2 class="lt-section-title" id="sec-connect">connect</h2>
-      <div id="links-connect"></div>
-    </section>
-
-    <!-- Admin Settings Section -->
+    <!-- Admin Panel -->
     <section class="admin-section">
       <div class="admin-title" id="admin-toggle">
-        <i class="ti ti-settings"></i> Manage Portal <i class="ti ti-chevron-down" id="admin-chevron"
-          style="transition: transform 0.2s; font-size: 11px; margin-left: 4px; transform: rotate(-90deg);"></i>
+        <i class="ti ti-settings"></i> Manage Portal
+        <i class="ti ti-chevron-down" id="admin-chevron" style="transition:transform 0.2s; font-size:11px; margin-left:4px; transform:rotate(-90deg);"></i>
       </div>
       <div class="lt-card-body hidden" id="admin-body">
+
         <!-- Auth Form -->
         <div id="auth-form">
-          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master
-            Credentials to modify links.</p>
+          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master Credentials to manage your portal.</p>
           <div class="lt-form-row">
             <input type="text" id="user-input" placeholder="Username" class="lt-input">
             <input type="password" id="pass-input" placeholder="Password" class="lt-input">
@@ -622,6 +361,18 @@
 
         <!-- Management Panel -->
         <div id="mgmt-panel" class="hidden">
+
+          <!-- Sections block -->
+          <p class="lt-card-desc"><i class="ti ti-layout-list" style="color:var(--zen);"></i> Manage sections. Rename or delete directly on the section title above.</p>
+          <div class="lt-form-row">
+            <input type="text" id="sec-name-input" placeholder="New section name (e.g. Music)" class="lt-input">
+            <button class="lt-btn" id="add-sec-btn" style="background:var(--zen);">Add Section</button>
+          </div>
+          <div id="sec-admin-list" class="sec-admin-list"></div>
+
+          <div class="mgmt-divider"></div>
+
+          <!-- Links block -->
           <p class="lt-card-desc"><i class="ti ti-pencil" style="color:var(--apps);"></i> Add new link to portal.</p>
           <div class="lt-form-row">
             <input type="text" id="link-title" placeholder="Title (e.g. Sudo Records)" class="lt-input">
@@ -629,377 +380,507 @@
           </div>
           <div class="lt-form-row">
             <input type="text" id="link-url" placeholder="URL (https://...)" class="lt-input">
-            <select id="link-cat" class="lt-input" style="height: 46px;">
-              <option value="music">Music & Art</option>
-              <option value="apps">Web Apps & Projects</option>
-              <option value="zen">Apps (Zen Cryptic)</option>
-              <option value="connect">Connect</option>
+            <select id="link-cat" class="lt-input" style="height:46px;">
+              <option value="">Loading sections…</option>
             </select>
           </div>
           <div class="lt-form-row">
             <input type="text" id="link-icon" placeholder="Icon (e.g. ti ti-headphones)" class="lt-input">
-            <select id="link-icon-color" class="lt-input" style="height: 46px;">
-              <option value="music">Music (Red)</option>
-              <option value="apps">Apps (Green)</option>
-              <option value="zen">Zen (Cyan)</option>
-              <option value="connect">Connect (Orange)</option>
+            <select id="link-icon-color" class="lt-input" style="height:46px;">
+              <option value="music">Red</option>
+              <option value="apps">Teal</option>
+              <option value="zen">Cyan</option>
+              <option value="connect">Gold</option>
             </select>
           </div>
-          <div
-            style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 8px; flex-wrap: wrap;">
-            <button class="lt-btn" id="logout-btn" style="background: var(--text-muted);">Logout</button>
-            <button class="lt-btn" id="seed-btn" style="background: #ffb703; color: #121212;">Seed Defaults</button>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:8px; flex-wrap:wrap;">
+            <button class="lt-btn" id="logout-btn" style="background:var(--text-muted);">Logout</button>
+            <button class="lt-btn" id="seed-btn" style="background:#ffb703; color:#121212;">Seed Defaults</button>
             <button class="lt-btn" id="add-link-btn">Add Link</button>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="lt-footer" style="display: flex; flex-direction: column; align-items: center;">
-      <div>// 13 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight: 500;">online</span>
-      </div>
-      <div style="font-size: 10px; opacity: 0.7; margin-top: 6px; font-family: var(--font-sans);">
+    <footer class="lt-footer" id="lt-footer">
+      <div>// 0 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight:500;">online</span></div>
+      <div style="font-size:10px; opacity:0.7; font-family:var(--font-sans);">
         built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener"
-          style="color: var(--apps); text-decoration: none; font-weight: 500;"><i class="ti ti-brand-github"
-            style="font-size: 10px; vertical-align: middle;"></i> ZenTree</a>
+          style="color:var(--apps); text-decoration:none; font-weight:500;">
+          <i class="ti ti-brand-github" style="font-size:10px; vertical-align:middle;"></i> ZenTree</a>
       </div>
     </footer>
 
   </main>
 
   <script>
+    // Theme
     const themeToggle = document.getElementById('theme-toggle');
-    const shareBtn = document.getElementById('share-btn');
+    const shareBtn    = document.getElementById('share-btn');
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
 
-    // Load stored theme or default to light
-    const savedTheme = localStorage.getItem('theme');
-    const initialTheme = savedTheme || 'light';
-
-    document.documentElement.setAttribute('data-theme', initialTheme);
-
-    // Toggle Theme Interaction
     themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-
-      // Rotate effect on click
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
       themeToggle.style.transform = 'scale(0.8) rotate(180deg)';
-      setTimeout(() => {
-        themeToggle.style.transform = '';
-      }, 250);
+      setTimeout(() => { themeToggle.style.transform = ''; }, 250);
     });
 
-    // Toast notification function
-    function showToast(message) {
-      let toast = document.querySelector('.toast');
-      if (!toast) {
-        toast = document.createElement('div');
-        toast.className = 'toast';
-        document.body.appendChild(toast);
-      }
-      toast.innerHTML = `<i class="ti ti-circle-check" style="color: var(--apps); font-size: 16px;"></i> ${message}`;
-
-      // Force a reflow
-      toast.offsetHeight;
-
-      toast.classList.add('show');
-
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2500);
+    function showToast(msg) {
+      let t = document.querySelector('.toast');
+      if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+      t.innerHTML = `<i class="ti ti-circle-check" style="color:var(--apps);font-size:16px;"></i> ${msg}`;
+      t.offsetHeight; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
     }
 
-    // Copy to Clipboard Share action
     shareBtn.addEventListener('click', () => {
-      const profileUrl = window.location.href;
-      navigator.clipboard.writeText(profileUrl).then(() => {
-        showToast('Profile link copied to clipboard!');
-      }).catch(() => {
-        // Fallback for older browsers or secure context issues
-        const el = document.createElement('textarea');
-        el.value = profileUrl;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        showToast('Profile link copied to clipboard!');
-      });
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => showToast('Profile link copied!'))
+        .catch(() => {
+          const el = document.createElement('textarea');
+          el.value = window.location.href;
+          document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+          showToast('Profile link copied!');
+        });
+    });
+
+    // Collapsible admin
+    const adminToggle  = document.getElementById('admin-toggle');
+    const adminBody    = document.getElementById('admin-body');
+    const adminChevron = document.getElementById('admin-chevron');
+    adminToggle.addEventListener('click', () => {
+      adminBody.classList.toggle('hidden');
+      adminChevron.style.transform = adminBody.classList.contains('hidden') ? 'rotate(-90deg)' : '';
     });
   </script>
 
   <script type="module">
     import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
 
+    // ── CONFIG ───────────────────────────────────────────────
     const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
 
-    let zen;
-    let pair;
-    let isAuthenticated = false;
+    // Legacy section IDs already in the ZEN database — shown immediately
+    // without needing a seed so existing data keeps working.
+    const LEGACY_SECTIONS = {
+      'music':   { name: 'Music & Art',        order: 1 },
+      'apps':    { name: 'Web Apps & Projects', order: 2 },
+      'zen':     { name: 'Apps',               order: 3 },
+      'connect': { name: 'Connect',            order: 4 },
+    };
 
-    const relays = ["wss://delay.scobrudot.dev/zen", "wss://zen.akao.io:8420/zen", "wss://zen0.akao.io:8420/zen", "wss://zen1.akao.io:8420/zen"];
+    let zen, pair;
+    let isAuthenticated = false;
+    const sectionsMap = {};
+
+    zen = new ZEN({ peers: ["wss://delay.scobrudot.dev/zen","wss://zen.akao.io:8420/zen","wss://zen0.akao.io:8420/zen","wss://zen1.akao.io:8420/zen"] });
     localStorage.removeItem('zenPeers');
 
-    zen = new ZEN({
-      peers: relays,
+    // Bootstrap: pre-populate legacy sections so existing links render immediately
+    Object.entries(LEGACY_SECTIONS).forEach(([id, sec]) => {
+      sectionsMap[id] = sec;
+      upsertSectionEl(id, sec.name, sec.order);
     });
 
-    // Auto-load public links initially
+    // Subscribe to stored sections (overrides legacy defaults if user has seeded)
+    loadSections(PUBLIC_VIEW_KEY);
+    // Subscribe to links
     loadLinks(PUBLIC_VIEW_KEY);
 
-    // Dynamic Link Renderer
+    // ── SECTIONS ─────────────────────────────────────────────
+
+    function loadSections(pubKey) {
+      zen.get('~' + pubKey).get('portal_sections').map().on((section, id) => {
+        if (!section || !section.name) {
+          // Only remove if it's NOT a legacy section (keep those as fallback)
+          if (!LEGACY_SECTIONS[id]) removeSectionEl(id);
+        } else {
+          sectionsMap[id] = section;
+          upsertSectionEl(id, section.name, section.order || 0);
+          rebuildSectionDropdown();
+          rebuildSecAdminList();
+        }
+      });
+    }
+
+    function ensureSectionShell(id) {
+      if (document.getElementById('zsec-' + id)) return;
+      // If it's a known legacy ID, create it with a proper title
+      const legacy = LEGACY_SECTIONS[id];
+      if (legacy) {
+        sectionsMap[id] = sectionsMap[id] || legacy;
+        upsertSectionEl(id, sectionsMap[id].name, sectionsMap[id].order);
+      } else {
+        // Unknown section — create a bare shell; title arrives via loadSections
+        const c = document.getElementById('sections-container');
+        const el = document.createElement('section');
+        el.id = 'zsec-' + id; el.className = 'lt-section'; el.dataset.order = '999';
+        const h2 = document.createElement('h2'); h2.className = 'lt-section-title';
+        const ld = document.createElement('div'); ld.id = 'links-' + id;
+        el.appendChild(h2); el.appendChild(ld); c.appendChild(el);
+      }
+    }
+
+    function upsertSectionEl(id, name, order) {
+      const container = document.getElementById('sections-container');
+      let el = document.getElementById('zsec-' + id);
+
+      if (!el) {
+        el = document.createElement('section');
+        el.id = 'zsec-' + id; el.className = 'lt-section';
+        const ld = document.createElement('div'); ld.id = 'links-' + id;
+        el.appendChild(document.createElement('h2')).className = 'lt-section-title';
+        el.appendChild(ld);
+        container.appendChild(el);
+      }
+
+      el.dataset.order = order;
+      if (isAuthenticated) el.classList.add('has-auth');
+
+      // Build title
+      const h2 = el.querySelector('.lt-section-title');
+      h2.innerHTML = `
+        <span class="sec-name">${escHtml(name)}</span>
+        <span class="sec-actions">
+          <button class="sec-btn" title="Rename"><i class="ti ti-pencil"></i></button>
+          <button class="sec-btn del" title="Delete section"><i class="ti ti-trash"></i></button>
+        </span>`;
+      h2.querySelector('.sec-btn:not(.del)').onclick = () => startRename(el, id, name);
+      h2.querySelector('.sec-btn.del').onclick       = () => deleteSection(id);
+
+      // Build rename row (idempotent)
+      if (!el.querySelector('.sec-rename-row')) {
+        const rr = document.createElement('div');
+        rr.className = 'sec-rename-row';
+        rr.innerHTML = `
+          <input class="sec-rename-input" type="text">
+          <button class="sec-btn confirm" title="Save"><i class="ti ti-check"></i></button>
+          <button class="sec-btn" title="Cancel"><i class="ti ti-x"></i></button>`;
+        el.insertBefore(rr, el.querySelector('[id^="links-"]'));
+
+        rr.querySelector('.sec-btn.confirm').onclick = () => {
+          const val = rr.querySelector('.sec-rename-input').value.trim();
+          if (val) renameSection(id, val);
+          el.classList.remove('renaming');
+        };
+        rr.querySelector('.sec-btn:not(.confirm)').onclick = () => el.classList.remove('renaming');
+        rr.querySelector('.sec-rename-input').addEventListener('keydown', e => {
+          if (e.key === 'Enter')  rr.querySelector('.sec-btn.confirm').click();
+          if (e.key === 'Escape') el.classList.remove('renaming');
+        });
+      }
+
+      sortSections();
+    }
+
+    function startRename(el, id, currentName) {
+      el.querySelector('.sec-rename-input').value = currentName;
+      el.classList.add('renaming');
+      el.querySelector('.sec-rename-input').focus();
+    }
+
+    function sortSections() {
+      const c = document.getElementById('sections-container');
+      Array.from(c.querySelectorAll('.lt-section[data-order]'))
+        .sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order))
+        .forEach(s => c.appendChild(s));
+    }
+
+    function removeSectionEl(id) {
+      delete sectionsMap[id];
+      const el = document.getElementById('zsec-' + id);
+      if (el) el.remove();
+      rebuildSectionDropdown();
+      rebuildSecAdminList();
+    }
+
+    function rebuildSectionDropdown() {
+      const select = document.getElementById('link-cat');
+      if (!select) return;
+      const prev = select.value;
+      select.innerHTML = '';
+      const entries = Object.entries(sectionsMap).sort(([,a],[,b]) => (a.order||0) - (b.order||0));
+      if (!entries.length) { select.innerHTML = '<option value="">No sections</option>'; return; }
+      entries.forEach(([id, sec]) => {
+        const o = document.createElement('option');
+        o.value = id; o.textContent = sec.name;
+        if (id === prev) o.selected = true;
+        select.appendChild(o);
+      });
+    }
+
+    function rebuildSecAdminList() {
+      const list = document.getElementById('sec-admin-list');
+      if (!list) return;
+      list.innerHTML = '';
+      Object.entries(sectionsMap)
+        .sort(([,a],[,b]) => (a.order||0) - (b.order||0))
+        .forEach(([id, sec]) => {
+          const item = document.createElement('div');
+          item.className = 'sec-admin-item';
+          item.innerHTML = `
+            <span class="sec-admin-item-order">${sec.order || '·'}</span>
+            <span class="sec-admin-item-name">${escHtml(sec.name)}</span>
+            <button class="sec-btn" title="Rename" onclick="triggerRename('${id}')"><i class="ti ti-pencil"></i></button>
+            <button class="sec-btn del" title="Delete" onclick="triggerDelete('${id}')"><i class="ti ti-trash"></i></button>`;
+          list.appendChild(item);
+        });
+    }
+
+    window.triggerRename = (id) => {
+      const el = document.getElementById('zsec-' + id);
+      if (el) startRename(el, id, sectionsMap[id]?.name || '');
+    };
+    window.triggerDelete = (id) => deleteSection(id);
+
+    function addSection() {
+      if (!isAuthenticated) return;
+      const input = document.getElementById('sec-name-input');
+      const name = input.value.trim();
+      if (!name) { alert('Section name is required!'); return; }
+      const id = 'sec-' + Date.now();
+      const order = Object.keys(sectionsMap).length + 1;
+      zen.get('~' + pair.pub).get('portal_sections').get(id).put(
+        { name, order }, (ack) => {
+          if (ack && ack.err) alert('Save failed: ' + ack.err);
+          else { showToast(`Section "${name}" added!`); input.value = ''; }
+        }, { authenticator: pair }
+      );
+    }
+
+    function deleteSection(id) {
+      if (!isAuthenticated) return;
+      const sec = sectionsMap[id];
+      if (!confirm(`Delete section "${sec ? sec.name : id}"?\nLinks in this section will be hidden until re-assigned.`)) return;
+      zen.get('~' + pair.pub).get('portal_sections').get(id).put(null, (ack) => {
+        if (ack && ack.err) alert('Delete failed: ' + ack.err);
+        else showToast('Section deleted!');
+      }, { authenticator: pair });
+    }
+
+    function renameSection(id, newName) {
+      if (!isAuthenticated) return;
+      zen.get('~' + pair.pub).get('portal_sections').get(id).put(
+        { ...sectionsMap[id], name: newName }, (ack) => {
+          if (ack && ack.err) alert('Rename failed: ' + ack.err);
+          else showToast('Section renamed!');
+        }, { authenticator: pair }
+      );
+    }
+
+    // ── LINKS ─────────────────────────────────────────────────
+
     function loadLinks(pubKey) {
       if (!pubKey) return;
-
-      // Clear containers for a new user/key loading
-      document.getElementById('links-music').innerHTML = '';
-      document.getElementById('links-apps').innerHTML = '';
-      document.getElementById('links-zen').innerHTML = '';
-      document.getElementById('links-connect').innerHTML = '';
-
       zen.get('~' + pubKey).get('portal_links').map().on((link, id) => {
-        const linkElId = 'lnk-' + id;
-
-        // Handle deletion
+        const elId = 'lnk-' + id;
         if (!link) {
-          const el = document.getElementById(linkElId);
+          const el = document.getElementById(elId);
           if (el) el.remove();
-          updateCount();
-          return;
+          updateCount(); return;
         }
-
         if (!link.title || !link.url) return;
 
         const cat = link.cat || 'apps';
+        if (!document.getElementById('links-' + cat)) ensureSectionShell(cat);
         const container = document.getElementById('links-' + cat);
         if (!container) return;
 
-        let el = document.getElementById(linkElId);
+        let el = document.getElementById(elId);
         if (!el) {
           el = document.createElement('a');
-          el.id = linkElId;
-          el.className = 'lt-link';
-          el.target = '_blank';
-          el.rel = 'noopener';
+          el.id = elId; el.className = 'lt-link';
+          el.target = '_blank'; el.rel = 'noopener';
           container.appendChild(el);
         }
 
         el.href = link.url;
-
-        const iconClass = link.icon || 'ti ti-link';
-        const iconColor = link.iconColor || 'apps';
-
-        // Render action block depending on Auth
-        let actionMarkup = `<div class="lt-link-action"><i class="ti ti-dots-vertical"></i></div>`;
-        if (isAuthenticated) {
-          actionMarkup = `
-            <button class="lt-link-action trash-btn" title="Delete Link">
-              <i class="ti ti-trash" style="color: #e01e37;"></i>
-            </button>
-          `;
-        }
+        const iconClass  = link.icon || 'ti ti-link';
+        const iconColor  = link.iconColor || 'apps';
+        const action = isAuthenticated
+          ? `<button class="lt-link-action trash-btn" title="Delete"><i class="ti ti-trash" style="color:#e01e37;"></i></button>`
+          : `<div class="lt-link-action"><i class="ti ti-dots-vertical"></i></div>`;
 
         el.innerHTML = `
           <div class="lt-link-icon ic-${iconColor}"><i class="${iconClass}"></i></div>
           <div class="lt-link-content">
-            <span class="lt-link-title">${link.title}</span>
-            <span class="lt-link-subtitle">${link.subtitle || ''}</span>
+            <span class="lt-link-title">${escHtml(link.title)}</span>
+            <span class="lt-link-subtitle">${escHtml(link.subtitle || '')}</span>
           </div>
-          ${actionMarkup}
-        `;
+          ${action}`;
 
-        // If authenticated, setup trash button listener
         if (isAuthenticated) {
           const trash = el.querySelector('.trash-btn');
-          if (trash) {
-            trash.onclick = (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              deleteLink(id);
-            };
-          }
+          if (trash) trash.onclick = (e) => { e.preventDefault(); e.stopPropagation(); deleteLink(id); };
         }
 
-        // Apply dynamic sorting by timestamp
-        el.setAttribute('data-timestamp', link.timestamp || Date.now());
-        const children = Array.from(container.children);
-        children.sort((a, b) => parseInt(a.getAttribute('data-timestamp')) - parseInt(b.getAttribute('data-timestamp')));
-        children.forEach(child => container.appendChild(child));
+        el.setAttribute('data-timestamp', link.timestamp || 0);
+        Array.from(container.children)
+          .sort((a, b) => parseInt(a.dataset.timestamp) - parseInt(b.dataset.timestamp))
+          .forEach(c => container.appendChild(c));
 
         updateCount();
       });
     }
 
     function updateCount() {
-      const footer = document.querySelector('.lt-footer');
-      if (footer) {
-        const total = document.querySelectorAll('.lt-link').length;
-        footer.innerHTML = `
-          <div>// ${total} items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight: 500;">online</span></div>
-          <div style="font-size: 10px; opacity: 0.7; margin-top: 6px; font-family: var(--font-sans);">
-            built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener" style="color: var(--apps); text-decoration: none; font-weight: 500;"><i class="ti ti-brand-github" style="font-size: 10px; vertical-align: middle;"></i> ZenTree</a>
-          </div>
-        `;
-      }
+      const total = document.querySelectorAll('.lt-link').length;
+      document.getElementById('lt-footer').innerHTML = `
+        <div>// ${total} items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight:500;">online</span></div>
+        <div style="font-size:10px; opacity:0.7; font-family:var(--font-sans);">
+          built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener"
+            style="color:var(--apps); text-decoration:none; font-weight:500;">
+            <i class="ti ti-brand-github" style="font-size:10px; vertical-align:middle;"></i> ZenTree</a>
+        </div>`;
     }
 
-    // Authenticate Flow
+    function deleteLink(soul) {
+      if (!isAuthenticated) return;
+      if (!confirm('Delete this link?')) return;
+      zen.get('~' + pair.pub).get('portal_links').get(soul).put(null, (ack) => {
+        if (ack && ack.err) alert('Delete failed: ' + ack.err);
+        else showToast('Link deleted!');
+      }, { authenticator: pair });
+    }
+
+    function addLink() {
+      if (!isAuthenticated) return;
+      const title     = document.getElementById('link-title').value;
+      const subtitle  = document.getElementById('link-subtitle').value;
+      const url       = document.getElementById('link-url').value;
+      const cat       = document.getElementById('link-cat').value;
+      const icon      = document.getElementById('link-icon').value || 'ti ti-link';
+      const iconColor = document.getElementById('link-icon-color').value;
+      if (!title || !url) { alert('Title and URL are required!'); return; }
+      if (!cat)           { alert('Please select or create a section first!'); return; }
+
+      const soul = 'lnk-' + Date.now() + '-' + Math.random().toString(36).substring(7);
+      zen.get('~' + pair.pub).get('portal_links').get(soul).put(
+        { title, subtitle, url, cat, icon, iconColor, timestamp: Date.now() },
+        (ack) => {
+          if (ack && ack.err) alert('Save failed: ' + ack.err);
+          else {
+            showToast('Link added!');
+            document.getElementById('link-title').value = '';
+            document.getElementById('link-subtitle').value = '';
+            document.getElementById('link-url').value = '';
+            document.getElementById('link-icon').value = '';
+          }
+        }, { authenticator: pair }
+      );
+    }
+
+    // ── AUTH ──────────────────────────────────────────────────
+
     async function login() {
-      const userInput = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
-      const passInput = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
-      if (!userInput || !passInput) return;
+      const user = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
+      const pass = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
+      if (!user || !pass) return;
 
       try {
-        const btn = document.getElementById('login-btn');
-        btn.innerHTML = 'Authenticating...';
-
-        pair = await ZEN.pair(null, { seed: userInput + passInput });
+        document.getElementById('login-btn').innerHTML = 'Authenticating…';
+        pair = await ZEN.pair(null, { seed: user + pass });
         isAuthenticated = true;
 
-        sessionStorage.setItem('zen_user', userInput);
-        sessionStorage.setItem('zen_pass', passInput);
+        sessionStorage.setItem('zen_user', user);
+        sessionStorage.setItem('zen_pass', pass);
 
         document.getElementById('auth-form').classList.add('hidden');
         document.getElementById('mgmt-panel').classList.remove('hidden');
+        document.getElementById('admin-toggle').innerHTML =
+          `<i class="ti ti-settings" style="color:var(--apps);"></i> Manage Portal (Authenticated)
+           <i class="ti ti-chevron-down" id="admin-chevron" style="transition:transform 0.2s; font-size:11px; margin-left:4px;"></i>`;
 
-        // Toggle admin panel title styling to show logged in state
-        const title = document.getElementById('admin-toggle');
-        title.innerHTML = `<i class="ti ti-settings" style="color:var(--apps);"></i> Manage Portal (Authenticated) <i class="ti ti-chevron-down" id="admin-chevron" style="transition: transform 0.2s; font-size: 11px; margin-left: 4px;"></i>`;
+        // Mark all sections as auth-enabled
+        document.querySelectorAll('.lt-section').forEach(s => s.classList.add('has-auth'));
 
-        // Reload links using active writer key
+        // Re-subscribe with writer key to get owned data + show trash buttons
+        loadSections(pair.pub);
         loadLinks(pair.pub);
+        rebuildSectionDropdown();
+        rebuildSecAdminList();
       } catch (e) {
-        console.error("Auth Error:", e);
-        alert("Auth failed: " + e.message);
-        document.getElementById('login-btn').innerText = "Authenticate";
+        alert('Auth failed: ' + e.message);
+        document.getElementById('login-btn').innerText = 'Authenticate';
       }
     }
 
-    // Add Link Function
-    function addLink() {
-      if (!isAuthenticated) return;
-      const title = document.getElementById('link-title').value;
-      const subtitle = document.getElementById('link-subtitle').value;
-      const url = document.getElementById('link-url').value;
-      const cat = document.getElementById('link-cat').value;
-      const icon = document.getElementById('link-icon').value || 'ti ti-link';
-      const iconColor = document.getElementById('link-icon-color').value;
-
-      if (!title || !url) {
-        alert("Title and URL are required!");
-        return;
-      }
-
-      const link = {
-        title,
-        subtitle,
-        url,
-        cat,
-        icon,
-        iconColor,
-        timestamp: Date.now()
-      };
-
-      const soul = 'lnk-' + Date.now() + '-' + Math.random().toString(36).substring(7);
-
-      zen.get('~' + pair.pub).get('portal_links').get(soul).put(link, (ack) => {
-        if (ack && ack.err) {
-          alert("Save failed: " + ack.err);
-        } else {
-          showToast("Link added successfully!");
-          document.getElementById('link-title').value = '';
-          document.getElementById('link-subtitle').value = '';
-          document.getElementById('link-url').value = '';
-          document.getElementById('link-icon').value = '';
-        }
-      }, { authenticator: pair });
-    }
-
-    // Delete Link Function
-    function deleteLink(soul) {
-      if (!isAuthenticated) return;
-      if (!confirm("Are you sure you want to delete this link?")) return;
-
-      zen.get('~' + pair.pub).get('portal_links').get(soul).put(null, (ack) => {
-        if (ack && ack.err) {
-          alert("Delete failed: " + ack.err);
-        } else {
-          showToast("Link deleted successfully!");
-        }
-      }, { authenticator: pair });
-    }
-
-    // Logout Function
     function logout() {
       sessionStorage.removeItem('zen_user');
       sessionStorage.removeItem('zen_pass');
       window.location.reload();
     }
 
-    // Migration / Seeding Script
+    // ── SEED DEFAULTS ─────────────────────────────────────────
+    // Seeds both sections (using legacy IDs for backward compat) and links.
+
     function seedDefaults() {
       if (!isAuthenticated) return;
-      if (!confirm("Seed default links to your portal database? This will publish initial links.")) return;
+      if (!confirm('Seed default sections and links? Existing entries with the same IDs will be overwritten.')) return;
 
-      const initialLinks = [
-        { title: "Sudo Records", subtitle: "Record Label hosted on Tunecamp", url: "https://sudorecords.scobrudot.dev", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000001 },
-        { title: "Homologo", subtitle: "Songwriter, Pop, Electronic", url: "https://homologomusic.bandcamp.com", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000002 },
-        { title: "Fade", subtitle: "Electronic / Synth music", url: "https://fademusik.bandcamp.com", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000003 },
-        { title: "Zima Blue", subtitle: "Ambient, Experimental soundscapes", url: "https://zimablue.bandcamp.com", cat: "music", icon: "ti ti-headphones", iconColor: "music", timestamp: 1600000000004 },
-        { title: "Tunecamp", subtitle: "Decentralized music streaming", url: "https://scobru-tunecamp.vercel.app/", cat: "apps", icon: "ti ti-music", iconColor: "apps", timestamp: 1600000000005 },
-        { title: "Linda Chat", subtitle: "TPRE & post-quantum messenger", url: "https://scobru-linda.vercel.app/", cat: "apps", icon: "ti ti-message-circle", iconColor: "apps", timestamp: 1600000000006 },
-        { title: "Wormhole", subtitle: "E2EE P2P file transfer", url: "https://scobru-wormhole.vercel.app/", cat: "apps", icon: "ti ti-transfer", iconColor: "apps", timestamp: 1600000000007 },
-        { title: "Nullroute", subtitle: "EVM stealth payment hub", url: "https://scobru-nullroute.vercel.app/", cat: "apps", icon: "ti ti-eye-off", iconColor: "apps", timestamp: 1600000000008 },
-        { title: "Notes", subtitle: "Decentralized offline-first workspace", url: "apps/notes.html", cat: "zen", icon: "ti ti-notes", iconColor: "zen", timestamp: 1600000000010 },
-        { title: "Audius", subtitle: "All music on decentralized web3 network", url: "https://audius.co/francescobruno", cat: "connect", icon: "ti ti-player-play", iconColor: "connect", timestamp: 1600000000012 },
-        { title: "Spotify", subtitle: "All music and curated playlists on Spotify", url: "https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7?si=50178c1b2b3a4278", cat: "connect", icon: "ti ti-player-play", iconColor: "connect", timestamp: 1600000000013 }
+      const defaultSections = [
+        { id: 'music',   name: 'Music & Art',        order: 1 },
+        { id: 'apps',    name: 'Web Apps & Projects', order: 2 },
+        { id: 'zen',     name: 'Apps',               order: 3 },
+        { id: 'connect', name: 'Connect',            order: 4 },
       ];
 
-      let count = 0;
-      initialLinks.forEach((link, idx) => {
-        const soul = 'lnk-init-' + idx;
-        zen.get('~' + pair.pub).get('portal_links').get(soul).put(link, (ack) => {
-          if (!ack.err) {
-            count++;
-            if (count === initialLinks.length) {
-              showToast("Seeded 13 default links successfully!");
-            }
-          }
+      const defaultLinks = [
+        { title: 'Sudo Records',  subtitle: 'Record Label hosted on Tunecamp',         url: 'https://sudorecords.scobrudot.dev',                             cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000001 },
+        { title: 'Homologo',      subtitle: 'Songwriter, Pop, Electronic',              url: 'https://homologomusic.bandcamp.com',                            cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000002 },
+        { title: 'Fade',          subtitle: 'Electronic / Synth music',                 url: 'https://fademusik.bandcamp.com',                                cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000003 },
+        { title: 'Zima Blue',     subtitle: 'Ambient, Experimental soundscapes',        url: 'https://zimablue.bandcamp.com',                                 cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000004 },
+        { title: 'Tunecamp',      subtitle: 'Decentralized music streaming',            url: 'https://scobru-tunecamp.vercel.app/',                           cat: 'apps',    icon: 'ti ti-music',           iconColor: 'apps',    timestamp: 1600000000005 },
+        { title: 'Linda Chat',    subtitle: 'TPRE & post-quantum messenger',            url: 'https://scobru-linda.vercel.app/',                              cat: 'apps',    icon: 'ti ti-message-circle',  iconColor: 'apps',    timestamp: 1600000000006 },
+        { title: 'Wormhole',      subtitle: 'E2EE P2P file transfer',                   url: 'https://scobru-wormhole.vercel.app/',                           cat: 'apps',    icon: 'ti ti-transfer',        iconColor: 'apps',    timestamp: 1600000000007 },
+        { title: 'Nullroute',     subtitle: 'EVM stealth payment hub',                  url: 'https://scobru-nullroute.vercel.app/',                          cat: 'apps',    icon: 'ti ti-eye-off',         iconColor: 'apps',    timestamp: 1600000000008 },
+        { title: 'Notes',         subtitle: 'Decentralized offline-first workspace',    url: 'apps/notes.html',                                              cat: 'zen',     icon: 'ti ti-notes',           iconColor: 'zen',     timestamp: 1600000000010 },
+        { title: 'Audius',        subtitle: 'All music on decentralized web3 network',  url: 'https://audius.co/francescobruno',                              cat: 'connect', icon: 'ti ti-player-play',     iconColor: 'connect', timestamp: 1600000000012 },
+        { title: 'Spotify',       subtitle: 'All music and curated playlists',          url: 'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7',    cat: 'connect', icon: 'ti ti-player-play',     iconColor: 'connect', timestamp: 1600000000013 },
+      ];
+
+      // Seed sections first (uses same IDs as legacy, so ZEN overwrites cleanly)
+      defaultSections.forEach(sec => {
+        zen.get('~' + pair.pub).get('portal_sections').get(sec.id).put(
+          { name: sec.name, order: sec.order }, null, { authenticator: pair }
+        );
+      });
+
+      // Seed links
+      let saved = 0;
+      defaultLinks.forEach((link, idx) => {
+        zen.get('~' + pair.pub).get('portal_links').get('lnk-init-' + idx).put(link, (ack) => {
+          if (!ack.err && ++saved === defaultLinks.length) showToast('Seeded sections and links!');
         }, { authenticator: pair });
       });
     }
 
-    // Collapsible Admin Panel Interaction
-    const adminToggle = document.getElementById('admin-toggle');
-    const adminBody = document.getElementById('admin-body');
-    const adminChevron = document.getElementById('admin-chevron');
+    // ── UTILS ─────────────────────────────────────────────────
 
-    if (adminToggle && adminBody) {
-      adminToggle.addEventListener('click', () => {
-        adminBody.classList.toggle('hidden');
-        if (adminBody.classList.contains('hidden')) {
-          adminChevron.style.transform = 'rotate(-90deg)';
-        } else {
-          adminChevron.style.transform = '';
-        }
-      });
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    // Keyboard navigation and event listeners
-    document.getElementById('user-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
-    document.getElementById('pass-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') login(); });
-    document.getElementById('login-btn').addEventListener('click', login);
-    document.getElementById('add-link-btn').addEventListener('click', addLink);
-    document.getElementById('logout-btn').addEventListener('click', logout);
-    document.getElementById('seed-btn').addEventListener('click', seedDefaults);
+    // ── EVENT LISTENERS ───────────────────────────────────────
 
-    // Auto login if session credentials exist
+    document.getElementById('user-input').addEventListener('keydown',  e => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
+    document.getElementById('pass-input').addEventListener('keydown',  e => { if (e.key === 'Enter') login(); });
+    document.getElementById('login-btn').addEventListener('click',  login);
+    document.getElementById('logout-btn').addEventListener('click', logout);
+    document.getElementById('add-link-btn').addEventListener('click', addLink);
+    document.getElementById('seed-btn').addEventListener('click', seedDefaults);
+    document.getElementById('add-sec-btn').addEventListener('click', addSection);
+    document.getElementById('sec-name-input').addEventListener('keydown', e => { if (e.key === 'Enter') addSection(); });
+
+    // Auto login from session
     const savedUser = sessionStorage.getItem('zen_user');
     const savedPass = sessionStorage.getItem('zen_pass');
     if (savedUser && savedPass) login();
+
   </script>
 </body>
-
 </html>
