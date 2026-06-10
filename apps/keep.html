@@ -6,13 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keep | Scobru</title>
   <meta name="description" content="Keep - End-to-End Encrypted Private Vault by Scobru.">
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  
+
   <style>
     *,
     *::before,
@@ -26,7 +28,7 @@
       /* Shared Design System Tokens */
       --font-sans: 'Outfit', sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
-      
+
       /* Keep Accent is E2EE Red */
       --accent: #e01e37;
       --accent-glow: rgba(224, 30, 55, 0.15);
@@ -365,8 +367,8 @@
       flex-direction: column;
       gap: 10px;
       transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  border-color 0.2s ease,
-                  box-shadow 0.2s ease;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .item-card:hover {
@@ -528,7 +530,7 @@
 <body>
 
   <main class="lt-card">
-    
+
     <!-- Top Nav Controls -->
     <div class="lt-top-bar">
       <div>
@@ -540,7 +542,8 @@
         <button class="lt-action-btn" onclick="toggleTheme()" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
           <i class="ti ti-asterisk"></i>
         </button>
-        <button class="lt-action-btn hidden" id="logout-btn" onclick="logout()" aria-label="Lock Vault" title="Lock vault">
+        <button class="lt-action-btn hidden" id="logout-btn" onclick="logout()" aria-label="Lock Vault"
+          title="Lock vault">
           <i class="ti ti-lock"></i>
         </button>
       </div>
@@ -562,10 +565,12 @@
     <!-- Authentication Section -->
     <section class="lt-section" id="auth-section">
       <h2 class="lt-section-title" id="auth-toggle" style="cursor: pointer; user-select: none;">
-        unlock vault <i class="ti ti-chevron-down" id="auth-chevron" style="transition: transform 0.2s; font-size: 14px; margin-left: 4px; transform: rotate(-90deg);"></i>
+        unlock vault <i class="ti ti-chevron-down" id="auth-chevron"
+          style="transition: transform 0.2s; font-size: 14px; margin-left: 4px; transform: rotate(-90deg);"></i>
       </h2>
       <div class="lt-card-body hidden" id="auth-body">
-        <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--accent);"></i> Enter credentials to decrypt your local data. Master credentials are required.</p>
+        <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--accent);"></i> Enter credentials to decrypt your
+          local data. Master credentials are required.</p>
         <div class="lt-form-row">
           <input type="text" id="user-input" placeholder="Username" class="lt-input">
           <input type="password" id="pass-input" placeholder="Password" class="lt-input">
@@ -579,7 +584,8 @@
       <div class="lt-card-body" style="text-align: center; padding: 3rem 1.5rem;">
         <i class="ti ti-shield-lock" style="font-size: 48px; color: var(--accent); margin-bottom: 1rem;"></i>
         <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 0.5rem;">Vault is Locked</h3>
-        <p class="lt-card-desc" style="max-width: 320px; margin: 0 auto;">Your local dataset is securely encrypted inside Gun graph database. Authenticate to view.</p>
+        <p class="lt-card-desc" style="max-width: 320px; margin: 0 auto;">Your local dataset is securely encrypted
+          inside Gun graph database. Authenticate to view.</p>
       </div>
     </section>
 
@@ -594,7 +600,8 @@
               <input type="text" id="note-title" placeholder="Secret Title" class="lt-input" style="flex: 2;">
               <input type="text" id="note-cat" placeholder="Tag / Category" class="lt-input" style="flex: 1;">
             </div>
-            <textarea id="note-body" placeholder="Your private encrypted note..." class="lt-input" style="min-height: 100px; resize: vertical;"></textarea>
+            <textarea id="note-body" placeholder="Your private encrypted note..." class="lt-input"
+              style="min-height: 100px; resize: vertical;"></textarea>
             <div style="display: flex; justify-content: flex-end;">
               <button class="lt-btn" id="add-note-btn" onclick="addNote()">Safe Store</button>
             </div>
@@ -609,7 +616,8 @@
     <!-- Terminal Status Footer -->
     <footer class="lt-footer">
       <span style="position: relative; display: flex;">
-        <span id="status-ping" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block; background-color: #e01e37; box-shadow: 0 0 6px #e01e37;"></span>
+        <span id="status-ping"
+          style="width: 8px; height: 8px; border-radius: 50%; display: inline-block; background-color: #e01e37; box-shadow: 0 0 6px #e01e37;"></span>
       </span>
       <span class="font-mono" id="status-footer-text">ZEN_ENTROPY_NETWORK // E2EE_LOCKED</span>
     </footer>
@@ -619,7 +627,7 @@
   <!-- Storage and Theme configurations scripts -->
   <script>
     let currentTheme = localStorage.getItem('theme') || 'light';
-    
+
     function applyTheme() {
       if (currentTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -638,7 +646,7 @@
   </script>
 
   <script type="module">
-    import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
+    import ZEN from 'https://raw.githubusercontent.com/scobru/zen/refs/heads/main/zen.min.js';
 
     let zen;
     let pair;
@@ -860,8 +868,10 @@
   <div class="modal" id="zoom-modal" onclick="closeZoomModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-title" id="zoom-title">DECRYPTED_SECRET</div>
-      <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 15px; font-family: var(--font-mono);" id="zoom-date">--/--/--</div>
-      <div class="modal-text" id="zoom-body" style="white-space: pre-wrap; font-family: var(--font-mono); word-break: break-word; font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-height: 400px; overflow-y: auto; margin-bottom: 25px;">
+      <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 15px; font-family: var(--font-mono);"
+        id="zoom-date">--/--/--</div>
+      <div class="modal-text" id="zoom-body"
+        style="white-space: pre-wrap; font-family: var(--font-mono); word-break: break-word; font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-height: 400px; overflow-y: auto; margin-bottom: 25px;">
         <!-- Content injected dynamically -->
       </div>
       <div class="modal-close">

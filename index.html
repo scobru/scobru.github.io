@@ -5,60 +5,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>scobru</title>
-  <meta name="description" content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
+  <meta name="description"
+    content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --font-sans: 'Outfit', sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
-      --zen:     #00b4d8;
-      --apps:    #2ec4b6;
-      --music:   #e01e37;
+      --zen: #00b4d8;
+      --apps: #2ec4b6;
+      --music: #e01e37;
       --connect: #ffb703;
     }
 
     [data-theme="light"] {
-      --bg-outer:          #f5f6f8;
-      --bg-card:           #ffffff;
-      --text-primary:      #121212;
-      --text-secondary:    #5e6670;
-      --text-muted:        #8c96a3;
-      --card-bg:           #ffffff;
-      --card-bg-hover:     #f8f9fa;
-      --card-border:       rgba(0,0,0,0.08);
-      --card-border-hover: rgba(0,0,0,0.16);
-      --container-shadow:  0 20px 40px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
-      --card-shadow:       0 4px 12px rgba(0,0,0,0.02);
-      --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.06);
-      --badge-bg:          #f1f3f5;
-      --badge-bg-hover:    #e9ecef;
-      --avatar-ring:       linear-gradient(135deg, #00b4d8, #e01e37);
+      --bg-outer: #f5f6f8;
+      --bg-card: #ffffff;
+      --text-primary: #121212;
+      --text-secondary: #5e6670;
+      --text-muted: #8c96a3;
+      --card-bg: #ffffff;
+      --card-bg-hover: #f8f9fa;
+      --card-border: rgba(0, 0, 0, 0.08);
+      --card-border-hover: rgba(0, 0, 0, 0.16);
+      --container-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --badge-bg: #f1f3f5;
+      --badge-bg-hover: #e9ecef;
+      --avatar-ring: linear-gradient(135deg, #00b4d8, #e01e37);
     }
 
     [data-theme="dark"] {
-      --bg-outer:          #090a0c;
-      --bg-card:           #121316;
-      --text-primary:      #f5f5f7;
-      --text-secondary:    #9ba0a5;
-      --text-muted:        #4a4f54;
-      --card-bg:           rgba(255,255,255,0.03);
-      --card-bg-hover:     rgba(255,255,255,0.06);
-      --card-border:       rgba(255,255,255,0.06);
-      --card-border-hover: rgba(255,255,255,0.12);
-      --container-shadow:  0 30px 60px rgba(0,0,0,0.4);
-      --card-shadow:       0 4px 12px rgba(0,0,0,0.1);
-      --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.2);
-      --badge-bg:          rgba(255,255,255,0.05);
-      --badge-bg-hover:    rgba(255,255,255,0.1);
-      --avatar-ring:       linear-gradient(135deg, #2ec4b6, #ffb703);
+      --bg-outer: #090a0c;
+      --bg-card: #121316;
+      --text-primary: #f5f5f7;
+      --text-secondary: #9ba0a5;
+      --text-muted: #4a4f54;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-bg-hover: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --card-border-hover: rgba(255, 255, 255, 0.12);
+      --container-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.2);
+      --badge-bg: rgba(255, 255, 255, 0.05);
+      --badge-bg-hover: rgba(255, 255, 255, 0.1);
+      --avatar-ring: linear-gradient(135deg, #2ec4b6, #ffb703);
     }
 
     body {
@@ -66,14 +75,17 @@
       background: var(--bg-outer);
       color: var(--text-primary);
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 3rem 1rem 4rem;
       transition: background 0.4s ease, color 0.4s ease;
     }
 
     .lt-card {
       background: var(--bg-card);
-      width: 100%; max-width: 580px;
+      width: 100%;
+      max-width: 580px;
       border-radius: 32px;
       box-shadow: var(--container-shadow);
       padding: 2rem 1.5rem;
@@ -82,242 +94,651 @@
     }
 
     .lt-top-bar {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 1.5rem;
     }
 
     .lt-action-btn {
-      background: var(--badge-bg); border: none;
-      width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; color: var(--text-primary); font-size: 18px;
-      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275), background 0.2s ease;
+      background: var(--badge-bg);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s ease;
     }
-    .lt-action-btn:hover  { transform: scale(1.08); background: var(--badge-bg-hover); }
-    .lt-action-btn:active { transform: scale(0.95); }
 
-    .lt-header { text-align: center; margin-bottom: 1.5rem; }
+    .lt-action-btn:hover {
+      transform: scale(1.08);
+      background: var(--badge-bg-hover);
+    }
+
+    .lt-action-btn:active {
+      transform: scale(0.95);
+    }
+
+    .lt-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
 
     .lt-avatar-container {
-      width: 96px; height: 96px; border-radius: 50%;
-      margin: 0 auto 1.25rem; padding: 3px;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      margin: 0 auto 1.25rem;
+      padding: 3px;
       background: var(--avatar-ring);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-    .lt-avatar {
-      width: 100%; height: 100%; border-radius: 50%;
-      object-fit: cover; background: var(--bg-card); border: 2px solid var(--bg-card);
-    }
-    .lt-avatar-fallback {
-      width: 100%; height: 100%; border-radius: 50%;
-      background: var(--badge-bg); color: var(--text-primary);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 24px; font-weight: 500; letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     }
 
-    .lt-name { font-size: 22px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
-    .lt-bio  { font-size: 15px; color: var(--text-secondary); line-height: 1.5; max-width: 380px; margin: 0 auto; }
+    .lt-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--bg-card);
+      border: 2px solid var(--bg-card);
+    }
+
+    .lt-avatar-fallback {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--badge-bg);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -1px;
+    }
+
+    .lt-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .lt-bio {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      max-width: 380px;
+      margin: 0 auto;
+    }
 
     .lt-social-row {
-      display: flex; justify-content: center; gap: 1.25rem;
-      margin: 1rem auto 2rem; flex-wrap: wrap; max-width: 400px;
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin: 1rem auto 2rem;
+      flex-wrap: wrap;
+      max-width: 400px;
     }
+
     .lt-social-row a {
-      color: var(--text-secondary); font-size: 22px; text-decoration: none;
-      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275), color 0.2s ease;
-      display: inline-flex; align-items: center;
+      color: var(--text-secondary);
+      font-size: 22px;
+      text-decoration: none;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
     }
-    .lt-social-row a:hover { transform: scale(1.2) translateY(-2px); color: var(--text-primary); }
+
+    .lt-social-row a:hover {
+      transform: scale(1.2) translateY(-2px);
+      color: var(--text-primary);
+    }
 
     /* ── Section title ── */
-    .lt-section { margin-bottom: 0.5rem; }
+    .lt-section {
+      margin-bottom: 0.5rem;
+    }
 
     .lt-section-title {
-      font-size: 14px; font-weight: 600; color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
       text-transform: capitalize;
       margin: 2.25rem 0 1rem;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
+
     .lt-section-title::before,
     .lt-section-title::after {
-      content: ""; height: 1px; flex: 1;
-      background: var(--card-border); max-width: 60px;
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--card-border);
+      max-width: 60px;
     }
 
-    .sec-name { white-space: nowrap; }
+    .sec-name {
+      white-space: nowrap;
+    }
 
     /* Section admin inline controls */
-    .sec-actions { display: none; align-items: center; gap: 3px; }
-    .lt-section.has-auth .sec-actions { display: inline-flex; }
+    .sec-actions {
+      display: none;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .lt-section.has-auth .sec-actions {
+      display: inline-flex;
+    }
 
     .sec-btn {
-      background: none; border: none;
-      width: 22px; height: 22px; border-radius: 6px;
-      cursor: pointer; color: var(--text-muted); font-size: 11px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s, color 0.15s; padding: 0; flex-shrink: 0;
+      background: none;
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, color 0.15s;
+      padding: 0;
+      flex-shrink: 0;
     }
-    .sec-btn:hover          { background: var(--badge-bg); color: var(--text-primary); }
-    .sec-btn.del:hover      { background: rgba(224,30,55,0.1); color: var(--music); }
-    .sec-btn.confirm:hover  { background: rgba(46,196,182,0.1); color: var(--apps); }
+
+    .sec-btn:hover {
+      background: var(--badge-bg);
+      color: var(--text-primary);
+    }
+
+    .sec-btn.del:hover {
+      background: rgba(224, 30, 55, 0.1);
+      color: var(--music);
+    }
+
+    .sec-btn.confirm:hover {
+      background: rgba(46, 196, 182, 0.1);
+      color: var(--apps);
+    }
 
     /* Inline rename row */
-    .sec-rename-row { display: none; align-items: center; gap: 6px; margin: 2rem 0 1rem; }
-    .lt-section.renaming .lt-section-title { display: none; }
-    .lt-section.renaming .sec-rename-row   { display: flex; }
+    .sec-rename-row {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin: 2rem 0 1rem;
+    }
+
+    .lt-section.renaming .lt-section-title {
+      display: none;
+    }
+
+    .lt-section.renaming .sec-rename-row {
+      display: flex;
+    }
 
     .sec-rename-input {
-      flex: 1; background: var(--badge-bg);
-      border: 1px solid var(--apps); color: var(--text-primary);
-      padding: 7px 12px; border-radius: 10px;
-      font-family: var(--font-sans); font-size: 13px;
-      box-shadow: 0 0 0 3px rgba(46,196,182,0.15);
+      flex: 1;
+      background: var(--badge-bg);
+      border: 1px solid var(--apps);
+      color: var(--text-primary);
+      padding: 7px 12px;
+      border-radius: 10px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
     }
-    .sec-rename-input:focus { outline: none; }
+
+    .sec-rename-input:focus {
+      outline: none;
+    }
 
     /* ── Link card ── */
     .lt-link {
-      display: flex; align-items: center; gap: 16px;
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 18px; padding: 12px 16px; margin-bottom: 12px;
-      text-decoration: none; color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
       box-shadow: var(--card-shadow);
-      transition: transform 0.2s cubic-bezier(0.25,0.46,0.45,0.94),
-                  background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
-    .lt-link:hover  { transform: translateY(-2px); background: var(--card-bg-hover); border-color: var(--card-border-hover); box-shadow: var(--card-shadow-hover); }
-    .lt-link:active { transform: translateY(0); }
+
+    .lt-link:hover {
+      transform: translateY(-2px);
+      background: var(--card-bg-hover);
+      border-color: var(--card-border-hover);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .lt-link:active {
+      transform: translateY(0);
+    }
 
     .lt-link-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 18px;
-      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .lt-link:hover .lt-link-icon { transform: scale(1.08); }
 
-    .lt-link-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-    .lt-link-title   { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .lt-link-subtitle { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lt-link:hover .lt-link-icon {
+      transform: scale(1.08);
+    }
+
+    .lt-link-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .lt-link-title {
+      font-size: 15px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lt-link-subtitle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .lt-link-action {
-      color: var(--text-muted); font-size: 16px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 50%;
+      color: var(--text-muted);
+      font-size: 16px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
       transition: background-color 0.2s, color 0.2s;
     }
-    .lt-link:hover .lt-link-action { color: var(--text-primary); background: var(--badge-bg); }
 
-    .ic-zen     { background: rgba(0,180,216,0.08);  color: var(--zen); }
-    .ic-apps    { background: rgba(46,196,182,0.08); color: var(--apps); }
-    .ic-music   { background: rgba(224,30,55,0.08);  color: var(--music); }
-    .ic-connect { background: rgba(255,183,3,0.08);  color: var(--connect); }
+    .lt-link:hover .lt-link-action {
+      color: var(--text-primary);
+      background: var(--badge-bg);
+    }
+
+    .ic-zen {
+      background: rgba(0, 180, 216, 0.08);
+      color: var(--zen);
+    }
+
+    .ic-apps {
+      background: rgba(46, 196, 182, 0.08);
+      color: var(--apps);
+    }
+
+    .ic-music {
+      background: rgba(224, 30, 55, 0.08);
+      color: var(--music);
+    }
+
+    .ic-connect {
+      background: rgba(255, 183, 3, 0.08);
+      color: var(--connect);
+    }
 
     /* ── Toast ── */
     .toast {
-      position: fixed; bottom: 2rem; left: 50%;
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: rgba(18,19,22,0.9); color: #fff;
-      padding: 12px 24px; border-radius: 50px;
-      font-family: var(--font-sans); font-size: 14px; font-weight: 500;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      backdrop-filter: blur(8px); z-index: 1000; opacity: 0;
-      transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), opacity 0.4s;
-      pointer-events: none; display: flex; align-items: center; gap: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(18, 19, 22, 0.9);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    [data-theme="light"] .toast { background: rgba(255,255,255,0.95); color: #121212; border-color: rgba(0,0,0,0.05); }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    [data-theme="light"] .toast {
+      background: rgba(255, 255, 255, 0.95);
+      color: #121212;
+      border-color: rgba(0, 0, 0, 0.05);
+    }
 
     /* ── Footer ── */
     .lt-footer {
-      text-align: center; font-family: var(--font-mono); font-size: 11px;
-      color: var(--text-muted); margin-top: 2.5rem;
-      border-top: 1px dashed var(--card-border); padding-top: 1.5rem;
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2.5rem;
+      border-top: 1px dashed var(--card-border);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
 
     @media (max-width: 600px) {
-      body { padding: 0; background: var(--bg-card); }
-      .lt-card { border-radius: 0; box-shadow: none; border: none; padding: 1.5rem 1rem; min-height: 100vh; }
+      body {
+        padding: 0;
+        background: var(--bg-card);
+      }
+
+      .lt-card {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        padding: 1.5rem 1rem;
+        min-height: 100vh;
+      }
     }
 
-    .hidden { display: none !important; }
+    .hidden {
+      display: none !important;
+    }
 
     /* ── Admin ── */
-    .admin-section { margin-top: 1.5rem; border-top: 1px dashed var(--card-border); padding-top: 1.5rem; }
+    .admin-section {
+      margin-top: 1.5rem;
+      border-top: 1px dashed var(--card-border);
+      padding-top: 1.5rem;
+    }
 
     .admin-title {
-      font-size: 13px; font-weight: 600; color: var(--text-secondary);
-      text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.08em;
-      cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
     }
 
     .lt-card-body {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 20px; padding: 20px; box-shadow: var(--card-shadow);
-      transition: all 0.3s ease; margin-bottom: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
     }
 
-    .lt-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px; }
+    .lt-card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
 
-    .lt-form-row { display: flex; gap: 12px; width: 100%; margin-bottom: 12px; }
-    .lt-form-row:last-child { margin-bottom: 0; }
-    @media (max-width: 640px) { .lt-form-row { flex-direction: column; } }
+    .lt-form-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .lt-form-row:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+      .lt-form-row {
+        flex-direction: column;
+      }
+    }
 
     .lt-input {
-      background: var(--badge-bg); border: 1px solid var(--card-border);
-      color: var(--text-primary); padding: 12px 16px; border-radius: 12px;
-      font-family: var(--font-sans); font-size: 14px; flex: 1; width: 100%;
+      background: var(--badge-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-primary);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      flex: 1;
+      width: 100%;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .lt-input:focus { outline: none; border-color: var(--apps); box-shadow: 0 0 0 3px rgba(46,196,182,0.15); }
+
+    .lt-input:focus {
+      outline: none;
+      border-color: var(--apps);
+      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+    }
 
     .lt-btn {
-      background: var(--apps); color: #fff; border: none;
-      padding: 12px 24px; border-radius: 12px;
-      font-family: var(--font-sans); font-weight: 600; font-size: 14px;
-      cursor: pointer; white-space: nowrap;
-      transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275), filter 0.2s;
+      background: var(--apps);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s;
     }
-    .lt-btn:hover  { transform: translateY(-2px); filter: brightness(1.1); }
-    .lt-btn:active { transform: translateY(0); }
 
-    .lt-link-action.trash-btn { border: none; background: none; cursor: pointer; }
-    .lt-link-action.trash-btn:hover { color: #e01e37 !important; background: rgba(224,30,55,0.15) !important; }
+    .lt-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
 
-    .mgmt-divider { border: none; border-top: 1px dashed var(--card-border); margin: 16px 0; }
+    .lt-btn:active {
+      transform: translateY(0);
+    }
+
+    .lt-link-action.trash-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .lt-link-action.trash-btn:hover {
+      color: #e01e37 !important;
+      background: rgba(224, 30, 55, 0.15) !important;
+    }
+
+    .mgmt-divider {
+      border: none;
+      border-top: 1px dashed var(--card-border);
+      margin: 16px 0;
+    }
 
     /* Sections list in admin */
-    .sec-admin-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-    .sec-admin-item {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--badge-bg); border-radius: 10px;
-      padding: 8px 12px; font-size: 13px;
+    .sec-admin-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
     }
-    .sec-admin-item-order { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); min-width: 16px; }
-    .sec-admin-item-name  { flex: 1; font-weight: 500; color: var(--text-primary); }
-    .sec-admin-item .sec-btn { width: 24px; height: 24px; font-size: 12px; }
+
+    .sec-admin-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--badge-bg);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .sec-admin-item-order {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      min-width: 16px;
+    }
+
+    .sec-admin-item-name {
+      flex: 1;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .sec-admin-item .sec-btn {
+      width: 24px;
+      height: 24px;
+      font-size: 12px;
+    }
 
     /* ── Icon Picker ── */
-    .icon-picker-wrap { margin-bottom: 12px; }
-    .icon-picker-label { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 6px; display: block; }
-    .icon-picker-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; background: var(--badge-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 8px; }
-    .icon-opt { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid transparent; cursor: pointer; font-size: 16px; color: var(--text-secondary); background: none; transition: all 0.15s; }
-    .icon-opt:hover { background: var(--badge-bg-hover); color: var(--text-primary); }
-    .icon-opt.selected { background: rgba(46,196,182,0.15); border-color: var(--apps); color: var(--apps); }
+    .icon-picker-wrap {
+      margin-bottom: 12px;
+    }
+
+    .icon-picker-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .icon-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 4px;
+      background: var(--badge-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 8px;
+    }
+
+    .icon-opt {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--text-secondary);
+      background: none;
+      transition: all 0.15s;
+    }
+
+    .icon-opt:hover {
+      background: var(--badge-bg-hover);
+      color: var(--text-primary);
+    }
+
+    .icon-opt.selected {
+      background: rgba(46, 196, 182, 0.15);
+      border-color: var(--apps);
+      color: var(--apps);
+    }
 
     /* ── Edit Modal ── */
-    .edit-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(8px); z-index: 10000; align-items: center; justify-content: center; padding: 20px; }
-    .edit-modal.is-open { display: flex; }
-    .edit-modal-content { background: var(--bg-card); border: 1px solid var(--card-border); max-width: 520px; width: 100%; border-radius: 24px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-    .edit-modal-title { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed var(--card-border); }
+    .edit-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .edit-modal.is-open {
+      display: flex;
+    }
+
+    .edit-modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      max-width: 520px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .edit-modal-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--card-border);
+    }
 
     /* ── Link actions (auth) ── */
-    .link-actions { display: flex; gap: 4px; flex-shrink: 0; }
-    .lt-link-action.edit-btn { border: none; background: none; cursor: pointer; }
-    .lt-link-action.edit-btn:hover { color: var(--apps) !important; background: rgba(46,196,182,0.15) !important; }
+    .link-actions {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .lt-link-action.edit-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .lt-link-action.edit-btn:hover {
+      color: var(--apps) !important;
+      background: rgba(46, 196, 182, 0.15) !important;
+    }
   </style>
 </head>
 
@@ -343,17 +764,24 @@
         <div class="lt-avatar-fallback" style="display:none;">SB</div>
       </div>
       <h1 class="lt-name">scobru</h1>
-      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative tech.</p>
+      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative
+        tech.</p>
     </header>
 
     <!-- Social Row -->
     <div class="lt-social-row">
-      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
-      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
-      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i class="ti ti-brand-mastodon"></i></a>
-      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
-      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i
+          class="ti ti-brand-github"></i></a>
+      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i
+          class="ti ti-brand-x"></i></a>
+      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i
+          class="ti ti-brand-mastodon"></i></a>
+      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i
+          class="ti ti-brand-telegram"></i></a>
+      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i
+          class="ti ti-brand-instagram"></i></a>
+      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i
+          class="ti ti-brand-youtube"></i></a>
       <a href="mailto:dev.scobru@pm.me" aria-label="Email"><i class="ti ti-mail"></i></a>
     </div>
 
@@ -364,13 +792,15 @@
     <section class="admin-section">
       <div class="admin-title" id="admin-toggle">
         <i class="ti ti-settings"></i> Manage Portal
-        <i class="ti ti-chevron-down" id="admin-chevron" style="transition:transform 0.2s; font-size:11px; margin-left:4px; transform:rotate(-90deg);"></i>
+        <i class="ti ti-chevron-down" id="admin-chevron"
+          style="transition:transform 0.2s; font-size:11px; margin-left:4px; transform:rotate(-90deg);"></i>
       </div>
       <div class="lt-card-body hidden" id="admin-body">
 
         <!-- Auth Form -->
         <div id="auth-form">
-          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master Credentials to manage your portal.</p>
+          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master
+            Credentials to manage your portal.</p>
           <div class="lt-form-row">
             <input type="text" id="user-input" placeholder="Username" class="lt-input">
             <input type="password" id="pass-input" placeholder="Password" class="lt-input">
@@ -382,7 +812,8 @@
         <div id="mgmt-panel" class="hidden">
 
           <!-- Sections block -->
-          <p class="lt-card-desc"><i class="ti ti-layout-list" style="color:var(--zen);"></i> Manage sections. Rename or delete directly on the section title above.</p>
+          <p class="lt-card-desc"><i class="ti ti-layout-list" style="color:var(--zen);"></i> Manage sections. Rename or
+            delete directly on the section title above.</p>
           <div class="lt-form-row">
             <input type="text" id="sec-name-input" placeholder="New section name (e.g. Music)" class="lt-input">
             <button class="lt-btn" id="add-sec-btn" style="background:var(--zen);">Add Section</button>
@@ -416,7 +847,8 @@
               <option value="connect">Gold</option>
             </select>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:8px; flex-wrap:wrap;">
+          <div
+            style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:8px; flex-wrap:wrap;">
             <button class="lt-btn" id="logout-btn" style="background:var(--text-muted);">Logout</button>
             <button class="lt-btn" id="seed-btn" style="background:#ffb703; color:#121212;">Seed Defaults</button>
             <button class="lt-btn" id="add-link-btn">Add Link</button>
@@ -428,7 +860,8 @@
 
     <!-- Footer -->
     <footer class="lt-footer" id="lt-footer">
-      <div>// 0 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight:500;">online</span></div>
+      <div>// 0 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight:500;">online</span>
+      </div>
       <div style="font-size:10px; opacity:0.7; font-family:var(--font-sans);">
         built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener"
           style="color:var(--apps); text-decoration:none; font-weight:500;">
@@ -441,7 +874,7 @@
   <script>
     // Theme
     const themeToggle = document.getElementById('theme-toggle');
-    const shareBtn    = document.getElementById('share-btn');
+    const shareBtn = document.getElementById('share-btn');
     document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
 
     themeToggle.addEventListener('click', () => {
@@ -472,8 +905,8 @@
     });
 
     // Collapsible admin
-    const adminToggle  = document.getElementById('admin-toggle');
-    const adminBody    = document.getElementById('admin-body');
+    const adminToggle = document.getElementById('admin-toggle');
+    const adminBody = document.getElementById('admin-body');
     const adminChevron = document.getElementById('admin-chevron');
     adminToggle.addEventListener('click', () => {
       adminBody.classList.toggle('hidden');
@@ -482,7 +915,7 @@
   </script>
 
   <script type="module">
-    import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
+    import ZEN from 'https://raw.githubusercontent.com/scobru/zen/refs/heads/main/zen.min.js';
 
     // ── CONFIG ───────────────────────────────────────────────
     const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
@@ -490,10 +923,10 @@
     // Legacy section IDs already in the ZEN database — shown immediately
     // without needing a seed so existing data keeps working.
     const LEGACY_SECTIONS = {
-      'music':   { name: 'Music & Art',        order: 1 },
-      'apps':    { name: 'Web Apps & Projects', order: 2 },
-      'zen':     { name: 'Apps',               order: 3 },
-      'connect': { name: 'Connect',            order: 4 },
+      'music': { name: 'Music & Art', order: 1 },
+      'apps': { name: 'Web Apps & Projects', order: 2 },
+      'zen': { name: 'Apps', order: 3 },
+      'connect': { name: 'Connect', order: 4 },
     };
 
     let zen, pair;
@@ -574,7 +1007,7 @@
           <button class="sec-btn del" title="Delete section"><i class="ti ti-trash"></i></button>
         </span>`;
       h2.querySelector('.sec-btn:not(.del)').onclick = () => startRename(el, id, name);
-      h2.querySelector('.sec-btn.del').onclick       = () => deleteSection(id);
+      h2.querySelector('.sec-btn.del').onclick = () => deleteSection(id);
 
       // Build rename row (idempotent)
       if (!el.querySelector('.sec-rename-row')) {
@@ -593,7 +1026,7 @@
         };
         rr.querySelector('.sec-btn:not(.confirm)').onclick = () => el.classList.remove('renaming');
         rr.querySelector('.sec-rename-input').addEventListener('keydown', e => {
-          if (e.key === 'Enter')  rr.querySelector('.sec-btn.confirm').click();
+          if (e.key === 'Enter') rr.querySelector('.sec-btn.confirm').click();
           if (e.key === 'Escape') el.classList.remove('renaming');
         });
       }
@@ -627,7 +1060,7 @@
       if (!select) return;
       const prev = select.value;
       select.innerHTML = '';
-      const entries = Object.entries(sectionsMap).sort(([,a],[,b]) => (a.order||0) - (b.order||0));
+      const entries = Object.entries(sectionsMap).sort(([, a], [, b]) => (a.order || 0) - (b.order || 0));
       if (!entries.length) { select.innerHTML = '<option value="">No sections</option>'; return; }
       entries.forEach(([id, sec]) => {
         const o = document.createElement('option');
@@ -642,7 +1075,7 @@
       if (!list) return;
       list.innerHTML = '';
       Object.entries(sectionsMap)
-        .sort(([,a],[,b]) => (a.order||0) - (b.order||0))
+        .sort(([, a], [, b]) => (a.order || 0) - (b.order || 0))
         .forEach(([id, sec]) => {
           const item = document.createElement('div');
           item.className = 'sec-admin-item';
@@ -724,8 +1157,8 @@
         }
 
         el.href = link.url;
-        const iconClass  = link.icon || 'ti ti-link';
-        const iconColor  = link.iconColor || 'apps';
+        const iconClass = link.icon || 'ti ti-link';
+        const iconColor = link.iconColor || 'apps';
         const action = isAuthenticated
           ? `<div class="link-actions">
               <button class="lt-link-action edit-btn" title="Edit"><i class="ti ti-pencil"></i></button>
@@ -779,14 +1212,14 @@
 
     function addLink() {
       if (!isAuthenticated) return;
-      const title     = document.getElementById('link-title').value;
-      const subtitle  = document.getElementById('link-subtitle').value;
-      const url       = document.getElementById('link-url').value;
-      const cat       = document.getElementById('link-cat').value;
-      const icon      = document.getElementById('link-icon').value || 'ti ti-link';
+      const title = document.getElementById('link-title').value;
+      const subtitle = document.getElementById('link-subtitle').value;
+      const url = document.getElementById('link-url').value;
+      const cat = document.getElementById('link-cat').value;
+      const icon = document.getElementById('link-icon').value || 'ti ti-link';
       const iconColor = document.getElementById('link-icon-color').value;
       if (!title || !url) { alert('Title and URL are required!'); return; }
-      if (!cat)           { alert('Please select or create a section first!'); return; }
+      if (!cat) { alert('Please select or create a section first!'); return; }
 
       const soul = 'lnk-' + Date.now() + '-' + Math.random().toString(36).substring(7);
       zen.get('~' + pair.pub).get('portal_links').get(soul).put(
@@ -855,24 +1288,24 @@
       if (!confirm('Seed default sections and links? Existing entries with the same IDs will be overwritten.')) return;
 
       const defaultSections = [
-        { id: 'music',   name: 'Music & Art',        order: 1 },
-        { id: 'apps',    name: 'Web Apps & Projects', order: 2 },
-        { id: 'zen',     name: 'Apps',               order: 3 },
-        { id: 'connect', name: 'Connect',            order: 4 },
+        { id: 'music', name: 'Music & Art', order: 1 },
+        { id: 'apps', name: 'Web Apps & Projects', order: 2 },
+        { id: 'zen', name: 'Apps', order: 3 },
+        { id: 'connect', name: 'Connect', order: 4 },
       ];
 
       const defaultLinks = [
-        { title: 'Sudo Records',  subtitle: 'Record Label hosted on Tunecamp',         url: 'https://sudorecords.scobrudot.dev',                             cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000001 },
-        { title: 'Homologo',      subtitle: 'Songwriter, Pop, Electronic',              url: 'https://homologomusic.bandcamp.com',                            cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000002 },
-        { title: 'Fade',          subtitle: 'Electronic / Synth music',                 url: 'https://fademusik.bandcamp.com',                                cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000003 },
-        { title: 'Zima Blue',     subtitle: 'Ambient, Experimental soundscapes',        url: 'https://zimablue.bandcamp.com',                                 cat: 'music',   icon: 'ti ti-headphones',      iconColor: 'music',   timestamp: 1600000000004 },
-        { title: 'Tunecamp',      subtitle: 'Decentralized music streaming',            url: 'https://scobru-tunecamp.vercel.app/',                           cat: 'apps',    icon: 'ti ti-music',           iconColor: 'apps',    timestamp: 1600000000005 },
-        { title: 'Linda Chat',    subtitle: 'TPRE & post-quantum messenger',            url: 'https://scobru-linda.vercel.app/',                              cat: 'apps',    icon: 'ti ti-message-circle',  iconColor: 'apps',    timestamp: 1600000000006 },
-        { title: 'Wormhole',      subtitle: 'E2EE P2P file transfer',                   url: 'https://scobru-wormhole.vercel.app/',                           cat: 'apps',    icon: 'ti ti-transfer',        iconColor: 'apps',    timestamp: 1600000000007 },
-        { title: 'Nullroute',     subtitle: 'EVM stealth payment hub',                  url: 'https://scobru-nullroute.vercel.app/',                          cat: 'apps',    icon: 'ti ti-eye-off',         iconColor: 'apps',    timestamp: 1600000000008 },
-        { title: 'Notes',         subtitle: 'Decentralized offline-first workspace',    url: 'apps/notes.html',                                              cat: 'zen',     icon: 'ti ti-notes',           iconColor: 'zen',     timestamp: 1600000000010 },
-        { title: 'Audius',        subtitle: 'All music on decentralized web3 network',  url: 'https://audius.co/francescobruno',                              cat: 'connect', icon: 'ti ti-player-play',     iconColor: 'connect', timestamp: 1600000000012 },
-        { title: 'Spotify',       subtitle: 'All music and curated playlists',          url: 'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7',    cat: 'connect', icon: 'ti ti-player-play',     iconColor: 'connect', timestamp: 1600000000013 },
+        { title: 'Sudo Records', subtitle: 'Record Label hosted on Tunecamp', url: 'https://sudorecords.scobrudot.dev', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000001 },
+        { title: 'Homologo', subtitle: 'Songwriter, Pop, Electronic', url: 'https://homologomusic.bandcamp.com', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000002 },
+        { title: 'Fade', subtitle: 'Electronic / Synth music', url: 'https://fademusik.bandcamp.com', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000003 },
+        { title: 'Zima Blue', subtitle: 'Ambient, Experimental soundscapes', url: 'https://zimablue.bandcamp.com', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000004 },
+        { title: 'Tunecamp', subtitle: 'Decentralized music streaming', url: 'https://scobru-tunecamp.vercel.app/', cat: 'apps', icon: 'ti ti-music', iconColor: 'apps', timestamp: 1600000000005 },
+        { title: 'Linda Chat', subtitle: 'TPRE & post-quantum messenger', url: 'https://scobru-linda.vercel.app/', cat: 'apps', icon: 'ti ti-message-circle', iconColor: 'apps', timestamp: 1600000000006 },
+        { title: 'Wormhole', subtitle: 'E2EE P2P file transfer', url: 'https://scobru-wormhole.vercel.app/', cat: 'apps', icon: 'ti ti-transfer', iconColor: 'apps', timestamp: 1600000000007 },
+        { title: 'Nullroute', subtitle: 'EVM stealth payment hub', url: 'https://scobru-nullroute.vercel.app/', cat: 'apps', icon: 'ti ti-eye-off', iconColor: 'apps', timestamp: 1600000000008 },
+        { title: 'Notes', subtitle: 'Decentralized offline-first workspace', url: 'apps/notes.html', cat: 'zen', icon: 'ti ti-notes', iconColor: 'zen', timestamp: 1600000000010 },
+        { title: 'Audius', subtitle: 'All music on decentralized web3 network', url: 'https://audius.co/francescobruno', cat: 'connect', icon: 'ti ti-player-play', iconColor: 'connect', timestamp: 1600000000012 },
+        { title: 'Spotify', subtitle: 'All music and curated playlists', url: 'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7', cat: 'connect', icon: 'ti ti-player-play', iconColor: 'connect', timestamp: 1600000000013 },
       ];
 
       // Seed sections first (uses same IDs as legacy, so ZEN overwrites cleanly)
@@ -894,19 +1327,19 @@
     // ── UTILS ─────────────────────────────────────────────────
 
     function escHtml(str) {
-      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     // ── ICON PICKER + EDIT MODAL ──────────────────────────────
 
     const ICONS = [
-      'ti ti-link','ti ti-world','ti ti-brand-github','ti ti-brand-x','ti ti-brand-instagram',
-      'ti ti-brand-youtube','ti ti-brand-telegram','ti ti-brand-discord','ti ti-brand-mastodon',
-      'ti ti-headphones','ti ti-music','ti ti-player-play','ti ti-notes','ti ti-bookmark',
-      'ti ti-lock','ti ti-key','ti ti-shield','ti ti-message-circle','ti ti-mail',
-      'ti ti-star','ti ti-heart','ti ti-code','ti ti-terminal','ti ti-apps',
-      'ti ti-transfer','ti ti-eye-off','ti ti-wallet','ti ti-palette','ti ti-pencil',
-      'ti ti-photo','ti ti-video','ti ti-microphone'
+      'ti ti-link', 'ti ti-world', 'ti ti-brand-github', 'ti ti-brand-x', 'ti ti-brand-instagram',
+      'ti ti-brand-youtube', 'ti ti-brand-telegram', 'ti ti-brand-discord', 'ti ti-brand-mastodon',
+      'ti ti-headphones', 'ti ti-music', 'ti ti-player-play', 'ti ti-notes', 'ti ti-bookmark',
+      'ti ti-lock', 'ti ti-key', 'ti ti-shield', 'ti ti-message-circle', 'ti ti-mail',
+      'ti ti-star', 'ti ti-heart', 'ti ti-code', 'ti ti-terminal', 'ti ti-apps',
+      'ti ti-transfer', 'ti ti-eye-off', 'ti ti-wallet', 'ti ti-palette', 'ti ti-pencil',
+      'ti ti-photo', 'ti ti-video', 'ti ti-microphone'
     ];
 
     function initIconPicker(gridId, hiddenId) {
@@ -939,7 +1372,7 @@
       document.getElementById('edit-icon').value = link.icon || 'ti ti-link';
       const catSel = document.getElementById('edit-cat');
       catSel.innerHTML = '';
-      Object.entries(sectionsMap).sort(([,a],[,b]) => (a.order||0)-(b.order||0)).forEach(([sid, sec]) => {
+      Object.entries(sectionsMap).sort(([, a], [, b]) => (a.order || 0) - (b.order || 0)).forEach(([sid, sec]) => {
         const o = document.createElement('option');
         o.value = sid; o.textContent = sec.name;
         if (sid === link.cat) o.selected = true;
@@ -978,9 +1411,9 @@
 
     // ── EVENT LISTENERS ───────────────────────────────────────
 
-    document.getElementById('user-input').addEventListener('keydown',  e => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
-    document.getElementById('pass-input').addEventListener('keydown',  e => { if (e.key === 'Enter') login(); });
-    document.getElementById('login-btn').addEventListener('click',  login);
+    document.getElementById('user-input').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
+    document.getElementById('pass-input').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+    document.getElementById('login-btn').addEventListener('click', login);
     document.getElementById('logout-btn').addEventListener('click', logout);
     document.getElementById('add-link-btn').addEventListener('click', addLink);
     document.getElementById('seed-btn').addEventListener('click', seedDefaults);
@@ -994,37 +1427,38 @@
     if (savedUser && savedPass) login();
 
   </script>
-<!-- Edit Link Modal -->
-<div class="edit-modal" id="edit-modal" onclick="closeEditModal()">
-  <div class="edit-modal-content" onclick="event.stopPropagation()">
-    <div class="edit-modal-title"><i class="ti ti-pencil" style="color:var(--apps);"></i> Edit Link</div>
-    <input type="hidden" id="edit-soul">
-    <div class="lt-form-row">
-      <input type="text" id="edit-title" placeholder="Title" class="lt-input">
-      <input type="text" id="edit-subtitle" placeholder="Subtitle" class="lt-input">
-    </div>
-    <div class="lt-form-row">
-      <input type="text" id="edit-url" placeholder="URL" class="lt-input">
-      <select id="edit-cat" class="lt-input" style="height:46px;"></select>
-    </div>
-    <input type="hidden" id="edit-icon" value="ti ti-link">
-    <div class="icon-picker-wrap">
-      <span class="icon-picker-label">// icon</span>
-      <div class="icon-picker-grid" id="edit-icon-picker"></div>
-    </div>
-    <div class="lt-form-row">
-      <select id="edit-icon-color" class="lt-input" style="height:46px;">
-        <option value="music">Red</option>
-        <option value="apps">Teal</option>
-        <option value="zen">Cyan</option>
-        <option value="connect">Gold</option>
-      </select>
-    </div>
-    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
-      <button class="lt-btn" style="background:var(--text-muted);" onclick="closeEditModal()">Cancel</button>
-      <button class="lt-btn" id="save-edit-btn">Save Changes</button>
+  <!-- Edit Link Modal -->
+  <div class="edit-modal" id="edit-modal" onclick="closeEditModal()">
+    <div class="edit-modal-content" onclick="event.stopPropagation()">
+      <div class="edit-modal-title"><i class="ti ti-pencil" style="color:var(--apps);"></i> Edit Link</div>
+      <input type="hidden" id="edit-soul">
+      <div class="lt-form-row">
+        <input type="text" id="edit-title" placeholder="Title" class="lt-input">
+        <input type="text" id="edit-subtitle" placeholder="Subtitle" class="lt-input">
+      </div>
+      <div class="lt-form-row">
+        <input type="text" id="edit-url" placeholder="URL" class="lt-input">
+        <select id="edit-cat" class="lt-input" style="height:46px;"></select>
+      </div>
+      <input type="hidden" id="edit-icon" value="ti ti-link">
+      <div class="icon-picker-wrap">
+        <span class="icon-picker-label">// icon</span>
+        <div class="icon-picker-grid" id="edit-icon-picker"></div>
+      </div>
+      <div class="lt-form-row">
+        <select id="edit-icon-color" class="lt-input" style="height:46px;">
+          <option value="music">Red</option>
+          <option value="apps">Teal</option>
+          <option value="zen">Cyan</option>
+          <option value="connect">Gold</option>
+        </select>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
+        <button class="lt-btn" style="background:var(--text-muted);" onclick="closeEditModal()">Cancel</button>
+        <button class="lt-btn" id="save-edit-btn">Save Changes</button>
+      </div>
     </div>
   </div>
-</div>
 </body>
+
 </html>

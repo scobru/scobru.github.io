@@ -6,13 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookmarks | Scobru</title>
   <meta name="description" content="Bookmarks - Decentralized Bookmark Manager by Scobru.">
-      <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  
+
   <style>
     *,
     *::before,
@@ -26,7 +28,7 @@
       /* Shared Design System Tokens */
       --font-sans: 'Outfit', sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
-      
+
       /* Bookmarks Accent is Orange */
       --accent: #b86200;
       --accent-glow: rgba(184, 98, 0, 0.15);
@@ -71,7 +73,7 @@
       --badge-bg-hover: rgba(255, 255, 255, 0.1);
       --avatar-ring: linear-gradient(135deg, #2ec4b6, #ffb703);
       --input-bg: rgba(0, 0, 0, 0.2);
-      
+
       /* Dark mode accent override */
       --accent: #ffab40;
       --accent-glow: rgba(255, 171, 64, 0.15);
@@ -369,8 +371,8 @@
       flex-direction: column;
       gap: 8px;
       transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  border-color 0.2s ease,
-                  box-shadow 0.2s ease;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .item-card:hover {
@@ -460,7 +462,7 @@
 <body>
 
   <main class="lt-card">
-    
+
     <!-- Top Nav Controls -->
     <div class="lt-top-bar">
       <div>
@@ -472,7 +474,8 @@
         <button class="lt-action-btn" onclick="toggleTheme()" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
           <i class="ti ti-asterisk"></i>
         </button>
-        <button class="lt-action-btn hidden" id="logout-btn" onclick="logout()" aria-label="Lock Bookmarks" title="Lock bookmarks">
+        <button class="lt-action-btn hidden" id="logout-btn" onclick="logout()" aria-label="Lock Bookmarks"
+          title="Lock bookmarks">
           <i class="ti ti-lock"></i>
         </button>
       </div>
@@ -494,10 +497,12 @@
     <!-- Authentication Section -->
     <section class="lt-section" id="auth-section">
       <h2 class="lt-section-title" id="auth-toggle" style="cursor: pointer; user-select: none;">
-        authentication required <i class="ti ti-chevron-down" id="auth-chevron" style="transition: transform 0.2s; font-size: 14px; margin-left: 4px; transform: rotate(-90deg);"></i>
+        authentication required <i class="ti ti-chevron-down" id="auth-chevron"
+          style="transition: transform 0.2s; font-size: 14px; margin-left: 4px; transform: rotate(-90deg);"></i>
       </h2>
       <div class="lt-card-body hidden" id="auth-body">
-        <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--accent);"></i> Log in using Master Credentials to write, edit, or delete bookmarks.</p>
+        <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--accent);"></i> Log in using Master Credentials
+          to write, edit, or delete bookmarks.</p>
         <div class="lt-form-row">
           <input type="text" id="user-input" placeholder="Username" class="lt-input">
           <input type="password" id="pass-input" placeholder="Password" class="lt-input">
@@ -532,7 +537,8 @@
     <!-- Terminal Status Footer -->
     <footer class="lt-footer">
       <span style="position: relative; display: flex;">
-        <span id="status-ping" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block; background-color: var(--accent); box-shadow: 0 0 6px var(--accent);"></span>
+        <span id="status-ping"
+          style="width: 8px; height: 8px; border-radius: 50%; display: inline-block; background-color: var(--accent); box-shadow: 0 0 6px var(--accent);"></span>
       </span>
       <span class="font-mono">ZEN_ENTROPY_NETWORK // SCOBRU.DEV</span>
     </footer>
@@ -542,7 +548,7 @@
   <!-- Storage and Theme configurations scripts -->
   <script>
     let currentTheme = localStorage.getItem('theme') || 'light';
-    
+
     function applyTheme() {
       if (currentTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -561,7 +567,7 @@
   </script>
 
   <script type="module">
-    import ZEN from 'https://unpkg.com/@akaoio/zen/zen.min.js';
+    import ZEN from 'https://raw.githubusercontent.com/scobru/zen/refs/heads/main/zen.min.js';
 
     const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
 
@@ -571,7 +577,7 @@
 
     const relays = ["wss://delay.scobrudot.dev/zen", "wss://zen.akao.io:8420/zen", "wss://zen0.akao.io:8420/zen", "wss://zen1.akao.io:8420/zen"];
     localStorage.removeItem('zenPeers');
-    
+
     zen = new ZEN({
       peers: relays,
     });
