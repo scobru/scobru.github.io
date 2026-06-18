@@ -1,1463 +1,241 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="it">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>scobru</title>
-  <meta name="description"
-    content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4">
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --font-sans: 'Outfit', sans-serif;
-      --font-mono: 'IBM Plex Mono', monospace;
-      --zen: #00b4d8;
-      --apps: #2ec4b6;
-      --music: #e01e37;
-      --connect: #ffb703;
-    }
-
-    [data-theme="light"] {
-      --bg-outer: #f5f6f8;
-      --bg-card: #ffffff;
-      --text-primary: #121212;
-      --text-secondary: #5e6670;
-      --text-muted: #8c96a3;
-      --card-bg: #ffffff;
-      --card-bg-hover: #f8f9fa;
-      --card-border: rgba(0, 0, 0, 0.08);
-      --card-border-hover: rgba(0, 0, 0, 0.16);
-      --container-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
-      --badge-bg: #f1f3f5;
-      --badge-bg-hover: #e9ecef;
-      --avatar-ring: linear-gradient(135deg, #00b4d8, #e01e37);
-    }
-
-    [data-theme="dark"] {
-      --bg-outer: #090a0c;
-      --bg-card: #121316;
-      --text-primary: #f5f5f7;
-      --text-secondary: #9ba0a5;
-      --text-muted: #4a4f54;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-bg-hover: rgba(255, 255, 255, 0.06);
-      --card-border: rgba(255, 255, 255, 0.06);
-      --card-border-hover: rgba(255, 255, 255, 0.12);
-      --container-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.2);
-      --badge-bg: rgba(255, 255, 255, 0.05);
-      --badge-bg-hover: rgba(255, 255, 255, 0.1);
-      --avatar-ring: linear-gradient(135deg, #2ec4b6, #ffb703);
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg-outer);
-      color: var(--text-primary);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1rem 4rem;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    .lt-card {
-      background: var(--bg-card);
-      width: 100%;
-      max-width: 580px;
-      border-radius: 32px;
-      box-shadow: var(--container-shadow);
-      padding: 2rem 1.5rem;
-      border: 1px solid var(--card-border);
-      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .lt-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .lt-action-btn {
-      background: var(--badge-bg);
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text-primary);
-      font-size: 18px;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s ease;
-    }
-
-    .lt-action-btn:hover {
-      transform: scale(1.08);
-      background: var(--badge-bg-hover);
-    }
-
-    .lt-action-btn:active {
-      transform: scale(0.95);
-    }
-
-    .lt-header {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .lt-avatar-container {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      margin: 0 auto 1.25rem;
-      padding: 3px;
-      background: var(--avatar-ring);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .lt-avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      background: var(--bg-card);
-      border: 2px solid var(--bg-card);
-    }
-
-    .lt-avatar-fallback {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--badge-bg);
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 24px;
-      font-weight: 500;
-      letter-spacing: -1px;
-    }
-
-    .lt-name {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
-
-    .lt-bio {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      max-width: 380px;
-      margin: 0 auto;
-    }
-
-    .lt-social-row {
-      display: flex;
-      justify-content: center;
-      gap: 1.25rem;
-      margin: 1rem auto 2rem;
-      flex-wrap: wrap;
-      max-width: 400px;
-    }
-
-    .lt-social-row a {
-      color: var(--text-secondary);
-      font-size: 22px;
-      text-decoration: none;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .lt-social-row a:hover {
-      transform: scale(1.2) translateY(-2px);
-      color: var(--text-primary);
-    }
-
-    /* ── Section title ── */
-    .lt-section {
-      margin-bottom: 0.5rem;
-    }
-
-    .lt-section-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-      text-transform: capitalize;
-      margin: 2.25rem 0 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .lt-section-title::before,
-    .lt-section-title::after {
-      content: "";
-      height: 1px;
-      flex: 1;
-      background: var(--card-border);
-      max-width: 60px;
-    }
-
-    .sec-name {
-      white-space: nowrap;
-    }
-
-    /* Section admin inline controls */
-    .sec-actions {
-      display: none;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .lt-section.has-auth .sec-actions {
-      display: inline-flex;
-    }
-
-    .sec-btn {
-      background: none;
-      border: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s, color 0.15s;
-      padding: 0;
-      flex-shrink: 0;
-    }
-
-    .sec-btn:hover {
-      background: var(--badge-bg);
-      color: var(--text-primary);
-    }
-
-    .sec-btn.del:hover {
-      background: rgba(224, 30, 55, 0.1);
-      color: var(--music);
-    }
-
-    .sec-btn.confirm:hover {
-      background: rgba(46, 196, 182, 0.1);
-      color: var(--apps);
-    }
-
-    /* Inline rename row */
-    .sec-rename-row {
-      display: none;
-      align-items: center;
-      gap: 6px;
-      margin: 2rem 0 1rem;
-    }
-
-    .lt-section.renaming .lt-section-title {
-      display: none;
-    }
-
-    .lt-section.renaming .sec-rename-row {
-      display: flex;
-    }
-
-    .sec-rename-input {
-      flex: 1;
-      background: var(--badge-bg);
-      border: 1px solid var(--apps);
-      color: var(--text-primary);
-      padding: 7px 12px;
-      border-radius: 10px;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
-    }
-
-    .sec-rename-input:focus {
-      outline: none;
-    }
-
-    /* ── Link card ── */
-    .lt-link {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 12px 16px;
-      margin-bottom: 12px;
-      text-decoration: none;
-      color: var(--text-primary);
-      box-shadow: var(--card-shadow);
-      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .lt-link:hover {
-      transform: translateY(-2px);
-      background: var(--card-bg-hover);
-      border-color: var(--card-border-hover);
-      box-shadow: var(--card-shadow-hover);
-    }
-
-    .lt-link:active {
-      transform: translateY(0);
-    }
-
-    .lt-link-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 18px;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .lt-link:hover .lt-link-icon {
-      transform: scale(1.08);
-    }
-
-    .lt-link-content {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .lt-link-title {
-      font-size: 15px;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .lt-link-subtitle {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .lt-link-action {
-      color: var(--text-muted);
-      font-size: 16px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    .lt-link:hover .lt-link-action {
-      color: var(--text-primary);
-      background: var(--badge-bg);
-    }
-
-    .ic-zen {
-      background: rgba(0, 180, 216, 0.08);
-      color: var(--zen);
-    }
-
-    .ic-apps {
-      background: rgba(46, 196, 182, 0.08);
-      color: var(--apps);
-    }
-
-    .ic-music {
-      background: rgba(224, 30, 55, 0.08);
-      color: var(--music);
-    }
-
-    .ic-connect {
-      background: rgba(255, 183, 3, 0.08);
-      color: var(--connect);
-    }
-
-    /* ── Toast ── */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: rgba(18, 19, 22, 0.9);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      opacity: 0;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    [data-theme="light"] .toast {
-      background: rgba(255, 255, 255, 0.95);
-      color: #121212;
-      border-color: rgba(0, 0, 0, 0.05);
-    }
-
-    /* ── Footer ── */
-    .lt-footer {
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2.5rem;
-      border-top: 1px dashed var(--card-border);
-      padding-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 0;
-        background: var(--bg-card);
-      }
-
-      .lt-card {
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        padding: 1.5rem 1rem;
-        min-height: 100vh;
-      }
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* ── Admin ── */
-    .admin-section {
-      margin-top: 1.5rem;
-      border-top: 1px dashed var(--card-border);
-      padding-top: 1.5rem;
-    }
-
-    .admin-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      user-select: none;
-    }
-
-    .lt-card-body {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-      margin-bottom: 16px;
-    }
-
-    .lt-card-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
-
-    .lt-form-row {
-      display: flex;
-      gap: 12px;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    .lt-form-row:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 640px) {
-      .lt-form-row {
-        flex-direction: column;
-      }
-    }
-
-    .lt-input {
-      background: var(--badge-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-primary);
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      flex: 1;
-      width: 100%;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .lt-input:focus {
-      outline: none;
-      border-color: var(--apps);
-      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
-    }
-
-    .lt-btn {
-      background: var(--apps);
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s;
-    }
-
-    .lt-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-    }
-
-    .lt-btn:active {
-      transform: translateY(0);
-    }
-
-    .lt-link-action.trash-btn {
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-
-    .lt-link-action.trash-btn:hover {
-      color: #e01e37 !important;
-      background: rgba(224, 30, 55, 0.15) !important;
-    }
-
-    .mgmt-divider {
-      border: none;
-      border-top: 1px dashed var(--card-border);
-      margin: 16px 0;
-    }
-
-    /* Sections list in admin */
-    .sec-admin-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .sec-admin-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--badge-bg);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 13px;
-    }
-
-    .sec-admin-item-order {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-muted);
-      min-width: 16px;
-    }
-
-    .sec-admin-item-name {
-      flex: 1;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .sec-admin-item .sec-btn {
-      width: 24px;
-      height: 24px;
-      font-size: 12px;
-    }
-
-    /* ── Icon Picker ── */
-    .icon-picker-wrap {
-      margin-bottom: 12px;
-    }
-
-    .icon-picker-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .icon-picker-grid {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 4px;
-      background: var(--badge-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 8px;
-    }
-
-    .icon-opt {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      font-size: 16px;
-      color: var(--text-secondary);
-      background: none;
-      transition: all 0.15s;
-    }
-
-    .icon-opt:hover {
-      background: var(--badge-bg-hover);
-      color: var(--text-primary);
-    }
-
-    .icon-opt.selected {
-      background: rgba(46, 196, 182, 0.15);
-      border-color: var(--apps);
-      color: var(--apps);
-    }
-
-    /* ── Edit Modal ── */
-    .edit-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .edit-modal.is-open {
-      display: flex;
-    }
-
-    .edit-modal-content {
-      background: var(--bg-card);
-      border: 1px solid var(--card-border);
-      max-width: 520px;
-      width: 100%;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .edit-modal-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px dashed var(--card-border);
-    }
-
-    /* ── Link actions (auth) ── */
-    .link-actions {
-      display: flex;
-      gap: 4px;
-      flex-shrink: 0;
-    }
-
-    .lt-link-action.edit-btn {
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-
-    .lt-link-action.edit-btn:hover {
-      color: var(--apps) !important;
-      background: rgba(46, 196, 182, 0.15) !important;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.">
+    <title>scobru.github.io</title>
+    <style>
+        /* Reset e Stili Globali */
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Intestazione */
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .bio {
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #333333;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Sezioni */
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 4px;
+        }
+
+        /* Liste e Collegamenti */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #444444;
+        }
+
+        .social-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .social-list li {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: #000000;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            text-decoration: none;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Piè di pagina */
+        footer {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            color: #555555;
+            border-top: 1px dashed #000000;
+            padding-top: 15px;
+        }
+
+        .sys-status {
+            font-family: monospace;
+        }
+    </style>
 </head>
 
 <body>
 
-  <main class="lt-card">
+    <div class="container">
 
-    <!-- Top Action Bar -->
-    <div class="lt-top-bar">
-      <button class="lt-action-btn" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
-        <i class="ti ti-asterisk"></i>
-      </button>
-      <button class="lt-action-btn" id="share-btn" aria-label="Share Profile" title="Copy profile link">
-        <i class="ti ti-share"></i>
-      </button>
+        <header>
+            <h1>scobru</h1>
+            <p class="bio">Francesco Bruno — developer & sound designer.<br>P2P, open-source, audio synthesis, creative
+                tech.</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>[ Web Apps & Projects ]</h2>
+                <ul>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-tunecamp.vercel.app/" target="_blank"
+                                rel="noopener">Tunecamp</a></span>
+                        <span class="project-desc">Decentralized music streaming</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-linda.vercel.app/" target="_blank"
+                                rel="noopener">Linda Chat</a></span>
+                        <span class="project-desc">TPRE & post-quantum messenger</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-wormhole.vercel.app/" target="_blank"
+                                rel="noopener">Wormhole</a></span>
+                        <span class="project-desc">E2EE P2P file transfer</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-nullroute.vercel.app/" target="_blank"
+                                rel="noopener">Nullroute</a></span>
+                        <span class="project-desc">EVM stealth payment hub</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-zentree.vercel.app" target="_blank"
+                                rel="noopener">Zentree</a></span>
+                        <span class="project-desc">Decentralized linktree clone</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-whiterabbit.vercel.app" target="_blank"
+                                rel="noopener">Whiterabbit</a></span>
+                        <span class="project-desc">Ephemeral p2p chat</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-zenkeep.vercel.app" target="_blank"
+                                rel="noopener">Zenkeep</a></span>
+                        <span class="project-desc">Decentralized note taking</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-zenvault.vercel.app" target="_blank"
+                                rel="noopener">Zenvault</a></span>
+                        <span class="project-desc">Decentralized Secure Vault</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://scobru-zenbookmarks.vercel.app" target="_blank"
+                                rel="noopener">Zenbookmarks</a></span>
+                        <span class="project-desc">Decentralized Bookmarks</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://github.com/scobru/delay" target="_blank"
+                                rel="noopener">Delay</a></span>
+                        <span class="project-desc">Decentralized Relay</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>[ Music & Art ]</h2>
+                <ul>
+                    <li>
+                        <span class="project-title"><a href="https://sudorecords.scobrudot.dev" target="_blank"
+                                rel="noopener">Sudo Records</a></span>
+                        <span class="project-desc">Record Label hosted on Tunecamp</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://homologomusic.bandcamp.com" target="_blank"
+                                rel="noopener">Homologo</a></span>
+                        <span class="project-desc">Songwriter, Pop, Electronic</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://fademusik.bandcamp.com" target="_blank"
+                                rel="noopener">Fade</a></span>
+                        <span class="project-desc">Electronic / Synth music</span>
+                    </li>
+                    <li>
+                        <span class="project-title"><a href="https://zimablue.bandcamp.com" target="_blank"
+                                rel="noopener">Zima Blue</a></span>
+                        <span class="project-desc">Ambient, Experimental soundscapes</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>[ Connect ]</h2>
+                <ul class="social-list">
+                    <li><a href="https://github.com/scobru" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://twitter.com/scobru1988" target="_blank" rel="noopener">Twitter</a></li>
+                    <li><a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener">Mastodon</a></li>
+                    <li><a href="https://t.me/scobru" target="_blank" rel="noopener">Telegram</a></li>
+                    <li><a href="https://instagram.com/francescobruno" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://youtube.com/scobru88" target="_blank" rel="noopener">YouTube</a></li>
+                    <li><a href="https://audius.co/francescobruno" target="_blank" rel="noopener">Audius</a></li>
+                    <li><a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7" target="_blank"
+                            rel="noopener">Spotify</a></li>
+                    <li><a href="mailto:dev.scobru@pm.me">Email</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p class="sys-status">// 16 items indexed · system: online</p>
+            <p>built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener">ZenTree</a>
+                framework logic, rendered in pure HTML.</p>
+        </footer>
+
     </div>
 
-    <!-- Profile Header -->
-    <header class="lt-header">
-      <div class="lt-avatar-container">
-        <img class="lt-avatar" src="https://avatars.githubusercontent.com/u/1079164?v=4" alt="scobru avatar"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="lt-avatar-fallback" style="display:none;">SB</div>
-      </div>
-      <h1 class="lt-name">scobru</h1>
-      <p class="lt-bio">Francesco Bruno — developer &amp; sound designer.<br>P2P, open-source, audio synthesis, creative
-        tech.</p>
-    </header>
-
-    <!-- Social Row -->
-    <div class="lt-social-row">
-      <a href="https://github.com/scobru" target="_blank" rel="noopener" aria-label="GitHub"><i
-          class="ti ti-brand-github"></i></a>
-      <a href="https://twitter.com/scobru1988" target="_blank" rel="noopener" aria-label="Twitter"><i
-          class="ti ti-brand-x"></i></a>
-      <a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener" aria-label="Mastodon"><i
-          class="ti ti-brand-mastodon"></i></a>
-      <a href="https://t.me/scobru" target="_blank" rel="noopener" aria-label="Telegram"><i
-          class="ti ti-brand-telegram"></i></a>
-      <a href="https://instagram.com/francescobruno" target="_blank" rel="noopener" aria-label="Instagram"><i
-          class="ti ti-brand-instagram"></i></a>
-      <a href="https://youtube.com/scobru88" target="_blank" rel="noopener" aria-label="YouTube"><i
-          class="ti ti-brand-youtube"></i></a>
-      <a href="mailto:dev.scobru@pm.me" aria-label="Email"><i class="ti ti-mail"></i></a>
-    </div>
-
-    <!-- Dynamic sections rendered here by JS -->
-    <div id="sections-container"></div>
-
-    <!-- Admin Panel -->
-    <section class="admin-section">
-      <div class="admin-title" id="admin-toggle">
-        <i class="ti ti-settings"></i> Manage Portal
-        <i class="ti ti-chevron-down" id="admin-chevron"
-          style="transition:transform 0.2s; font-size:11px; margin-left:4px; transform:rotate(-90deg);"></i>
-      </div>
-      <div class="lt-card-body hidden" id="admin-body">
-
-        <!-- Auth Form -->
-        <div id="auth-form">
-          <p class="lt-card-desc"><i class="ti ti-key" style="color:var(--apps);"></i> Authenticate with Master
-            Credentials to manage your portal.</p>
-          <div class="lt-form-row">
-            <input type="text" id="user-input" placeholder="Username" class="lt-input">
-            <input type="password" id="pass-input" placeholder="Password" class="lt-input">
-            <button class="lt-btn" id="login-btn">Authenticate</button>
-          </div>
-        </div>
-
-        <!-- Management Panel -->
-        <div id="mgmt-panel" class="hidden">
-
-          <!-- Sections block -->
-          <p class="lt-card-desc"><i class="ti ti-layout-list" style="color:var(--zen);"></i> Manage sections. Rename or
-            delete directly on the section title above.</p>
-          <div class="lt-form-row">
-            <input type="text" id="sec-name-input" placeholder="New section name (e.g. Music)" class="lt-input">
-            <button class="lt-btn" id="add-sec-btn" style="background:var(--zen);">Add Section</button>
-          </div>
-          <div id="sec-admin-list" class="sec-admin-list"></div>
-
-          <div class="mgmt-divider"></div>
-
-          <!-- Links block -->
-          <p class="lt-card-desc"><i class="ti ti-pencil" style="color:var(--apps);"></i> Add new link to portal.</p>
-          <div class="lt-form-row">
-            <input type="text" id="link-title" placeholder="Title (e.g. Sudo Records)" class="lt-input">
-            <input type="text" id="link-subtitle" placeholder="Subtitle (e.g. Record Label)" class="lt-input">
-          </div>
-          <div class="lt-form-row">
-            <input type="text" id="link-url" placeholder="URL (https://...)" class="lt-input">
-            <select id="link-cat" class="lt-input" style="height:46px;">
-              <option value="">Loading sections…</option>
-            </select>
-          </div>
-          <input type="hidden" id="link-icon" value="ti ti-link">
-          <div class="icon-picker-wrap">
-            <span class="icon-picker-label">// icon</span>
-            <div class="icon-picker-grid" id="add-icon-picker"></div>
-          </div>
-          <div class="lt-form-row">
-            <select id="link-icon-color" class="lt-input" style="height:46px;">
-              <option value="music">Red</option>
-              <option value="apps">Teal</option>
-              <option value="zen">Cyan</option>
-              <option value="connect">Gold</option>
-            </select>
-          </div>
-          <div
-            style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:8px; flex-wrap:wrap;">
-            <button class="lt-btn" id="logout-btn" style="background:var(--text-muted);">Logout</button>
-            <button class="lt-btn" id="seed-btn" style="background:#ffb703; color:#121212;">Seed Defaults</button>
-            <button class="lt-btn" id="add-link-btn">Add Link</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="lt-footer" id="lt-footer">
-      <div>// 0 items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight:500;">online</span>
-      </div>
-      <div style="font-size:10px; opacity:0.7; font-family:var(--font-sans);">
-        built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener"
-          style="color:var(--apps); text-decoration:none; font-weight:500;">
-          <i class="ti ti-brand-github" style="font-size:10px; vertical-align:middle;"></i> ZenTree</a>
-      </div>
-    </footer>
-
-  </main>
-
-  <script>
-    // Theme
-    const themeToggle = document.getElementById('theme-toggle');
-    const shareBtn = document.getElementById('share-btn');
-    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
-
-    themeToggle.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      themeToggle.style.transform = 'scale(0.8) rotate(180deg)';
-      setTimeout(() => { themeToggle.style.transform = ''; }, 250);
-    });
-
-    function showToast(msg) {
-      let t = document.querySelector('.toast');
-      if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
-      t.innerHTML = `<i class="ti ti-circle-check" style="color:var(--apps);font-size:16px;"></i> ${msg}`;
-      t.offsetHeight; t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2500);
-    }
-
-    shareBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(window.location.href)
-        .then(() => showToast('Profile link copied!'))
-        .catch(() => {
-          const el = document.createElement('textarea');
-          el.value = window.location.href;
-          document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
-          showToast('Profile link copied!');
-        });
-    });
-
-    // Collapsible admin
-    const adminToggle = document.getElementById('admin-toggle');
-    const adminBody = document.getElementById('admin-body');
-    const adminChevron = document.getElementById('admin-chevron');
-    adminToggle.addEventListener('click', () => {
-      adminBody.classList.toggle('hidden');
-      adminChevron.style.transform = adminBody.classList.contains('hidden') ? 'rotate(-90deg)' : '';
-    });
-  </script>
-
-  <script type="module">
-    import ZEN from './zen.min.js';
-
-    // ── CONFIG ───────────────────────────────────────────────
-    const PUBLIC_VIEW_KEY = '0oQit1EicIMgYeM9rVRMjmgP9MoQjfK0XJLq6imoJ1CR0';
-
-    // Legacy section IDs already in the ZEN database — shown immediately
-    // without needing a seed so existing data keeps working.
-    const LEGACY_SECTIONS = {
-      'music': { name: 'Music & Art', order: 1 },
-      'apps': { name: 'Web Apps & Projects', order: 2 },
-      'zen': { name: 'Apps', order: 3 },
-      'connect': { name: 'Connect', order: 4 },
-    };
-
-    let zen, pair;
-    let isAuthenticated = false;
-    const sectionsMap = {};
-    const linksCache = {};
-
-    zen = new ZEN({ peers: ["wss://delay.scobrudot.dev/zen"] });
-    localStorage.removeItem('zenPeers');
-
-    // Bootstrap: pre-populate legacy sections so existing links render immediately
-    Object.entries(LEGACY_SECTIONS).forEach(([id, sec]) => {
-      sectionsMap[id] = sec;
-      upsertSectionEl(id, sec.name, sec.order);
-    });
-
-    // Subscribe to stored sections (overrides legacy defaults if user has seeded)
-    loadSections(PUBLIC_VIEW_KEY);
-    // Subscribe to links
-    loadLinks(PUBLIC_VIEW_KEY);
-
-    // ── SECTIONS ─────────────────────────────────────────────
-
-    function loadSections(pubKey) {
-      zen.get('~' + pubKey).get('portal_sections').map().on((section, id) => {
-        if (!section || !section.name) {
-          // Only remove if it's NOT a legacy section (keep those as fallback)
-          if (!LEGACY_SECTIONS[id]) removeSectionEl(id);
-        } else {
-          sectionsMap[id] = section;
-          upsertSectionEl(id, section.name, section.order || 0);
-          rebuildSectionDropdown();
-          rebuildSecAdminList();
-        }
-      });
-    }
-
-    function ensureSectionShell(id) {
-      if (document.getElementById('zsec-' + id)) return;
-      // If it's a known legacy ID, create it with a proper title
-      const legacy = LEGACY_SECTIONS[id];
-      if (legacy) {
-        sectionsMap[id] = sectionsMap[id] || legacy;
-        upsertSectionEl(id, sectionsMap[id].name, sectionsMap[id].order);
-      } else {
-        // Unknown section — create a bare shell; title arrives via loadSections
-        const c = document.getElementById('sections-container');
-        const el = document.createElement('section');
-        el.id = 'zsec-' + id; el.className = 'lt-section'; el.dataset.order = '999';
-        const h2 = document.createElement('h2'); h2.className = 'lt-section-title';
-        const ld = document.createElement('div'); ld.id = 'links-' + id;
-        el.appendChild(h2); el.appendChild(ld); c.appendChild(el);
-      }
-    }
-
-    function upsertSectionEl(id, name, order) {
-      const container = document.getElementById('sections-container');
-      let el = document.getElementById('zsec-' + id);
-
-      if (!el) {
-        el = document.createElement('section');
-        el.id = 'zsec-' + id; el.className = 'lt-section';
-        const ld = document.createElement('div'); ld.id = 'links-' + id;
-        el.appendChild(document.createElement('h2')).className = 'lt-section-title';
-        el.appendChild(ld);
-        container.appendChild(el);
-      }
-
-      el.dataset.order = order;
-      if (isAuthenticated) el.classList.add('has-auth');
-
-      // Build title
-      const h2 = el.querySelector('.lt-section-title');
-      h2.innerHTML = `
-        <span class="sec-name">${escHtml(name)}</span>
-        <span class="sec-actions">
-          <button class="sec-btn" title="Rename"><i class="ti ti-pencil"></i></button>
-          <button class="sec-btn del" title="Delete section"><i class="ti ti-trash"></i></button>
-        </span>`;
-      h2.querySelector('.sec-btn:not(.del)').onclick = () => startRename(el, id, name);
-      h2.querySelector('.sec-btn.del').onclick = () => deleteSection(id);
-
-      // Build rename row (idempotent)
-      if (!el.querySelector('.sec-rename-row')) {
-        const rr = document.createElement('div');
-        rr.className = 'sec-rename-row';
-        rr.innerHTML = `
-          <input class="sec-rename-input" type="text">
-          <button class="sec-btn confirm" title="Save"><i class="ti ti-check"></i></button>
-          <button class="sec-btn" title="Cancel"><i class="ti ti-x"></i></button>`;
-        el.insertBefore(rr, el.querySelector('[id^="links-"]'));
-
-        rr.querySelector('.sec-btn.confirm').onclick = () => {
-          const val = rr.querySelector('.sec-rename-input').value.trim();
-          if (val) renameSection(id, val);
-          el.classList.remove('renaming');
-        };
-        rr.querySelector('.sec-btn:not(.confirm)').onclick = () => el.classList.remove('renaming');
-        rr.querySelector('.sec-rename-input').addEventListener('keydown', e => {
-          if (e.key === 'Enter') rr.querySelector('.sec-btn.confirm').click();
-          if (e.key === 'Escape') el.classList.remove('renaming');
-        });
-      }
-
-      sortSections();
-    }
-
-    function startRename(el, id, currentName) {
-      el.querySelector('.sec-rename-input').value = currentName;
-      el.classList.add('renaming');
-      el.querySelector('.sec-rename-input').focus();
-    }
-
-    function sortSections() {
-      const c = document.getElementById('sections-container');
-      Array.from(c.querySelectorAll('.lt-section[data-order]'))
-        .sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order))
-        .forEach(s => c.appendChild(s));
-    }
-
-    function removeSectionEl(id) {
-      delete sectionsMap[id];
-      const el = document.getElementById('zsec-' + id);
-      if (el) el.remove();
-      rebuildSectionDropdown();
-      rebuildSecAdminList();
-    }
-
-    function rebuildSectionDropdown() {
-      const select = document.getElementById('link-cat');
-      if (!select) return;
-      const prev = select.value;
-      select.innerHTML = '';
-      const entries = Object.entries(sectionsMap).sort(([, a], [, b]) => (a.order || 0) - (b.order || 0));
-      if (!entries.length) { select.innerHTML = '<option value="">No sections</option>'; return; }
-      entries.forEach(([id, sec]) => {
-        const o = document.createElement('option');
-        o.value = id; o.textContent = sec.name;
-        if (id === prev) o.selected = true;
-        select.appendChild(o);
-      });
-    }
-
-    function rebuildSecAdminList() {
-      const list = document.getElementById('sec-admin-list');
-      if (!list) return;
-      list.innerHTML = '';
-      Object.entries(sectionsMap)
-        .sort(([, a], [, b]) => (a.order || 0) - (b.order || 0))
-        .forEach(([id, sec]) => {
-          const item = document.createElement('div');
-          item.className = 'sec-admin-item';
-          item.innerHTML = `
-            <span class="sec-admin-item-order">${sec.order || '·'}</span>
-            <span class="sec-admin-item-name">${escHtml(sec.name)}</span>
-            <button class="sec-btn" title="Rename" onclick="triggerRename('${id}')"><i class="ti ti-pencil"></i></button>
-            <button class="sec-btn del" title="Delete" onclick="triggerDelete('${id}')"><i class="ti ti-trash"></i></button>`;
-          list.appendChild(item);
-        });
-    }
-
-    window.triggerRename = (id) => {
-      const el = document.getElementById('zsec-' + id);
-      if (el) startRename(el, id, sectionsMap[id]?.name || '');
-    };
-    window.triggerDelete = (id) => deleteSection(id);
-
-    function addSection() {
-      if (!isAuthenticated) return;
-      const input = document.getElementById('sec-name-input');
-      const name = input.value.trim();
-      if (!name) { alert('Section name is required!'); return; }
-      const id = 'sec-' + Date.now();
-      const order = Object.keys(sectionsMap).length + 1;
-      zen.get('~' + pair.pub).get('portal_sections').get(id).put(
-        { name, order }, (ack) => {
-          if (ack && ack.err) alert('Save failed: ' + ack.err);
-          else { showToast(`Section "${name}" added!`); input.value = ''; }
-        }, { authenticator: pair }
-      );
-    }
-
-    function deleteSection(id) {
-      if (!isAuthenticated) return;
-      const sec = sectionsMap[id];
-      if (!confirm(`Delete section "${sec ? sec.name : id}"?\nLinks in this section will be hidden until re-assigned.`)) return;
-      zen.get('~' + pair.pub).get('portal_sections').get(id).put(null, (ack) => {
-        if (ack && ack.err) alert('Delete failed: ' + ack.err);
-        else showToast('Section deleted!');
-      }, { authenticator: pair });
-    }
-
-    function renameSection(id, newName) {
-      if (!isAuthenticated) return;
-      zen.get('~' + pair.pub).get('portal_sections').get(id).put(
-        { ...sectionsMap[id], name: newName }, (ack) => {
-          if (ack && ack.err) alert('Rename failed: ' + ack.err);
-          else showToast('Section renamed!');
-        }, { authenticator: pair }
-      );
-    }
-
-    // ── LINKS ─────────────────────────────────────────────────
-
-    function loadLinks(pubKey) {
-      if (!pubKey) return;
-      zen.get('~' + pubKey).get('portal_links').map().on((link, id) => {
-        const elId = 'lnk-' + id;
-        if (!link) {
-          const el = document.getElementById(elId);
-          if (el) el.remove();
-          updateCount(); return;
-        }
-        if (!link.title || !link.url) return;
-
-        linksCache[id] = link;
-        const cat = link.cat || 'apps';
-        if (!document.getElementById('links-' + cat)) ensureSectionShell(cat);
-        const container = document.getElementById('links-' + cat);
-        if (!container) return;
-
-        let el = document.getElementById(elId);
-        if (!el) {
-          el = document.createElement('a');
-          el.id = elId; el.className = 'lt-link';
-          el.target = '_blank'; el.rel = 'noopener';
-          container.appendChild(el);
-        }
-
-        el.href = link.url;
-        const iconClass = link.icon || 'ti ti-link';
-        const iconColor = link.iconColor || 'apps';
-        const action = isAuthenticated
-          ? `<div class="link-actions">
-              <button class="lt-link-action edit-btn" title="Edit"><i class="ti ti-pencil"></i></button>
-              <button class="lt-link-action trash-btn" title="Delete"><i class="ti ti-trash" style="color:#e01e37;"></i></button>
-            </div>`
-          : `<div class="lt-link-action"><i class="ti ti-dots-vertical"></i></div>`;
-
-        el.innerHTML = `
-          <div class="lt-link-icon ic-${iconColor}"><i class="${iconClass}"></i></div>
-          <div class="lt-link-content">
-            <span class="lt-link-title">${escHtml(link.title)}</span>
-            <span class="lt-link-subtitle">${escHtml(link.subtitle || '')}</span>
-          </div>
-          ${action}`;
-
-        if (isAuthenticated) {
-          const trash = el.querySelector('.trash-btn');
-          if (trash) trash.onclick = (e) => { e.preventDefault(); e.stopPropagation(); deleteLink(id); };
-          const editBtn = el.querySelector('.edit-btn');
-          if (editBtn) editBtn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openEditModal(id); };
-        }
-
-        el.setAttribute('data-timestamp', link.timestamp || 0);
-        Array.from(container.children)
-          .sort((a, b) => parseInt(a.dataset.timestamp) - parseInt(b.dataset.timestamp))
-          .forEach(c => container.appendChild(c));
-
-        updateCount();
-      });
-    }
-
-    function updateCount() {
-      const total = document.querySelectorAll('.lt-link').length;
-      document.getElementById('lt-footer').innerHTML = `
-        <div>// ${total} items indexed &nbsp;·&nbsp; system: <span style="color:var(--apps); font-weight:500;">online</span></div>
-        <div style="font-size:10px; opacity:0.7; font-family:var(--font-sans);">
-          built with <a href="https://github.com/scobru/zentree" target="_blank" rel="noopener"
-            style="color:var(--apps); text-decoration:none; font-weight:500;">
-            <i class="ti ti-brand-github" style="font-size:10px; vertical-align:middle;"></i> ZenTree</a>
-        </div>`;
-    }
-
-    function deleteLink(soul) {
-      if (!isAuthenticated) return;
-      if (!confirm('Delete this link?')) return;
-      zen.get('~' + pair.pub).get('portal_links').get(soul).put(null, (ack) => {
-        if (ack && ack.err) alert('Delete failed: ' + ack.err);
-        else showToast('Link deleted!');
-      }, { authenticator: pair });
-    }
-
-    function addLink() {
-      if (!isAuthenticated) return;
-      const title = document.getElementById('link-title').value;
-      const subtitle = document.getElementById('link-subtitle').value;
-      const url = document.getElementById('link-url').value;
-      const cat = document.getElementById('link-cat').value;
-      const icon = document.getElementById('link-icon').value || 'ti ti-link';
-      const iconColor = document.getElementById('link-icon-color').value;
-      if (!title || !url) { alert('Title and URL are required!'); return; }
-      if (!cat) { alert('Please select or create a section first!'); return; }
-
-      const soul = 'lnk-' + Date.now() + '-' + Math.random().toString(36).substring(7);
-      zen.get('~' + pair.pub).get('portal_links').get(soul).put(
-        { title, subtitle, url, cat, icon, iconColor, timestamp: Date.now() },
-        (ack) => {
-          if (ack && ack.err) alert('Save failed: ' + ack.err);
-          else {
-            showToast('Link added!');
-            document.getElementById('link-title').value = '';
-            document.getElementById('link-subtitle').value = '';
-            document.getElementById('link-url').value = '';
-            document.getElementById('link-icon').value = 'ti ti-link';
-            initIconPicker('add-icon-picker', 'link-icon');
-          }
-        }, { authenticator: pair }
-      );
-    }
-
-    // ── AUTH ──────────────────────────────────────────────────
-
-    async function login() {
-      const user = document.getElementById('user-input').value || sessionStorage.getItem('zen_user');
-      const pass = document.getElementById('pass-input').value || sessionStorage.getItem('zen_pass');
-      if (!user || !pass) return;
-
-      try {
-        document.getElementById('login-btn').innerHTML = 'Authenticating…';
-        pair = await ZEN.pair(null, { seed: user + pass });
-        isAuthenticated = true;
-
-        sessionStorage.setItem('zen_user', user);
-        sessionStorage.setItem('zen_pass', pass);
-
-        document.getElementById('auth-form').classList.add('hidden');
-        document.getElementById('mgmt-panel').classList.remove('hidden');
-        document.getElementById('admin-toggle').innerHTML =
-          `<i class="ti ti-settings" style="color:var(--apps);"></i> Manage Portal (Authenticated)
-           <i class="ti ti-chevron-down" id="admin-chevron" style="transition:transform 0.2s; font-size:11px; margin-left:4px;"></i>`;
-
-        // Mark all sections as auth-enabled
-        document.querySelectorAll('.lt-section').forEach(s => s.classList.add('has-auth'));
-
-        // Re-subscribe with writer key to get owned data + show trash buttons
-        loadSections(pair.pub);
-        loadLinks(pair.pub);
-        rebuildSectionDropdown();
-        rebuildSecAdminList();
-        initIconPicker('add-icon-picker', 'link-icon');
-      } catch (e) {
-        alert('Auth failed: ' + e.message);
-        document.getElementById('login-btn').innerText = 'Authenticate';
-      }
-    }
-
-    function logout() {
-      sessionStorage.removeItem('zen_user');
-      sessionStorage.removeItem('zen_pass');
-      window.location.reload();
-    }
-
-    // ── SEED DEFAULTS ─────────────────────────────────────────
-    // Seeds both sections (using legacy IDs for backward compat) and links.
-
-    function seedDefaults() {
-      if (!isAuthenticated) return;
-      if (!confirm('Seed default sections and links? Existing entries with the same IDs will be overwritten.')) return;
-
-      const defaultSections = [
-        { id: 'music', name: 'Music & Art', order: 1 },
-        { id: 'apps', name: 'Web Apps & Projects', order: 2 },
-        { id: 'zen', name: 'Apps', order: 3 },
-        { id: 'connect', name: 'Connect', order: 4 },
-      ];
-
-      const defaultLinks = [
-        { title: 'Sudo Records', subtitle: 'Record Label hosted on Tunecamp', url: 'https://sudorecords.scobrudot.dev', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000001 },
-        { title: 'Homologo', subtitle: 'Songwriter, Pop, Electronic', url: 'https://homologomusic.bandcamp.com', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000002 },
-        { title: 'Fade', subtitle: 'Electronic / Synth music', url: 'https://fademusik.bandcamp.com', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000003 },
-        { title: 'Zima Blue', subtitle: 'Ambient, Experimental soundscapes', url: 'https://zimablue.bandcamp.com', cat: 'music', icon: 'ti ti-headphones', iconColor: 'music', timestamp: 1600000000004 },
-        { title: 'Tunecamp', subtitle: 'Decentralized music streaming', url: 'https://scobru-tunecamp.vercel.app/', cat: 'apps', icon: 'ti ti-music', iconColor: 'apps', timestamp: 1600000000005 },
-        { title: 'Linda Chat', subtitle: 'TPRE & post-quantum messenger', url: 'https://scobru-linda.vercel.app/', cat: 'apps', icon: 'ti ti-message-circle', iconColor: 'apps', timestamp: 1600000000006 },
-        { title: 'Wormhole', subtitle: 'E2EE P2P file transfer', url: 'https://scobru-wormhole.vercel.app/', cat: 'apps', icon: 'ti ti-transfer', iconColor: 'apps', timestamp: 1600000000007 },
-        { title: 'Nullroute', subtitle: 'EVM stealth payment hub', url: 'https://scobru-nullroute.vercel.app/', cat: 'apps', icon: 'ti ti-eye-off', iconColor: 'apps', timestamp: 1600000000008 },
-        { title: 'Audius', subtitle: 'All music on decentralized web3 network', url: 'https://audius.co/francescobruno', cat: 'connect', icon: 'ti ti-player-play', iconColor: 'connect', timestamp: 1600000000012 },
-        { title: 'Spotify', subtitle: 'All music and curated playlists', url: 'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7', cat: 'connect', icon: 'ti ti-player-play', iconColor: 'connect', timestamp: 1600000000013 },
-      ];
-
-      // Seed sections first (uses same IDs as legacy, so ZEN overwrites cleanly)
-      defaultSections.forEach(sec => {
-        zen.get('~' + pair.pub).get('portal_sections').get(sec.id).put(
-          { name: sec.name, order: sec.order }, null, { authenticator: pair }
-        );
-      });
-
-      // Seed links
-      let saved = 0;
-      defaultLinks.forEach((link, idx) => {
-        zen.get('~' + pair.pub).get('portal_links').get('lnk-init-' + idx).put(link, (ack) => {
-          if (!ack.err && ++saved === defaultLinks.length) showToast('Seeded sections and links!');
-        }, { authenticator: pair });
-      });
-    }
-
-    // ── UTILS ─────────────────────────────────────────────────
-
-    function escHtml(str) {
-      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    }
-
-    // ── ICON PICKER + EDIT MODAL ──────────────────────────────
-
-    const ICONS = [
-      'ti ti-link', 'ti ti-world', 'ti ti-brand-github', 'ti ti-brand-x', 'ti ti-brand-instagram',
-      'ti ti-brand-youtube', 'ti ti-brand-telegram', 'ti ti-brand-discord', 'ti ti-brand-mastodon',
-      'ti ti-headphones', 'ti ti-music', 'ti ti-player-play', 'ti ti-notes', 'ti ti-bookmark',
-      'ti ti-lock', 'ti ti-key', 'ti ti-shield', 'ti ti-message-circle', 'ti ti-mail',
-      'ti ti-star', 'ti ti-heart', 'ti ti-code', 'ti ti-terminal', 'ti ti-apps',
-      'ti ti-transfer', 'ti ti-eye-off', 'ti ti-wallet', 'ti ti-palette', 'ti ti-pencil',
-      'ti ti-photo', 'ti ti-video', 'ti ti-microphone'
-    ];
-
-    function initIconPicker(gridId, hiddenId) {
-      const grid = document.getElementById(gridId);
-      const hidden = document.getElementById(hiddenId);
-      if (!grid || !hidden) return;
-      grid.innerHTML = '';
-      ICONS.forEach(icon => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'icon-opt' + (hidden.value === icon ? ' selected' : '');
-        btn.innerHTML = `<i class="${icon}"></i>`;
-        btn.title = icon.replace('ti ti-', '');
-        btn.onclick = () => {
-          hidden.value = icon;
-          grid.querySelectorAll('.icon-opt').forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-        };
-        grid.appendChild(btn);
-      });
-    }
-
-    function openEditModal(soul) {
-      const link = linksCache[soul];
-      if (!link || !isAuthenticated) return;
-      document.getElementById('edit-soul').value = soul;
-      document.getElementById('edit-title').value = link.title || '';
-      document.getElementById('edit-subtitle').value = link.subtitle || '';
-      document.getElementById('edit-url').value = link.url || '';
-      document.getElementById('edit-icon').value = link.icon || 'ti ti-link';
-      const catSel = document.getElementById('edit-cat');
-      catSel.innerHTML = '';
-      Object.entries(sectionsMap).sort(([, a], [, b]) => (a.order || 0) - (b.order || 0)).forEach(([sid, sec]) => {
-        const o = document.createElement('option');
-        o.value = sid; o.textContent = sec.name;
-        if (sid === link.cat) o.selected = true;
-        catSel.appendChild(o);
-      });
-      document.getElementById('edit-icon-color').value = link.iconColor || 'apps';
-      initIconPicker('edit-icon-picker', 'edit-icon');
-      document.getElementById('edit-modal').classList.add('is-open');
-    }
-
-    function closeEditModal() {
-      document.getElementById('edit-modal').classList.remove('is-open');
-    }
-
-    function saveEdit() {
-      if (!isAuthenticated) return;
-      const soul = document.getElementById('edit-soul').value;
-      const title = document.getElementById('edit-title').value.trim();
-      const subtitle = document.getElementById('edit-subtitle').value.trim();
-      const url = document.getElementById('edit-url').value.trim();
-      const cat = document.getElementById('edit-cat').value;
-      const icon = document.getElementById('edit-icon').value || 'ti ti-link';
-      const iconColor = document.getElementById('edit-icon-color').value;
-      if (!title || !url) { alert('Title and URL are required!'); return; }
-      const existing = linksCache[soul] || {};
-      zen.get('~' + pair.pub).get('portal_links').get(soul).put(
-        { title, subtitle, url, cat, icon, iconColor, timestamp: existing.timestamp || Date.now() },
-        (ack) => {
-          if (ack && ack.err) alert('Save failed: ' + ack.err);
-          else { showToast('Link updated!'); closeEditModal(); }
-        }, { authenticator: pair }
-      );
-    }
-
-    window.closeEditModal = closeEditModal;
-
-    // ── EVENT LISTENERS ───────────────────────────────────────
-
-    document.getElementById('user-input').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('pass-input').focus(); });
-    document.getElementById('pass-input').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
-    document.getElementById('login-btn').addEventListener('click', login);
-    document.getElementById('logout-btn').addEventListener('click', logout);
-    document.getElementById('add-link-btn').addEventListener('click', addLink);
-    document.getElementById('seed-btn').addEventListener('click', seedDefaults);
-    document.getElementById('add-sec-btn').addEventListener('click', addSection);
-    document.getElementById('sec-name-input').addEventListener('keydown', e => { if (e.key === 'Enter') addSection(); });
-    document.getElementById('save-edit-btn').addEventListener('click', saveEdit);
-
-    // Auto login from session
-    const savedUser = sessionStorage.getItem('zen_user');
-    const savedPass = sessionStorage.getItem('zen_pass');
-    if (savedUser && savedPass) login();
-
-  </script>
-  <!-- Edit Link Modal -->
-  <div class="edit-modal" id="edit-modal" onclick="closeEditModal()">
-    <div class="edit-modal-content" onclick="event.stopPropagation()">
-      <div class="edit-modal-title"><i class="ti ti-pencil" style="color:var(--apps);"></i> Edit Link</div>
-      <input type="hidden" id="edit-soul">
-      <div class="lt-form-row">
-        <input type="text" id="edit-title" placeholder="Title" class="lt-input">
-        <input type="text" id="edit-subtitle" placeholder="Subtitle" class="lt-input">
-      </div>
-      <div class="lt-form-row">
-        <input type="text" id="edit-url" placeholder="URL" class="lt-input">
-        <select id="edit-cat" class="lt-input" style="height:46px;"></select>
-      </div>
-      <input type="hidden" id="edit-icon" value="ti ti-link">
-      <div class="icon-picker-wrap">
-        <span class="icon-picker-label">// icon</span>
-        <div class="icon-picker-grid" id="edit-icon-picker"></div>
-      </div>
-      <div class="lt-form-row">
-        <select id="edit-icon-color" class="lt-input" style="height:46px;">
-          <option value="music">Red</option>
-          <option value="apps">Teal</option>
-          <option value="zen">Cyan</option>
-          <option value="connect">Gold</option>
-        </select>
-      </div>
-      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
-        <button class="lt-btn" style="background:var(--text-muted);" onclick="closeEditModal()">Cancel</button>
-        <button class="lt-btn" id="save-edit-btn">Save Changes</button>
-      </div>
-    </div>
-  </div>
 </body>
 
 </html>
