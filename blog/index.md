@@ -27,13 +27,17 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
-## [About Me](about.md)
+## [About me](about.md)
 > date:2026/07/21, tags: `#about`
 > 
 > Who is scobru?  
 
 
 # Archives
+
+### Jul 2026
+
+* 2026/07/21: [About me](about.md) { #about }
 
 
 </div>
