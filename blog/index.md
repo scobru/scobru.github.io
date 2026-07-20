@@ -38,7 +38,7 @@ h1 { border-bottom:1px dotted grey }
 ### Jul 2026
 
 * 2026/07/21: [About me](about.md) { #about }
-* 2026/07/20: [Hello World](20260720-hello.md) { #hello }
+* 2026/07/20: [Hello World](20260720-hello) { #hello }
 
 
 </div>
