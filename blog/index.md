@@ -27,7 +27,7 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
-## [TuneCamp e il suo Ecosistema](20260720-hello.md)
+## [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md)
 > date:2026/07/20, tags: `#tunecamp`, `#music`, `#decentralized`, `#fediverse`
 > 
 > Un'analisi approfondita dell'ecosistema TuneCamp: server musicale federato self-hosted, Sidecamp, Graphofone, Lab Apps e ActivityPub.
