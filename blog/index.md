@@ -7,9 +7,9 @@ nav-width  : 320px
 css-header : background:linear-gradient(to bottom right, #06c, #fc0); color:white
 menu       : 
    Home    : ?
-   github  : https://github.com/casualwriter/casual-markdown-blog
+   Code  : https://github.com/casualwriter/casual-markdown-blog
+   Github  : https://github.com/scobru  
    Dark    : javascript:darkmode()
-   About   : ?page=about.md
 -----------------------------------------------------------------------------
 <style comment="additional style">
 #header { {{css-header}}  }
@@ -37,7 +37,6 @@ h1 { border-bottom:1px dotted grey }
 
 ### Jul 2026
 
-* 2026/07/21: [About me](about.md) { #about }
 * 2026/07/20: [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md) { #tunecamp }
 
 
