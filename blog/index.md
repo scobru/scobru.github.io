@@ -27,10 +27,10 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
-## [Hello World](20260720-hello.md)
-> date:2026/07/20, tags: `#hello`
+## [TuneCamp e il suo Ecosistema](20260720-hello.md)
+> date:2026/07/20, tags: `#tunecamp`, `#music`, `#decentralized`, `#fediverse`
 > 
-> Just say hello.  
+> Un'analisi approfondita dell'ecosistema TuneCamp: server musicale federato self-hosted, Sidecamp, Graphofone, Lab Apps e ActivityPub.
 
 
 # Archives
@@ -38,7 +38,7 @@ h1 { border-bottom:1px dotted grey }
 ### Jul 2026
 
 * 2026/07/21: [About me](about.md) { #about }
-* 2026/07/20: [Hello World](20260720-hello) { #hello }
+* 2026/07/20: [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md) { #tunecamp }
 
 
 </div>
