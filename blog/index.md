@@ -27,6 +27,11 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
+## [Linda & Wormhole: Comunicazione P2P e Trasferimento File Cifrato senza Server Centrali](20260724-linda-and-wormhole-p2p.md)
+> date:2026/07/24, tags: `#linda`, `#wormhole`, `#p2p`, `#e2ee`, `#electron`, `#android`, `#ipfs`
+> 
+> Un'analisi approfondita su LINDA P2P Encrypted Messenger (Electron & Android) e WORMHOLE P2P File Transfer CLI & Web.
+
 ## [L'Ecosistema Zen Apps: Costruire una suite di Web App Serverless, E2EE e P2P senza backend](20260724-zen-apps-ecosystem.md)
 > date:2026/07/24, tags: `#zen`, `#p2p`, `#serverless`, `#e2ee`, `#webapps`, `#decentralized`
 > 
@@ -47,6 +52,7 @@ h1 { border-bottom:1px dotted grey }
 
 ### Jul 2026
 
+* 2026/07/24: [Linda & Wormhole: Comunicazione P2P e Trasferimento File Cifrato](20260724-linda-and-wormhole-p2p.md) { #lindawormhole }
 * 2026/07/24: [L'Ecosistema Zen Apps: Web App Serverless, E2EE e P2P](20260724-zen-apps-ecosystem.md) { #zenapps }
 * 2026/07/24: [CLI-Tools: La mia collezione di utility essenziali da terminale](20260724-cli-tools-suite.md) { #clitools }
 * 2026/07/20: [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md) { #tunecamp }
