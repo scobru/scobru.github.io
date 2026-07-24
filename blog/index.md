@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------
 github     : https://github.com/scobru/scobru.github.io
-title      : COGITO - Scobru's Blog
-subtitle   : Mi segno le cose che faccio qui altrimenti le dimentico
+title      : COGITO 
+subtitle   : Il blog di Scobru
 nav-group  : featured, new-3, tags, months
 nav-width  : 320px
 css-header : background:linear-gradient(to bottom right, #06c, #fc0); color:white
