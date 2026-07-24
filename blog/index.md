@@ -27,6 +27,16 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
+## [Sidecamp: Il Desktop Companion P2P per TuneCamp (Soulseek, Torrents & E2EE Chat)](20260724-sidecamp-desktop-companion.md)
+> date:2026/07/24, tags: `#sidecamp`, `#tunecamp`, `#electron`, `#p2p`, `#soulseek`, `#webtorrent`, `#e2ee`
+> 
+> Un'analisi approfondita su Sidecamp: l'applicazione desktop companion in Electron che gestisce ricerca unificata, Soulseek, BitTorrent, yt-dlp e chat cifrata E2EE per TuneCamp.
+
+## [Graphofone: Performare Musica e DJing Sperimentale tramite Grafi Interattivi](20260724-graphofone-graph-audio-engine.md)
+> date:2026/07/24, tags: `#graphofone`, `#audioengine`, `#webaudio`, `#djing`, `#graphui`, `#performance`
+> 
+> Come performare musica dal vivo e mixare tracce usando grafi fisici 2D interattivi, time-warp worklets e un motore audio DSP su misura.
+
 ## [LINDA: Il Messenger P2P Crittografato E2EE per Desktop e Mobile senza Server Centrali](20260724-linda-p2p-messenger.md)
 > date:2026/07/24, tags: `#linda`, `#p2p`, `#e2ee`, `#electron`, `#android`, `#wasm`, `#zen`
 > 
@@ -57,6 +67,8 @@ h1 { border-bottom:1px dotted grey }
 
 ### Jul 2026
 
+* 2026/07/24: [Sidecamp: Il Desktop Companion P2P per TuneCamp](20260724-sidecamp-desktop-companion.md) { #sidecamp }
+* 2026/07/24: [Graphofone: Performance Musicali tramite Grafi Interattivi](20260724-graphofone-graph-audio-engine.md) { #graphofone }
 * 2026/07/24: [LINDA: Il Messenger P2P Crittografato E2EE per Desktop e Mobile](20260724-linda-p2p-messenger.md) { #linda }
 * 2026/07/24: [WORMHOLE: Trasferimento File Pesanti e Messaggi Cifrati via P2P](20260724-wormhole-p2p-file-transfer.md) { #wormhole }
 * 2026/07/24: [L'Ecosistema Zen Apps: Web App Serverless, E2EE e P2P](20260724-zen-apps-ecosystem.md) { #zenapps }
