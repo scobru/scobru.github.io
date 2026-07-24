@@ -27,6 +27,11 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
+## [CLI-Tools: La mia collezione di utility essenziali da terminale (con Sync P2P Zen)](20260724-cli-tools-suite.md)
+> date:2026/07/24, tags: `#clitools`, `#python`, `#nodejs`, `#zen`, `#terminal`, `#productivity`
+> 
+> Una panoramica completa sulla suite di strumenti da riga di comando cli-tools: dnote con sincronizzazione cloud P2P su relay Zen, opass, clipmgr, cryptoclip, cryptomessage e foldx.
+
 ## [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md)
 > date:2026/07/20, tags: `#tunecamp`, `#music`, `#decentralized`, `#fediverse`
 > 
@@ -37,6 +42,7 @@ h1 { border-bottom:1px dotted grey }
 
 ### Jul 2026
 
+* 2026/07/24: [CLI-Tools: La mia collezione di utility essenziali da terminale](20260724-cli-tools-suite.md) { #clitools }
 * 2026/07/20: [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md) { #tunecamp }
 
 
