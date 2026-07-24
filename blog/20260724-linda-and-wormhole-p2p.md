@@ -30,15 +30,16 @@ In questo articolo vi racconto l'architettura, le scelte tecnologiche e la siner
                  │          Motore P2P & Crittografia          │
                  ├─────────────────────────────────────────────┤
                  │ • Zen P2P Graph Database (Signaling & Sync) │
+                 │ • Zen Crypto / SEA (pair, encrypt, sign)    │
+                 │ • WASM Acceleration (pen.wasm / crypto.wasm)│
                  │ • libsodium (sodium-universal / Javascript) │
                  │ • WebRTC Data Channels (Direct P2P Stream)  │
-                 │ • WebCrypto / AES-GCM (Symmetric E2EE)      │
                  └─────────────────────────────────────────────┘
 ```
 
 ### Caratteristiche chiave di LINDA:
-- 🔐 **Crittografia E2EE con libsodium**: Tutte le conversazioni (1:1 e di gruppo) e le chiavi pubbliche sono gestite dal motore `linda-core` con **libsodium** (`sodium-universal` / `sodium-javascript`) per una sicurezza crittografica ad altissime prestazioni.
-- 🔑 **Identità Sovrana (@username)**: Nessun numero di telefono o email richiesti. La tua identità è la tua chiave pubblica crittografica. I nomi utente unici vengono risolti tramite un indice di scoperta decentralizzato sul grafo **Zen**.
+- 🔐 **Crittografia E2EE con Zen Crypto / SEA**: Tutte le conversazioni (1:1 e di gruppo), le firme e lo scambio di segreti (ECDH `ZEN.secret()`) sfruttano il motore crittografico nativo **Zen Crypto / SEA** (`pair`, `encrypt`, `decrypt`, `sign`, `verify`) integrato in `linda-core` e accelerato tramite bytecode WASM (`pen.wasm`).
+- 🔑 **Identità Sovrana (@username)**: Nessun numero di telefono o email richiesti. La tua identità è la tua chiave pubblica `ZEN.pair()`. I nomi utente unici vengono risolti tramite un indice di scoperta decentralizzato sul grafo **Zen**.
 - 🚀 **Trasferimento File Diretto via WebRTC**: Invio di immagini e file di qualsiasi dimensione direttamente tra peer tramite WebRTC Data Channels.
 - 🤖 **Agenti AI Integrati**: Supporto nativo per Bot AI (Gemini/TypeScript) capaci di partecipare alle conversazioni come peer decentralizzati.
 
