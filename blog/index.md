@@ -27,6 +27,21 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
+## [Nullroute: Pagamenti Stealth Anonimi e Privacy-Preserving su Blockchain EVM](20260724-nullroute-evm-stealth-payments.md)
+> date:2026/07/24, tags: `#nullroute`, `#evm`, `#stealth`, `#privacy`, `#crypto`, `#blockchain`
+> 
+> Come funzionano i pagamenti stealth di Nullroute per ricevere fondi on-chain su indirizzi monouso riservati ed evitare il tracciamento pubblico.
+
+## [Whiterabbit & Delay: Messaggistica Effimera in Tempo Reale e l'Infrastruttura di Relay P2P](20260724-whiterabbit-and-delay-relay.md)
+> date:2026/07/24, tags: `#whiterabbit`, `#delay`, `#zen`, `#relay`, `#p2p`, `#ephemeral`
+> 
+> Un'analisi dell'infrastruttura di relay P2P zero-log Delay e delle stanze di chat effimere in tempo reale di Whiterabbit.
+
+## [Sudo Records & Sound Design: Sintesi Audio, Musica Indipendente ed Ecosistema TuneCamp](20260724-sudo-records-sound-design.md)
+> date:2026/07/24, tags: `#sudorecords`, `#sounddesign`, `#music`, `#tunecamp`, `#ambient`, `#electronic`
+> 
+> Il punto d'incontro tra codice e suono: l'etichetta Sudo Records su TuneCamp, il songwriting di Homologo, la synth music di Fade e l'ambient di Zima Blue.
+
 ## [Sidecamp: Il Desktop Companion P2P per TuneCamp (Soulseek, Torrents & E2EE Chat)](20260724-sidecamp-desktop-companion.md)
 > date:2026/07/24, tags: `#sidecamp`, `#tunecamp`, `#electron`, `#p2p`, `#soulseek`, `#webtorrent`, `#e2ee`
 > 
@@ -67,6 +82,9 @@ h1 { border-bottom:1px dotted grey }
 
 ### Jul 2026
 
+* 2026/07/24: [Nullroute: Pagamenti Stealth Anonimi su Blockchain EVM](20260724-nullroute-evm-stealth-payments.md) { #nullroute }
+* 2026/07/24: [Whiterabbit & Delay: Messaggistica Effimera e Relay P2P](20260724-whiterabbit-and-delay-relay.md) { #whiterabbit }
+* 2026/07/24: [Sudo Records & Sound Design: Sintesi Audio e Musica Indipendente](20260724-sudo-records-sound-design.md) { #sudorecords }
 * 2026/07/24: [Sidecamp: Il Desktop Companion P2P per TuneCamp](20260724-sidecamp-desktop-companion.md) { #sidecamp }
 * 2026/07/24: [Graphofone: Performance Musicali tramite Grafi Interattivi](20260724-graphofone-graph-audio-engine.md) { #graphofone }
 * 2026/07/24: [LINDA: Il Messenger P2P Crittografato E2EE per Desktop e Mobile](20260724-linda-p2p-messenger.md) { #linda }
