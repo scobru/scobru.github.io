@@ -27,6 +27,11 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
+## [L'Ecosistema Zen Apps: Costruire una suite di Web App Serverless, E2EE e P2P senza backend](20260724-zen-apps-ecosystem.md)
+> date:2026/07/24, tags: `#zen`, `#p2p`, `#serverless`, `#e2ee`, `#webapps`, `#decentralized`
+> 
+> Una panoramica completa sull'ecosistema delle Zen Apps: ZenAuth, ZenBoard, ZenKanban, ZenVault, ZenPaste, ZenSplit, ZenLedger, ZenContacts, ZenForms, ZenCal e ZenRadar basate su WebCrypto e Zen P2P Graph Engine.
+
 ## [CLI-Tools: La mia collezione di utility essenziali da terminale (con Sync P2P Zen)](20260724-cli-tools-suite.md)
 > date:2026/07/24, tags: `#clitools`, `#python`, `#nodejs`, `#zen`, `#terminal`, `#productivity`
 > 
@@ -42,6 +47,7 @@ h1 { border-bottom:1px dotted grey }
 
 ### Jul 2026
 
+* 2026/07/24: [L'Ecosistema Zen Apps: Web App Serverless, E2EE e P2P](20260724-zen-apps-ecosystem.md) { #zenapps }
 * 2026/07/24: [CLI-Tools: La mia collezione di utility essenziali da terminale](20260724-cli-tools-suite.md) { #clitools }
 * 2026/07/20: [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md) { #tunecamp }
 
