@@ -29,14 +29,16 @@ Questa infrastruttura si compone di due elementi fondamentali: **Delay** ([`scob
 
 ---
 
-## 🐇 Whiterabbit: Chat P2P Effimere senza Traccia
+## 🐇 Whiterabbit: Chat P2P Effimera Standalone (Zero-Relay)
 
-Basata sull'infrastruttura di **Delay**, **Whiterabbit** è un'applicazione web minimale progettata per quando si necessita di una stanza di chat istantanea per scambiare informazioni senza lasciare traccia.
+A differenza dell'ecosistema delle Zen Apps che sfrutta il relay `Delay`, **Whiterabbit** è una delle poche applicazioni completamente **standalone** basata su connessioni WebRTC P2P dirette tra i browser dei partecipanti.
+
+È un'applicazione web minimale progettata per quando si necessita di una stanza di chat istantanea per scambiare informazioni al volo senza lasciare alcuna traccia su nessun server di relay o database.
 
 ### Caratteristiche principali:
-- ⏱️ **Stanze Effimere Temporanee**: Le stanze di chat vivono esclusivamente finché i partecipanti sono connessi o per la durata impostata.
-- 🔒 **Nessun Database o Registro**: I messaggi non vengono salvati su alcun disco rigido o database permanente. Esistono soltanto nella memoria RAM dei client connessi.
-- 🌐 **100% Serverless**: Interfaccia static in-browser accessibile al volo da desktop o dispositivi mobili.
+- ⏱️ **Stanze Effimere Temporanee**: Le stanze di chat ed i canali vivono esclusivamente in memoria finché i partecipanti sono connessi.
+- 🔒 **Zero Server & Nessun Database**: I messaggi viaggiano direttamente tra i browser via WebRTC Data Channels. Non vengono salvati su alcun disco rigido, database permanente o nodo di relay.
+- 🌐 **100% Serverless & Client-Side**: Interfaccia static in-browser accessibile al volo da qualsiasi dispositivo.
 
 ---
 
