@@ -32,12 +32,6 @@ h1 { border-bottom:1px dotted grey }
 > 
 > FID (Fediverse-ID) è l'implementazione di TuneCamp del protocollo Fediverse-ID, un sistema di identità auto-sovrano e zero-knowledge. A differenza dell'autenticazione centralizzata, FID permette agli utenti di controllare la propria identità senza dipendere da terze parti.
 
-## [FIDExplained](20260730-fid-explained.md)
-> date:2026/07/30, tags: `#fid`, `#tunecamp`, `#fediverse`, `#identity`
-> 
-> FID (Fediverse-ID) è l'implementazione di TuneCamp del protocollo Fediverse-ID, un sistema di identità auto-sovrano e zero-knowledge. A differenza dell'autenticazione centralizzata, FID permette agli utenti di controllare la propria identità senza dipendere da terze parti.
-
-
 ## [Nullroute: Pagamenti Stealth Anonimi e Privacy-Preserving su Blockchain EVM](20260724-nullroute-evm-stealth-payments.md)
 > date:2026/07/24, tags: `#nullroute`, `#evm`, `#stealth`, `#privacy`, `#crypto`, `#blockchain`
 > 
