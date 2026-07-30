@@ -32,13 +32,17 @@ A differenza di strumenti tradizionali, Graphofone è **100% offline e serverles
 Per evitare qualsiasi "glitch" o interruzione del suono durante le performance dal vivo, Graphofone separa rigorosamente la logica di interfaccia dal motore DSP di riproduzione attraverso un'architettura a moduli interni:
 
 ### 1. `packages/audio-engine` (Pure Web Audio DSP)
+
 Il motore audio puro sviluppato su misura per l'elaborazione del segnale:
+
 - **Crossfade Player**: Player multicanale per eseguire sfumature fluide e transizioni sincronizzate sul tempo.
 - **Time-Warp & Pitch Shift**: Algoritmi di warping temporale per adattare i BPM delle tracce senza alterare la tonalità originale.
 - **Audio Worklet Dedicati**: L'elaborazione del segnale avviene su thread audio isolati per garantire latenza zero anche in caso di carico grafico elevato.
 
 ### 2. `packages/graph-ui` (Interfaccia Grafico Dinamica)
+
 L'interfaccia utente a grafo canvas:
+
 - **Fisica dei Nodi 2D**: Posizionamento dinamico delle tracce con collegamenti visuali.
 - **Waveform in Tempo Reale**: Visualizzazione dell'onda sonora di ogni brano direttamente sul nodo corrispondente.
 - **Registrazione Live**: Cattura al volo del flusso audio performato per salvare i propri DJ set o mix sperimentali.
@@ -55,7 +59,7 @@ L'interfaccia utente a grafo canvas:
 
 ## 🛠️ Monorepo e Integrazione con Sidecamp
 
-Graphofone condivide il monorepo di **Sidecamp** ([`scobru/sidecamp`](https://github.com/scobru/sidecamp)), sfruttando i pacchetti condivisi `graph-ui` e `audio-engine`. 
+Graphofone condivide il monorepo di **Sidecamp** ([`scobru/sidecamp`](https://github.com/scobru/sidecamp)), sfruttando i pacchetti condivisi `graph-ui` e `audio-engine`.
 
 Mentre Sidecamp si occupa della gestione della libreria e della ricerca P2P, **Graphofone** rimane lo strumento focalizzato per le sessioni di mixaggio ed esplorazione sonora.
 
@@ -65,4 +69,4 @@ Mentre Sidecamp si occupa della gestione della libreria e della ricerca P2P, **G
 
 Graphofone è un progetto open-source integrato nel monorepo Sidecamp:
 
-👉 **[github.com/scobru/sidecamp](https://github.com/scobru/sidecamp)**
+👉 **[Scopri Graphofone su TuneCamp](https://www.tunecamp.org/graphofone.html)** — **[Codice sorgente](https://github.com/scobru/sidecamp/tree/main/apps/graphofone)**

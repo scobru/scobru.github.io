@@ -32,6 +32,7 @@ Invece di costringere l'utente a configurare complessi port-forwarding sui propr
 ```
 
 Grazie a questa architettura:
+
 1. **Il server rimane pulito**: Nessuna libreria P2P o binario di download sul server ospitato.
 2. **Controllo totale**: L'utente scarica i file sul proprio PC e decide quali tracce caricare sul proprio account TuneCamp.
 3. **Zero Configurazione di Rete**: La connessione in uscita supera NAT e firewall senza toccare la configurazione del router.
@@ -41,7 +42,9 @@ Grazie a questa architettura:
 ## 🚀 Le Caratteristiche Principali di Sidecamp
 
 ### 🔎 1. Ricerca Unificata (Unified Search)
+
 Una barra di ricerca unica per trovare musica contemporaneamente da più fonti:
+
 - **Soulseek Network**: Ricerca P2P diretta di tracce rare ed introvabili.
 - **BitTorrent / WebTorrent**: Download e seeding integrati in-app di file torrent e magnet link.
 - **Internet Archive (`archive.org`)**: Download diretto di registrazioni live e pubblico dominio.
@@ -49,11 +52,14 @@ Una barra di ricerca unica per trovare musica contemporaneamente da più fonti:
 - **Rete Peer TuneCamp**: Ricerca tra le librerie condivise dagli altri utenti della rete.
 
 ### 💬 2. Peer Chat Crittografata E2EE
-Sidecamp include un sistema di messaggistica diretta tra peer stile Soulseek. 
+
+Sidecamp include un sistema di messaggistica diretta tra peer stile Soulseek.
 Tutti i messaggi privati sono cifrati end-to-end tramite **Curve25519 / XSalsa20-Poly1305** (libreria `tweetnacl`). Il server di relay WebSocket non ha mai accesso al testo in chiaro.
 
 ### 📁 3. Gestione della Libreria Locale & Permessi Granulari
+
 Un file manager e player audio integrato per gestire la libreria scaricata:
+
 - Modifica dei tag ID3 (titolo, artista, album).
 - Condivisione selettiva delle cartelle con permessi granulari regolabili in tempo reale.
 - Caricamento con un solo click delle tracce selezionate sulla libreria cloud del proprio server TuneCamp.
@@ -73,4 +79,4 @@ Un file manager e player audio integrato per gestire la libreria scaricata:
 
 Sidecamp è open-source ed è disponibile su GitHub:
 
-👉 **[github.com/scobru/sidecamp](https://github.com/scobru/sidecamp)**
+👉 **[Scopri Sidecamp su TuneCamp](https://www.tunecamp.org/sidecamp.html)** — **[Codice sorgente](https://github.com/scobru/sidecamp)**

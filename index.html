@@ -1,360 +1,716 @@
 <!doctype html>
 <html lang="it">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music." />
+    <meta
+      name="description"
+      content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music."
+    />
     <title>scobru.github.io</title>
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4" />
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/1079164?v=4"
+    />
 
     <style>
-        /* Reset e Stili Globali */
-        body {
-            background-color: #ffffff;
-            color: #000000;
-            font-family:
-                -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-                Arial, sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 40px 20px;
-            font-size: 40px;
-        }
+      /* Reset e Stili Globali */
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        padding: 40px 20px;
+        font-size: 40px;
+      }
 
-        .container {
-            max-width: 650px;
-            margin: 0 auto;
-        }
+      .container {
+        max-width: 650px;
+        margin: 0 auto;
+      }
 
-        /* Intestazione */
-        header {
-            margin-bottom: 40px;
-        }
+      /* Intestazione */
+      header {
+        margin-bottom: 40px;
+      }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.5px;
-        }
+      h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        letter-spacing: -0.5px;
+      }
 
-        .bio {
-            font-family: monospace;
-            font-size: 1.1rem;
-            color: #333333;
-            margin: 0;
-            line-height: 1.4;
-        }
+      .bio {
+        font-family: monospace;
+        font-size: 1.1rem;
+        color: #333333;
+        margin: 0;
+        line-height: 1.4;
+      }
 
-        /* Sezioni */
-        section {
-            margin-bottom: 45px;
-        }
+      /* Sezioni */
+      section {
+        margin-bottom: 45px;
+      }
 
-        h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #000000;
-            padding-bottom: 4px;
-        }
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #000000;
+        padding-bottom: 4px;
+      }
 
-        /* Liste e Collegamenti */
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
+      /* Liste e Collegamenti */
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+      }
 
-        li {
-            margin-bottom: 14px;
-            font-size: 1.1rem;
-            display: flex;
-            flex-direction: column;
-        }
+      li {
+        margin-bottom: 14px;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .project-title {
-            font-weight: 600;
-        }
+      .project-title {
+        font-weight: 600;
+      }
 
-        .project-desc {
-            font-size: 1rem;
-            color: #444444;
-        }
+      .project-desc {
+        font-size: 1rem;
+        color: #444444;
+      }
 
-        .social-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+      .social-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
 
-        .social-list li {
-            margin-bottom: 0;
-        }
+      .social-list li {
+        margin-bottom: 0;
+      }
 
-        a {
-            color: #000000;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
+      a {
+        color: #000000;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
 
-        a:hover {
-            text-decoration: none;
-            background-color: #000000;
-            color: #ffffff;
-        }
+      a:hover {
+        text-decoration: none;
+        background-color: #000000;
+        color: #ffffff;
+      }
 
-        /* Piè di pagina */
-        footer {
-            margin-top: 60px;
-            font-size: 0.9rem;
-            color: #555555;
-            border-top: 1px dashed #000000;
-            padding-top: 15px;
-        }
+      /* Piè di pagina */
+      footer {
+        margin-top: 60px;
+        font-size: 0.9rem;
+        color: #555555;
+        border-top: 1px dashed #000000;
+        padding-top: 15px;
+      }
 
-        .sys-status {
-            font-family: monospace;
-        }
+      .sys-status {
+        font-family: monospace;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header>
-            <h1>scobru</h1>
-            <p class="bio">
-                Francesco Bruno — developer & sound designer.<br />P2P, open-source,
-                audio synthesis, creative tech.
-            </p>
-        </header>
+      <header>
+        <h1>scobru</h1>
+        <p class="bio">
+          Francesco Bruno — developer & sound designer.<br />P2P, open-source,
+          audio synthesis, creative tech.
+        </p>
+      </header>
 
-        <main>
-            <section>
-                <h2>[ Notes ]</h2>
-                <ul>
-                    <li>
-                        <span class="project-title"><a href="./blog/" target="_blank" rel="noopener">Cogito</a></span>
-                        <span class="project-desc">Notes and thoughts</span>
-                    </li>
-                </ul>
-            </section>
+      <main>
+        <section>
+          <h2>[ Notes ]</h2>
+          <ul>
+            <li>
+              <span class="project-title"
+                ><a href="./blog/" target="_blank" rel="noopener"
+                  >Cogito</a
+                ></span
+              >
+              <span class="project-desc">Notes and thoughts</span>
+            </li>
+          </ul>
+        </section>
 
-            <section>
-                <h2>[ Web Apps & Projects ]</h2>
-                <ul>
-                    <li>
-                        <span class="project-title"><a href="https://tunecamp.org/" target="_blank"
-                                rel="noopener">Tunecamp</a> - <a href="https://github.com/scobru/tunecamp"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized music streaming</span>
-                    </li>
+        <section>
+          <h2>[ Web Apps & Projects ]</h2>
+          <ul>
+            <li>
+              <span class="project-title"
+                ><a href="https://tunecamp.org/" target="_blank" rel="noopener"
+                  >Tunecamp</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/tunecamp"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">Decentralized music streaming</span>
+            </li>
 
-                    <li>
-                        <span class="project-title"><a href="https://linda.scobrudot.dev/" target="_blank"
-                                rel="noopener">Linda</a> - <a href="https://github.com/scobru/linda" target="_blank"
-                                rel="noopener">Code</a></span>
-                        <span class="project-desc">End-to-end encrypted messaging</span>
-                    </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://linda.scobrudot.dev/"
+                  target="_blank"
+                  rel="noopener"
+                  >Linda</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/linda"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">End-to-end encrypted messaging</span>
+            </li>
 
-                    <li>
-                        <span class="project-title"><a href="https://github.com/scobru/sidecamp" target="_blank"
-                                rel="noopener">Sidecamp</a> - <a href="https://github.com/scobru/sidecamp"
-                                target="_blank">Code</a> </span>
-                        <span class="project-desc">TuneCamp companion app</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a
-                                href="https://github.com/scobru/sidecamp/tree/main/apps/graphofone" target="_blank"
-                                rel="noopener">Graphofone</a> - <a
-                                href="https://github.com/scobru/sidecamp/tree/main/apps/graphofone"
-                                target="_blank">Code</a> </span>
-                        <span class="project-desc">Standalone live-performance app</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://github.com/scobru/linda-core" target="_blank"
-                                rel="noopener">Linda Core</a> - <a href="https://github.com/scobru/linda-core"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Underlying package for Linda and other apps</span>
-                    </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://fid-portal.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  >@tunecamp/fid</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/tunecamp/tree/main/fid"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Fediverse-ID: self-sovereign SSO &amp; identity protocol for
+                ActivityPub</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://www.tunecamp.org/sidecamp.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Sidecamp</a
+                >
+                -
+                <a href="https://github.com/scobru/sidecamp" target="_blank"
+                  >Code</a
+                >
+              </span>
+              <span class="project-desc">TuneCamp companion app</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://www.tunecamp.org/graphofone.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Graphofone</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/sidecamp/tree/main/apps/graphofone"
+                  target="_blank"
+                  >Code</a
+                >
+              </span>
+              <span class="project-desc">Standalone live-performance app</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://github.com/scobru/linda-core"
+                  target="_blank"
+                  rel="noopener"
+                  >Linda Core</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/linda-core"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Underlying package for Linda and other apps</span
+              >
+            </li>
 
-                    <li>
-                        <span class="project-title"><a href="https://wormhole.scobrudot.dev/" target="_blank"
-                                rel="noopener">Wormhole</a> - <a href="https://github.com/scobru/wormhole"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">E2EE P2P file transfer</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://nullroute.scobrudot.dev/" target="_blank"
-                                rel="noopener">Nullroute</a> - <a href="https://github.com/scobru/nullroute"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">EVM stealth payment hub</span>
-                    </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://wormhole.scobrudot.dev/"
+                  target="_blank"
+                  rel="noopener"
+                  >Wormhole</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/wormhole"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">E2EE P2P file transfer</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://nullroute.scobrudot.dev/"
+                  target="_blank"
+                  rel="noopener"
+                  >Nullroute</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/nullroute"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">EVM stealth payment hub</span>
+            </li>
 
-                    <li>
-                        <span class="project-title"><a href="https://whiterabbit.scobrudot.dev" target="_blank"
-                                rel="noopener">Whiterabbit</a> - <a href="https://github.com/scobru/whiterabbit"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Ephemeral p2p chat</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenvault.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenvault</a> - <a href="https://github.com/scobru/zenvault"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized Secure Vault</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zencal.scobrudot.dev" target="_blank"
-                                rel="noopener">Zencal</a> - <a href="https://github.com/scobru/zencal" target="_blank"
-                                rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized Secure Calendar</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zencontacts.scobrudot.dev" target="_blank"
-                                rel="noopener">Zencontacts</a> - <a href="https://github.com/scobru/zencontacts"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized Secure Address Book</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenauth.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenauth</a> - <a href="https://github.com/scobru/zenauth" target="_blank"
-                                rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized 2FA Authenticator & Secret Vault</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenboard.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenboard</a> - <a href="https://github.com/scobru/zenboard"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized Obsidian-Style Knowledge Graph</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenforms.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenforms</a> - <a href="https://github.com/scobru/zenforms"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized E2EE Forms & Poll Builder</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenkanban.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenkanban</a> - <a href="https://github.com/scobru/zenkanban"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized E2EE Drag & Drop Kanban Board</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenledger.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenledger</a> - <a href="https://github.com/scobru/zenledger"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized E2EE Personal Finance & Expense Tracker</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenpaste.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenpaste</a> - <a href="https://github.com/scobru/zenpaste"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized E2EE Pastebin & Publisher</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zenradar.scobrudot.dev" target="_blank"
-                                rel="noopener">Zenradar</a> - <a href="https://github.com/scobru/zenradar"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized E2EE Bookmark & Read-Later Hub</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zensplit.scobrudot.dev" target="_blank"
-                                rel="noopener">Zensplit</a> - <a href="https://github.com/scobru/zensplit"
-                                target="_blank" rel="noopener">Code</a></span>
-                        <span class="project-desc">Decentralized E2EE Group Expense Splitter</span>
-                    </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://whiterabbit.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Whiterabbit</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/whiterabbit"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">Ephemeral p2p chat</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenvault.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenvault</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenvault"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">Decentralized Secure Vault</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zencal.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zencal</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zencal"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc">Decentralized Secure Calendar</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zencontacts.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zencontacts</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zencontacts"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized Secure Address Book</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenauth.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenauth</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenauth"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized 2FA Authenticator & Secret Vault</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenboard.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenboard</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenboard"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized Obsidian-Style Knowledge Graph</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenforms.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenforms</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenforms"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized E2EE Forms & Poll Builder</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenkanban.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenkanban</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenkanban"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized E2EE Drag & Drop Kanban Board</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenledger.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenledger</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenledger"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized E2EE Personal Finance & Expense Tracker</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenpaste.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenpaste</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenpaste"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized E2EE Pastebin & Publisher</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zenradar.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zenradar</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zenradar"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized E2EE Bookmark & Read-Later Hub</span
+              >
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zensplit.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Zensplit</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/zensplit"
+                  target="_blank"
+                  rel="noopener"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc"
+                >Decentralized E2EE Group Expense Splitter</span
+              >
+            </li>
 
-                    <li>
-                        <span class="project-title"><a href="https://github.com/scobru/zen" target="_blank"
-                                rel="noopener">Zen</a></span>
-                        <span class="project-desc">Zen fork</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://github.com/scobru/delay" target="_blank"
-                                rel="noopener">Delay</a> - <a href="https://delay.scobrudot.dev" target="_blank"
-                                rel="noopener">Instance</a> - <a href="https://github.com/scobru/delay"
-                                target="_blank">Code</a> </span>
-                        <span class="project-desc">Decentralized Relay</span>
-                    </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://github.com/scobru/zen"
+                  target="_blank"
+                  rel="noopener"
+                  >Zen</a
+                ></span
+              >
+              <span class="project-desc">Zen fork</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://github.com/scobru/delay"
+                  target="_blank"
+                  rel="noopener"
+                  >Delay</a
+                >
+                -
+                <a
+                  href="https://delay.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Instance</a
+                >
+                -
+                <a href="https://github.com/scobru/delay" target="_blank"
+                  >Code</a
+                >
+              </span>
+              <span class="project-desc">Decentralized Relay</span>
+            </li>
 
-                    <li>
-                        <span class="project-title"><a href="https://github.com/scobru/cli-tools" target="_blank"
-                                rel="noopener">CLI Tools</a> - <a href="https://github.com/scobru/cli-tools"
-                                target="_blank">Code</a> </span>
-                        <span class="project-desc">Collection of CLI Tools</span>
-                    </li>
-                </ul>
-            </section>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://github.com/scobru/cli-tools"
+                  target="_blank"
+                  rel="noopener"
+                  >CLI Tools</a
+                >
+                -
+                <a href="https://github.com/scobru/cli-tools" target="_blank"
+                  >Code</a
+                >
+              </span>
+              <span class="project-desc">Collection of CLI Tools</span>
+            </li>
+          </ul>
+        </section>
 
-            <section>
-                <h2>[ Music & Art ]</h2>
-                <ul>
-                    <li>
-                        <span class="project-title"><a href="https://sudorecords.scobrudot.dev" target="_blank"
-                                rel="noopener">Sudo Records</a></span>
-                        <span class="project-desc">Record Label hosted on Tunecamp</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://homologomusic.bandcamp.com" target="_blank"
-                                rel="noopener">Homologo</a></span>
-                        <span class="project-desc">Songwriter, Pop, Electronic</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://fademusik.bandcamp.com" target="_blank"
-                                rel="noopener">Fade</a></span>
-                        <span class="project-desc">Electronic / Synth music</span>
-                    </li>
-                    <li>
-                        <span class="project-title"><a href="https://zimablue.bandcamp.com" target="_blank"
-                                rel="noopener">Zima Blue</a></span>
-                        <span class="project-desc">Ambient, Experimental soundscapes</span>
-                    </li>
-                </ul>
-            </section>
+        <section>
+          <h2>[ Music & Art ]</h2>
+          <ul>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://sudorecords.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Sudo Records</a
+                ></span
+              >
+              <span class="project-desc">Record Label hosted on Tunecamp</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://homologomusic.bandcamp.com"
+                  target="_blank"
+                  rel="noopener"
+                  >Homologo</a
+                ></span
+              >
+              <span class="project-desc">Songwriter, Pop, Electronic</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://fademusik.bandcamp.com"
+                  target="_blank"
+                  rel="noopener"
+                  >Fade</a
+                ></span
+              >
+              <span class="project-desc">Electronic / Synth music</span>
+            </li>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://zimablue.bandcamp.com"
+                  target="_blank"
+                  rel="noopener"
+                  >Zima Blue</a
+                ></span
+              >
+              <span class="project-desc"
+                >Ambient, Experimental soundscapes</span
+              >
+            </li>
+          </ul>
+        </section>
 
+        <section>
+          <h2>[ Connect ]</h2>
+          <ul class="social-list">
+            <li>
+              <a
+                href="https://github.com/scobru"
+                target="_blank"
+                rel="me noopener"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/scobru1988"
+                target="_blank"
+                rel="me noopener"
+                >Twitter</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://livellosegreto.it/@scobru"
+                target="_blank"
+                rel="me noopener"
+                >Mastodon</a
+              >
+            </li>
+            <li>
+              <a href="https://t.me/scobru" target="_blank" rel="me noopener"
+                >Telegram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://instagram.com/francescobruno"
+                target="_blank"
+                rel="me noopener"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://youtube.com/scobru88"
+                target="_blank"
+                rel="me noopener"
+                >YouTube</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://audius.co/francescobruno"
+                target="_blank"
+                rel="me noopener"
+                >Audius</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7"
+                target="_blank"
+                rel="me noopener"
+                >Spotify</a
+              >
+            </li>
+            <li><a href="mailto:scobru1988@gmail.com" rel="me">Email</a></li>
+          </ul>
+        </section>
+      </main>
 
-
-            <section>
-                <h2>[ Connect ]</h2>
-                <ul class="social-list">
-                    <li>
-                        <a href="https://github.com/scobru" target="_blank" rel="me noopener">GitHub</a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/scobru1988" target="_blank" rel="me noopener">Twitter</a>
-                    </li>
-                    <li>
-                        <a href="https://livellosegreto.it/@scobru" target="_blank" rel="me noopener">Mastodon</a>
-                    </li>
-                    <li>
-                        <a href="https://t.me/scobru" target="_blank" rel="me noopener">Telegram</a>
-                    </li>
-                    <li>
-                        <a href="https://instagram.com/francescobruno" target="_blank" rel="me noopener">Instagram</a>
-                    </li>
-                    <li>
-                        <a href="https://youtube.com/scobru88" target="_blank" rel="me noopener">YouTube</a>
-                    </li>
-                    <li>
-                        <a href="https://audius.co/francescobruno" target="_blank" rel="me noopener">Audius</a>
-                    </li>
-                    <li>
-                        <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7" target="_blank"
-                            rel="me noopener">Spotify</a>
-                    </li>
-                    <li><a href="mailto:scobru1988@gmail.com" rel="me">Email</a></li>
-                </ul>
-            </section>
-        </main>
-
-        <footer>
-            <p class="sys-status">// 25 items indexed · system: online</p>
-        </footer>
+      <footer>
+        <p class="sys-status">// 26 items indexed · system: online</p>
+      </footer>
     </div>
-</body>
-
+  </body>
 </html>
