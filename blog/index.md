@@ -27,10 +27,10 @@ h1 { border-bottom:1px dotted grey }
 <div id="md-post">
 # Featured
 
-## [FID nell'Ecosistema TuneCamp](20260730-fid-ecosystem.md)
-> date:2026/07/30, tags: `#fid`, `#tunecamp`, `#fediverse`, `#identity`
+## [FID (Fediverse-ID): Identità Crittografica Auto-Sovrana e Protocollo SSO per il Fediverse](20260730-fid-ecosystem.md)
+> date:2026/07/30, tags: `#fid`, `#tunecamp`, `#fediverse`, `#identity`, `#crypto`, `#sso`
 > 
-> FID (Fediverse-ID) è l'implementazione di TuneCamp del protocollo Fediverse-ID, un sistema di identità auto-sovrano e zero-knowledge. A differenza dell'autenticazione centralizzata, FID permette agli utenti di controllare la propria identità senza dipendere da terze parti.
+> Un'analisi approfondita sull'architettura di FID: la Master Key Source deterministica Zen SEA (secp256k1), la derivazione delle chiavi ActivityPub Ed25519 con domain scoping PBKDF2, il flusso SSO Code Exchange e la rimozione v4 delle Passkey per l'identità 100% portabile.
 
 ## [Nullroute: Pagamenti Stealth Anonimi e Privacy-Preserving su Blockchain EVM](20260724-nullroute-evm-stealth-payments.md)
 > date:2026/07/24, tags: `#nullroute`, `#evm`, `#stealth`, `#privacy`, `#crypto`, `#blockchain`
@@ -70,7 +70,7 @@ h1 { border-bottom:1px dotted grey }
 ## [L'Ecosistema Zen Apps: Costruire una suite di Web App Serverless, E2EE e P2P senza backend](20260724-zen-apps-ecosystem.md)
 > date:2026/07/24, tags: `#zen`, `#p2p`, `#serverless`, `#e2ee`, `#webapps`, `#decentralized`
 > 
-> Una panoramica completa sull'ecosistema delle Zen Apps: ZenAuth, ZenBoard, ZenKanban, ZenVault, ZenPaste, ZenSplit, ZenLedger, ZenContacts, ZenForms, ZenCal e ZenRadar basate su WebCrypto e Zen P2P Graph Engine.
+> Una panoramica completa sull'ecosistema delle Zen Apps: ZenVault e ZEN P2P Graph Engine basate su WebCrypto.
 
 ## [CLI-Tools: La mia collezione di utility essenziali da terminale (con Sync P2P Zen)](20260724-cli-tools-suite.md)
 > date:2026/07/24, tags: `#clitools`, `#python`, `#nodejs`, `#zen`, `#terminal`, `#productivity`
