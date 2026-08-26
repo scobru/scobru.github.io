@@ -11,8 +11,7 @@ TuneCamp is a decentralized, federated music ecosystem consisting of self-hosted
 ## Core Ecosystem Components
 
 - **TuneCamp Server**: Self-hosted federated music streaming platform integrated with ActivityPub.
-- **Sidecamp**: Electron-based desktop companion managing unified music search, Soulseek P2P, WebTorrent, yt-dlp, and E2EE chat.
-- **Graphofone**: WebAudio DSP engine performing live music and DJing using 2D physical graph interfaces.
+- **Sidecamp**: Electron-based desktop companion managing unified music search, Soulseek P2P, WebTorrent, and yt-dlp.
 - **FID (Fediverse-ID)**: Self-sovereign zero-knowledge cryptographic identity protocol powering authentication across TuneCamp instances.
 - **Sudo Records**: Independent music label and audio synthesis showcase hosted within the TuneCamp network.
 

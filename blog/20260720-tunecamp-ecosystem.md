@@ -36,11 +36,8 @@ Invece di creare un "monolito mostruoso" che se tocchi una riga di codice crolla
                                   │ Subsonic API / REST
                                   │
                        ┌──────────▼───────────┐
-                       │  Sidecamp (Electron)  │──── P2P (Soulseek/torrents)
-                       │  desktop companion     │
-                       │  ├── Graphofone        │  (live performance, audio engine
-                       │  ├── audio-engine pkg   │   isolato su Web Audio)
-                       │  └── graph-ui pkg       │
+                       │  Sidecamp (Electron)  │──── P2P (Soulseek/torrents/yt-dlp)
+                       │  desktop companion   │
                        └───────────────────────┘
 ```
 
@@ -50,15 +47,12 @@ Il quartier generale. Gestisce la libreria musicale, l'interfaccia web di ascolt
 ### 2. Sidecamp (`scobru/sidecamp`)
 Volevo il supporto P2P (Soulseek e Torrent), ma non volevo che il server principale prendesse fuoco o attirasse l'attenzione degli avvocati sbagliati. La soluzione? **Sidecamp**, un'app companion desktop su misura in Electron. Il P2P vive al sicuro sul tuo computer locale, lasciando il server TuneCamp leggero, pulito e del tutto legale.
 
-### 3. Graphofone (`apps/graphofone` in Sidecamp)
-Questo è il mio giocattolo preferito. Nelle sere in cui mi sento un DJ sperimentale, Graphofone mi permette di caricare cartelle di tracce e disporle sullo schermo come nodi di un grafo interattivo. Posso fare transizioni, *crossfade beat-matched* automatici e creare mappe visuali della musica. L'ho isolato dentro Sidecamp su uno stack Web Audio dedicato per assicurarmi che il suono non "glitchi" nemmeno se la rete sta collassando.
-
-### 4. Le "Lab Apps" (Perché i moduli web sono fantastici)
+### 3. Le "Lab Apps" (Perché i moduli web sono fantastici)
 Perché limitarsi ad ascoltare musica quando puoi giocarci direttamente nel browser? Tramite un sistema di iFrame integrato nel database (`lab_apps`), ho aggiunto due chicche:
 - **Audiofabric**: Un visualizzatore 3D in tempo reale (Three.js/WebGL) che trasforma la musica in forme ipnotiche in streaming.
 - **4-Track Recorder**: Uno studio di registrazione a 4 tracce in stile retrò nel browser (SvelteKit + Web Audio API) per registrare idee al volo o salvare file `.4trk` prima che la scimmia creativa svanisca.
 
-### 5. TuneCamp Website & Community Player (`scobru/tunecamp-website`)
+### 4. TuneCamp Website & Community Player (`scobru/tunecamp-website`)
 La solitudine del self-hoster è reale! Per questo ho creato un portale statico con **Community Directory** e **Community Player**: un punto di ritrovo per aggregare e riprodurre i brani di tutte le istanze TuneCamp sparse in giro per il pianeta.
 
 ---

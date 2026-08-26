@@ -47,20 +47,15 @@ h1 { border-bottom:1px dotted grey }
 > 
 > Il punto d'incontro tra codice e suono: l'etichetta Sudo Records su TuneCamp, il songwriting di Homologo, la synth music di Fade e l'ambient di Zima Blue.
 
-## [Sidecamp: Il Desktop Companion P2P per TuneCamp (Soulseek, Torrents & E2EE Chat)](20260724-sidecamp-desktop-companion.md)
-> date:2026/07/24, tags: `#sidecamp`, `#tunecamp`, `#electron`, `#p2p`, `#soulseek`, `#webtorrent`, `#e2ee`
+## [Sidecamp: Il Desktop Companion P2P per TuneCamp (Soulseek, Torrents & yt-dlp)](20260724-sidecamp-desktop-companion.md)
+> date:2026/07/24, tags: `#sidecamp`, `#tunecamp`, `#electron`, `#p2p`, `#soulseek`, `#webtorrent`
 > 
-> Un'analisi approfondita su Sidecamp: l'applicazione desktop companion in Electron che gestisce ricerca unificata, Soulseek, BitTorrent, yt-dlp e chat cifrata E2EE per TuneCamp.
+> Un'analisi approfondita su Sidecamp: l'applicazione desktop companion in Electron che gestisce ricerca unificata, Soulseek, BitTorrent e yt-dlp per TuneCamp.
 
-## [Graphofone: Performare Musica e DJing Sperimentale tramite Grafi Interattivi](20260724-graphofone-graph-audio-engine.md)
-> date:2026/07/24, tags: `#graphofone`, `#audioengine`, `#webaudio`, `#djing`, `#graphui`, `#performance`
+## [LINDA: Messenger P2P Serverless & Encrypted su Stack Holepunch (Autobase & Pear)](20260724-linda-p2p-messenger.md)
+> date:2026/07/24, tags: `#linda`, `#p2p`, `#e2ee`, `#holepunch`, `#autobase`, `#hyperswarm`, `#hyperdrive`, `#pear`
 > 
-> Come performare musica dal vivo e mixare tracce usando grafi fisici 2D interattivi, time-warp worklets e un motore audio DSP su misura.
-
-## [LINDA: Il Messenger P2P Crittografato E2EE per Desktop e Mobile senza Server Centrali](20260724-linda-p2p-messenger.md)
-> date:2026/07/24, tags: `#linda`, `#p2p`, `#e2ee`, `#electron`, `#android`, `#wasm`, `#zen`
-> 
-> Un'analisi approfondita su LINDA: messenger P2P decentralizzato con crittografia Zen SEA, accelerazione WASM, supporto Electron/Android e Bot AI integrati.
+> Un'analisi approfondita su LINDA: messenger P2P decentralizzato e serverless basato sullo stack Holepunch (Autobase, Hyperbee, Hyperswarm, Corestore, Hyperdrive), architettura Zero-Relay, Room Files integrati e distribuzione Pear.
 
 ## [WORMHOLE: Trasferire File Pesanti e Messaggi Cifrati da Terminale a Browser via P2P](20260724-wormhole-p2p-file-transfer.md)
 > date:2026/07/24, tags: `#wormhole`, `#p2p`, `#filetransfer`, `#cli`, `#web`, `#ipfs`, `#zen`
@@ -80,7 +75,7 @@ h1 { border-bottom:1px dotted grey }
 ## [TuneCamp e il suo Ecosistema](20260720-tunecamp-ecosystem.md)
 > date:2026/07/20, tags: `#tunecamp`, `#music`, `#decentralized`, `#fediverse`
 > 
-> Un'analisi approfondita dell'ecosistema TuneCamp: server musicale federato self-hosted, Sidecamp, Graphofone, Lab Apps e ActivityPub.
+> Un'analisi approfondita dell'ecosistema TuneCamp: server musicale federato self-hosted, Sidecamp companion, Lab Apps e ActivityPub.
 
 
 # Archives
@@ -92,8 +87,7 @@ h1 { border-bottom:1px dotted grey }
 * 2026/07/24: [Whiterabbit & Delay: Messaggistica Effimera e Relay P2P](20260724-whiterabbit-and-delay-relay.md) { #whiterabbit }
 * 2026/07/24: [Sudo Records & Sound Design: Sintesi Audio e Musica Indipendente](20260724-sudo-records-sound-design.md) { #sudorecords }
 * 2026/07/24: [Sidecamp: Il Desktop Companion P2P per TuneCamp](20260724-sidecamp-desktop-companion.md) { #sidecamp }
-* 2026/07/24: [Graphofone: Performance Musicali tramite Grafi Interattivi](20260724-graphofone-graph-audio-engine.md) { #graphofone }
-* 2026/07/24: [LINDA: Il Messenger P2P Crittografato E2EE per Desktop e Mobile](20260724-linda-p2p-messenger.md) { #linda }
+* 2026/07/24: [LINDA: Messenger P2P Serverless & Encrypted su Stack Holepunch](20260724-linda-p2p-messenger.md) { #linda }
 * 2026/07/24: [WORMHOLE: Trasferimento File Pesanti e Messaggi Cifrati via P2P](20260724-wormhole-p2p-file-transfer.md) { #wormhole }
 * 2026/07/24: [L'Ecosistema Zen Apps: Web App Serverless, E2EE e P2P](20260724-zen-apps-ecosystem.md) { #zenapps }
 * 2026/07/24: [CLI-Tools: La mia collezione di utility essenziali da terminale](20260724-cli-tools-suite.md) { #clitools }
