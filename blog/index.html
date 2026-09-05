@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="scobru / blog — Decentralized minimal journal powered by Zen Entropy Network and delay.scobrudot.dev."
+    />
+    <title>scobru / blog</title>
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/1079164?v=4"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
+    <script>
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <a href="../" class="nav-back">← scobru</a>
+
+      <header>
+        <div class="header-row">
+          <h1><a href=".">scobru / blog</a></h1>
+          <div class="header-actions">
+            <button
+              id="theme-toggle"
+              class="bracket-btn"
+              type="button"
+              aria-label="Toggle theme"
+              title="Toggle theme"
+            >
+              <span id="theme-text">[ dark ]</span>
+            </button>
+
+            <button
+              id="login-trigger"
+              class="bracket-btn"
+              type="button"
+              title="Admin login for CRUD operations"
+            >
+              [ login ]
+            </button>
+
+            <button
+              id="new-post-btn"
+              class="bracket-btn"
+              type="button"
+              style="display: none;"
+            >
+              [ + new post ]
+            </button>
+
+            <div id="auth-controls" style="display: none; align-items: center; gap: 8px;">
+              <span class="auth-badge" id="author-badge"></span>
+              <button id="logout-btn" class="bracket-btn btn-danger" type="button">
+                [ logout ]
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="bio">
+          Decentralized journal · authenticated writes in Zen userspace · offline-first
+        </p>
+
+        <div class="relay-status">
+          <span class="status-dot" id="relay-dot"></span>
+          <span>relay: delay.scobrudot.dev/zen (<span id="relay-text">connecting</span>)</span>
+        </div>
+      </header>
+
+      <main>
+        <!-- List View -->
+        <section id="list-view">
+          <h2>[ Articles ]</h2>
+          <ul id="posts-container" class="posts-list"></ul>
+          <div id="empty-state" class="empty-state" style="display: none;">
+            <p>// No articles found in this userspace.</p>
+            <p style="font-size: 0.88rem; color: var(--desc-color);">
+              Authenticate with <strong>[ login ]</strong> to publish the first post, or supply <code>?author=&lt;pub&gt;</code> in the URL.
+            </p>
+          </div>
+        </section>
+
+        <!-- Single Post View -->
+        <section id="single-view" class="single-post"></section>
+      </main>
+
+      <footer>
+        <p class="sys-status" id="footer-status">// 0 posts indexed · system: online</p>
+      </footer>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="auth-modal" class="modal" role="dialog" aria-labelledby="auth-modal-title" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="auth-modal-title" class="modal-title">[ admin / login ]</h3>
+          <button class="bracket-btn" id="auth-cancel-btn" type="button">[ × ]</button>
+        </div>
+        <form id="auth-form">
+          <div id="auth-alert" class="alert-box alert-error"></div>
+          <p style="font-family: monospace; font-size: 0.85rem; color: var(--bio-color); margin-top: 0; margin-bottom: 15px;">
+            // Credentials deterministically derive your secp256k1 pair via PBKDF2. Only key holder can write to this userspace.
+          </p>
+          <div class="form-group">
+            <label for="auth-user">Username</label>
+            <input
+              type="text"
+              id="auth-user"
+              class="form-input"
+              required
+              autocomplete="username"
+              placeholder="e.g. scobru"
+            />
+          </div>
+          <div class="form-group">
+            <label for="auth-pass">Password</label>
+            <input
+              type="password"
+              id="auth-pass"
+              class="form-input"
+              required
+              autocomplete="current-password"
+              placeholder="Master passphrase"
+            />
+          </div>
+          <div class="modal-actions">
+            <button type="submit" id="auth-submit-btn" class="bracket-btn">
+              [ authenticate ]
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Post Editor Modal -->
+    <div id="editor-modal" class="modal" role="dialog" aria-labelledby="editor-modal-title" aria-modal="true">
+      <div class="modal-card" style="max-width: 650px;">
+        <div class="modal-header">
+          <h3 id="editor-modal-title" class="modal-title">[ + new post ]</h3>
+          <button class="bracket-btn" id="editor-cancel-btn" type="button">[ × ]</button>
+        </div>
+        <form id="editor-form">
+          <div class="form-group">
+            <label for="post-title">Title</label>
+            <input
+              type="text"
+              id="post-title"
+              class="form-input"
+              required
+              placeholder="Post title"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="post-tags">Tags (comma-separated)</label>
+            <input
+              type="text"
+              id="post-tags"
+              class="form-input"
+              placeholder="p2p, zen, web3, synth"
+            />
+          </div>
+
+          <div class="form-group">
+            <div class="editor-tabs">
+              <button type="button" class="bracket-btn" id="tab-write">[ write ]</button>
+              <button type="button" class="bracket-btn" id="tab-preview">[ preview ]</button>
+            </div>
+            <textarea
+              id="post-content"
+              class="form-textarea"
+              required
+              placeholder="Write your article in Markdown...&#10;&#10;## Section&#10;Your thoughts here..."
+            ></textarea>
+            <div id="editor-preview" class="editor-preview post-content"></div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" id="editor-submit-btn" class="bracket-btn">
+              [ publish post ]
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- App Script -->
+    <script type="module" src="./app.js?v=2"></script>
+  </body>
+</html>
