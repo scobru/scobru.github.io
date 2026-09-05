@@ -4,6 +4,7 @@ import { renderMarkdown } from './markdown.js';
 // Configuration
 const RELAY_URL = 'https://delay.scobrudot.dev/zen';
 const DEFAULT_SALT_PREFIX = 'scobru:zen:blog:';
+const DEFAULT_AUTHOR_PUB = '0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1';
 
 // State
 let zen = null;
@@ -581,7 +582,7 @@ function handleLogout() {
   sessionStorage.removeItem('zen_blog_user');
   sessionStorage.removeItem('zen_blog_pass');
   updateAuthUI();
-  renderPostsList();
+  subscribeToAuthor(DEFAULT_AUTHOR_PUB);
   showToast('Logged out.');
 }
 
@@ -743,15 +744,12 @@ function setupEventListeners() {
   if (savedUser && savedPass) {
     await handleLogin(savedUser, savedPass);
   } else {
-    // If not authenticated, subscribe to saved author pub or url author param
+    // If not authenticated, subscribe to URL author param or default author pub
     const params = new URLSearchParams(window.location.search);
     const authorParam = params.get('author');
-    const storedAuthor = localStorage.getItem('zen_blog_author_pub');
-    const targetAuthor = authorParam || storedAuthor;
+    const targetAuthor = authorParam || DEFAULT_AUTHOR_PUB;
 
-    if (targetAuthor) {
-      subscribeToAuthor(targetAuthor);
-    }
+    subscribeToAuthor(targetAuthor);
   }
 
   handleRoute();
