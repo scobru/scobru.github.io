@@ -12,18 +12,71 @@
       rel="icon"
       href="https://avatars.githubusercontent.com/u/1079164?v=4"
     />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
+    <script>
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          ).matches;
+          const theme =
+            savedTheme === 'dark' || (!savedTheme && prefersDark)
+              ? 'dark'
+              : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
 
     <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #000000;
+        --bio-color: #333333;
+        --desc-color: #444444;
+        --border-color: #000000;
+        --footer-color: #555555;
+        --link-hover-bg: #000000;
+        --link-hover-color: #ffffff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg-color: #0d0e12;
+          --text-color: #f3f4f6;
+          --bio-color: #a1a1aa;
+          --desc-color: #94a3b8;
+          --border-color: #27272a;
+          --footer-color: #71717a;
+          --link-hover-bg: #f3f4f6;
+          --link-hover-color: #0d0e12;
+        }
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #0d0e12;
+        --text-color: #f3f4f6;
+        --bio-color: #a1a1aa;
+        --desc-color: #94a3b8;
+        --border-color: #27272a;
+        --footer-color: #71717a;
+        --link-hover-bg: #f3f4f6;
+        --link-hover-color: #0d0e12;
+      }
+
       /* Reset e Stili Globali */
       body {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: var(--bg-color);
+        color: var(--text-color);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Helvetica, Arial, sans-serif;
         line-height: 1.5;
         margin: 0;
         padding: 40px 20px;
         font-size: 40px;
+        transition: background-color 0.2s ease, color 0.2s ease;
       }
 
       .container {
@@ -36,17 +89,50 @@
         margin-bottom: 40px;
       }
 
+      .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
       h1 {
         font-size: 2.2rem;
         font-weight: 700;
-        margin: 0 0 8px 0;
+        margin: 0;
         letter-spacing: -0.5px;
+      }
+
+      .theme-toggle {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        font-family: monospace;
+        font-size: 1rem;
+        color: var(--text-color);
+        cursor: pointer;
+        padding: 4px 10px;
+        border-radius: 4px;
+        line-height: 1.2;
+        transition: background-color 0.15s ease, color 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .theme-toggle:hover {
+        background-color: var(--link-hover-bg);
+        color: var(--link-hover-color);
+      }
+
+      .theme-toggle:focus-visible {
+        outline: 2px solid var(--text-color);
+        outline-offset: 2px;
       }
 
       .bio {
         font-family: monospace;
         font-size: 1.1rem;
-        color: #333333;
+        color: var(--bio-color);
         margin: 0;
         line-height: 1.4;
       }
@@ -62,7 +148,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 15px;
-        border-bottom: 1px solid #000000;
+        border-bottom: 1px solid var(--border-color);
         padding-bottom: 4px;
       }
 
@@ -86,7 +172,7 @@
 
       .project-desc {
         font-size: 1rem;
-        color: #444444;
+        color: var(--desc-color);
       }
 
       .social-list {
@@ -100,23 +186,23 @@
       }
 
       a {
-        color: #000000;
+        color: var(--text-color);
         text-decoration: underline;
         text-underline-offset: 3px;
       }
 
       a:hover {
         text-decoration: none;
-        background-color: #000000;
-        color: #ffffff;
+        background-color: var(--link-hover-bg);
+        color: var(--link-hover-color);
       }
 
       /* Piè di pagina */
       footer {
         margin-top: 60px;
         font-size: 0.9rem;
-        color: #555555;
-        border-top: 1px dashed #000000;
+        color: var(--footer-color);
+        border-top: 1px dashed var(--border-color);
         padding-top: 15px;
       }
 
@@ -129,7 +215,18 @@
   <body>
     <div class="container">
       <header>
-        <h1>scobru</h1>
+        <div class="header-row">
+          <h1>scobru</h1>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Cambia tema"
+            title="Cambia tema"
+          >
+            <span id="theme-text">[ dark ]</span>
+          </button>
+        </div>
         <p class="bio">
           Francesco Bruno — developer & sound designer.<br />P2P, open-source,
           audio synthesis, creative tech.
@@ -467,5 +564,60 @@
         <p class="sys-status">// 24 items indexed · system: online</p>
       </footer>
     </div>
+
+    <script>
+      (function () {
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeText = document.getElementById('theme-text');
+        const metaThemeColor = document.getElementById('theme-color-meta');
+
+        function getCurrentTheme() {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+            return savedTheme;
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+
+        function applyTheme(theme, save) {
+          document.documentElement.setAttribute('data-theme', theme);
+          if (save) {
+            try {
+              localStorage.setItem('theme', theme);
+            } catch (e) {}
+          }
+          if (themeText) {
+            themeText.textContent = theme === 'dark' ? '[ light ]' : '[ dark ]';
+          }
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute(
+              'content',
+              theme === 'dark' ? '#0d0e12' : '#ffffff'
+            );
+          }
+        }
+
+        // Sincronizza lo stato all'avvio
+        applyTheme(getCurrentTheme(), false);
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function () {
+            const current = getCurrentTheme();
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next, true);
+          });
+        }
+
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', function (e) {
+            if (!localStorage.getItem('theme')) {
+              applyTheme(e.matches ? 'dark' : 'light', false);
+            }
+          });
+      })();
+    </script>
   </body>
 </html>
