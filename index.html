@@ -451,29 +451,32 @@
 
       /* Arena Tooltip/Preview Card */
       .arena-card {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        right: 12px;
+        margin-top: 10px;
         background: var(--bg-color);
-        border: 1px solid var(--border-color);
-        padding: 10px 14px;
+        border: 1px dashed var(--border-color);
+        padding: 9px 14px;
         border-radius: 6px;
         font-family: monospace;
-        font-size: 0.88rem;
+        font-size: 0.85rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-        z-index: 120;
-        pointer-events: auto;
+        box-shadow: none;
+        min-height: 28px;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+      }
+
+      .arena-card-info {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 6px;
       }
 
       .arena-card-title {
         font-weight: 700;
-        margin-right: 8px;
       }
 
       .arena-card-desc {
@@ -574,17 +577,15 @@
             <button id="arena-gravity-btn" class="arena-btn" type="button" data-i18n="arenaZeroG">[ zero-g ]</button>
           </div>
         </div>
-        <div class="arena-wrapper">
-          <div id="physics-arena" class="physics-arena"></div>
-          <div id="arena-card" class="arena-card" style="display: none;">
-            <div>
-              <span id="card-title" class="arena-card-title"></span>
-              <span id="card-desc" class="arena-card-desc"></span>
-            </div>
-            <div class="arena-card-actions">
-              <a id="card-visit" href="#" target="_blank" rel="noopener" data-i18n="visitLink">Visit ↗</a>
-              <a id="card-code" href="#" target="_blank" rel="noopener" data-i18n="codeLink">Code ↗</a>
-            </div>
+        <div id="physics-arena" class="physics-arena"></div>
+        <div id="arena-card" class="arena-card">
+          <div class="arena-card-info">
+            <span id="card-title" class="arena-card-title" data-i18n="arenaPrompt">// hover or drag a ball to inspect</span>
+            <span id="card-desc" class="arena-card-desc"></span>
+          </div>
+          <div id="card-actions" class="arena-card-actions" style="display: none;">
+            <a id="card-visit" href="#" target="_blank" rel="noopener" data-i18n="visitLink">Visit ↗</a>
+            <a id="card-code" href="#" target="_blank" rel="noopener" data-i18n="codeLink">Code ↗</a>
           </div>
         </div>
       </div>
@@ -1065,16 +1066,16 @@
             codeLink: 'Code',
             instanceLink: 'Instance',
             descDelia:
-              'Browser tape instrument with varispeed &amp; tape wear simulation',
+              'Browser tape instrument with varispeed & tape wear simulation',
             descSmollog:
               'Zero-backend, cryptographic blogging platform on Zen',
             descOnepick:
-              'Decentralized analog P2P radio &amp; culture frequency on Zen',
+              'Decentralized analog P2P radio & culture frequency on Zen',
             descTunecamp: 'Decentralized music streaming',
             descLinda:
               'Serverless P2P encrypted messenger on Holepunch stack',
             descFid:
-              'Fediverse-ID: self-sovereign SSO &amp; identity protocol for ActivityPub',
+              'Fediverse-ID: self-sovereign SSO & identity protocol for ActivityPub',
             descSidecamp:
               'TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)',
             descWormhole: 'E2EE P2P file transfer',
@@ -1104,6 +1105,7 @@
             soundOn: '[ sound: on ]',
             soundOff: '[ sound: off ]',
             arenaHint: '// gravity canvas · 27 codebase balls · drag & fling',
+            arenaPrompt: '// hover, tap or drag a ball to inspect',
             arenaDrop: '[ drop ]',
             arenaZeroG: '[ zero-g ]',
             arenaGravity: '[ gravity ]',
@@ -1123,12 +1125,12 @@
             descSmollog:
               'Piattaforma di blogging crittografica e zero-backend su Zen',
             descOnepick:
-              'Radio P2P analogica decentralizzata &amp; frequenza culturale su Zen',
+              'Radio P2P analogica decentralizzata & frequenza culturale su Zen',
             descTunecamp: 'Streaming musicale decentralizzato',
             descLinda:
               'Messaggistica crittografata P2P serverless su stack Holepunch',
             descFid:
-              "Fediverse-ID: SSO auto-sovrano &amp; protocollo d'identità per ActivityPub",
+              "Fediverse-ID: SSO auto-sovrano & protocollo d'identità per ActivityPub",
             descSidecamp:
               'Companion P2P per TuneCamp (Soulseek, Torrents, yt-dlp)',
             descWormhole: 'Trasferimento file P2P con crittografia end-to-end',
@@ -1158,6 +1160,7 @@
             soundOn: '[ audio: on ]',
             soundOff: '[ audio: off ]',
             arenaHint: '// canvas gravitazionale · 27 sfere codebase · trascina e lancia',
+            arenaPrompt: '// tocca o trascina una sfera per ispezionarla',
             arenaDrop: '[ fai cadere ]',
             arenaZeroG: '[ zero-g ]',
             arenaGravity: '[ gravità ]',
@@ -1518,17 +1521,23 @@
           const card = document.getElementById('arena-card');
           const cardTitle = document.getElementById('card-title');
           const cardDesc = document.getElementById('card-desc');
+          const cardActions = document.getElementById('card-actions');
           const cardVisit = document.getElementById('card-visit');
           const cardCode = document.getElementById('card-code');
           if (!card) return;
 
           const dict = i18n[currentLang] || i18n.en;
           cardTitle.textContent = ball.name;
-          cardDesc.textContent = ball.descKey && dict[ball.descKey] ? dict[ball.descKey] : '';
 
+          let desc = ball.descKey && dict[ball.descKey] ? dict[ball.descKey] : '';
+          desc = desc.replace(/&amp;/g, '&');
+          cardDesc.textContent = desc ? '— ' + desc : '';
+
+          let hasAction = false;
           if (ball.url) {
             cardVisit.href = ball.url;
             cardVisit.style.display = 'inline-block';
+            hasAction = true;
           } else {
             cardVisit.style.display = 'none';
           }
@@ -1536,11 +1545,14 @@
           if (ball.code) {
             cardCode.href = ball.code;
             cardCode.style.display = 'inline-block';
+            hasAction = true;
           } else {
             cardCode.style.display = 'none';
           }
 
-          card.style.display = 'flex';
+          if (cardActions) {
+            cardActions.style.display = hasAction ? 'flex' : 'none';
+          }
         }
 
         function initPhysicsArena() {
