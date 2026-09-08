@@ -34,11 +34,11 @@
           document.documentElement.setAttribute('lang', lang);
 
           const savedCanvas = localStorage.getItem('canvas');
-          const canvas = savedCanvas === 'all' ? 'all' : 'void';
+          const canvas = savedCanvas === 'void' ? 'void' : 'all';
           document.documentElement.setAttribute('data-canvas', canvas);
 
           const savedView = localStorage.getItem('view');
-          const view = savedView || 'physics';
+          const view = savedView === 'plain' || savedView === 'list' ? 'plain' : 'physics';
           document.documentElement.setAttribute('data-view', view);
         } catch (e) {}
       })();
@@ -151,13 +151,46 @@
         line-height: 1.4;
       }
 
-      /* Sezioni */
+      /* Sezioni e Categorie */
       section {
         margin-bottom: 45px;
       }
 
+      .project-category {
+        margin-bottom: 42px;
+        padding-bottom: 24px;
+        border-bottom: 1px dashed var(--border-color);
+        transition: opacity 0.2s ease;
+      }
+
+      .project-category:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 5px;
+      }
+
+      .section-header h2 {
+        border-bottom: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .section-count {
+        font-family: monospace;
+        font-size: 0.82rem;
+        color: var(--desc-color);
+      }
+
       h2 {
-        font-size: 1.3rem;
+        font-size: 1.15rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -166,7 +199,69 @@
         padding-bottom: 4px;
       }
 
-      /* Liste e Collegamenti */
+      /* Barra Filtri Plain & Switch Rapido */
+      .plain-nav-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 28px;
+        padding: 10px 14px;
+        border: 1px dashed var(--border-color);
+        border-radius: 6px;
+        font-family: monospace;
+      }
+
+      .cat-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .filter-label {
+        font-size: 0.82rem;
+        color: var(--desc-color);
+        margin-right: 2px;
+      }
+
+      .cat-filter-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        font-family: monospace;
+        font-size: 0.8rem;
+        padding: 2px 7px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .cat-filter-btn:hover,
+      .cat-filter-btn.is-active {
+        background: var(--link-hover-bg);
+        color: var(--link-hover-color);
+      }
+
+      .plain-quick-switch {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        font-family: monospace;
+        font-size: 0.8rem;
+        padding: 2px 9px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .plain-quick-switch:hover {
+        background: var(--link-hover-bg);
+        color: var(--link-hover-color);
+      }
+
+      /* Liste e Progetti */
       ul {
         list-style-type: none;
         padding-left: 0;
@@ -175,24 +270,63 @@
 
       li {
         margin-bottom: 14px;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         display: flex;
         flex-direction: column;
+      }
+
+      .project-item {
+        padding: 8px 10px;
+        margin: 0 -10px 10px -10px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+      }
+
+      .project-item:hover {
+        background-color: rgba(127, 127, 127, 0.05);
+        border-color: rgba(127, 127, 127, 0.15);
+      }
+
+      .project-item-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 6px;
       }
 
       .project-title {
         font-weight: 600;
       }
 
+      .project-tags {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .tag-pill {
+        font-family: monospace;
+        font-size: 0.72rem;
+        opacity: 0.65;
+        border: 1px solid var(--border-color);
+        padding: 0 4px;
+        border-radius: 3px;
+        line-height: 1.3;
+        letter-spacing: -0.2px;
+      }
+
       .project-desc {
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: var(--desc-color);
+        margin-top: 2px;
       }
 
       .social-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 12px;
       }
 
       .social-list li {
@@ -305,12 +439,49 @@
         opacity: 1 !important;
       }
 
+      /* View Switcher */
+      .view-switch-group {
+        display: inline-flex;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .view-btn {
+        background: transparent;
+        border: none;
+        border-right: 1px solid var(--border-color);
+        font-family: monospace;
+        font-size: 0.95rem;
+        color: var(--text-color);
+        cursor: pointer;
+        padding: 4px 10px;
+        line-height: 1.2;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .view-btn:last-child {
+        border-right: none;
+      }
+
+      .view-btn:hover {
+        background-color: var(--link-hover-bg);
+        color: var(--link-hover-color);
+      }
+
+      .view-btn.is-active {
+        background-color: var(--link-hover-bg);
+        color: var(--link-hover-color);
+        font-weight: 700;
+      }
+
       /* Physics Stage & Arena */
       .physics-stage {
         display: block;
         margin-bottom: 40px;
       }
 
+      [data-view="plain"] .physics-stage,
       [data-view="list"] .physics-stage {
         display: none !important;
       }
@@ -324,6 +495,11 @@
       }
 
       [data-view="physics"] #canvas-toggle {
+        display: none !important;
+      }
+
+      [data-view="plain"] #sound-toggle,
+      [data-view="list"] #sound-toggle {
         display: none !important;
       }
 
@@ -355,7 +531,7 @@
         font-family: monospace;
         font-size: 0.85rem;
         color: var(--desc-color);
-        padding: 4px 2px 10px;
+        padding: 4px 2px 8px;
         flex-wrap: wrap;
         gap: 6px;
       }
@@ -363,6 +539,7 @@
       .arena-controls {
         display: flex;
         gap: 8px;
+        align-items: center;
       }
 
       .arena-btn {
@@ -378,6 +555,44 @@
       }
 
       .arena-btn:hover {
+        background: var(--link-hover-bg);
+        color: var(--link-hover-color);
+      }
+
+      .arena-btn-highlight {
+        font-weight: 600;
+      }
+
+      /* Arena Category Filter Pills */
+      .arena-category-filters {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 8px;
+        font-family: monospace;
+        font-size: 0.8rem;
+      }
+
+      .arena-filter-label {
+        color: var(--desc-color);
+        margin-right: 2px;
+      }
+
+      .arena-filter-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        font-family: monospace;
+        font-size: 0.78rem;
+        color: var(--text-color);
+        cursor: pointer;
+        padding: 1px 6px;
+        border-radius: 3px;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .arena-filter-btn:hover,
+      .arena-filter-btn.is-active {
         background: var(--link-hover-bg);
         color: var(--link-hover-color);
       }
@@ -399,7 +614,7 @@
         cursor: grab;
         box-sizing: border-box;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.03s linear;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.03s linear, opacity 0.2s ease, filter 0.2s ease;
         will-change: transform;
         user-select: none;
         -webkit-user-select: none;
@@ -444,9 +659,39 @@
         letter-spacing: -0.2px;
       }
 
+      /* Specific category styling for balls */
+      .p-ball[data-cat="p2p"] {
+        border-style: solid;
+      }
+
+      .p-ball[data-cat="infra"] {
+        border-style: dashed;
+      }
+
+      .p-ball[data-cat="audio"] {
+        border-style: double;
+        border-width: 3px;
+      }
+
       .p-ball[data-cat="music"] {
         border-style: double;
         border-width: 3px;
+      }
+
+      .p-ball[data-cat="connect"] {
+        border-style: dotted;
+        border-width: 1.5px;
+      }
+
+      .p-ball.is-dimmed {
+        opacity: 0.15 !important;
+        filter: grayscale(0.9) !important;
+      }
+
+      .p-ball.is-highlighted {
+        z-index: 70 !important;
+        border-color: var(--text-color) !important;
+        box-shadow: 0 0 14px rgba(127, 127, 127, 0.4) !important;
       }
 
       /* Arena Tooltip/Preview Card */
@@ -473,6 +718,18 @@
         align-items: baseline;
         flex-wrap: wrap;
         gap: 6px;
+      }
+
+      .arena-card-cat {
+        display: inline-block;
+        font-family: monospace;
+        font-size: 0.72rem;
+        border: 1px solid var(--border-color);
+        padding: 1px 5px;
+        border-radius: 3px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        opacity: 0.85;
       }
 
       .arena-card-title {
@@ -513,15 +770,26 @@
               style="text-decoration: none;"
               >[ blog ]</a
             >
-            <button
-              id="view-toggle"
-              class="theme-toggle"
-              type="button"
-              aria-label="Switch to list view"
-              title="Switch to list view"
-            >
-              <span id="view-text">[ list ]</span>
-            </button>
+            <div class="view-switch-group" role="group" aria-label="View mode">
+              <button
+                id="view-btn-balloon"
+                class="view-btn is-active"
+                type="button"
+                data-i18n="viewBalloon"
+                title="Switch to balloon view"
+              >
+                [ 🎈 balloon ]
+              </button>
+              <button
+                id="view-btn-plain"
+                class="view-btn"
+                type="button"
+                data-i18n="viewPlain"
+                title="Switch to plain view"
+              >
+                [ 📄 plain ]
+              </button>
+            </div>
             <button
               id="sound-toggle"
               class="theme-toggle"
@@ -573,13 +841,24 @@
         <div class="arena-header">
           <span id="arena-hint" data-i18n="arenaHint">// gravity canvas · 27 codebase balls · drag &amp; fling</span>
           <div class="arena-controls">
+            <button id="arena-plain-btn" class="arena-btn arena-btn-highlight" type="button" data-i18n="arenaPlainBtn">[ 📄 plain view ↗ ]</button>
             <button id="arena-drop-btn" class="arena-btn" type="button" data-i18n="arenaDrop">[ drop ]</button>
             <button id="arena-gravity-btn" class="arena-btn" type="button" data-i18n="arenaZeroG">[ zero-g ]</button>
           </div>
         </div>
+        <div class="arena-category-filters" id="arena-cat-filters">
+          <span class="arena-filter-label" data-i18n="filterLabel">// filter:</span>
+          <button class="arena-filter-btn is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (27) ]</button>
+          <button class="arena-filter-btn" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p &amp; apps (8) ]</button>
+          <button class="arena-filter-btn" data-filter="infra" type="button" data-i18n="filterInfra">[ infra (5) ]</button>
+          <button class="arena-filter-btn" data-filter="audio" type="button" data-i18n="filterAudio">[ audio (1) ]</button>
+          <button class="arena-filter-btn" data-filter="music" type="button" data-i18n="filterMusic">[ music (4) ]</button>
+          <button class="arena-filter-btn" data-filter="connect" type="button" data-i18n="filterConnect">[ connect (9) ]</button>
+        </div>
         <div id="physics-arena" class="physics-arena"></div>
         <div id="arena-card" class="arena-card">
           <div class="arena-card-info">
+            <span id="card-cat" class="arena-card-cat" style="display: none;"></span>
             <span id="card-title" class="arena-card-title" data-i18n="arenaPrompt">// hover or drag a ball to inspect</span>
             <span id="card-desc" class="arena-card-desc"></span>
           </div>
@@ -591,439 +870,355 @@
       </div>
 
       <main>
-        <section>
-          <h2 data-i18n="secProjects">[ Web Apps & Projects ]</h2>
+        <div class="plain-nav-bar">
+          <div class="cat-filters" id="plain-cat-filters">
+            <span class="filter-label" data-i18n="filterLabel">// filter:</span>
+            <button class="cat-filter-btn is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (27) ]</button>
+            <button class="cat-filter-btn" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (8) ]</button>
+            <button class="cat-filter-btn" data-filter="infra" type="button" data-i18n="filterInfra">[ protocols &amp; infra (5) ]</button>
+            <button class="cat-filter-btn" data-filter="audio" type="button" data-i18n="filterAudio">[ audio tech (1) ]</button>
+            <button class="cat-filter-btn" data-filter="music" type="button" data-i18n="filterMusic">[ music (4) ]</button>
+            <button class="cat-filter-btn" data-filter="connect" type="button" data-i18n="filterConnect">[ connect (9) ]</button>
+          </div>
+          <button id="plain-balloon-btn" class="plain-quick-switch" type="button" data-i18n="plainBalloonBtn">
+            [ 🎈 switch to balloon view ]
+          </button>
+        </div>
+
+        <!-- 01 // P2P & DECENTRALIZED APPS -->
+        <section class="project-category" data-cat="p2p">
+          <div class="section-header">
+            <h2 data-i18n="secP2P">[ 01 // P2P &amp; Decentralized Apps ]</h2>
+            <span class="section-count">8 items</span>
+          </div>
           <ul>
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://delia.scobrudot.dev"
-                  target="_blank"
-                  rel="noopener"
-                  >Delia</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/delia"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descDelia"
-                >Browser tape instrument with varispeed &amp; tape wear simulation</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://smollog.scobrudot.dev/" target="_blank" rel="noopener">Smollog</a>
+                  -
+                  <a href="https://github.com/scobru/smollog" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">zen</span>
+                  <span class="tag-pill">blogging</span>
+                  <span class="tag-pill">crypto</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descSmollog">Zero-backend, cryptographic blogging platform on Zen</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://smollog.scobrudot.dev/"
-                  target="_blank"
-                  rel="noopener"
-                  >Smollog</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/smollog"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descSmollog"
-                >Zero-backend, cryptographic blogging platform on Zen</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener">Onepick</a>
+                  -
+                  <a href="https://github.com/scobru/onepick" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">radio</span>
+                  <span class="tag-pill">zen</span>
+                  <span class="tag-pill">culture</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descOnepick">Decentralized analog P2P radio &amp; culture frequency on Zen</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://onepick.scobrudot.dev/"
-                  target="_blank"
-                  rel="noopener"
-                  >Onepick</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/onepick"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descOnepick"
-                >Decentralized analog P2P radio &amp; culture frequency on Zen</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://tunecamp.org/" target="_blank" rel="noopener">Tunecamp</a>
+                  -
+                  <a href="https://github.com/scobru/tunecamp" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">streaming</span>
+                  <span class="tag-pill">music</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descTunecamp">Decentralized music streaming</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a href="https://tunecamp.org/" target="_blank" rel="noopener"
-                  >Tunecamp</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/tunecamp"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descTunecamp"
-                >Decentralized music streaming</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://github.com/scobru/linda" target="_blank" rel="noopener">Linda</a>
+                  -
+                  <a href="https://github.com/scobru/linda" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">holepunch</span>
+                  <span class="tag-pill">e2ee</span>
+                  <span class="tag-pill">chat</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descLinda">Serverless P2P encrypted messenger on Holepunch stack</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://github.com/scobru/linda"
-                  target="_blank"
-                  rel="noopener"
-                  >Linda</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/linda"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descLinda"
-                >Serverless P2P encrypted messenger on Holepunch stack</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://fid.scobrudot.dev/" target="_blank" rel="noopener">FID</a>
+                  -
+                  <a href="https://github.com/scobru/fid" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">fediverse</span>
+                  <span class="tag-pill">activitypub</span>
+                  <span class="tag-pill">sso</span>
+                  <span class="tag-pill">identity</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descFid">Fediverse-ID: self-sovereign SSO &amp; identity protocol for ActivityPub</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://fid.scobrudot.dev/"
-                  target="_blank"
-                  rel="noopener"
-                  >FID</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/fid"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descFid"
-                >Fediverse-ID: self-sovereign SSO &amp; identity protocol for
-                ActivityPub</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://www.tunecamp.org/sidecamp.html" target="_blank" rel="noopener">Sidecamp</a>
+                  -
+                  <a href="https://github.com/scobru/sidecamp" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">soulseek</span>
+                  <span class="tag-pill">torrents</span>
+                  <span class="tag-pill">yt-dlp</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descSidecamp">TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://www.tunecamp.org/sidecamp.html"
-                  target="_blank"
-                  rel="noopener"
-                  >Sidecamp</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/sidecamp"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descSidecamp"
-                >TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener">Wormhole</a>
+                  -
+                  <a href="https://github.com/scobru/wormhole" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">e2ee</span>
+                  <span class="tag-pill">file-transfer</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descWormhole">E2EE P2P file transfer</span>
             </li>
 
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://wormhole.scobrudot.dev/"
-                  target="_blank"
-                  rel="noopener"
-                  >Wormhole</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/wormhole"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descWormhole"
-                >E2EE P2P file transfer</span
-              >
-            </li>
-
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://nullroute.scobrudot.dev/"
-                  target="_blank"
-                  rel="noopener"
-                  >Nullroute</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/nullroute"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descNullroute"
-                >EVM stealth payment hub</span
-              >
-            </li>
-
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://whiterabbit.scobrudot.dev"
-                  target="_blank"
-                  rel="noopener"
-                  >Whiterabbit</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/whiterabbit"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descWhiterabbit"
-                >Ephemeral p2p chat</span
-              >
-            </li>
-
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://zenvault.scobrudot.dev"
-                  target="_blank"
-                  rel="noopener"
-                  >Zenvault</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/zenvault"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descZenvault"
-                >Decentralized Secure Vault</span
-              >
-            </li>
-
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://github.com/scobru/zen"
-                  target="_blank"
-                  rel="noopener"
-                  >Zen</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descZen"
-                >Zen fork</span
-              >
-            </li>
-
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://github.com/scobru/delay"
-                  target="_blank"
-                  rel="noopener"
-                  >Delay</a
-                >
-                -
-                <a
-                  href="https://delay.scobrudot.dev"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="instanceLink"
-                  >Instance</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/delay"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descDelay"
-                >Decentralized Relay</span
-              >
-            </li>
-
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://github.com/scobru/cli-tools"
-                  target="_blank"
-                  rel="noopener"
-                  >CLI Tools</a
-                >
-                -
-                <a
-                  href="https://github.com/scobru/cli-tools"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="codeLink"
-                  >Code</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descCliTools"
-                >Collection of CLI Tools</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://whiterabbit.scobrudot.dev" target="_blank" rel="noopener">Whiterabbit</a>
+                  -
+                  <a href="https://github.com/scobru/whiterabbit" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">ephemeral</span>
+                  <span class="tag-pill">chat</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descWhiterabbit">Ephemeral p2p chat</span>
             </li>
           </ul>
         </section>
 
-        <section>
-          <h2 data-i18n="secMusic">[ Music & Art ]</h2>
+        <!-- 02 // PROTOCOLS, WEB3 & INFRA -->
+        <section class="project-category" data-cat="infra">
+          <div class="section-header">
+            <h2 data-i18n="secInfra">[ 02 // Protocols, Web3 &amp; Infra ]</h2>
+            <span class="section-count">5 items</span>
+          </div>
           <ul>
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://sudorecords.scobrudot.dev"
-                  target="_blank"
-                  rel="noopener"
-                  >Sudo Records</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descSudoRecords"
-                >Record Label hosted on Tunecamp</span
-              >
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://nullroute.scobrudot.dev/" target="_blank" rel="noopener">Nullroute</a>
+                  -
+                  <a href="https://github.com/scobru/nullroute" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">web3</span>
+                  <span class="tag-pill">evm</span>
+                  <span class="tag-pill">stealth-pay</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descNullroute">EVM stealth payment hub</span>
             </li>
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://homologomusic.bandcamp.com"
-                  target="_blank"
-                  rel="noopener"
-                  >Homologo</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descHomologo"
-                >Songwriter, Pop, Electronic</span
-              >
+
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://zenvault.scobrudot.dev" target="_blank" rel="noopener">Zenvault</a>
+                  -
+                  <a href="https://github.com/scobru/zenvault" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">p2p</span>
+                  <span class="tag-pill">vault</span>
+                  <span class="tag-pill">security</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descZenvault">Decentralized Secure Vault</span>
             </li>
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://fademusik.bandcamp.com"
-                  target="_blank"
-                  rel="noopener"
-                  >Fade</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descFade"
-                >Electronic / Synth music</span
-              >
+
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://github.com/scobru/zen" target="_blank" rel="noopener">Zen</a>
+                  -
+                  <a href="https://github.com/scobru/zen" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">protocol</span>
+                  <span class="tag-pill">fork</span>
+                  <span class="tag-pill">gun-db</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descZen">Zen fork</span>
             </li>
-            <li>
-              <span class="project-title"
-                ><a
-                  href="https://zimablue.bandcamp.com"
-                  target="_blank"
-                  rel="noopener"
-                  >Zima Blue</a
-                ></span
-              >
-              <span class="project-desc" data-i18n="descZimaBlue"
-                >Ambient, Experimental soundscapes</span
-              >
+
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener">Delay</a>
+                  -
+                  <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener" data-i18n="instanceLink">Instance</a>
+                  -
+                  <a href="https://github.com/scobru/delay" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">infra</span>
+                  <span class="tag-pill">relay</span>
+                  <span class="tag-pill">network</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descDelay">Decentralized Relay</span>
+            </li>
+
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://github.com/scobru/cli-tools" target="_blank" rel="noopener">CLI Tools</a>
+                  -
+                  <a href="https://github.com/scobru/cli-tools" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">cli</span>
+                  <span class="tag-pill">devtools</span>
+                  <span class="tag-pill">terminal</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descCliTools">Collection of CLI Tools</span>
             </li>
           </ul>
         </section>
 
-        <section>
-          <h2 data-i18n="secConnect">[ Connect ]</h2>
+        <!-- 03 // AUDIO & CREATIVE TECH -->
+        <section class="project-category" data-cat="audio">
+          <div class="section-header">
+            <h2 data-i18n="secAudio">[ 03 // Audio &amp; Creative Tech ]</h2>
+            <span class="section-count">1 item</span>
+          </div>
+          <ul>
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://delia.scobrudot.dev" target="_blank" rel="noopener">Delia</a>
+                  -
+                  <a href="https://github.com/scobru/delia" target="_blank" rel="noopener" data-i18n="codeLink">Code</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">web-audio</span>
+                  <span class="tag-pill">tape-instrument</span>
+                  <span class="tag-pill">dsp</span>
+                  <span class="tag-pill">varispeed</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descDelia">Browser tape instrument with varispeed &amp; tape wear simulation</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 04 // MUSIC & ART -->
+        <section class="project-category" data-cat="music">
+          <div class="section-header">
+            <h2 data-i18n="secMusic">[ 04 // Music &amp; Art ]</h2>
+            <span class="section-count">4 items</span>
+          </div>
+          <ul>
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://sudorecords.scobrudot.dev" target="_blank" rel="noopener">Sudo Records</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">record-label</span>
+                  <span class="tag-pill">tunecamp</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descSudoRecords">Record Label hosted on Tunecamp</span>
+            </li>
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener">Homologo</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">songwriter</span>
+                  <span class="tag-pill">pop</span>
+                  <span class="tag-pill">electronic</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descHomologo">Songwriter, Pop, Electronic</span>
+            </li>
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://fademusik.bandcamp.com" target="_blank" rel="noopener">Fade</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">synth</span>
+                  <span class="tag-pill">electronic</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descFade">Electronic / Synth music</span>
+            </li>
+            <li class="project-item">
+              <div class="project-item-top">
+                <span class="project-title">
+                  <a href="https://zimablue.bandcamp.com" target="_blank" rel="noopener">Zima Blue</a>
+                </span>
+                <div class="project-tags">
+                  <span class="tag-pill">ambient</span>
+                  <span class="tag-pill">soundscapes</span>
+                  <span class="tag-pill">experimental</span>
+                </div>
+              </div>
+              <span class="project-desc" data-i18n="descZimaBlue">Ambient, Experimental soundscapes</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 05 // CONNECT -->
+        <section class="project-category" data-cat="connect">
+          <div class="section-header">
+            <h2 data-i18n="secConnect">[ 05 // Connect ]</h2>
+            <span class="section-count">9 links</span>
+          </div>
           <ul class="social-list">
-            <li>
-              <a
-                href="https://github.com/scobru"
-                target="_blank"
-                rel="me noopener"
-                >GitHub</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/scobru1988"
-                target="_blank"
-                rel="me noopener"
-                >Twitter</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://livellosegreto.it/@scobru"
-                target="_blank"
-                rel="me noopener"
-                >Mastodon</a
-              >
-            </li>
-            <li>
-              <a href="https://t.me/scobru" target="_blank" rel="me noopener"
-                >Telegram</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://instagram.com/francescobruno"
-                target="_blank"
-                rel="me noopener"
-                >Instagram</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://youtube.com/scobru88"
-                target="_blank"
-                rel="me noopener"
-                >YouTube</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://audius.co/francescobruno"
-                target="_blank"
-                rel="me noopener"
-                >Audius</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7"
-                target="_blank"
-                rel="me noopener"
-                >Spotify</a
-              >
-            </li>
+            <li><a href="https://github.com/scobru" target="_blank" rel="me noopener">GitHub</a></li>
+            <li><a href="https://twitter.com/scobru1988" target="_blank" rel="me noopener">Twitter</a></li>
+            <li><a href="https://livellosegreto.it/@scobru" target="_blank" rel="me noopener">Mastodon</a></li>
+            <li><a href="https://t.me/scobru" target="_blank" rel="me noopener">Telegram</a></li>
+            <li><a href="https://instagram.com/francescobruno" target="_blank" rel="me noopener">Instagram</a></li>
+            <li><a href="https://youtube.com/scobru88" target="_blank" rel="me noopener">YouTube</a></li>
+            <li><a href="https://audius.co/francescobruno" target="_blank" rel="me noopener">Audius</a></li>
+            <li><a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7" target="_blank" rel="me noopener">Spotify</a></li>
             <li><a href="mailto:scobru1988@gmail.com" rel="me">Email</a></li>
           </ul>
         </section>
@@ -1048,8 +1243,10 @@
         const canvasText = document.getElementById('canvas-text');
         const canvasHint = document.getElementById('canvas-hint');
         const cursorGlow = document.getElementById('cursor-glow');
-        const viewToggleBtn = document.getElementById('view-toggle');
-        const viewText = document.getElementById('view-text');
+        const viewBtnBalloon = document.getElementById('view-btn-balloon');
+        const viewBtnPlain = document.getElementById('view-btn-plain');
+        const arenaPlainBtn = document.getElementById('arena-plain-btn');
+        const plainBalloonBtn = document.getElementById('plain-balloon-btn');
         const soundToggleBtn = document.getElementById('sound-toggle');
         const soundText = document.getElementById('sound-text');
         const arenaDropBtn = document.getElementById('arena-drop-btn');
@@ -1060,9 +1257,11 @@
             metaDesc:
               'Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.',
             bio: 'Francesco Bruno — developer & sound designer.<br />P2P, open-source, audio synthesis, creative tech.',
-            secProjects: '[ Web Apps & Projects ]',
-            secMusic: '[ Music & Art ]',
-            secConnect: '[ Connect ]',
+            secP2P: '[ 01 // P2P & Decentralized Apps ]',
+            secInfra: '[ 02 // Protocols, Web3 & Infra ]',
+            secAudio: '[ 03 // Audio & Creative Tech ]',
+            secMusic: '[ 04 // Music & Art ]',
+            secConnect: '[ 05 // Connect ]',
             codeLink: 'Code',
             instanceLink: 'Instance',
             descDelia:
@@ -1100,8 +1299,17 @@
             canvasAriaVoid: 'Show all items',
             canvasAriaAll: 'Switch to void mode',
             canvasHint: '// blank canvas · move cursor to materialize',
-            viewPhysics: '[ physics ]',
-            viewList: '[ list ]',
+            viewBalloon: '[ 🎈 balloon ]',
+            viewPlain: '[ 📄 plain ]',
+            arenaPlainBtn: '[ 📄 plain view ↗ ]',
+            plainBalloonBtn: '[ 🎈 switch to balloon view ]',
+            filterLabel: '// filter:',
+            filterAll: '[ all (27) ]',
+            filterP2P: '[ p2p apps (8) ]',
+            filterInfra: '[ protocols & infra (5) ]',
+            filterAudio: '[ audio tech (1) ]',
+            filterMusic: '[ music (4) ]',
+            filterConnect: '[ connect (9) ]',
             soundOn: '[ sound: on ]',
             soundOff: '[ sound: off ]',
             arenaHint: '// gravity canvas · 27 codebase balls · drag & fling',
@@ -1115,9 +1323,11 @@
             metaDesc:
               'Francesco Bruno (scobru) — sviluppatore & sound designer. App decentralizzate, P2P, creative technology e musica elettronica.',
             bio: 'Francesco Bruno — sviluppatore & sound designer.<br />P2P, open-source, sintesi audio, creative tech.',
-            secProjects: '[ Web App & Progetti ]',
-            secMusic: '[ Musica & Arte ]',
-            secConnect: '[ Contatti ]',
+            secP2P: '[ 01 // App P2P & Decentralizzate ]',
+            secInfra: '[ 02 // Protocolli, Web3 & Infra ]',
+            secAudio: '[ 03 // Audio & Creative Tech ]',
+            secMusic: '[ 04 // Musica & Arte ]',
+            secConnect: '[ 05 // Contatti ]',
             codeLink: 'Codice',
             instanceLink: 'Istanza',
             descDelia:
@@ -1155,8 +1365,17 @@
             canvasAriaVoid: 'Mostra tutti gli elementi',
             canvasAriaAll: 'Passa alla modalità vuoto',
             canvasHint: '// pagina vuota · muovi il cursore per far comparire i contenuti',
-            viewPhysics: '[ fisica ]',
-            viewList: '[ lista ]',
+            viewBalloon: '[ 🎈 balloon ]',
+            viewPlain: '[ 📄 plain ]',
+            arenaPlainBtn: '[ 📄 vista plain ↗ ]',
+            plainBalloonBtn: '[ 🎈 passa a vista balloon ]',
+            filterLabel: '// filtra:',
+            filterAll: '[ tutti (27) ]',
+            filterP2P: '[ app p2p (8) ]',
+            filterInfra: '[ protocolli & infra (5) ]',
+            filterAudio: '[ audio tech (1) ]',
+            filterMusic: '[ musica (4) ]',
+            filterConnect: '[ contatti (9) ]',
             soundOn: '[ audio: on ]',
             soundOff: '[ audio: off ]',
             arenaHint: '// canvas gravitazionale · 27 sfere codebase · trascina e lancia',
@@ -1184,12 +1403,12 @@
         function getCurrentCanvasMode() {
           const saved = localStorage.getItem('canvas');
           if (saved === 'void' || saved === 'all') return saved;
-          return 'void';
+          return 'all';
         }
 
         function getCurrentView() {
           const saved = localStorage.getItem('view');
-          if (saved === 'list' || saved === 'physics') return saved;
+          if (saved === 'plain' || saved === 'list') return 'plain';
           return 'physics';
         }
 
@@ -1222,14 +1441,11 @@
         }
 
         function updateViewControls(view) {
-          const dict = i18n[currentLang] || i18n.en;
-          if (viewText) {
-            viewText.textContent = view === 'physics' ? dict.viewList : dict.viewPhysics;
+          if (viewBtnBalloon) {
+            viewBtnBalloon.classList.toggle('is-active', view === 'physics');
           }
-          if (viewToggleBtn) {
-            const label = view === 'physics' ? 'Switch to list view' : 'Switch to physics view';
-            viewToggleBtn.setAttribute('aria-label', label);
-            viewToggleBtn.setAttribute('title', label);
+          if (viewBtnPlain) {
+            viewBtnPlain.classList.toggle('is-active', view === 'plain');
           }
         }
 
@@ -1276,16 +1492,17 @@
         }
 
         function applyView(view, save) {
-          currentView = view;
-          document.documentElement.setAttribute('data-view', view);
+          const normalized = (view === 'plain' || view === 'list') ? 'plain' : 'physics';
+          currentView = normalized;
+          document.documentElement.setAttribute('data-view', normalized);
           if (save) {
             try {
-              localStorage.setItem('view', view);
+              localStorage.setItem('view', normalized);
             } catch (e) {}
           }
-          updateViewControls(view);
+          updateViewControls(normalized);
 
-          if (view === 'physics') {
+          if (normalized === 'physics') {
             startPhysics();
           } else {
             stopPhysics();
@@ -1329,7 +1546,7 @@
           updateSoundControls();
         }
 
-        // --- Proximity Reveal Logic (List Mode) ---
+        // --- Proximity Reveal Logic (Plain Mode) ---
         const revealTargets = Array.from(document.querySelectorAll('main h2, main li, footer'));
         let glowVisible = false;
         let hintDismissed = false;
@@ -1341,7 +1558,7 @@
         }
 
         function checkProximity(x, y) {
-          if (currentCanvas !== 'void' || currentView !== 'list') return;
+          if (currentCanvas !== 'void' || currentView !== 'plain') return;
 
           let anyRevealed = false;
           revealTargets.forEach((el) => {
@@ -1366,7 +1583,7 @@
         }
 
         window.addEventListener('pointermove', function (e) {
-          if (currentCanvas === 'void' && currentView === 'list') {
+          if (currentCanvas === 'void' && currentView === 'plain') {
             if (cursorGlow) {
               cursorGlow.style.left = e.clientX + 'px';
               cursorGlow.style.top = e.clientY + 'px';
@@ -1455,20 +1672,20 @@
         }
 
         const BALLS_CONFIG = [
-          { name: 'Delia', url: 'https://delia.scobrudot.dev', code: 'https://github.com/scobru/delia', descKey: 'descDelia', baseRadius: 54, cat: 'web' },
-          { name: 'Tunecamp', url: 'https://tunecamp.org/', code: 'https://github.com/scobru/tunecamp', descKey: 'descTunecamp', baseRadius: 58, cat: 'web' },
-          { name: 'Smollog', url: 'https://smollog.scobrudot.dev/', code: 'https://github.com/scobru/smollog', descKey: 'descSmollog', baseRadius: 46, cat: 'web' },
-          { name: 'Onepick', url: 'https://onepick.scobrudot.dev/', code: 'https://github.com/scobru/onepick', descKey: 'descOnepick', baseRadius: 46, cat: 'web' },
-          { name: 'FID', url: 'https://fid.scobrudot.dev/', code: 'https://github.com/scobru/fid', descKey: 'descFid', baseRadius: 50, cat: 'web' },
-          { name: 'Sidecamp', url: 'https://www.tunecamp.org/sidecamp.html', code: 'https://github.com/scobru/sidecamp', descKey: 'descSidecamp', baseRadius: 50, cat: 'web' },
-          { name: 'Linda', url: 'https://github.com/scobru/linda', code: 'https://github.com/scobru/linda', descKey: 'descLinda', baseRadius: 44, cat: 'web' },
-          { name: 'Nullroute', url: 'https://nullroute.scobrudot.dev/', code: 'https://github.com/scobru/nullroute', descKey: 'descNullroute', baseRadius: 44, cat: 'web' },
-          { name: 'Wormhole', url: 'https://wormhole.scobrudot.dev/', code: 'https://github.com/scobru/wormhole', descKey: 'descWormhole', baseRadius: 42, cat: 'web' },
-          { name: 'Whiterabbit', url: 'https://whiterabbit.scobrudot.dev', code: 'https://github.com/scobru/whiterabbit', descKey: 'descWhiterabbit', baseRadius: 40, cat: 'web' },
-          { name: 'Zenvault', url: 'https://zenvault.scobrudot.dev', code: 'https://github.com/scobru/zenvault', descKey: 'descZenvault', baseRadius: 40, cat: 'web' },
-          { name: 'Zen', url: 'https://github.com/scobru/zen', code: 'https://github.com/scobru/zen', descKey: 'descZen', baseRadius: 38, cat: 'web' },
-          { name: 'Delay', url: 'https://delay.scobrudot.dev', code: 'https://github.com/scobru/delay', descKey: 'descDelay', baseRadius: 38, cat: 'web' },
-          { name: 'CLI Tools', url: 'https://github.com/scobru/cli-tools', code: 'https://github.com/scobru/cli-tools', descKey: 'descCliTools', baseRadius: 34, cat: 'web' },
+          { name: 'Delia', url: 'https://delia.scobrudot.dev', code: 'https://github.com/scobru/delia', descKey: 'descDelia', baseRadius: 54, cat: 'audio' },
+          { name: 'Tunecamp', url: 'https://tunecamp.org/', code: 'https://github.com/scobru/tunecamp', descKey: 'descTunecamp', baseRadius: 58, cat: 'p2p' },
+          { name: 'Smollog', url: 'https://smollog.scobrudot.dev/', code: 'https://github.com/scobru/smollog', descKey: 'descSmollog', baseRadius: 46, cat: 'p2p' },
+          { name: 'Onepick', url: 'https://onepick.scobrudot.dev/', code: 'https://github.com/scobru/onepick', descKey: 'descOnepick', baseRadius: 46, cat: 'p2p' },
+          { name: 'FID', url: 'https://fid.scobrudot.dev/', code: 'https://github.com/scobru/fid', descKey: 'descFid', baseRadius: 50, cat: 'p2p' },
+          { name: 'Sidecamp', url: 'https://www.tunecamp.org/sidecamp.html', code: 'https://github.com/scobru/sidecamp', descKey: 'descSidecamp', baseRadius: 50, cat: 'p2p' },
+          { name: 'Linda', url: 'https://github.com/scobru/linda', code: 'https://github.com/scobru/linda', descKey: 'descLinda', baseRadius: 44, cat: 'p2p' },
+          { name: 'Nullroute', url: 'https://nullroute.scobrudot.dev/', code: 'https://github.com/scobru/nullroute', descKey: 'descNullroute', baseRadius: 44, cat: 'infra' },
+          { name: 'Wormhole', url: 'https://wormhole.scobrudot.dev/', code: 'https://github.com/scobru/wormhole', descKey: 'descWormhole', baseRadius: 42, cat: 'p2p' },
+          { name: 'Whiterabbit', url: 'https://whiterabbit.scobrudot.dev', code: 'https://github.com/scobru/whiterabbit', descKey: 'descWhiterabbit', baseRadius: 40, cat: 'p2p' },
+          { name: 'Zenvault', url: 'https://zenvault.scobrudot.dev', code: 'https://github.com/scobru/zenvault', descKey: 'descZenvault', baseRadius: 40, cat: 'infra' },
+          { name: 'Zen', url: 'https://github.com/scobru/zen', code: 'https://github.com/scobru/zen', descKey: 'descZen', baseRadius: 38, cat: 'infra' },
+          { name: 'Delay', url: 'https://delay.scobrudot.dev', code: 'https://github.com/scobru/delay', descKey: 'descDelay', baseRadius: 38, cat: 'infra' },
+          { name: 'CLI Tools', url: 'https://github.com/scobru/cli-tools', code: 'https://github.com/scobru/cli-tools', descKey: 'descCliTools', baseRadius: 34, cat: 'infra' },
           { name: 'Sudo Records', url: 'https://sudorecords.scobrudot.dev', descKey: 'descSudoRecords', baseRadius: 38, cat: 'music' },
           { name: 'Homologo', url: 'https://homologomusic.bandcamp.com', descKey: 'descHomologo', baseRadius: 36, cat: 'music' },
           { name: 'Fade', url: 'https://fademusik.bandcamp.com', descKey: 'descFade', baseRadius: 36, cat: 'music' },
@@ -1488,6 +1705,7 @@
         let physicsRunning = false;
         let physicsRafId = null;
         let zeroG = false;
+        let activeArenaFilter = 'all';
         let draggedBall = null;
         let dragStartX = 0;
         let dragStartY = 0;
@@ -1507,10 +1725,14 @@
           nameEl.textContent = config.name;
           el.appendChild(nameEl);
 
-          if (config.baseRadius >= 44 && config.cat === 'web') {
+          if (config.baseRadius >= 36) {
             const tag = document.createElement('div');
             tag.className = 'p-ball-tag';
-            tag.textContent = config.code ? '[app+code]' : '[app]';
+            let catTag = '[' + config.cat + ']';
+            if (config.cat === 'audio') catTag = '[audio-dsp]';
+            if (config.cat === 'p2p') catTag = config.code ? '[p2p+code]' : '[p2p]';
+            if (config.cat === 'infra') catTag = config.code ? '[infra+code]' : '[infra]';
+            tag.textContent = catTag;
             el.appendChild(tag);
           }
 
@@ -1519,6 +1741,7 @@
 
         function showCard(ball) {
           const card = document.getElementById('arena-card');
+          const cardCat = document.getElementById('card-cat');
           const cardTitle = document.getElementById('card-title');
           const cardDesc = document.getElementById('card-desc');
           const cardActions = document.getElementById('card-actions');
@@ -1527,6 +1750,27 @@
           if (!card) return;
 
           const dict = i18n[currentLang] || i18n.en;
+          if (cardCat) {
+            const catMapEn = {
+              p2p: 'P2P APP',
+              infra: 'INFRA & PROTOCOL',
+              audio: 'AUDIO TECH',
+              music: 'MUSIC & ART',
+              connect: 'CONNECT',
+            };
+            const catMapIt = {
+              p2p: 'APP P2P',
+              infra: 'INFRA & PROTOCOLLI',
+              audio: 'AUDIO TECH',
+              music: 'MUSICA & ARTE',
+              connect: 'CONTATTI',
+            };
+            const map = currentLang === 'it' ? catMapIt : catMapEn;
+            cardCat.textContent = map[ball.cat] || ball.cat.toUpperCase();
+            cardCat.setAttribute('data-cat', ball.cat);
+            cardCat.style.display = 'inline-block';
+          }
+
           cardTitle.textContent = ball.name;
 
           let desc = ball.descKey && dict[ball.descKey] ? dict[ball.descKey] : '';
@@ -1553,6 +1797,32 @@
           if (cardActions) {
             cardActions.style.display = hasAction ? 'flex' : 'none';
           }
+        }
+
+        function applyArenaFilter(cat) {
+          activeArenaFilter = cat;
+          const filterBtns = document.querySelectorAll('#arena-cat-filters .arena-filter-btn');
+          filterBtns.forEach(btn => {
+            btn.classList.toggle('is-active', btn.getAttribute('data-filter') === cat);
+          });
+          physicsBalls.forEach(b => {
+            const matches = cat === 'all' || b.cat === cat;
+            b.el.classList.toggle('is-dimmed', !matches);
+            b.el.classList.toggle('is-highlighted', matches && cat !== 'all');
+          });
+        }
+
+        function applyPlainFilter(cat) {
+          const filterBtns = document.querySelectorAll('#plain-cat-filters .cat-filter-btn');
+          filterBtns.forEach(btn => {
+            btn.classList.toggle('is-active', btn.getAttribute('data-filter') === cat);
+          });
+          const sections = document.querySelectorAll('main section.project-category');
+          sections.forEach(sec => {
+            const secCat = sec.getAttribute('data-cat');
+            const matches = cat === 'all' || secCat === cat;
+            sec.style.display = matches ? 'block' : 'none';
+          });
         }
 
         function initPhysicsArena() {
@@ -1837,12 +2107,45 @@
           });
         }
 
-        if (viewToggleBtn) {
-          viewToggleBtn.addEventListener('click', function () {
-            const nextView = currentView === 'physics' ? 'list' : 'physics';
-            applyView(nextView, true);
+        if (viewBtnBalloon) {
+          viewBtnBalloon.addEventListener('click', function () {
+            applyView('physics', true);
           });
         }
+
+        if (viewBtnPlain) {
+          viewBtnPlain.addEventListener('click', function () {
+            applyView('plain', true);
+          });
+        }
+
+        if (arenaPlainBtn) {
+          arenaPlainBtn.addEventListener('click', function () {
+            applyView('plain', true);
+          });
+        }
+
+        if (plainBalloonBtn) {
+          plainBalloonBtn.addEventListener('click', function () {
+            applyView('physics', true);
+          });
+        }
+
+        const arenaFilterButtons = document.querySelectorAll('#arena-cat-filters .arena-filter-btn');
+        arenaFilterButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const cat = this.getAttribute('data-filter');
+            applyArenaFilter(cat);
+          });
+        });
+
+        const plainFilterButtons = document.querySelectorAll('#plain-cat-filters .cat-filter-btn');
+        plainFilterButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const cat = this.getAttribute('data-filter');
+            applyPlainFilter(cat);
+          });
+        });
 
         if (soundToggleBtn) {
           soundToggleBtn.addEventListener('click', function () {
