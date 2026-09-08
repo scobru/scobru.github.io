@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
+      id="meta-description"
       content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music."
     />
     <title>scobru.github.io</title>
@@ -26,6 +27,11 @@
               ? 'dark'
               : 'light';
           document.documentElement.setAttribute('data-theme', theme);
+
+          const savedLang = localStorage.getItem('lang');
+          const browserLang = (navigator.language || '').toLowerCase();
+          const lang = savedLang || (browserLang.startsWith('it') ? 'it' : 'en');
+          document.documentElement.setAttribute('lang', lang);
         } catch (e) {}
       })();
     </script>
@@ -175,118 +181,6 @@
         color: var(--desc-color);
       }
 
-      /* Indicatori di Stato e Legenda */
-      .status-legend {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 12px;
-        margin-bottom: 22px;
-        font-family: monospace;
-        font-size: 0.85rem;
-      }
-
-      .legend-item {
-        display: inline-flex;
-        align-items: center;
-      }
-
-      .status-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        font-family: monospace;
-        font-size: 0.72rem;
-        font-weight: 500;
-        padding: 2px 7px;
-        border-radius: 4px;
-        border: 1px solid var(--border-color);
-        line-height: 1.3;
-        vertical-align: middle;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
-        margin-left: 6px;
-      }
-
-      .status-badge .icon {
-        font-style: normal;
-        font-size: 0.8rem;
-        line-height: 1;
-      }
-
-      .legend-item .status-badge {
-        margin-left: 0;
-      }
-
-      .status-badge.status-dev {
-        border-color: #16a34a;
-        color: #15803d;
-        background-color: rgba(34, 197, 94, 0.08);
-      }
-
-      .status-badge.status-beta {
-        border-color: #d97706;
-        color: #b45309;
-        background-color: rgba(245, 158, 11, 0.08);
-      }
-
-      .status-badge.status-maint {
-        border-color: #2563eb;
-        color: #1d4ed8;
-        background-color: rgba(59, 130, 246, 0.08);
-      }
-
-      .status-badge.status-arch {
-        border-color: var(--footer-color);
-        color: var(--footer-color);
-        background-color: rgba(113, 113, 122, 0.08);
-        opacity: 0.8;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) .status-badge.status-dev {
-          border-color: #22c55e;
-          color: #4ade80;
-          background-color: rgba(34, 197, 94, 0.12);
-        }
-        :root:not([data-theme="light"]) .status-badge.status-beta {
-          border-color: #f59e0b;
-          color: #fbbf24;
-          background-color: rgba(245, 158, 11, 0.12);
-        }
-        :root:not([data-theme="light"]) .status-badge.status-maint {
-          border-color: #3b82f6;
-          color: #60a5fa;
-          background-color: rgba(59, 130, 246, 0.12);
-        }
-        :root:not([data-theme="light"]) .status-badge.status-arch {
-          border-color: #52525b;
-          color: #a1a1aa;
-          background-color: rgba(113, 113, 122, 0.12);
-        }
-      }
-
-      [data-theme="dark"] .status-badge.status-dev {
-        border-color: #22c55e;
-        color: #4ade80;
-        background-color: rgba(34, 197, 94, 0.12);
-      }
-      [data-theme="dark"] .status-badge.status-beta {
-        border-color: #f59e0b;
-        color: #fbbf24;
-        background-color: rgba(245, 158, 11, 0.12);
-      }
-      [data-theme="dark"] .status-badge.status-maint {
-        border-color: #3b82f6;
-        color: #60a5fa;
-        background-color: rgba(59, 130, 246, 0.12);
-      }
-      [data-theme="dark"] .status-badge.status-arch {
-        border-color: #52525b;
-        color: #a1a1aa;
-        background-color: rgba(113, 113, 122, 0.12);
-      }
-
       .social-list {
         display: flex;
         flex-wrap: wrap;
@@ -339,6 +233,15 @@
               >[ blog ]</a
             >
             <button
+              id="lang-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Passa all'italiano"
+              title="Passa all'italiano"
+            >
+              <span id="lang-text">[ it ]</span>
+            </button>
+            <button
               id="theme-toggle"
               class="theme-toggle"
               type="button"
@@ -349,7 +252,7 @@
             </button>
           </div>
         </div>
-        <p class="bio">
+        <p class="bio" data-i18n="bio">
           Francesco Bruno — developer & sound designer.<br />P2P, open-source,
           audio synthesis, creative tech.
         </p>
@@ -357,21 +260,7 @@
 
       <main>
         <section>
-          <h2>[ Web Apps & Projects ]</h2>
-          <div class="status-legend" aria-label="Project status legend">
-            <span class="legend-item"
-              ><span class="status-badge status-dev"><span class="icon">🟢</span> in development</span></span
-            >
-            <span class="legend-item"
-              ><span class="status-badge status-beta"><span class="icon">🧪</span> beta</span></span
-            >
-            <span class="legend-item"
-              ><span class="status-badge status-maint"><span class="icon">🛠️</span> maintenance</span></span
-            >
-            <span class="legend-item"
-              ><span class="status-badge status-arch"><span class="icon">📦</span> archived</span></span
-            >
-          </div>
+          <h2 data-i18n="secProjects">[ Web Apps & Projects ]</h2>
           <ul>
             <li>
               <span class="project-title"
@@ -386,13 +275,11 @@
                   href="https://github.com/scobru/smollog"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-beta" title="Beta"
-                  ><span class="icon">🧪</span> beta</span
                 ></span
               >
-              <span class="project-desc"
+              <span class="project-desc" data-i18n="descSmollog"
                 >Zero-backend, cryptographic blogging platform on Zen</span
               >
             </li>
@@ -410,13 +297,11 @@
                   href="https://github.com/scobru/onepick"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-beta" title="Beta"
-                  ><span class="icon">🧪</span> beta</span
                 ></span
               >
-              <span class="project-desc"
+              <span class="project-desc" data-i18n="descOnepick"
                 >Decentralized analog P2P radio &amp; culture frequency on Zen</span
               >
             </li>
@@ -431,13 +316,13 @@
                   href="https://github.com/scobru/tunecamp"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-dev" title="In development"
-                  ><span class="icon">🟢</span> in development</span
                 ></span
               >
-              <span class="project-desc">Decentralized music streaming</span>
+              <span class="project-desc" data-i18n="descTunecamp"
+                >Decentralized music streaming</span
+              >
             </li>
 
             <li>
@@ -453,13 +338,11 @@
                   href="https://github.com/scobru/linda"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-dev" title="In development"
-                  ><span class="icon">🟢</span> in development</span
                 ></span
               >
-              <span class="project-desc"
+              <span class="project-desc" data-i18n="descLinda"
                 >Serverless P2P encrypted messenger on Holepunch stack</span
               >
             </li>
@@ -477,17 +360,16 @@
                   href="https://github.com/scobru/fid"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-beta" title="Beta"
-                  ><span class="icon">🧪</span> beta</span
                 ></span
               >
-              <span class="project-desc"
+              <span class="project-desc" data-i18n="descFid"
                 >Fediverse-ID: self-sovereign SSO &amp; identity protocol for
                 ActivityPub</span
               >
             </li>
+
             <li>
               <span class="project-title"
                 ><a
@@ -497,14 +379,15 @@
                   >Sidecamp</a
                 >
                 -
-                <a href="https://github.com/scobru/sidecamp" target="_blank"
+                <a
+                  href="https://github.com/scobru/sidecamp"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-beta" title="Beta"
-                  ><span class="icon">🧪</span> beta</span
                 ></span
               >
-              <span class="project-desc"
+              <span class="project-desc" data-i18n="descSidecamp"
                 >TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)</span
               >
             </li>
@@ -522,14 +405,15 @@
                   href="https://github.com/scobru/wormhole"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-maint" title="Maintenance"
-                  ><span class="icon">🛠️</span> maintenance</span
                 ></span
               >
-              <span class="project-desc">E2EE P2P file transfer</span>
+              <span class="project-desc" data-i18n="descWormhole"
+                >E2EE P2P file transfer</span
+              >
             </li>
+
             <li>
               <span class="project-title"
                 ><a
@@ -543,13 +427,13 @@
                   href="https://github.com/scobru/nullroute"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-beta" title="Beta"
-                  ><span class="icon">🧪</span> beta</span
                 ></span
               >
-              <span class="project-desc">EVM stealth payment hub</span>
+              <span class="project-desc" data-i18n="descNullroute"
+                >EVM stealth payment hub</span
+              >
             </li>
 
             <li>
@@ -565,14 +449,15 @@
                   href="https://github.com/scobru/whiterabbit"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-maint" title="Maintenance"
-                  ><span class="icon">🛠️</span> maintenance</span
                 ></span
               >
-              <span class="project-desc">Ephemeral p2p chat</span>
+              <span class="project-desc" data-i18n="descWhiterabbit"
+                >Ephemeral p2p chat</span
+              >
             </li>
+
             <li>
               <span class="project-title"
                 ><a
@@ -586,14 +471,15 @@
                   href="https://github.com/scobru/zenvault"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-maint" title="Maintenance"
-                  ><span class="icon">🛠️</span> maintenance</span
                 ></span
               >
-              <span class="project-desc">Decentralized Secure Vault</span>
+              <span class="project-desc" data-i18n="descZenvault"
+                >Decentralized Secure Vault</span
+              >
             </li>
+
             <li>
               <span class="project-title"
                 ><a
@@ -601,12 +487,11 @@
                   target="_blank"
                   rel="noopener"
                   >Zen</a
-                >
-                <span class="status-badge status-maint" title="Maintenance"
-                  ><span class="icon">🛠️</span> maintenance</span
                 ></span
               >
-              <span class="project-desc">Zen fork</span>
+              <span class="project-desc" data-i18n="descZen"
+                >Zen fork</span
+              >
             </li>
 
             <li>
@@ -622,17 +507,21 @@
                   href="https://delay.scobrudot.dev"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="instanceLink"
                   >Instance</a
                 >
                 -
-                <a href="https://github.com/scobru/delay" target="_blank"
+                <a
+                  href="https://github.com/scobru/delay"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-maint" title="Maintenance"
-                  ><span class="icon">🛠️</span> maintenance</span
                 ></span
               >
-              <span class="project-desc">Decentralized Relay</span>
+              <span class="project-desc" data-i18n="descDelay"
+                >Decentralized Relay</span
+              >
             </li>
 
             <li>
@@ -644,20 +533,23 @@
                   >CLI Tools</a
                 >
                 -
-                <a href="https://github.com/scobru/cli-tools" target="_blank"
+                <a
+                  href="https://github.com/scobru/cli-tools"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="codeLink"
                   >Code</a
-                >
-                <span class="status-badge status-arch" title="Archived"
-                  ><span class="icon">📦</span> archived</span
                 ></span
               >
-              <span class="project-desc">Collection of CLI Tools</span>
+              <span class="project-desc" data-i18n="descCliTools"
+                >Collection of CLI Tools</span
+              >
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>[ Music & Art ]</h2>
+          <h2 data-i18n="secMusic">[ Music & Art ]</h2>
           <ul>
             <li>
               <span class="project-title"
@@ -668,7 +560,9 @@
                   >Sudo Records</a
                 ></span
               >
-              <span class="project-desc">Record Label hosted on Tunecamp</span>
+              <span class="project-desc" data-i18n="descSudoRecords"
+                >Record Label hosted on Tunecamp</span
+              >
             </li>
             <li>
               <span class="project-title"
@@ -679,7 +573,9 @@
                   >Homologo</a
                 ></span
               >
-              <span class="project-desc">Songwriter, Pop, Electronic</span>
+              <span class="project-desc" data-i18n="descHomologo"
+                >Songwriter, Pop, Electronic</span
+              >
             </li>
             <li>
               <span class="project-title"
@@ -690,7 +586,9 @@
                   >Fade</a
                 ></span
               >
-              <span class="project-desc">Electronic / Synth music</span>
+              <span class="project-desc" data-i18n="descFade"
+                >Electronic / Synth music</span
+              >
             </li>
             <li>
               <span class="project-title"
@@ -701,7 +599,7 @@
                   >Zima Blue</a
                 ></span
               >
-              <span class="project-desc"
+              <span class="project-desc" data-i18n="descZimaBlue"
                 >Ambient, Experimental soundscapes</span
               >
             </li>
@@ -709,7 +607,7 @@
         </section>
 
         <section>
-          <h2>[ Connect ]</h2>
+          <h2 data-i18n="secConnect">[ Connect ]</h2>
           <ul class="social-list">
             <li>
               <a
@@ -778,7 +676,7 @@
       </main>
 
       <footer>
-        <p class="sys-status">// 26 items indexed · system: online</p>
+        <p class="sys-status" data-i18n="sysStatus">// 26 items indexed · system: online</p>
       </footer>
     </div>
 
@@ -787,6 +685,88 @@
         const toggleBtn = document.getElementById('theme-toggle');
         const themeText = document.getElementById('theme-text');
         const metaThemeColor = document.getElementById('theme-color-meta');
+        const metaDescription = document.getElementById('meta-description');
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+
+        const i18n = {
+          en: {
+            metaDesc:
+              'Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.',
+            bio: 'Francesco Bruno — developer & sound designer.<br />P2P, open-source, audio synthesis, creative tech.',
+            secProjects: '[ Web Apps & Projects ]',
+            secMusic: '[ Music & Art ]',
+            secConnect: '[ Connect ]',
+            codeLink: 'Code',
+            instanceLink: 'Instance',
+            descSmollog:
+              'Zero-backend, cryptographic blogging platform on Zen',
+            descOnepick:
+              'Decentralized analog P2P radio &amp; culture frequency on Zen',
+            descTunecamp: 'Decentralized music streaming',
+            descLinda:
+              'Serverless P2P encrypted messenger on Holepunch stack',
+            descFid:
+              'Fediverse-ID: self-sovereign SSO &amp; identity protocol for ActivityPub',
+            descSidecamp:
+              'TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)',
+            descWormhole: 'E2EE P2P file transfer',
+            descNullroute: 'EVM stealth payment hub',
+            descWhiterabbit: 'Ephemeral p2p chat',
+            descZenvault: 'Decentralized Secure Vault',
+            descZen: 'Zen fork',
+            descDelay: 'Decentralized Relay',
+            descCliTools: 'Collection of CLI Tools',
+            descSudoRecords: 'Record Label hosted on Tunecamp',
+            descHomologo: 'Songwriter, Pop, Electronic',
+            descFade: 'Electronic / Synth music',
+            descZimaBlue: 'Ambient, Experimental soundscapes',
+            sysStatus: '// 26 items indexed · system: online',
+            langToggle: '[ it ]',
+            langAria: "Passa all'italiano",
+            themeDark: '[ dark ]',
+            themeLight: '[ light ]',
+            themeAria: 'Toggle theme',
+          },
+          it: {
+            metaDesc:
+              'Francesco Bruno (scobru) — sviluppatore & sound designer. App decentralizzate, P2P, creative technology e musica elettronica.',
+            bio: 'Francesco Bruno — sviluppatore & sound designer.<br />P2P, open-source, sintesi audio, creative tech.',
+            secProjects: '[ Web App & Progetti ]',
+            secMusic: '[ Musica & Arte ]',
+            secConnect: '[ Contatti ]',
+            codeLink: 'Codice',
+            instanceLink: 'Istanza',
+            descSmollog:
+              'Piattaforma di blogging crittografica e zero-backend su Zen',
+            descOnepick:
+              'Radio P2P analogica decentralizzata &amp; frequenza culturale su Zen',
+            descTunecamp: 'Streaming musicale decentralizzato',
+            descLinda:
+              'Messaggistica crittografata P2P serverless su stack Holepunch',
+            descFid:
+              "Fediverse-ID: SSO auto-sovrano &amp; protocollo d'identità per ActivityPub",
+            descSidecamp:
+              'Companion P2P per TuneCamp (Soulseek, Torrents, yt-dlp)',
+            descWormhole: 'Trasferimento file P2P con crittografia end-to-end',
+            descNullroute: 'Hub di pagamenti stealth per EVM',
+            descWhiterabbit: 'Chat P2P effimera',
+            descZenvault: 'Cassaforte sicura decentralizzata',
+            descZen: 'Fork di Zen',
+            descDelay: 'Relay decentralizzato',
+            descCliTools: 'Raccolta di strumenti da riga di comando',
+            descSudoRecords: 'Etichetta discografica ospitata su Tunecamp',
+            descHomologo: 'Cantautorato, Pop, Elettronica',
+            descFade: 'Musica elettronica / Synth',
+            descZimaBlue: 'Ambient, paesaggi sonori sperimentali',
+            sysStatus: '// 26 elementi indicizzati · sistema: online',
+            langToggle: '[ en ]',
+            langAria: 'Switch to English',
+            themeDark: '[ scuro ]',
+            themeLight: '[ chiaro ]',
+            themeAria: 'Cambia tema',
+          },
+        };
 
         function getCurrentTheme() {
           const savedTheme = localStorage.getItem('theme');
@@ -798,6 +778,29 @@
             : 'light';
         }
 
+        function getCurrentLang() {
+          const savedLang = localStorage.getItem('lang');
+          if (savedLang === 'en' || savedLang === 'it') {
+            return savedLang;
+          }
+          const browserLang = (navigator.language || '').toLowerCase();
+          return browserLang.startsWith('it') ? 'it' : 'en';
+        }
+
+        let currentLang = getCurrentLang();
+
+        function updateThemeControls(theme) {
+          const dict = i18n[currentLang] || i18n.en;
+          if (themeText) {
+            themeText.textContent =
+              theme === 'dark' ? dict.themeLight : dict.themeDark;
+          }
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-label', dict.themeAria);
+            toggleBtn.setAttribute('title', dict.themeAria);
+          }
+        }
+
         function applyTheme(theme, save) {
           document.documentElement.setAttribute('data-theme', theme);
           if (save) {
@@ -805,9 +808,7 @@
               localStorage.setItem('theme', theme);
             } catch (e) {}
           }
-          if (themeText) {
-            themeText.textContent = theme === 'dark' ? '[ light ]' : '[ dark ]';
-          }
+          updateThemeControls(theme);
           if (metaThemeColor) {
             metaThemeColor.setAttribute(
               'content',
@@ -816,14 +817,59 @@
           }
         }
 
-        // Sincronizza lo stato all'avvio
+        function applyLang(lang, save) {
+          currentLang = lang === 'it' ? 'it' : 'en';
+          document.documentElement.setAttribute('lang', currentLang);
+          if (save) {
+            try {
+              localStorage.setItem('lang', currentLang);
+            } catch (e) {}
+          }
+
+          const dict = i18n[currentLang] || i18n.en;
+
+          if (metaDescription) {
+            metaDescription.setAttribute('content', dict.metaDesc);
+          }
+
+          document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) {
+              if (dict[key].indexOf('<') !== -1 || dict[key].indexOf('&amp;') !== -1) {
+                el.innerHTML = dict[key];
+              } else {
+                el.textContent = dict[key];
+              }
+            }
+          });
+
+          if (langText) {
+            langText.textContent = dict.langToggle;
+          }
+          if (langToggleBtn) {
+            langToggleBtn.setAttribute('aria-label', dict.langAria);
+            langToggleBtn.setAttribute('title', dict.langAria);
+          }
+
+          updateThemeControls(getCurrentTheme());
+        }
+
+        // Sincronizza stato iniziale
         applyTheme(getCurrentTheme(), false);
+        applyLang(currentLang, false);
 
         if (toggleBtn) {
           toggleBtn.addEventListener('click', function () {
             const current = getCurrentTheme();
             const next = current === 'dark' ? 'light' : 'dark';
             applyTheme(next, true);
+          });
+        }
+
+        if (langToggleBtn) {
+          langToggleBtn.addEventListener('click', function () {
+            const nextLang = currentLang === 'en' ? 'it' : 'en';
+            applyLang(nextLang, true);
           });
         }
 
