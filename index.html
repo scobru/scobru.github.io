@@ -32,6 +32,10 @@
           const browserLang = (navigator.language || '').toLowerCase();
           const lang = savedLang || (browserLang.startsWith('it') ? 'it' : 'en');
           document.documentElement.setAttribute('lang', lang);
+
+          const savedCanvas = localStorage.getItem('canvas');
+          const canvas = savedCanvas === 'all' ? 'all' : 'void';
+          document.documentElement.setAttribute('data-canvas', canvas);
         } catch (e) {}
       })();
     </script>
@@ -215,6 +219,87 @@
       .sys-status {
         font-family: monospace;
       }
+
+      /* Canvas Hint */
+      .canvas-hint {
+        font-family: monospace;
+        font-size: 0.92rem;
+        color: var(--desc-color);
+        margin: 14px 0 0 0;
+        opacity: 0.75;
+        letter-spacing: 0.3px;
+        transition: opacity 0.5s ease;
+        user-select: none;
+      }
+
+      .canvas-hint.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Cursor Glow */
+      .cursor-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0.05) 0%,
+          rgba(0, 0, 0, 0.015) 45%,
+          transparent 70%
+        );
+      }
+
+      [data-theme="dark"] .cursor-glow,
+      :root:not([data-theme="light"]) .cursor-glow {
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.07) 0%,
+          rgba(255, 255, 255, 0.02) 45%,
+          transparent 70%
+        );
+      }
+
+      /* Void Mode (Blank Canvas Reveal) */
+      [data-canvas="void"] h2,
+      [data-canvas="void"] li,
+      [data-canvas="void"] footer {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(6px);
+        transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          filter 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, filter, transform;
+      }
+
+      [data-canvas="void"] h2.is-revealed,
+      [data-canvas="void"] li.is-revealed,
+      [data-canvas="void"] footer.is-revealed,
+      [data-canvas="void"] h2:hover,
+      [data-canvas="void"] li:hover,
+      [data-canvas="void"] footer:hover,
+      [data-canvas="void"] h2:focus-within,
+      [data-canvas="void"] li:focus-within,
+      [data-canvas="void"] footer:focus-within {
+        opacity: 1 !important;
+        filter: blur(0px) !important;
+        transform: translateY(0) !important;
+      }
+
+      [data-canvas="void"] a:focus-visible {
+        outline: 2px solid var(--text-color);
+        outline-offset: 3px;
+        opacity: 1 !important;
+      }
     </style>
   </head>
 
@@ -232,6 +317,15 @@
               style="text-decoration: none;"
               >[ blog ]</a
             >
+            <button
+              id="canvas-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Show all items"
+              title="Show all items"
+            >
+              <span id="canvas-text">[ all ]</span>
+            </button>
             <button
               id="lang-toggle"
               class="theme-toggle"
@@ -256,12 +350,37 @@
           Francesco Bruno — developer & sound designer.<br />P2P, open-source,
           audio synthesis, creative tech.
         </p>
+        <p class="canvas-hint" id="canvas-hint" data-i18n="canvasHint">
+          // blank canvas · move cursor to materialize
+        </p>
       </header>
 
       <main>
         <section>
           <h2 data-i18n="secProjects">[ Web Apps & Projects ]</h2>
           <ul>
+            <li>
+              <span class="project-title"
+                ><a
+                  href="https://delia.scobrudot.dev"
+                  target="_blank"
+                  rel="noopener"
+                  >Delia</a
+                >
+                -
+                <a
+                  href="https://github.com/scobru/delia"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="codeLink"
+                  >Code</a
+                ></span
+              >
+              <span class="project-desc" data-i18n="descDelia"
+                >Browser tape instrument with varispeed &amp; tape wear simulation</span
+              >
+            </li>
+
             <li>
               <span class="project-title"
                 ><a
@@ -676,9 +795,11 @@
       </main>
 
       <footer>
-        <p class="sys-status" data-i18n="sysStatus">// 26 items indexed · system: online</p>
+        <p class="sys-status" data-i18n="sysStatus">// 27 items indexed · system: online</p>
       </footer>
     </div>
+
+    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
     <script>
       (function () {
@@ -688,6 +809,10 @@
         const metaDescription = document.getElementById('meta-description');
         const langToggleBtn = document.getElementById('lang-toggle');
         const langText = document.getElementById('lang-text');
+        const canvasToggleBtn = document.getElementById('canvas-toggle');
+        const canvasText = document.getElementById('canvas-text');
+        const canvasHint = document.getElementById('canvas-hint');
+        const cursorGlow = document.getElementById('cursor-glow');
 
         const i18n = {
           en: {
@@ -699,6 +824,8 @@
             secConnect: '[ Connect ]',
             codeLink: 'Code',
             instanceLink: 'Instance',
+            descDelia:
+              'Browser tape instrument with varispeed &amp; tape wear simulation',
             descSmollog:
               'Zero-backend, cryptographic blogging platform on Zen',
             descOnepick:
@@ -721,12 +848,17 @@
             descHomologo: 'Songwriter, Pop, Electronic',
             descFade: 'Electronic / Synth music',
             descZimaBlue: 'Ambient, Experimental soundscapes',
-            sysStatus: '// 26 items indexed · system: online',
+            sysStatus: '// 27 items indexed · system: online',
             langToggle: '[ it ]',
             langAria: "Passa all'italiano",
             themeDark: '[ dark ]',
             themeLight: '[ light ]',
             themeAria: 'Toggle theme',
+            canvasVoid: '[ void ]',
+            canvasAll: '[ all ]',
+            canvasAriaVoid: 'Show all items',
+            canvasAriaAll: 'Switch to void mode',
+            canvasHint: '// blank canvas · move cursor to materialize',
           },
           it: {
             metaDesc:
@@ -737,6 +869,8 @@
             secConnect: '[ Contatti ]',
             codeLink: 'Codice',
             instanceLink: 'Istanza',
+            descDelia:
+              'Strumento a nastro per browser con simulazione di varispeed e usura',
             descSmollog:
               'Piattaforma di blogging crittografica e zero-backend su Zen',
             descOnepick:
@@ -759,12 +893,17 @@
             descHomologo: 'Cantautorato, Pop, Elettronica',
             descFade: 'Musica elettronica / Synth',
             descZimaBlue: 'Ambient, paesaggi sonori sperimentali',
-            sysStatus: '// 26 elementi indicizzati · sistema: online',
+            sysStatus: '// 27 elementi indicizzati · sistema: online',
             langToggle: '[ en ]',
             langAria: 'Switch to English',
             themeDark: '[ scuro ]',
             themeLight: '[ chiaro ]',
             themeAria: 'Cambia tema',
+            canvasVoid: '[ vuoto ]',
+            canvasAll: '[ tutti ]',
+            canvasAriaVoid: 'Mostra tutti gli elementi',
+            canvasAriaAll: 'Passa alla modalità vuoto',
+            canvasHint: '// pagina vuota · muovi il cursore per far comparire i contenuti',
           },
         };
 
@@ -787,7 +926,14 @@
           return browserLang.startsWith('it') ? 'it' : 'en';
         }
 
+        function getCurrentCanvasMode() {
+          const saved = localStorage.getItem('canvas');
+          if (saved === 'void' || saved === 'all') return saved;
+          return 'void';
+        }
+
         let currentLang = getCurrentLang();
+        let currentCanvas = getCurrentCanvasMode();
 
         function updateThemeControls(theme) {
           const dict = i18n[currentLang] || i18n.en;
@@ -798,6 +944,20 @@
           if (toggleBtn) {
             toggleBtn.setAttribute('aria-label', dict.themeAria);
             toggleBtn.setAttribute('title', dict.themeAria);
+          }
+        }
+
+        function updateCanvasControls(mode) {
+          const dict = i18n[currentLang] || i18n.en;
+          if (canvasText) {
+            canvasText.textContent =
+              mode === 'void' ? dict.canvasAll : dict.canvasVoid;
+          }
+          if (canvasToggleBtn) {
+            const ariaLabel =
+              mode === 'void' ? dict.canvasAriaVoid : dict.canvasAriaAll;
+            canvasToggleBtn.setAttribute('aria-label', ariaLabel);
+            canvasToggleBtn.setAttribute('title', ariaLabel);
           }
         }
 
@@ -814,6 +974,35 @@
               'content',
               theme === 'dark' ? '#0d0e12' : '#ffffff'
             );
+          }
+        }
+
+        function applyCanvasMode(mode, save) {
+          currentCanvas = mode;
+          document.documentElement.setAttribute('data-canvas', mode);
+          if (save) {
+            try {
+              localStorage.setItem('canvas', mode);
+            } catch (e) {}
+          }
+          updateCanvasControls(mode);
+
+          const revealTargets = document.querySelectorAll(
+            'main h2, main li, footer'
+          );
+
+          if (mode === 'all') {
+            revealTargets.forEach(function (el) {
+              el.classList.add('is-revealed');
+            });
+            if (canvasHint) canvasHint.classList.add('fade-out');
+            if (cursorGlow) cursorGlow.style.opacity = '0';
+          } else {
+            revealTargets.forEach(function (el) {
+              el.classList.remove('is-revealed');
+            });
+            if (canvasHint) canvasHint.classList.remove('fade-out');
+            hintDismissed = false;
           }
         }
 
@@ -852,11 +1041,93 @@
           }
 
           updateThemeControls(getCurrentTheme());
+          updateCanvasControls(currentCanvas);
         }
+
+        // Proximity Reveal Logic
+        const revealTargets = Array.from(
+          document.querySelectorAll('main h2, main li, footer')
+        );
+        let glowVisible = false;
+        let hintDismissed = false;
+
+        function distToRect(x, y, rect) {
+          const dx = Math.max(rect.left - x, 0, x - rect.right);
+          const dy = Math.max(rect.top - y, 0, y - rect.bottom);
+          return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        function checkProximity(x, y) {
+          if (currentCanvas !== 'void') return;
+
+          let anyRevealed = false;
+          revealTargets.forEach(function (el) {
+            const rect = el.getBoundingClientRect();
+            if (distToRect(x, y, rect) < 90) {
+              if (!el.classList.contains('is-revealed')) {
+                el.classList.add('is-revealed');
+                anyRevealed = true;
+                const section = el.closest('section');
+                if (section) {
+                  const h2 = section.querySelector('h2');
+                  if (h2) h2.classList.add('is-revealed');
+                }
+              }
+            }
+          });
+
+          if (anyRevealed && !hintDismissed) {
+            hintDismissed = true;
+            if (canvasHint) canvasHint.classList.add('fade-out');
+          }
+        }
+
+        window.addEventListener('pointermove', function (e) {
+          if (currentCanvas !== 'void') return;
+
+          if (cursorGlow) {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+            if (!glowVisible && e.pointerType !== 'touch') {
+              cursorGlow.style.opacity = '1';
+              glowVisible = true;
+            }
+          }
+
+          checkProximity(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('pointerleave', function () {
+          if (cursorGlow) {
+            cursorGlow.style.opacity = '0';
+            glowVisible = false;
+          }
+        });
+
+        window.addEventListener(
+          'touchmove',
+          function (e) {
+            if (e.touches && e.touches.length > 0) {
+              checkProximity(e.touches[0].clientX, e.touches[0].clientY);
+            }
+          },
+          { passive: true }
+        );
+
+        window.addEventListener(
+          'touchstart',
+          function (e) {
+            if (e.touches && e.touches.length > 0) {
+              checkProximity(e.touches[0].clientX, e.touches[0].clientY);
+            }
+          },
+          { passive: true }
+        );
 
         // Sincronizza stato iniziale
         applyTheme(getCurrentTheme(), false);
         applyLang(currentLang, false);
+        applyCanvasMode(currentCanvas, false);
 
         if (toggleBtn) {
           toggleBtn.addEventListener('click', function () {
@@ -870,6 +1141,13 @@
           langToggleBtn.addEventListener('click', function () {
             const nextLang = currentLang === 'en' ? 'it' : 'en';
             applyLang(nextLang, true);
+          });
+        }
+
+        if (canvasToggleBtn) {
+          canvasToggleBtn.addEventListener('click', function () {
+            const nextMode = currentCanvas === 'void' ? 'all' : 'void';
+            applyCanvasMode(nextMode, true);
           });
         }
 
