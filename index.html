@@ -851,6 +851,7 @@
           <button class="arena-filter-btn" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p &amp; apps (8) ]</button>
           <button class="arena-filter-btn" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5) ]</button>
           <button class="arena-filter-btn" data-filter="instrument" type="button" data-i18n="filterInstrument">[ instrument (4) ]</button>
+          <button class="arena-filter-btn" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech (2) ]</button>
           <button class="arena-filter-btn" data-filter="communication" type="button" data-i18n="filterComm">[ communication (9) ]</button>
         </div>
         <div id="physics-arena" class="physics-arena"></div>
@@ -875,6 +876,7 @@
             <button class="cat-filter-btn" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (8) ]</button>
             <button class="cat-filter-btn" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5) ]</button>
             <button class="cat-filter-btn" data-filter="instrument" type="button" data-i18n="filterInstrument">[ instrument (4) ]</button>
+            <button class="cat-filter-btn" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech (2) ]</button>
             <button class="cat-filter-btn" data-filter="communication" type="button" data-i18n="filterComm">[ communication (9) ]</button>
           </div>
           <button id="plain-balloon-btn" class="plain-quick-switch" type="button" data-i18n="plainBalloonBtn">
@@ -1116,7 +1118,7 @@
         </section>
 
         <!-- 03 // AUDIO & CREATIVE TECH -->
-        <section class="project-category" data-cat="web">
+        <section class="project-category" data-cat="audio-tech">
           <div class="section-header">
             <h2 data-i18n="secAudio">[ 03 // Web / Instrument ]</h2>
             <span class="section-count">2 items</span>
@@ -1683,7 +1685,7 @@
         }
 
         const BALLS_CONFIG = [
-          { name: 'Delia', url: 'https://delia.scobrudot.dev', code: 'https://github.com/scobru/delia', descKey: 'descDelia', baseRadius: 54, cat: 'web' },
+          { name: 'Delia', url: 'https://delia.scobrudot.dev', code: 'https://github.com/scobru/delia', descKey: 'descDelia', baseRadius: 54, cat: 'audio-tech' },
           { name: 'Tunecamp', url: 'https://tunecamp.org/', code: 'https://github.com/scobru/tunecamp', descKey: 'descTunecamp', baseRadius: 58, cat: 'p2p' },
           { name: 'Smollog', url: 'https://smollog.scobrudot.dev/', code: 'https://github.com/scobru/smollog', descKey: 'descSmollog', baseRadius: 46, cat: 'p2p' },
           { name: 'Onepick', url: 'https://onepick.scobrudot.dev/', code: 'https://github.com/scobru/onepick', descKey: 'descOnepick', baseRadius: 46, cat: 'p2p' },
