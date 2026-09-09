@@ -32,14 +32,6 @@
           const browserLang = (navigator.language || '').toLowerCase();
           const lang = savedLang || (browserLang.startsWith('it') ? 'it' : 'en');
           document.documentElement.setAttribute('lang', lang);
-
-          const savedCanvas = localStorage.getItem('canvas');
-          const canvas = savedCanvas === 'void' ? 'void' : 'all';
-          document.documentElement.setAttribute('data-canvas', canvas);
-
-          const savedView = localStorage.getItem('view');
-          const view = savedView === 'plain' || savedView === 'list' ? 'plain' : 'physics';
-          document.documentElement.setAttribute('data-view', view);
         } catch (e) {}
       })();
     </script>
@@ -201,7 +193,7 @@
       /* Barra Filtri Plain & Switch Rapido */
       .plain-nav-bar {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
@@ -239,23 +231,6 @@
 
       .cat-filter-btn:hover,
       .cat-filter-btn.is-active {
-        background: var(--link-hover-bg);
-        color: var(--link-hover-color);
-      }
-
-      .plain-quick-switch {
-        background: transparent;
-        border: 1px solid var(--border-color);
-        color: var(--text-color);
-        font-family: monospace;
-        font-size: 0.8rem;
-        padding: 2px 9px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.15s ease, color 0.15s ease;
-      }
-
-      .plain-quick-switch:hover {
         background: var(--link-hover-bg);
         color: var(--link-hover-color);
       }
@@ -356,402 +331,6 @@
       .sys-status {
         font-family: monospace;
       }
-
-      /* Canvas Hint */
-      .canvas-hint {
-        font-family: monospace;
-        font-size: 0.92rem;
-        color: var(--desc-color);
-        margin: 14px 0 0 0;
-        opacity: 0.75;
-        letter-spacing: 0.3px;
-        transition: opacity 0.5s ease;
-        user-select: none;
-      }
-
-      .canvas-hint.fade-out {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      /* Cursor Glow */
-      .cursor-glow {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 999;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        background: radial-gradient(
-          circle,
-          rgba(0, 0, 0, 0.05) 0%,
-          rgba(0, 0, 0, 0.015) 45%,
-          transparent 70%
-        );
-      }
-
-      [data-theme="dark"] .cursor-glow,
-      :root:not([data-theme="light"]) .cursor-glow {
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.07) 0%,
-          rgba(255, 255, 255, 0.02) 45%,
-          transparent 70%
-        );
-      }
-
-      /* Void Mode (Blank Canvas Reveal) */
-      [data-canvas="void"] h2,
-      [data-canvas="void"] li,
-      [data-canvas="void"] footer {
-        opacity: 0;
-        filter: blur(10px);
-        transform: translateY(6px);
-        transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-          filter 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: opacity, filter, transform;
-      }
-
-      [data-canvas="void"] h2.is-revealed,
-      [data-canvas="void"] li.is-revealed,
-      [data-canvas="void"] footer.is-revealed,
-      [data-canvas="void"] h2:hover,
-      [data-canvas="void"] li:hover,
-      [data-canvas="void"] footer:hover,
-      [data-canvas="void"] h2:focus-within,
-      [data-canvas="void"] li:focus-within,
-      [data-canvas="void"] footer:focus-within {
-        opacity: 1 !important;
-        filter: blur(0px) !important;
-        transform: translateY(0) !important;
-      }
-
-      [data-canvas="void"] a:focus-visible {
-        outline: 2px solid var(--text-color);
-        outline-offset: 3px;
-        opacity: 1 !important;
-      }
-
-      /* View Switcher */
-      .view-switch-group {
-        display: inline-flex;
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        overflow: hidden;
-      }
-
-      .view-btn {
-        background: transparent;
-        border: none;
-        border-right: 1px solid var(--border-color);
-        font-family: monospace;
-        font-size: 0.95rem;
-        color: var(--text-color);
-        cursor: pointer;
-        padding: 4px 10px;
-        line-height: 1.2;
-        transition: background-color 0.15s ease, color 0.15s ease;
-      }
-
-      .view-btn:last-child {
-        border-right: none;
-      }
-
-      .view-btn:hover {
-        background-color: var(--link-hover-bg);
-        color: var(--link-hover-color);
-      }
-
-      .view-btn.is-active {
-        background-color: var(--link-hover-bg);
-        color: var(--link-hover-color);
-        font-weight: 700;
-      }
-
-      /* Physics Stage & Arena */
-      .physics-stage {
-        display: block;
-        margin-bottom: 40px;
-      }
-
-      [data-view="plain"] .physics-stage,
-      [data-view="list"] .physics-stage {
-        display: none !important;
-      }
-
-      [data-view="physics"] main {
-        display: none !important;
-      }
-
-      [data-view="physics"] .canvas-hint {
-        display: none !important;
-      }
-
-      [data-view="physics"] #canvas-toggle {
-        display: none !important;
-      }
-
-      [data-view="plain"] #sound-toggle,
-      [data-view="list"] #sound-toggle {
-        display: none !important;
-      }
-
-      .arena-wrapper {
-        position: relative;
-        width: 100%;
-      }
-
-      .physics-arena {
-        width: 100%;
-        height: 560px;
-        max-height: 70vh;
-        min-height: 440px;
-        position: relative;
-        overflow: hidden;
-        border: 1px dashed var(--border-color);
-        border-radius: 6px;
-        background: var(--bg-color);
-        touch-action: none;
-        user-select: none;
-        -webkit-user-select: none;
-        transition: border-color 0.2s ease, background-color 0.2s ease;
-      }
-
-      .arena-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-family: monospace;
-        font-size: 0.85rem;
-        color: var(--desc-color);
-        padding: 4px 2px 8px;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-
-      .arena-controls {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-
-      .arena-btn {
-        background: transparent;
-        border: 1px solid var(--border-color);
-        font-family: monospace;
-        font-size: 0.85rem;
-        color: var(--text-color);
-        cursor: pointer;
-        padding: 2px 8px;
-        border-radius: 4px;
-        transition: background-color 0.15s ease, color 0.15s ease;
-      }
-
-      .arena-btn:hover {
-        background: var(--link-hover-bg);
-        color: var(--link-hover-color);
-      }
-
-      .arena-btn-highlight {
-        font-weight: 600;
-      }
-
-      /* Arena Category Filter Pills */
-      .arena-category-filters {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-bottom: 8px;
-        font-family: monospace;
-        font-size: 0.8rem;
-      }
-
-      .arena-filter-label {
-        color: var(--desc-color);
-        margin-right: 2px;
-      }
-
-      .arena-filter-btn {
-        background: transparent;
-        border: 1px solid var(--border-color);
-        font-family: monospace;
-        font-size: 0.78rem;
-        color: var(--text-color);
-        cursor: pointer;
-        padding: 1px 6px;
-        border-radius: 3px;
-        transition: background-color 0.15s ease, color 0.15s ease;
-      }
-
-      .arena-filter-btn:hover,
-      .arena-filter-btn.is-active {
-        background: var(--link-hover-bg);
-        color: var(--link-hover-color);
-      }
-
-      /* Physics Balls */
-      .p-ball {
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 50%;
-        border: 1.5px solid var(--border-color);
-        background: var(--bg-color);
-        color: var(--text-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        cursor: grab;
-        box-sizing: border-box;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.03s linear, opacity 0.2s ease, filter 0.2s ease;
-        will-change: transform;
-        user-select: none;
-        -webkit-user-select: none;
-      }
-
-      [data-theme="dark"] .p-ball,
-      :root:not([data-theme="light"]) .p-ball {
-        background: #14161b;
-        border-color: #383d46;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-      }
-
-      .p-ball.is-dragging {
-        cursor: grabbing !important;
-        z-index: 100 !important;
-        border-color: var(--text-color) !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
-      }
-
-      .p-ball:hover {
-        border-color: var(--text-color);
-        z-index: 40;
-      }
-
-      .p-ball-name {
-        font-family: monospace;
-        font-weight: 700;
-        line-height: 1.1;
-        pointer-events: none;
-        padding: 0 4px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 90%;
-      }
-
-      .p-ball-tag {
-        font-family: monospace;
-        font-size: 8.5px;
-        opacity: 0.65;
-        margin-top: 2px;
-        pointer-events: none;
-        letter-spacing: -0.2px;
-      }
-
-      /* Specific category styling for balls */
-      .p-ball[data-cat="p2p"] {
-        border-style: solid;
-      }
-
-      .p-ball[data-cat="web"] {
-        border-style: dashed;
-      }
-
-      .p-ball[data-cat="web"] {
-        border-style: double;
-        border-width: 3px;
-      }
-
-      .p-ball[data-cat="art-and-music"] {
-        border-style: double;
-        border-width: 3px;
-      }
-
-      .p-ball[data-cat="contracts"] {
-        border-style: dotted;
-        border-width: 1.5px;
-      }
-
-      .p-ball.is-dimmed {
-        opacity: 0.15 !important;
-        filter: grayscale(0.9) !important;
-      }
-
-      .p-ball.is-highlighted {
-        z-index: 70 !important;
-        border-color: var(--text-color) !important;
-        box-shadow: 0 0 14px rgba(127, 127, 127, 0.4) !important;
-      }
-
-      /* Arena Tooltip/Preview Card */
-      .arena-card {
-        margin-top: 10px;
-        background: var(--bg-color);
-        border: 1px dashed var(--border-color);
-        padding: 9px 14px;
-        border-radius: 6px;
-        font-family: monospace;
-        font-size: 0.85rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        box-shadow: none;
-        min-height: 28px;
-        transition: border-color 0.2s ease, background-color 0.2s ease;
-      }
-
-      .arena-card-info {
-        display: flex;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-
-      .arena-card-cat {
-        display: inline-block;
-        font-family: monospace;
-        font-size: 0.72rem;
-        border: 1px solid var(--border-color);
-        padding: 1px 5px;
-        border-radius: 3px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        opacity: 0.85;
-      }
-
-      .arena-card-title {
-        font-weight: 700;
-      }
-
-      .arena-card-desc {
-        color: var(--desc-color);
-        font-size: 0.82rem;
-      }
-
-      .arena-card-actions {
-        display: flex;
-        gap: 8px;
-      }
-
-      .arena-card-actions a {
-        padding: 2px 8px;
-        border: 1px solid var(--border-color);
-        font-size: 0.82rem;
-        text-decoration: none;
-        border-radius: 3px;
-      }
     </style>
   </head>
 
@@ -769,44 +348,6 @@
               style="text-decoration: none;"
               >[ blog ]</a
             >
-            <div class="view-switch-group" role="group" aria-label="View mode">
-              <button
-                id="view-btn-balloon"
-                class="view-btn is-active"
-                type="button"
-                data-i18n="viewBalloon"
-                title="Switch to balloon view"
-              >
-                [ 🎈 balloon ]
-              </button>
-              <button
-                id="view-btn-plain"
-                class="view-btn"
-                type="button"
-                data-i18n="viewPlain"
-                title="Switch to plain view"
-              >
-                [ 📄 plain ]
-              </button>
-            </div>
-            <button
-              id="sound-toggle"
-              class="theme-toggle"
-              type="button"
-              aria-label="Toggle collision sounds"
-              title="Toggle collision sounds"
-            >
-              <span id="sound-text">[ sound: off ]</span>
-            </button>
-            <button
-              id="canvas-toggle"
-              class="theme-toggle"
-              type="button"
-              aria-label="Show all items"
-              title="Show all items"
-            >
-              <span id="canvas-text">[ all ]</span>
-            </button>
             <button
               id="lang-toggle"
               class="theme-toggle"
@@ -831,45 +372,7 @@
           Francesco Bruno — developer & sound designer.<br />P2P, open-source,
           audio synthesis, creative tech.
         </p>
-        <p class="canvas-hint" id="canvas-hint" data-i18n="canvasHint">
-          // blank canvas · move cursor to materialize
-        </p>
       </header>
-
-      <div id="physics-stage" class="physics-stage">
-        <div class="arena-header">
-          <span id="arena-hint" data-i18n="arenaHint">// gravity canvas · 27 codebase balls · drag &amp; fling</span>
-          <div class="arena-controls">
-            <button id="arena-plain-btn" class="arena-btn arena-btn-highlight" type="button" data-i18n="arenaPlainBtn">[ 📄 plain view ↗ ]</button>
-            <button id="arena-drop-btn" class="arena-btn" type="button" data-i18n="arenaDrop">[ drop ]</button>
-            <button id="arena-gravity-btn" class="arena-btn" type="button" data-i18n="arenaZeroG">[ zero-g ]</button>
-          </div>
-        </div>
-        <div class="arena-category-filters" id="arena-cat-filters">
-          <span class="arena-filter-label" data-i18n="filterLabel">// filter:</span>
-          <button class="arena-filter-btn is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (28) ]</button>
-          <button class="arena-filter-btn" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (5) ]</button>
-          <button class="arena-filter-btn" data-filter="federated" type="button" data-i18n="filterFederated">[ federated (1) ]</button>
-          <button class="arena-filter-btn" data-filter="decentralized" type="button" data-i18n="filterDecentralized">[ decentralized (3) ]</button>
-          <button class="arena-filter-btn" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (4) ]</button>
-          <button class="arena-filter-btn" data-filter="art-and-music" type="button" data-i18n="filterArtMusic">[ art & music (4) ]</button>
-          <button class="arena-filter-btn" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech (2) ]</button>
-          
-          <button class="arena-filter-btn" data-filter="contracts" type="button" data-i18n="filterContracts">[ contracts (9) ]</button>
-        </div>
-        <div id="physics-arena" class="physics-arena"></div>
-        <div id="arena-card" class="arena-card">
-          <div class="arena-card-info">
-            <span id="card-cat" class="arena-card-cat" style="display: none;"></span>
-            <span id="card-title" class="arena-card-title" data-i18n="arenaPrompt">// hover or drag a ball to inspect</span>
-            <span id="card-desc" class="arena-card-desc"></span>
-          </div>
-          <div id="card-actions" class="arena-card-actions" style="display: none;">
-            <a id="card-visit" href="#" target="_blank" rel="noopener" data-i18n="visitLink">Visit ↗</a>
-            <a id="card-code" href="#" target="_blank" rel="noopener" data-i18n="codeLink">Code ↗</a>
-          </div>
-        </div>
-      </div>
 
       <main>
         <div class="plain-nav-bar">
@@ -886,9 +389,6 @@
             
             <button class="cat-filter-btn" data-filter="contracts" type="button" data-i18n="filterContracts">[ contracts (9) ]</button>
           </div>
-          <button id="plain-balloon-btn" class="plain-quick-switch" type="button" data-i18n="plainBalloonBtn">
-            [ 🎈 switch to balloon view ]
-          </button>
         </div>
 
                 <!-- 01a // FEDERATED -->
@@ -1260,8 +760,6 @@
       </footer>
     </div>
 
-    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
-
     <script>
       (function () {
         const toggleBtn = document.getElementById('theme-toggle');
@@ -1270,18 +768,6 @@
         const metaDescription = document.getElementById('meta-description');
         const langToggleBtn = document.getElementById('lang-toggle');
         const langText = document.getElementById('lang-text');
-        const canvasToggleBtn = document.getElementById('canvas-toggle');
-        const canvasText = document.getElementById('canvas-text');
-        const canvasHint = document.getElementById('canvas-hint');
-        const cursorGlow = document.getElementById('cursor-glow');
-        const viewBtnBalloon = document.getElementById('view-btn-balloon');
-        const viewBtnPlain = document.getElementById('view-btn-plain');
-        const arenaPlainBtn = document.getElementById('arena-plain-btn');
-        const plainBalloonBtn = document.getElementById('plain-balloon-btn');
-        const soundToggleBtn = document.getElementById('sound-toggle');
-        const soundText = document.getElementById('sound-text');
-        const arenaDropBtn = document.getElementById('arena-drop-btn');
-        const arenaGravityBtn = document.getElementById('arena-gravity-btn');
 
         const i18n = {
           en: {
@@ -1326,15 +812,6 @@
             themeDark: '[ dark ]',
             themeLight: '[ light ]',
             themeAria: 'Toggle theme',
-            canvasVoid: '[ void ]',
-            canvasAll: '[ all ]',
-            canvasAriaVoid: 'Show all items',
-            canvasAriaAll: 'Switch to void mode',
-            canvasHint: '// blank canvas · move cursor to materialize',
-            viewBalloon: '[ 🎈 balloon ]',
-            viewPlain: '[ 📄 plain ]',
-            arenaPlainBtn: '[ 📄 plain view ↗ ]',
-            plainBalloonBtn: '[ 🎈 switch to balloon view ]',
             filterLabel: '// filter:',
             filterAll: '[ all (28) ]',
             filterP2P: '[ p2p apps (5) ]',
@@ -1342,14 +819,6 @@
             filterAudio: '[ audio tech (1) ]',
             filterMusic: '[ music (4) ]',
             filterConnect: '[ connect (9) ]',
-            soundOn: '[ sound: on ]',
-            soundOff: '[ sound: off ]',
-            arenaHint: '// gravity canvas · 27 codebase balls · drag & fling',
-            arenaPrompt: '// hover, tap or drag a ball to inspect',
-            arenaDrop: '[ drop ]',
-            arenaZeroG: '[ zero-g ]',
-            arenaGravity: '[ gravity ]',
-            visitLink: 'Visit ↗',
           },
           it: {
             metaDesc:
@@ -1392,15 +861,6 @@
             themeDark: '[ scuro ]',
             themeLight: '[ chiaro ]',
             themeAria: 'Cambia tema',
-            canvasVoid: '[ vuoto ]',
-            canvasAll: '[ tutti ]',
-            canvasAriaVoid: 'Mostra tutti gli elementi',
-            canvasAriaAll: 'Passa alla modalità vuoto',
-            canvasHint: '// pagina vuota · muovi il cursore per far comparire i contenuti',
-            viewBalloon: '[ 🎈 balloon ]',
-            viewPlain: '[ 📄 plain ]',
-            arenaPlainBtn: '[ 📄 vista plain ↗ ]',
-            plainBalloonBtn: '[ 🎈 passa a vista balloon ]',
             filterLabel: '// filtra:',
             filterAll: '[ tutti (27) ]',
             filterP2P: '[ app p2p (8) ]',
@@ -1408,14 +868,6 @@
             filterAudio: '[ audio tech (1) ]',
             filterMusic: '[ musica (4) ]',
             filterConnect: '[ contatti (9) ]',
-            soundOn: '[ audio: on ]',
-            soundOff: '[ audio: off ]',
-            arenaHint: '// canvas gravitazionale · 27 sfere codebase · trascina e lancia',
-            arenaPrompt: '// tocca o trascina una sfera per ispezionarla',
-            arenaDrop: '[ fai cadere ]',
-            arenaZeroG: '[ zero-g ]',
-            arenaGravity: '[ gravità ]',
-            visitLink: 'Visita ↗',
           },
         };
 
@@ -1432,22 +884,7 @@
           return browserLang.startsWith('it') ? 'it' : 'en';
         }
 
-        function getCurrentCanvasMode() {
-          const saved = localStorage.getItem('canvas');
-          if (saved === 'void' || saved === 'all') return saved;
-          return 'all';
-        }
-
-        function getCurrentView() {
-          const saved = localStorage.getItem('view');
-          if (saved === 'plain' || saved === 'list') return 'plain';
-          return 'physics';
-        }
-
         let currentLang = getCurrentLang();
-        let currentCanvas = getCurrentCanvasMode();
-        let currentView = getCurrentView();
-        let soundEnabled = localStorage.getItem('sound') === 'on';
 
         function updateThemeControls(theme) {
           const dict = i18n[currentLang] || i18n.en;
@@ -1457,34 +894,6 @@
           if (toggleBtn) {
             toggleBtn.setAttribute('aria-label', dict.themeAria);
             toggleBtn.setAttribute('title', dict.themeAria);
-          }
-        }
-
-        function updateCanvasControls(mode) {
-          const dict = i18n[currentLang] || i18n.en;
-          if (canvasText) {
-            canvasText.textContent = mode === 'void' ? dict.canvasAll : dict.canvasVoid;
-          }
-          if (canvasToggleBtn) {
-            const ariaLabel = mode === 'void' ? dict.canvasAriaVoid : dict.canvasAriaAll;
-            canvasToggleBtn.setAttribute('aria-label', ariaLabel);
-            canvasToggleBtn.setAttribute('title', ariaLabel);
-          }
-        }
-
-        function updateViewControls(view) {
-          if (viewBtnBalloon) {
-            viewBtnBalloon.classList.toggle('is-active', view === 'physics');
-          }
-          if (viewBtnPlain) {
-            viewBtnPlain.classList.toggle('is-active', view === 'plain');
-          }
-        }
-
-        function updateSoundControls() {
-          const dict = i18n[currentLang] || i18n.en;
-          if (soundText) {
-            soundText.textContent = soundEnabled ? dict.soundOn : dict.soundOff;
           }
         }
 
@@ -1498,46 +907,6 @@
           updateThemeControls(theme);
           if (metaThemeColor) {
             metaThemeColor.setAttribute('content', theme === 'dark' ? '#0d0e12' : '#ffffff');
-          }
-        }
-
-        function applyCanvasMode(mode, save) {
-          currentCanvas = mode;
-          document.documentElement.setAttribute('data-canvas', mode);
-          if (save) {
-            try {
-              localStorage.setItem('canvas', mode);
-            } catch (e) {}
-          }
-          updateCanvasControls(mode);
-
-          const revealTargets = document.querySelectorAll('main h2, main li, footer');
-          if (mode === 'all') {
-            revealTargets.forEach((el) => el.classList.add('is-revealed'));
-            if (canvasHint) canvasHint.classList.add('fade-out');
-            if (cursorGlow) cursorGlow.style.opacity = '0';
-          } else {
-            revealTargets.forEach((el) => el.classList.remove('is-revealed'));
-            if (canvasHint) canvasHint.classList.remove('fade-out');
-            hintDismissed = false;
-          }
-        }
-
-        function applyView(view, save) {
-          const normalized = (view === 'plain' || view === 'list') ? 'plain' : 'physics';
-          currentView = normalized;
-          document.documentElement.setAttribute('data-view', normalized);
-          if (save) {
-            try {
-              localStorage.setItem('view', normalized);
-            } catch (e) {}
-          }
-          updateViewControls(normalized);
-
-          if (normalized === 'physics') {
-            startPhysics();
-          } else {
-            stopPhysics();
           }
         }
 
@@ -1573,276 +942,6 @@
           }
 
           updateThemeControls(getCurrentTheme());
-          updateCanvasControls(currentCanvas);
-          updateViewControls(currentView);
-          updateSoundControls();
-        }
-
-        // --- Proximity Reveal Logic (Plain Mode) ---
-        const revealTargets = Array.from(document.querySelectorAll('main h2, main li, footer'));
-        let glowVisible = false;
-        let hintDismissed = false;
-
-        function distToRect(x, y, rect) {
-          const dx = Math.max(rect.left - x, 0, x - rect.right);
-          const dy = Math.max(rect.top - y, 0, y - rect.bottom);
-          return Math.sqrt(dx * dx + dy * dy);
-        }
-
-        function checkProximity(x, y) {
-          if (currentCanvas !== 'void' || currentView !== 'plain') return;
-
-          let anyRevealed = false;
-          revealTargets.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            if (distToRect(x, y, rect) < 90) {
-              if (!el.classList.contains('is-revealed')) {
-                el.classList.add('is-revealed');
-                anyRevealed = true;
-                const section = el.closest('section');
-                if (section) {
-                  const h2 = section.querySelector('h2');
-                  if (h2) h2.classList.add('is-revealed');
-                }
-              }
-            }
-          });
-
-          if (anyRevealed && !hintDismissed) {
-            hintDismissed = true;
-            if (canvasHint) canvasHint.classList.add('fade-out');
-          }
-        }
-
-        window.addEventListener('pointermove', function (e) {
-          if (currentCanvas === 'void' && currentView === 'plain') {
-            if (cursorGlow) {
-              cursorGlow.style.left = e.clientX + 'px';
-              cursorGlow.style.top = e.clientY + 'px';
-              if (!glowVisible && e.pointerType !== 'touch') {
-                cursorGlow.style.opacity = '1';
-                glowVisible = true;
-              }
-            }
-            checkProximity(e.clientX, e.clientY);
-          }
-        });
-
-        window.addEventListener('pointerleave', function () {
-          if (cursorGlow) {
-            cursorGlow.style.opacity = '0';
-            glowVisible = false;
-          }
-        });
-
-        window.addEventListener('touchmove', function (e) {
-          if (e.touches && e.touches.length > 0) {
-            checkProximity(e.touches[0].clientX, e.touches[0].clientY);
-          }
-        }, { passive: true });
-
-        window.addEventListener('touchstart', function (e) {
-          if (e.touches && e.touches.length > 0) {
-            checkProximity(e.touches[0].clientX, e.touches[0].clientY);
-          }
-        }, { passive: true });
-
-
-        // ==========================================
-        // 2D PHYSICS ENGINE & WEB AUDIO SYNTH
-        // ==========================================
-
-        let audioCtx = null;
-        let lastSoundTime = 0;
-        const PENTATONIC = [
-          130.81, 146.83, 164.81, 196.0, 220.0,
-          261.63, 293.66, 329.63, 392.0, 440.0,
-          523.25, 587.33, 659.25, 783.99
-        ];
-
-        function initAudio() {
-          if (!audioCtx) {
-            const AC = window.AudioContext || window.webkitAudioContext;
-            audioCtx = new AC();
-          }
-          if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-          }
-        }
-
-        function playBounceSound(radius, speed) {
-          if (!soundEnabled) return;
-          const now = performance.now();
-          if (now - lastSoundTime < 50) return;
-          lastSoundTime = now;
-
-          try {
-            initAudio();
-            if (!audioCtx) return;
-
-            const rNorm = Math.max(0, Math.min(1, (radius - 24) / 34));
-            const noteIdx = Math.floor((1 - rNorm) * (PENTATONIC.length - 1));
-            const freq = PENTATONIC[noteIdx] || 261.63;
-
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-
-            osc.type = rNorm > 0.5 ? 'triangle' : 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(freq * 0.96, audioCtx.currentTime + 0.08);
-
-            const amp = Math.min(0.08, Math.max(0.01, (speed / 18) * 0.08));
-            gain.gain.setValueAtTime(amp, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.09);
-
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.1);
-          } catch (e) {}
-        }
-
-        const BALLS_CONFIG = [
-          { name: 'Delia', url: 'https://delia.scobrudot.dev', code: 'https://github.com/scobru/delia', descKey: 'descDelia', baseRadius: 54, cat: 'audio-tech' },
-          { name: 'Tunecamp', url: 'https://tunecamp.org/', code: 'https://github.com/scobru/tunecamp', descKey: 'descTunecamp', baseRadius: 58, cat: 'federated' },
-          { name: 'Smollog', url: 'https://smollog.scobrudot.dev/', code: 'https://github.com/scobru/smollog', descKey: 'descSmollog', baseRadius: 46, cat: 'decentralized' },
-          { name: 'Onepick', url: 'https://onepick.scobrudot.dev/', code: 'https://github.com/scobru/onepick', descKey: 'descOnepick', baseRadius: 46, cat: 'decentralized' },
-          { name: 'FID', url: 'https://fid.scobrudot.dev/', code: 'https://github.com/scobru/fid', descKey: 'descFid', baseRadius: 50, cat: 'web' },
-          { name: 'Sidecamp', url: 'https://www.tunecamp.org/sidecamp.html', code: 'https://github.com/scobru/sidecamp', descKey: 'descSidecamp', baseRadius: 50, cat: 'p2p' },
-          { name: 'Linda', url: 'https://github.com/scobru/linda', code: 'https://github.com/scobru/linda', descKey: 'descLinda', baseRadius: 44, cat: 'p2p' },
-          { name: 'Nullroute', url: 'https://nullroute.scobrudot.dev/', code: 'https://github.com/scobru/nullroute', descKey: 'descNullroute', baseRadius: 44, cat: 'decentralized' },
-          { name: 'Wormhole', url: 'https://wormhole.scobrudot.dev/', code: 'https://github.com/scobru/wormhole', descKey: 'descWormhole', baseRadius: 42, cat: 'p2p' },
-          { name: 'Whiterabbit', url: 'https://whiterabbit.scobrudot.dev', code: 'https://github.com/scobru/whiterabbit', descKey: 'descWhiterabbit', baseRadius: 40, cat: 'p2p' },
-          { name: 'Zenvault', url: 'https://zenvault.scobrudot.dev', code: 'https://github.com/scobru/zenvault', descKey: 'descZenvault', baseRadius: 40, cat: 'decentralized' },
-          { name: 'Zen', url: 'https://github.com/scobru/zen', code: 'https://github.com/scobru/zen', descKey: 'descZen', baseRadius: 38, cat: 'web' },
-          { name: 'Delay', url: 'https://delay.scobrudot.dev', code: 'https://github.com/scobru/delay', descKey: 'descDelay', baseRadius: 38, cat: 'web' },
-          { name: 'CLI Tools', url: 'https://github.com/scobru/cli-tools', code: 'https://github.com/scobru/cli-tools', descKey: 'descCliTools', baseRadius: 34, cat: 'web' },
-          { name: 'Sudo Records', url: 'https://sudorecords.scobrudot.dev', descKey: 'descSudoRecords', baseRadius: 38, cat: 'art-and-music' },
-          { name: 'Homologo', url: 'https://homologomusic.bandcamp.com', descKey: 'descHomologo', baseRadius: 36, cat: 'art-and-music' },
-          { name: 'Fade', url: 'https://fademusik.bandcamp.com', descKey: 'descFade', baseRadius: 36, cat: 'art-and-music' },
-          { name: 'Zima Blue', url: 'https://zimablue.bandcamp.com', descKey: 'descZimaBlue', baseRadius: 36, cat: 'art-and-music' },
-          { name: 'Cabasa', url: 'https://cabasa.scobrudot.dev', code: 'https://github.com/scobru/cabasa', descKey: 'descCabasa', baseRadius: 36, cat: 'audio-tech' },
-          { name: 'GitHub', url: 'https://github.com/scobru', baseRadius: 28, cat: 'contracts' },
-          { name: 'Twitter', url: 'https://twitter.com/scobru1988', baseRadius: 26, cat: 'contracts' },
-          { name: 'Mastodon', url: 'https://livellosegreto.it/@scobru', baseRadius: 26, cat: 'contracts' },
-          { name: 'Telegram', url: 'https://t.me/scobru', baseRadius: 26, cat: 'contracts' },
-          { name: 'Instagram', url: 'https://instagram.com/francescobruno', baseRadius: 26, cat: 'contracts' },
-          { name: 'YouTube', url: 'https://youtube.com/scobru88', baseRadius: 26, cat: 'contracts' },
-          { name: 'Audius', url: 'https://audius.co/francescobruno', baseRadius: 26, cat: 'contracts' },
-          { name: 'Spotify', url: 'https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7', baseRadius: 26, cat: 'contracts' },
-          { name: 'Email', url: 'mailto:scobru1988@gmail.com', baseRadius: 26, cat: 'contracts' },
-        ];
-
-        let physicsBalls = [];
-        let physicsRunning = false;
-        let physicsRafId = null;
-        let zeroG = false;
-        let activeArenaFilter = 'all';
-        let draggedBall = null;
-        let dragStartX = 0;
-        let dragStartY = 0;
-        let dragStartTime = 0;
-        let lastPointerX = 0;
-        let lastPointerY = 0;
-        let pointerVx = 0;
-        let pointerVy = 0;
-
-        function createBallDOM(config) {
-          const el = document.createElement('div');
-          el.className = 'p-ball';
-          el.setAttribute('data-cat', config.cat);
-
-          const nameEl = document.createElement('div');
-          nameEl.className = 'p-ball-name';
-          nameEl.textContent = config.name;
-          el.appendChild(nameEl);
-
-          if (config.baseRadius >= 36) {
-            const tag = document.createElement('div');
-            tag.className = 'p-ball-tag';
-            let catTag = '[' + config.cat + ']';
-            if (config.cat === 'audio') catTag = '[audio-dsp]';
-            if (config.cat === 'p2p') catTag = config.code ? '[p2p+code]' : '[p2p]';
-            if (config.cat === 'infra') catTag = config.code ? '[infra+code]' : '[infra]';
-            tag.textContent = catTag;
-            el.appendChild(tag);
-          }
-
-          return el;
-        }
-
-        function showCard(ball) {
-          const card = document.getElementById('arena-card');
-          const cardCat = document.getElementById('card-cat');
-          const cardTitle = document.getElementById('card-title');
-          const cardDesc = document.getElementById('card-desc');
-          const cardActions = document.getElementById('card-actions');
-          const cardVisit = document.getElementById('card-visit');
-          const cardCode = document.getElementById('card-code');
-          if (!card) return;
-
-          const dict = i18n[currentLang] || i18n.en;
-          if (cardCat) {
-            const catMapEn = {
-              p2p: 'P2P APP',
-              infra: 'INFRA & PROTOCOL',
-              audio: 'AUDIO TECH',
-              music: 'MUSIC & ART',
-              connect: 'CONNECT',
-            };
-            const catMapIt = {
-              p2p: 'APP P2P',
-              infra: 'INFRA & PROTOCOLLI',
-              audio: 'AUDIO TECH',
-              music: 'MUSICA & ARTE',
-              connect: 'CONTATTI',
-            };
-            const map = currentLang === 'it' ? catMapIt : catMapEn;
-            cardCat.textContent = map[ball.cat] || ball.cat.toUpperCase();
-            cardCat.setAttribute('data-cat', ball.cat);
-            cardCat.style.display = 'inline-block';
-          }
-
-          cardTitle.textContent = ball.name;
-
-          let desc = ball.descKey && dict[ball.descKey] ? dict[ball.descKey] : '';
-          desc = desc.replace(/&amp;/g, '&');
-          cardDesc.textContent = desc ? '— ' + desc : '';
-
-          let hasAction = false;
-          if (ball.url) {
-            cardVisit.href = ball.url;
-            cardVisit.style.display = 'inline-block';
-            hasAction = true;
-          } else {
-            cardVisit.style.display = 'none';
-          }
-
-          if (ball.code) {
-            cardCode.href = ball.code;
-            cardCode.style.display = 'inline-block';
-            hasAction = true;
-          } else {
-            cardCode.style.display = 'none';
-          }
-
-          if (cardActions) {
-            cardActions.style.display = hasAction ? 'flex' : 'none';
-          }
-        }
-
-        function applyArenaFilter(cat) {
-          activeArenaFilter = cat;
-          const filterBtns = document.querySelectorAll('#arena-cat-filters .arena-filter-btn');
-          filterBtns.forEach(btn => {
-            btn.classList.toggle('is-active', btn.getAttribute('data-filter') === cat);
-          });
-          physicsBalls.forEach(b => {
-            const matches = cat === 'all' || b.cat === cat;
-            b.el.classList.toggle('is-dimmed', !matches);
-            b.el.classList.toggle('is-highlighted', matches && cat !== 'all');
-          });
         }
 
         function applyPlainFilter(cat) {
@@ -1858,265 +957,10 @@
           });
         }
 
-        function initPhysicsArena() {
-          const arena = document.getElementById('physics-arena');
-          if (!arena || physicsBalls.length > 0) return;
-
-          arena.innerHTML = '';
-
-          BALLS_CONFIG.forEach((cfg) => {
-            const el = createBallDOM(cfg);
-            arena.appendChild(el);
-
-            const ball = {
-              ...cfg,
-              el,
-              x: 0,
-              y: -500,
-              vx: 0,
-              vy: 0,
-              r: cfg.baseRadius,
-            };
-
-            el.addEventListener('pointerdown', (e) => onBallPointerDown(e, ball));
-            el.addEventListener('pointerenter', () => showCard(ball));
-
-            physicsBalls.push(ball);
-          });
-
-          dropBalls();
-        }
-
-        function dropBalls() {
-          const arena = document.getElementById('physics-arena');
-          if (!arena) return;
-
-          const W = arena.clientWidth || 600;
-          const H = arena.clientHeight || 500;
-          const scale = Math.min(1.05, Math.max(0.6, W / 650));
-
-          physicsBalls.forEach((b, i) => {
-            b.r = Math.round(b.baseRadius * scale);
-            b.el.style.width = (b.r * 2) + 'px';
-            b.el.style.height = (b.r * 2) + 'px';
-
-            const nameEl = b.el.querySelector('.p-ball-name');
-            if (nameEl) {
-              nameEl.style.fontSize = Math.max(9, Math.round(b.r * 0.32)) + 'px';
-            }
-
-            const col = i % 7;
-            const row = Math.floor(i / 7);
-            b.x = b.r + (col / 6.5) * (W - b.r * 2);
-            b.y = -30 - row * (b.r * 2 + 16) - Math.random() * 20;
-            b.vx = (Math.random() - 0.5) * 1.5;
-            b.vy = Math.random() * 2 + 0.5;
-          });
-        }
-
-        function updatePhysics() {
-          if (!physicsRunning) return;
-
-          const arena = document.getElementById('physics-arena');
-          if (!arena) return;
-
-          const W = arena.clientWidth;
-          const H = arena.clientHeight;
-
-          const SUB_STEPS = 2;
-          const subDt = 1 / SUB_STEPS;
-          const g = zeroG ? 0 : 0.36 * subDt;
-          const restitution = 0.68;
-          const friction = 0.995;
-
-          for (let step = 0; step < SUB_STEPS; step++) {
-            for (let i = 0; i < physicsBalls.length; i++) {
-              const b = physicsBalls[i];
-              if (b === draggedBall) continue;
-
-              b.vy += g;
-              b.x += b.vx * subDt;
-              b.y += b.vy * subDt;
-              b.vx *= friction;
-              b.vy *= friction;
-
-              // Floor
-              if (b.y + b.r > H) {
-                b.y = H - b.r;
-                if (Math.abs(b.vy) > 1.8) playBounceSound(b.r, Math.abs(b.vy));
-                b.vy = -b.vy * restitution;
-                b.vx *= 0.95;
-              }
-              // Ceiling
-              if (b.y - b.r < 0) {
-                b.y = b.r;
-                b.vy = -b.vy * restitution;
-              }
-              // Left Wall
-              if (b.x - b.r < 0) {
-                b.x = b.r;
-                if (Math.abs(b.vx) > 1.8) playBounceSound(b.r, Math.abs(b.vx));
-                b.vx = -b.vx * restitution;
-              }
-              // Right Wall
-              if (b.x + b.r > W) {
-                b.x = W - b.r;
-                if (Math.abs(b.vx) > 1.8) playBounceSound(b.r, Math.abs(b.vx));
-                b.vx = -b.vx * restitution;
-              }
-            }
-
-            // Collisions
-            for (let i = 0; i < physicsBalls.length; i++) {
-              const b1 = physicsBalls[i];
-              for (let j = i + 1; j < physicsBalls.length; j++) {
-                const b2 = physicsBalls[j];
-                const dx = b2.x - b1.x;
-                const dy = b2.y - b1.y;
-                const distSq = dx * dx + dy * dy;
-                const minDist = b1.r + b2.r;
-
-                if (distSq < minDist * minDist && distSq > 0.001) {
-                  const dist = Math.sqrt(distSq);
-                  const overlap = minDist - dist;
-                  const nx = dx / dist;
-                  const ny = dy / dist;
-
-                  const m1 = b1.r * b1.r;
-                  const m2 = b2.r * b2.r;
-                  const totalM = m1 + m2;
-
-                  if (b1 !== draggedBall) {
-                    b1.x -= nx * overlap * (m2 / totalM);
-                    b1.y -= ny * overlap * (m2 / totalM);
-                  }
-                  if (b2 !== draggedBall) {
-                    b2.x += nx * overlap * (m1 / totalM);
-                    b2.y += ny * overlap * (m1 / totalM);
-                  }
-
-                  const kx = b1.vx - b2.vx;
-                  const ky = b1.vy - b2.vy;
-                  const p = 2 * (nx * kx + ny * ky) / totalM;
-
-                  if (b1 !== draggedBall) {
-                    b1.vx -= p * m2 * nx * restitution;
-                    b1.vy -= p * m2 * ny * restitution;
-                  }
-                  if (b2 !== draggedBall) {
-                    b2.vx += p * m1 * nx * restitution;
-                    b2.vy += p * m1 * ny * restitution;
-                  }
-
-                  const relSpeed = Math.sqrt(kx * kx + ky * ky);
-                  if (relSpeed > 2.0) {
-                    playBounceSound(Math.min(b1.r, b2.r), relSpeed);
-                  }
-                }
-              }
-            }
-          }
-
-          // Apply DOM transforms
-          for (let i = 0; i < physicsBalls.length; i++) {
-            const b = physicsBalls[i];
-            b.el.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`;
-          }
-
-          physicsRafId = requestAnimationFrame(updatePhysics);
-        }
-
-        function startPhysics() {
-          if (physicsRunning) return;
-          physicsRunning = true;
-          initPhysicsArena();
-          physicsRafId = requestAnimationFrame(updatePhysics);
-        }
-
-        function stopPhysics() {
-          physicsRunning = false;
-          if (physicsRafId) {
-            cancelAnimationFrame(physicsRafId);
-            physicsRafId = null;
-          }
-        }
-
-        function onBallPointerDown(e, ball) {
-          draggedBall = ball;
-          draggedBall.el.classList.add('is-dragging');
-          dragStartX = e.clientX;
-          dragStartY = e.clientY;
-          dragStartTime = performance.now();
-          lastPointerX = e.clientX;
-          lastPointerY = e.clientY;
-          pointerVx = 0;
-          pointerVy = 0;
-          ball.vx = 0;
-          ball.vy = 0;
-
-          showCard(ball);
-        }
-
-        window.addEventListener('pointermove', function (e) {
-          if (!draggedBall) return;
-          const arena = document.getElementById('physics-arena');
-          if (!arena) return;
-          const rect = arena.getBoundingClientRect();
-
-          const currentX = e.clientX - rect.left;
-          const currentY = e.clientY - rect.top;
-
-          pointerVx = (e.clientX - lastPointerX) * 1.3;
-          pointerVy = (e.clientY - lastPointerY) * 1.3;
-          lastPointerX = e.clientX;
-          lastPointerY = e.clientY;
-
-          draggedBall.x = Math.max(draggedBall.r, Math.min(rect.width - draggedBall.r, currentX));
-          draggedBall.y = Math.max(draggedBall.r, Math.min(rect.height - draggedBall.r, currentY));
-        });
-
-        window.addEventListener('pointerup', function (e) {
-          if (!draggedBall) return;
-          const dist = Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY);
-          const time = performance.now() - dragStartTime;
-
-          draggedBall.el.classList.remove('is-dragging');
-
-          if (dist < 8 && time < 350) {
-            if (draggedBall.url) {
-              window.open(draggedBall.url, '_blank', 'noopener');
-            }
-          } else {
-            draggedBall.vx = Math.max(-25, Math.min(25, pointerVx));
-            draggedBall.vy = Math.max(-25, Math.min(25, pointerVy));
-          }
-
-          draggedBall = null;
-        });
-
-        window.addEventListener('resize', function () {
-          if (currentView === 'physics' && physicsBalls.length > 0) {
-            const arena = document.getElementById('physics-arena');
-            if (arena) {
-              const W = arena.clientWidth;
-              const H = arena.clientHeight;
-              const scale = Math.min(1.05, Math.max(0.6, W / 650));
-              physicsBalls.forEach((b) => {
-                b.r = Math.round(b.baseRadius * scale);
-                b.el.style.width = (b.r * 2) + 'px';
-                b.el.style.height = (b.r * 2) + 'px';
-                b.x = Math.max(b.r, Math.min(W - b.r, b.x));
-                b.y = Math.max(b.r, Math.min(H - b.r, b.y));
-              });
-            }
-          }
-        });
-
         // Initialize state
         applyTheme(getCurrentTheme(), false);
         applyLang(currentLang, false);
-        applyCanvasMode(currentCanvas, false);
-        applyView(currentView, false);
+        applyPlainFilter('all');
 
         if (toggleBtn) {
           toggleBtn.addEventListener('click', function () {
@@ -2133,45 +977,6 @@
           });
         }
 
-        if (canvasToggleBtn) {
-          canvasToggleBtn.addEventListener('click', function () {
-            const nextMode = currentCanvas === 'void' ? 'all' : 'void';
-            applyCanvasMode(nextMode, true);
-          });
-        }
-
-        if (viewBtnBalloon) {
-          viewBtnBalloon.addEventListener('click', function () {
-            applyView('physics', true);
-          });
-        }
-
-        if (viewBtnPlain) {
-          viewBtnPlain.addEventListener('click', function () {
-            applyView('plain', true);
-          });
-        }
-
-        if (arenaPlainBtn) {
-          arenaPlainBtn.addEventListener('click', function () {
-            applyView('plain', true);
-          });
-        }
-
-        if (plainBalloonBtn) {
-          plainBalloonBtn.addEventListener('click', function () {
-            applyView('physics', true);
-          });
-        }
-
-        const arenaFilterButtons = document.querySelectorAll('#arena-cat-filters .arena-filter-btn');
-        arenaFilterButtons.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            const cat = this.getAttribute('data-filter');
-            applyArenaFilter(cat);
-          });
-        });
-
         const plainFilterButtons = document.querySelectorAll('#plain-cat-filters .cat-filter-btn');
         plainFilterButtons.forEach(function (btn) {
           btn.addEventListener('click', function () {
@@ -2179,31 +984,6 @@
             applyPlainFilter(cat);
           });
         });
-
-        if (soundToggleBtn) {
-          soundToggleBtn.addEventListener('click', function () {
-            soundEnabled = !soundEnabled;
-            try {
-              localStorage.setItem('sound', soundEnabled ? 'on' : 'off');
-            } catch (e) {}
-            if (soundEnabled) initAudio();
-            updateSoundControls();
-          });
-        }
-
-        if (arenaDropBtn) {
-          arenaDropBtn.addEventListener('click', function () {
-            dropBalls();
-          });
-        }
-
-        if (arenaGravityBtn) {
-          arenaGravityBtn.addEventListener('click', function () {
-            zeroG = !zeroG;
-            const dict = i18n[currentLang] || i18n.en;
-            arenaGravityBtn.textContent = zeroG ? dict.arenaGravity : dict.arenaZeroG;
-          });
-        }
 
         window
           .matchMedia('(prefers-color-scheme: dark)')
