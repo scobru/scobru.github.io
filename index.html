@@ -266,7 +266,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
+        gap: 10px;
       }
 
       .project-title {
@@ -275,7 +275,7 @@
         width: 100%;
         font-weight: 700;
         font-size: clamp(1.3rem, 4.4vw, 2.2rem);
-        line-height: 1.25;
+        line-height: 1.05;
       }
 
       /* the main title link stretches across the whole card */
@@ -286,8 +286,10 @@
         justify-content: center;
         white-space: nowrap;
         text-decoration: none;
-        border-bottom: 2px solid currentColor;
-        padding-bottom: 2px;
+        /* em units keep the rule proportional to the fitted type, and the
+           padding keeps descenders (p, g, y) clear of it */
+        border-bottom: 0.035em solid currentColor;
+        padding-bottom: 0.16em;
       }
 
       /* once the letters are split, spread them edge to edge */
@@ -1014,6 +1016,8 @@
         // the letters are laid out edge to edge, and the font only shrinks if
         // the name is too long to fit on one line.
         const SRC_LINK_GAP = 7;
+        const TITLE_MAX_PX = 76;
+        const TITLE_MAX_RATIO = 0.13;
 
         function splitTitleLetters(link) {
           if (link.dataset.lettersSplit === '1') return;
@@ -1049,9 +1053,16 @@
             link.querySelectorAll('.title-letter').forEach(function (letter) {
               natural += letter.getBoundingClientRect().width;
             });
-            if (natural > available && natural > 0) {
-              const size = parseFloat(getComputedStyle(link).fontSize);
-              link.style.fontSize = size * (available / natural) + 'px';
+            if (natural <= 0) return;
+
+            // Grow the type until the word itself fills the card (capped, so a
+            // three-letter name doesn't become a billboard); whatever slack is
+            // left is shared out between the letters.
+            const base = parseFloat(getComputedStyle(link).fontSize);
+            const maxSize = Math.min(TITLE_MAX_PX, available * TITLE_MAX_RATIO);
+            const size = Math.min(base * (available / natural), maxSize);
+            if (Math.abs(size - base) > 0.5) {
+              link.style.fontSize = size + 'px';
             }
           });
         }
