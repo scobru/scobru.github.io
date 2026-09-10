@@ -270,16 +270,33 @@
       }
 
       .project-title {
-        display: block;
+        display: flex;
+        align-items: baseline;
         width: 100%;
-        text-align: center;
         font-weight: 700;
-        font-size: 1.6rem;
+        font-size: clamp(1.3rem, 4.4vw, 2.2rem);
         line-height: 1.25;
-        letter-spacing: -0.5px;
+      }
+
+      /* the main title link stretches across the whole card */
+      .project-title > a:not(.src-link) {
+        flex: 1 1 auto;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        white-space: nowrap;
+        text-decoration: none;
+        border-bottom: 2px solid currentColor;
+        padding-bottom: 2px;
+      }
+
+      /* once the letters are split, spread them edge to edge */
+      .project-title > a.is-fitted {
+        justify-content: space-between;
       }
 
       .src-link {
+        flex: 0 0 auto;
         font-family: monospace;
         font-weight: 400;
         font-size: 0.78rem;
@@ -993,6 +1010,52 @@
           updateThemeControls(getCurrentTheme());
         }
 
+        // Stretch every project title so it spans the full width of its card:
+        // the letters are laid out edge to edge, and the font only shrinks if
+        // the name is too long to fit on one line.
+        const SRC_LINK_GAP = 7;
+
+        function splitTitleLetters(link) {
+          if (link.dataset.lettersSplit === '1') return;
+          const label = link.textContent;
+          link.setAttribute('aria-label', label);
+          link.textContent = '';
+          Array.prototype.forEach.call(label, function (char) {
+            const span = document.createElement('span');
+            span.className = 'title-letter';
+            span.setAttribute('aria-hidden', 'true');
+            span.textContent = char === ' ' ? '\u00a0' : char;
+            link.appendChild(span);
+          });
+          link.classList.add('is-fitted');
+          link.dataset.lettersSplit = '1';
+        }
+
+        function fitProjectTitles() {
+          document.querySelectorAll('.project-title').forEach(function (title) {
+            const link = title.querySelector('a:not(.src-link)');
+            if (!link) return;
+            splitTitleLetters(link);
+            link.style.fontSize = '';
+
+            const srcLink = title.querySelector('.src-link');
+            const srcWidth = srcLink
+              ? srcLink.getBoundingClientRect().width + SRC_LINK_GAP
+              : 0;
+            const available = title.clientWidth - srcWidth;
+            if (available <= 0) return;
+
+            let natural = 0;
+            link.querySelectorAll('.title-letter').forEach(function (letter) {
+              natural += letter.getBoundingClientRect().width;
+            });
+            if (natural > available && natural > 0) {
+              const size = parseFloat(getComputedStyle(link).fontSize);
+              link.style.fontSize = size * (available / natural) + 'px';
+            }
+          });
+        }
+
         function applyPlainFilter(cat) {
           const filterBtns = document.querySelectorAll('#plain-cat-filters .cat-filter-btn');
           filterBtns.forEach(btn => {
@@ -1004,12 +1067,24 @@
             const matches = cat === 'all' || secCat === cat;
             sec.style.display = matches ? 'block' : 'none';
           });
+          fitProjectTitles();
         }
 
         // Initialize state
         applyTheme(getCurrentTheme(), false);
         applyLang(currentLang, false);
         applyPlainFilter('all');
+        fitProjectTitles();
+
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(fitProjectTitles);
+        }
+
+        let fitTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(fitTimer);
+          fitTimer = setTimeout(fitProjectTitles, 100);
+        });
 
         if (toggleBtn) {
           toggleBtn.addEventListener('click', function () {
