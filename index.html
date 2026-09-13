@@ -376,6 +376,85 @@
       .sys-status {
         font-family: monospace;
       }
+
+      /* Cabasa IPFS Video Reel */
+      .project-video-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px auto 2px auto;
+        background: transparent;
+        border: 1px dashed var(--border-color);
+        color: var(--text-color);
+        font-family: monospace;
+        font-size: 0.8rem;
+        padding: 4px 11px;
+        border-radius: 4px;
+        cursor: pointer;
+        line-height: 1.3;
+        transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      }
+
+      .project-video-toggle:hover {
+        background-color: var(--link-hover-bg);
+        color: var(--link-hover-color);
+        border-style: solid;
+      }
+
+      .project-video-drawer {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 14px;
+        animation: videoFadeIn 0.25s ease;
+      }
+
+      .project-video-drawer.is-open {
+        display: flex;
+      }
+
+      @keyframes videoFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .video-player-frame {
+        width: 100%;
+        max-width: 290px;
+        aspect-ratio: 9 / 16;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        background: #000000;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .video-player-frame video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .video-meta-badge {
+        margin-top: 8px;
+        font-family: monospace;
+        font-size: 0.72rem;
+        color: var(--desc-color);
+        text-align: center;
+        opacity: 0.85;
+      }
+
+      .video-meta-badge a {
+        color: inherit;
+        font-family: monospace;
+      }
     </style>
   </head>
 
@@ -696,7 +775,7 @@
               </div>
               <span class="project-desc" data-i18n="descDelia">Browser tape instrument with varispeed &amp; tape wear simulation</span>
             </li>
-            <li class="project-item">
+            <li class="project-item" id="project-cabasa">
               <div class="project-item-top">
                 <span class="project-title">
                   <a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener">Cabasa</a><a class="src-link" href="https://github.com/scobru/cabasa" target="_blank" rel="noopener">&lt;/&gt;</a>
@@ -709,6 +788,36 @@
                 </div>
               </div>
               <span class="project-desc" data-i18n="descCabasa">Generative soundtrack engine: 7 live data sources (ISS, quakes, chaos) drive real-time ambient synthesis</span>
+              <button
+                class="project-video-toggle"
+                id="cabasa-video-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="cabasa-video-drawer"
+                data-i18n="btnCabasaVideo"
+              >
+                [ ▶ watch reel (ipfs) ]
+              </button>
+              <div class="project-video-drawer" id="cabasa-video-drawer">
+                <div class="video-player-frame">
+                  <video
+                    id="cabasa-video-element"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="cabasa-preview.jpg"
+                  >
+                    <source src="https://delay.scobrudot.dev/api/v1/ipfs/cat/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" type="video/mp4" />
+                    <source src="https://ipfs.io/ipfs/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" type="video/mp4" />
+                    <source src="https://dweb.link/ipfs/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-meta-badge">
+                  <span data-i18n="videoMetaRelay">IPFS relay via</span> <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener">delay.scobrudot.dev</a> &middot;
+                  <a href="https://delay.scobrudot.dev/api/v1/ipfs/cat/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" target="_blank" rel="noopener" title="QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb">QmPfxCne...</a>
+                </div>
+              </div>
             </li>
             <li class="project-item">
               <div class="project-item-top">
@@ -878,6 +987,9 @@
             descZimaBlue: 'Ambient, Experimental soundscapes',
             descCabasa: 'Generative soundtrack engine: 7 live data sources (ISS, quakes, chaos) drive real-time ambient synthesis',
             descEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4 billion of them',
+            btnCabasaVideo: '[ ▶ watch reel (ipfs) ]',
+            btnCabasaVideoHide: '[ ▲ hide reel ]',
+            videoMetaRelay: 'IPFS relay via',
             sysStatus: '// 32 items indexed · system: online',
             langToggle: '[ it ]',
             langAria: "Passa all'italiano",
@@ -934,6 +1046,9 @@
             descCabasa: 'Motore di colonne sonore generative: 7 sorgenti dati live (ISS, terremoti, caos) guidano sintesi ambient in tempo reale',
             descEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto',
             descEurydice: 'Eurydice: Studio di paesaggi sonori ambientali con sintesi generativa e identità visiva.',
+            btnCabasaVideo: '[ ▶ guarda reel (ipfs) ]',
+            btnCabasaVideoHide: '[ ▲ chiudi reel ]',
+            videoMetaRelay: 'Relay IPFS su',
             sysStatus: '// 32 elementi indicizzati · sistema: online',
             langToggle: '[ en ]',
             langAria: 'Switch to English',
@@ -1023,6 +1138,12 @@
           if (langToggleBtn) {
             langToggleBtn.setAttribute('aria-label', dict.langAria);
             langToggleBtn.setAttribute('title', dict.langAria);
+          }
+
+          const cabasaDrawer = document.getElementById('cabasa-video-drawer');
+          const cabasaBtn = document.getElementById('cabasa-video-btn');
+          if (cabasaBtn && cabasaDrawer && cabasaDrawer.classList.contains('is-open')) {
+            cabasaBtn.textContent = dict.btnCabasaVideoHide;
           }
 
           updateThemeControls(getCurrentTheme());
@@ -1135,6 +1256,22 @@
             applyPlainFilter(cat);
           });
         });
+
+        const cabasaVideoBtn = document.getElementById('cabasa-video-btn');
+        const cabasaVideoDrawer = document.getElementById('cabasa-video-drawer');
+        const cabasaVideoEl = document.getElementById('cabasa-video-element');
+
+        if (cabasaVideoBtn && cabasaVideoDrawer) {
+          cabasaVideoBtn.addEventListener('click', function () {
+            const isOpen = cabasaVideoDrawer.classList.toggle('is-open');
+            cabasaVideoBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            const dict = i18n[currentLang] || i18n.en;
+            cabasaVideoBtn.textContent = isOpen ? dict.btnCabasaVideoHide : dict.btnCabasaVideo;
+            if (!isOpen && cabasaVideoEl) {
+              cabasaVideoEl.pause();
+            }
+          });
+        }
 
         window
           .matchMedia('(prefers-color-scheme: dark)')
