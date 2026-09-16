@@ -2,13 +2,1611 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=../link" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      id="meta-description"
+      content="Francesco Bruno (@scobru) — sviluppatore & sound designer. P2P, open-source, sintesi audio, creative tech."
+    />
+    <title id="page-title">@scobru — link &amp; pensieri</title>
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/1079164?v=4"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#8ea3b5" id="theme-color-meta" />
+
+    <!-- Google Font Space Mono for the authentic typewriter monospace look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
     <script>
-      window.location.replace('../link' + window.location.search + window.location.hash);
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          ).matches;
+          const theme =
+            savedTheme === 'dark' || (!savedTheme && prefersDark)
+              ? 'dark'
+              : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+
+          const savedLang = localStorage.getItem('lang');
+          const browserLang = (navigator.language || '').toLowerCase();
+          const lang = savedLang || (browserLang.startsWith('it') ? 'it' : 'en');
+          document.documentElement.setAttribute('lang', lang);
+        } catch (e) {}
+      })();
     </script>
-    <title>@scobru — link</title>
+
+    <style>
+      :root {
+        --page-bg: #8fa3b4;
+        --card-bg: #dff0fa;
+        --card-border: rgba(255, 255, 255, 0.7);
+        --card-shadow: 0 16px 45px rgba(28, 51, 74, 0.18);
+        --text-primary: #111821;
+        --text-muted: #4e6578;
+        --text-accent: #0f172a;
+        --btn-white-bg: #ffffff;
+        --btn-white-text: #111821;
+        --btn-white-border: rgba(0, 0, 0, 0.08);
+        --pill-bg: #eaf5fc;
+        --pill-border: #b8d7ea;
+        --pill-text: #111821;
+        --pill-hover-bg: #ffffff;
+        --pill-hover-border: #75a7c9;
+        --pill-hover-text: #050b12;
+        --pill-shadow: 0 2px 6px rgba(45, 80, 105, 0.04);
+        --pill-hover-shadow: 0 8px 24px rgba(35, 75, 110, 0.12);
+        --thumb-bg: #ffffff;
+        --thumb-border: #c4dff0;
+        --thumb-color: #2b455b;
+        --dots-color: #6c869b;
+        --dots-hover-bg: rgba(0, 0, 0, 0.06);
+        --toast-bg: #111821;
+        --toast-text: #ffffff;
+      }
+
+      [data-theme='dark'] {
+        --page-bg: #0d1217;
+        --card-bg: #151d27;
+        --card-border: rgba(255, 255, 255, 0.06);
+        --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+        --text-primary: #f0f6fc;
+        --text-muted: #8899a6;
+        --text-accent: #ffffff;
+        --btn-white-bg: #222d3d;
+        --btn-white-text: #f0f6fc;
+        --btn-white-border: rgba(255, 255, 255, 0.12);
+        --pill-bg: #1d2735;
+        --pill-border: #2c3c4f;
+        --pill-text: #e5edf5;
+        --pill-hover-bg: #263345;
+        --pill-hover-border: #4d698a;
+        --pill-hover-text: #ffffff;
+        --pill-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        --pill-hover-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+        --thumb-bg: #243142;
+        --thumb-border: #384d66;
+        --thumb-color: #9ac2e0;
+        --dots-color: #7990a8;
+        --dots-hover-bg: rgba(255, 255, 255, 0.1);
+        --toast-bg: #f0f6fc;
+        --toast-text: #0d1217;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--page-bg);
+        color: var(--text-primary);
+        font-family: 'Space Mono', 'Courier New', monospace;
+        line-height: 1.4;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 32px 14px 60px 14px;
+        transition: background-color 0.25s ease, color 0.25s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Card Container matching reference image */
+      .linktree-card {
+        width: 100%;
+        max-width: 440px;
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 36px;
+        box-shadow: var(--card-shadow);
+        padding: 24px 20px 32px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        transition: background-color 0.25s ease, border-color 0.25s ease;
+      }
+
+      /* Top Actions Bar inside the Card */
+      .card-topbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .topbar-left {
+        display: flex;
+        align-items: center;
+      }
+
+      .brand-icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--btn-white-bg);
+        border: 1px solid var(--btn-white-border);
+        color: var(--text-primary);
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.15s ease, background-color 0.15s ease;
+      }
+
+      .brand-icon-btn:hover {
+        transform: rotate(45deg);
+      }
+
+      .brand-icon-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .topbar-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--btn-white-bg);
+        color: var(--btn-white-text);
+        border: 1px solid var(--btn-white-border);
+        border-radius: 9999px;
+        font-family: inherit;
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 6px 12px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.15s ease;
+      }
+
+      .topbar-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .topbar-btn:active {
+        transform: scale(0.97);
+      }
+
+      /* Language switcher: explicit and non-ambiguous IT | EN */
+      .lang-switch-container {
+        display: inline-flex;
+        align-items: center;
+        background: var(--btn-white-bg);
+        border: 1px solid var(--btn-white-border);
+        border-radius: 9999px;
+        padding: 2px 4px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .lang-choice {
+        background: transparent;
+        border: none;
+        font-family: inherit;
+        font-size: 0.74rem;
+        font-weight: 400;
+        color: var(--text-muted);
+        padding: 4px 6px;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .lang-choice.is-active {
+        background: var(--text-primary);
+        color: var(--card-bg);
+        font-weight: 700;
+      }
+
+      .lang-divider {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        opacity: 0.5;
+        margin: 0 1px;
+      }
+
+      .share-icon-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        padding: 0;
+      }
+
+      .share-icon-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      /* Profile Header */
+      .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .avatar-wrapper {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 14px;
+        background: #cfdbe6;
+        border: 3px solid var(--btn-white-bg);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .avatar-placeholder {
+        width: 50%;
+        height: 50%;
+        fill: #8598a7;
+      }
+
+      .profile-handle {
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: var(--text-accent);
+        margin-bottom: 4px;
+      }
+
+      .profile-bio {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        max-width: 340px;
+        line-height: 1.4;
+      }
+
+      /* Links List */
+      .links-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      /* Capsule / Pill button */
+      .link-pill {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 58px;
+        padding: 8px 12px 8px 10px;
+        border-radius: 9999px;
+        background: var(--pill-bg);
+        border: 1.5px solid var(--pill-border);
+        color: var(--pill-text);
+        text-decoration: none;
+        box-shadow: var(--pill-shadow);
+        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        cursor: pointer;
+      }
+
+      .link-pill:hover {
+        background: var(--pill-hover-bg);
+        border-color: var(--pill-hover-border);
+        color: var(--pill-hover-text);
+        transform: translateY(-2px);
+        box-shadow: var(--pill-hover-shadow);
+      }
+
+      .link-pill:active {
+        transform: scale(0.985);
+      }
+
+      .link-pill:focus-visible {
+        outline: 2px solid var(--text-primary);
+        outline-offset: 2px;
+      }
+
+      /* Thumbnail on the left of the pill */
+      .pill-thumb {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--thumb-bg);
+        border: 1px solid var(--thumb-border);
+        color: var(--thumb-color);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .pill-thumb svg {
+        width: 19px;
+        height: 19px;
+        fill: currentColor;
+      }
+
+      /* Affirmation / statement text */
+      .pill-content {
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align: center;
+        padding: 0 8px;
+      }
+
+      .pill-phrase {
+        display: block;
+        font-size: 0.86rem;
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: -0.2px;
+        color: inherit;
+        word-break: break-word;
+      }
+
+      /* Options vertical dots ⋮ */
+      .pill-dots {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        color: var(--dots-color);
+        cursor: pointer;
+        font-size: 1.25rem;
+        line-height: 1;
+        transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      }
+
+      .pill-dots:hover {
+        background: var(--dots-hover-bg);
+        color: var(--text-primary);
+        transform: scale(1.15);
+      }
+
+      .pill-dots:focus-visible {
+        outline: 2px solid var(--text-primary);
+      }
+
+      /* Section dividers in links */
+      .section-divider {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin: 10px 0 2px 0;
+        letter-spacing: 0.5px;
+        text-transform: lowercase;
+      }
+
+      /* Social Footer */
+      .card-footer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px dashed var(--pill-border);
+        padding-top: 20px;
+      }
+
+      .social-icons-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .social-icon-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--btn-white-bg);
+        border: 1px solid var(--btn-white-border);
+        color: var(--text-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.15s ease;
+      }
+
+      .social-icon-btn:hover {
+        transform: translateY(-2px);
+        color: var(--pill-hover-text);
+        border-color: var(--pill-hover-border);
+      }
+
+      .social-icon-btn svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .footer-site-link {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        border-bottom: 1px dotted currentColor;
+        padding-bottom: 2px;
+        transition: color 0.15s ease;
+      }
+
+      .footer-site-link:hover {
+        color: var(--text-primary);
+        border-bottom-style: solid;
+      }
+
+      /* Toast Notification */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(30px);
+        background: var(--toast-bg);
+        color: var(--toast-text);
+        padding: 10px 20px;
+        border-radius: 9999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .toast.is-visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 480px) {
+        body {
+          padding: 12px 8px 40px 8px;
+        }
+
+        .linktree-card {
+          border-radius: 28px;
+          padding: 18px 12px 24px 12px;
+        }
+
+        .pill-phrase {
+          font-size: 0.82rem;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <p>Caricamento <a href="../link">@scobru link</a>...</p>
+    <div class="linktree-card">
+      <!-- Top Action Bar -->
+      <nav class="card-topbar" aria-label="Quick Actions">
+        <div class="topbar-left">
+          <a
+            href="/"
+            class="brand-icon-btn"
+            title="Archivio scobru.github.io"
+            aria-label="Torna alla homepage scobru"
+          >
+            <!-- 8-point asterisk / burst icon matching the reference screenshot -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Blog button -->
+          <a
+            href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1"
+            target="_blank"
+            rel="noopener"
+            class="topbar-btn"
+            id="btn-blog"
+          >
+            [ blog ]
+          </a>
+
+          <!-- Non-ambiguous IT / EN switcher -->
+          <div class="lang-switch-container" role="group" aria-label="Language selection">
+            <button
+              type="button"
+              class="lang-choice is-active"
+              id="btn-lang-it"
+              title="Visualizza in italiano"
+              aria-label="Visualizza in italiano"
+            >
+              IT
+            </button>
+            <span class="lang-divider">/</span>
+            <button
+              type="button"
+              class="lang-choice"
+              id="btn-lang-en"
+              title="View in English"
+              aria-label="View in English"
+            >
+              EN
+            </button>
+          </div>
+
+          <!-- Theme toggle -->
+          <button
+            class="topbar-btn"
+            id="theme-btn"
+            type="button"
+            aria-label="Cambia tema"
+            title="Cambia tema"
+          >
+            <span id="theme-btn-text">[ scuro ]</span>
+          </button>
+
+          <!-- Share button -->
+          <button
+            class="topbar-btn share-icon-btn"
+            id="share-profile-btn"
+            type="button"
+            aria-label="Condividi profilo"
+            title="Condividi"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Profile Header -->
+      <header class="profile-header">
+        <div class="avatar-wrapper">
+          <img
+            class="avatar-img"
+            src="https://avatars.githubusercontent.com/u/1079164?v=4"
+            alt="Francesco Bruno (@scobru)"
+            onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='block';"
+          />
+          <svg
+            id="avatar-fallback"
+            class="avatar-placeholder"
+            viewBox="0 0 24 24"
+            style="display: none;"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+        </div>
+        <h1 class="profile-handle">@scobru</h1>
+        <p class="profile-bio" data-i18n="profileBio">
+          Francesco Bruno — sviluppatore &amp; sound designer.<br />P2P, open-source, sintesi audio, creative tech.
+        </p>
+      </header>
+
+      <!-- Links (Affirmations & Personal Statements) -->
+      <main class="links-container" id="links-list">
+        <!-- 01: Blog / Smollog -->
+        <a
+          class="link-pill"
+          href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Smollog">
+            <!-- Pen/Notebook SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkBlog">
+              Leggi pensieri e note senza server né tracciamento (Smollog)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 02: Tunecamp -->
+        <a
+          class="link-pill"
+          href="https://tunecamp.org/"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Tunecamp">
+            <!-- Music note SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkTunecamp">
+              Ascolta e pubblica musica libera su Tunecamp
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://tunecamp.org/"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- Section: Audio Tech & Strumenti -->
+        <div class="section-divider" data-i18n="dividerAudio">// audio tech &amp; strumenti</div>
+
+        <!-- 03: Delia Tape Instrument -->
+        <a
+          class="link-pill"
+          href="https://delia.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Delia">
+            <!-- Cassette tape icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10c0-1.66 1.34-3 3-3s3 1.34 3 3c0 .35-.07.69-.18 1h.36c-.11-.31-.18-.65-.18-1 0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3h-6c-1.66 0-3-1.34-3-3zm3 1.5c.83 0 1.5-.67 1.5-1.5S9.83 8.5 9 8.5 7.5 9.17 7.5 10s.67 1.5 1.5 1.5zm6 0c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkDelia">
+              Suona Delia: strumento a nastro virtuale nel browser
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://delia.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 04: Cabasa -->
+        <a
+          class="link-pill"
+          href="https://cabasa.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Cabasa">
+            <!-- Satellite / Earth orbit SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkCabasa">
+              Ascolta Cabasa: dati live di Terra e ISS compongono musica ambient
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://cabasa.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 05: Eurydice -->
+        <a
+          class="link-pill"
+          href="https://eurydice.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Eurydice">
+            <!-- Soundscape mountain/wave icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkEurydice">
+              Esplora paesaggi sonori generativi con Eurydice
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://eurydice.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 06: Eph One-button synth -->
+        <a
+          class="link-pill"
+          href="https://eph.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Eph">
+            <!-- Spark / Synth lightning bolt icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2v11h3v9l7-12h-4l4-8z" />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkEph">
+              Genera un synth unico con un solo clic (Eph: 4 miliardi di patch)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://eph.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 07: Onepick P2P radio -->
+        <a
+          class="link-pill"
+          href="https://onepick.scobrudot.dev/"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Onepick">
+            <!-- Radio wave icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l8.26-3.34L15.88 1 3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-2h-2v2H4V8h16v4z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkOnepick">
+              Sintonizzati su Onepick: radio P2P analogica su Zen
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://onepick.scobrudot.dev/"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- Section: Musica & Arte -->
+        <div class="section-divider" data-i18n="dividerMusic">// musica &amp; arte</div>
+
+        <!-- 08: Sudo Records -->
+        <a
+          class="link-pill"
+          href="https://sudorecords.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Sudo Records">
+            <!-- Vinyl disc icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none" />
+              <circle cx="12" cy="12" r="3" fill="currentColor" />
+              <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" fill="none" />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkSudo">
+              Scopri le uscite di Sudo Records, etichetta su Tunecamp
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://sudorecords.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 09: Homologo (Bandcamp) -->
+        <a
+          class="link-pill"
+          href="https://homologomusic.bandcamp.com"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Homologo">
+            <!-- Bandcamp disc -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 18.75l7.437-13.5h16.563l-7.438 13.5z" />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkHomologo">
+              Ascolta canzoni pop elettroniche (Homologo)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://homologomusic.bandcamp.com"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 10: Fade (Bandcamp) -->
+        <a
+          class="link-pill"
+          href="https://fademusik.bandcamp.com"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Fade">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 18.75l7.437-13.5h16.563l-7.438 13.5z" />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkFade">
+              Ascolta tracce synth &amp; techno (Fade)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://fademusik.bandcamp.com"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 11: Zima Blue (Bandcamp) -->
+        <a
+          class="link-pill"
+          href="https://zimablue.bandcamp.com"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Zima Blue">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 18.75l7.437-13.5h16.563l-7.438 13.5z" />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkZima">
+              Immergiti in paesaggi sonori ambientali (Zima Blue)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://zimablue.bandcamp.com"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 12: Spotify Playlist -->
+        <a
+          class="link-pill"
+          href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Spotify">
+            <!-- Spotify soundwave -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2C6.4 2 2 6.4 2 12s4.4 10 10 10 10-4.4 10-10S17.6 2 12 2zm4.6 14.4c-.2.3-.5.4-.8.2-2.3-1.4-5.2-1.7-8.6-.9-.3.1-.7-.1-.8-.4-.1-.3.1-.7.4-.8 3.7-.8 6.9-.5 9.5 1.1.3.2.4.6.3.8zm1.2-2.7c-.2.4-.7.5-1.1.3-2.6-1.6-6.6-2.1-9.7-1.1-.4.1-.9-.1-1-.5-.1-.4.1-.9.5-1 3.6-1.1 8-.5 11 1.3.4.2.5.6.3 1zm.1-2.9c-3.1-1.9-8.3-2-11.3-1.1-.5.1-1-.2-1.1-.7-.1-.5.2-1 .7-1.1 3.5-1.1 9.2-.8 12.8 1.3.4.3.6.8.3 1.3-.2.5-.8.6-1.4.3z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkSpotify">
+              Ascolta la playlist selezionata su Spotify
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- Section: P2P, Web3 & Protocolli -->
+        <div class="section-divider" data-i18n="dividerP2P">// p2p, web3 &amp; protocolli</div>
+
+        <!-- 13: Wormhole -->
+        <a
+          class="link-pill"
+          href="https://wormhole.scobrudot.dev/"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Wormhole">
+            <!-- Shield / lock icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkWormhole">
+              Trasferisci file pesanti in P2P cifrato end-to-end (Wormhole)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://wormhole.scobrudot.dev/"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 14: Linda -->
+        <a
+          class="link-pill"
+          href="https://github.com/scobru/linda"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Linda">
+            <!-- Chat bubble / P2P icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkLinda">
+              Chatta in P2P serverless e cifrato su Holepunch con Linda
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://github.com/scobru/linda"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 15: Sidecamp -->
+        <a
+          class="link-pill"
+          href="https://www.tunecamp.org/sidecamp.html"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Sidecamp">
+            <!-- Download / Companion icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkSidecamp">
+              Scarica Sidecamp: il compagno P2P per TuneCamp (Torrent &amp; Soulseek)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://www.tunecamp.org/sidecamp.html"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 16: Zenvault -->
+        <a
+          class="link-pill"
+          href="https://zenvault.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Zenvault">
+            <!-- Vault / Safe box icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkZenvault">
+              Custodisci dati e segreti nella cassaforte decentralizzata Zenvault
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://zenvault.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 17: Iris QR File Transfer -->
+        <a
+          class="link-pill"
+          href="https://iris.scobrudot.dev"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Iris">
+            <!-- QR code / Optical icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-5 0h2v2h-2v-2zm2 2h2v2h-2v-2zm2 2h3v2h-3v-2zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkIris">
+              Trasferisci file offline con codici QR animati (Iris)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://iris.scobrudot.dev"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 18: Nullroute Stealth Pay -->
+        <a
+          class="link-pill"
+          href="https://nullroute.scobrudot.dev/"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Nullroute">
+            <!-- Stealth pay key -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkNullroute">
+              Invia pagamenti stealth invisibili su EVM (Nullroute)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://nullroute.scobrudot.dev/"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+
+        <!-- 19: Gazza File Hider -->
+        <a
+          class="link-pill"
+          href="https://gazza.scobrudot.dev/"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="pill-thumb" title="Gazza">
+            <!-- Video / byte icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"
+              />
+            </svg>
+          </div>
+          <div class="pill-content">
+            <span class="pill-phrase" data-i18n="linkGazza">
+              Nascondi qualsiasi file dentro un video, byte per byte (Gazza)
+            </span>
+          </div>
+          <button
+            class="pill-dots"
+            type="button"
+            data-copy="https://gazza.scobrudot.dev/"
+            title="Copia link"
+            aria-label="Copia link"
+          >
+            &#8942;
+          </button>
+        </a>
+      </main>
+
+      <!-- Footer Social & Main Index Link -->
+      <footer class="card-footer">
+        <div class="social-icons-row" aria-label="Social links">
+          <!-- GitHub -->
+          <a
+            class="social-icon-btn"
+            href="https://github.com/scobru"
+            target="_blank"
+            rel="me noopener"
+            title="GitHub"
+            aria-label="GitHub"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"
+              />
+            </svg>
+          </a>
+
+          <!-- Mastodon -->
+          <a
+            class="social-icon-btn"
+            href="https://livellosegreto.it/@scobru"
+            target="_blank"
+            rel="me noopener"
+            title="Mastodon"
+            aria-label="Mastodon"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.82 2.146 13.918 2 12.001 2c-1.916 0-4.82.146-6.483.956 0 0-2.844 1.271-2.844 5.61 0 .993-.015 2.186.012 3.341.094 3.998.423 7.954 3.823 8.895 1.579.437 3.092.531 4.508.438 2.578-.17 4.02-1.031 4.02-1.031l-.057-1.264s-1.808.57-3.834.498c-2.009-.071-4.123-.223-4.425-2.642a4.417 4.417 0 0 1-.035-.559s1.884.457 4.298.57c1.472.07 2.87-.074 4.288-.242 2.766-.33 5.174-2.04 5.485-5.187.16-1.616.273-3.284.273-4.887zM17.65 13.4h-2.182V8.406c0-1.12-.47-1.69-1.409-1.69-1.037 0-1.556.67-1.556 2v3.315H10.5V8.716c0-1.33-.519-2-1.556-2-.94 0-1.41.57-1.41 1.69V13.4H5.352V8.225c0-1.12.288-2.007.863-2.66.59-.668 1.362-1.01 2.317-1.01 1.103 0 1.936.425 2.493 1.273l.575.97.575-.97c.557-.848 1.39-1.273 2.493-1.273.955 0 1.727.342 2.317 1.01.575.653.863 1.54.863 2.66V13.4z"
+              />
+            </svg>
+          </a>
+
+          <!-- Telegram -->
+          <a
+            class="social-icon-btn"
+            href="https://t.me/scobru"
+            target="_blank"
+            rel="me noopener"
+            title="Telegram"
+            aria-label="Telegram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+              />
+            </svg>
+          </a>
+
+          <!-- Twitter / X -->
+          <a
+            class="social-icon-btn"
+            href="https://twitter.com/scobru1988"
+            target="_blank"
+            rel="me noopener"
+            title="Twitter / X"
+            aria-label="Twitter"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+
+          <!-- Email -->
+          <a
+            class="social-icon-btn"
+            href="mailto:scobru1988@gmail.com"
+            rel="me"
+            title="Email"
+            aria-label="Email"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <a class="footer-site-link" href="/" data-i18n="footerIndexLink">
+          [ &larr; Torna all'indice completo di tutti i progetti ]
+        </a>
+      </footer>
+    </div>
+
+    <!-- Feedback Toast -->
+    <div id="toast" class="toast" role="alert" aria-live="polite">
+      <span id="toast-text">Link copiato negli appunti!</span>
+    </div>
+
+    <script>
+      (function () {
+        const themeBtn = document.getElementById('theme-btn');
+        const themeBtnText = document.getElementById('theme-btn-text');
+        const btnLangIt = document.getElementById('btn-lang-it');
+        const btnLangEn = document.getElementById('btn-lang-en');
+        const shareProfileBtn = document.getElementById('share-profile-btn');
+        const toast = document.getElementById('toast');
+        const toastText = document.getElementById('toast-text');
+        const metaThemeColor = document.getElementById('theme-color-meta');
+        const metaDescription = document.getElementById('meta-description');
+        const pageTitle = document.getElementById('page-title');
+
+        const i18n = {
+          it: {
+            pageTitle: '@scobru — link & pensieri',
+            metaDesc:
+              'Francesco Bruno (@scobru) — sviluppatore & sound designer. P2P, open-source, sintesi audio, creative tech.',
+            profileBio:
+              'Francesco Bruno — sviluppatore &amp; sound designer.<br />P2P, open-source, sintesi audio, creative tech.',
+            themeDark: '[ scuro ]',
+            themeLight: '[ chiaro ]',
+            themeTitle: 'Cambia tema',
+            dividerAudio: '// audio tech & strumenti',
+            dividerMusic: '// musica & arte',
+            dividerP2P: '// p2p, web3 & protocolli',
+            linkBlog: 'Leggi pensieri e note senza server né tracciamento (Smollog)',
+            linkTunecamp: 'Ascolta e pubblica musica libera su Tunecamp',
+            linkDelia: 'Suona Delia: strumento a nastro virtuale nel browser',
+            linkCabasa: 'Ascolta Cabasa: dati live di Terra e ISS compongono musica ambient',
+            linkEurydice: 'Esplora paesaggi sonori generativi con Eurydice',
+            linkEph: 'Genera un synth unico con un solo clic (Eph: 4 miliardi di patch)',
+            linkOnepick: 'Sintonizzati su Onepick: radio P2P analogica su Zen',
+            linkSudo: 'Scopri le uscite di Sudo Records, etichetta su Tunecamp',
+            linkHomologo: 'Ascolta canzoni pop elettroniche (Homologo)',
+            linkFade: 'Ascolta tracce synth & techno (Fade)',
+            linkZima: 'Immergiti in paesaggi sonori ambientali (Zima Blue)',
+            linkSpotify: 'Ascolta la playlist selezionata su Spotify',
+            linkWormhole: 'Trasferisci file pesanti in P2P cifrato end-to-end (Wormhole)',
+            linkLinda: 'Chatta in P2P serverless e cifrato su Holepunch con Linda',
+            linkSidecamp: 'Scarica Sidecamp: il compagno P2P per TuneCamp (Torrent & Soulseek)',
+            linkZenvault: 'Custodisci dati e segreti nella cassaforte decentralizzata Zenvault',
+            linkIris: 'Trasferisci file offline con codici QR animati (Iris)',
+            linkNullroute: 'Invia pagamenti stealth invisibili su EVM (Nullroute)',
+            linkGazza: 'Nascondi qualsiasi file dentro un video, byte per byte (Gazza)',
+            footerIndexLink: "[ &larr; Torna all'indice completo di tutti i progetti ]",
+            toastCopied: 'Link copiato negli appunti!',
+            toastProfileCopied: 'Link del profilo copiato!',
+          },
+          en: {
+            pageTitle: '@scobru — links & thoughts',
+            metaDesc:
+              'Francesco Bruno (@scobru) — developer & sound designer. P2P, open-source, audio synthesis, creative tech.',
+            profileBio:
+              'Francesco Bruno — developer &amp; sound designer.<br />P2P, open-source, audio synthesis, creative tech.',
+            themeDark: '[ dark ]',
+            themeLight: '[ light ]',
+            themeTitle: 'Toggle theme',
+            dividerAudio: '// audio tech & instruments',
+            dividerMusic: '// music & art',
+            dividerP2P: '// p2p, web3 & protocols',
+            linkBlog: 'Read thoughts and notes without servers or tracking (Smollog)',
+            linkTunecamp: 'Stream and publish free music on Tunecamp',
+            linkDelia: 'Play Delia: virtual tape instrument in the browser',
+            linkCabasa: 'Listen to Cabasa: live Earth & ISS data composing ambient music',
+            linkEurydice: 'Explore generative ambient soundscapes with Eurydice',
+            linkEph: 'Generate a unique synth patch with one click (Eph: 4B patches)',
+            linkOnepick: 'Tune in to Onepick: analog P2P radio on Zen',
+            linkSudo: 'Discover releases on Sudo Records, record label on Tunecamp',
+            linkHomologo: 'Listen to electronic pop songs (Homologo)',
+            linkFade: 'Listen to synth & techno tracks (Fade)',
+            linkZima: 'Immerse yourself in ambient soundscapes (Zima Blue)',
+            linkSpotify: 'Listen to the curated playlist on Spotify',
+            linkWormhole: 'Transfer large files via end-to-end encrypted P2P (Wormhole)',
+            linkLinda: 'Chat via serverless encrypted P2P on Holepunch with Linda',
+            linkSidecamp: 'Get Sidecamp: the P2P companion for TuneCamp (Torrents & Soulseek)',
+            linkZenvault: 'Store data and secrets in the decentralized vault Zenvault',
+            linkIris: 'Transfer files air-gapped offline via animated QR codes (Iris)',
+            linkNullroute: 'Send stealth anonymous payments on EVM (Nullroute)',
+            linkGazza: 'Hide any file inside a video, returned byte for byte (Gazza)',
+            footerIndexLink: '[ &larr; Return to full project catalog ]',
+            toastCopied: 'Link copied to clipboard!',
+            toastProfileCopied: 'Profile link copied!',
+          },
+        };
+
+        function getCurrentTheme() {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) return savedTheme;
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function getCurrentLang() {
+          const savedLang = localStorage.getItem('lang');
+          if (savedLang === 'en' || savedLang === 'it') return savedLang;
+          const browserLang = (navigator.language || '').toLowerCase();
+          return browserLang.startsWith('it') ? 'it' : 'en';
+        }
+
+        let currentLang = getCurrentLang();
+
+        function showToast(message) {
+          if (!toast) return;
+          toastText.textContent = message;
+          toast.classList.add('is-visible');
+          clearTimeout(window.__toastTimeout);
+          window.__toastTimeout = setTimeout(function () {
+            toast.classList.remove('is-visible');
+          }, 2400);
+        }
+
+        function copyToClipboard(text, customMessage) {
+          const dict = i18n[currentLang] || i18n.it;
+          const successMsg = customMessage || dict.toastCopied;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(
+              function () {
+                showToast(successMsg);
+              },
+              function () {
+                fallbackCopy(text, successMsg);
+              }
+            );
+          } else {
+            fallbackCopy(text, successMsg);
+          }
+        }
+
+        function fallbackCopy(text, successMsg) {
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-9999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            showToast(successMsg);
+          } catch (err) {
+            showToast('URL: ' + text);
+          }
+          document.body.removeChild(textArea);
+        }
+
+        function applyTheme(theme, save) {
+          document.documentElement.setAttribute('data-theme', theme);
+          if (save) {
+            try {
+              localStorage.setItem('theme', theme);
+            } catch (e) {}
+          }
+          const dict = i18n[currentLang] || i18n.it;
+          if (themeBtnText) {
+            themeBtnText.textContent = theme === 'dark' ? dict.themeLight : dict.themeDark;
+          }
+          if (themeBtn) {
+            themeBtn.setAttribute('title', dict.themeTitle);
+            themeBtn.setAttribute('aria-label', dict.themeTitle);
+          }
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', theme === 'dark' ? '#0d1217' : '#8fa3b4');
+          }
+        }
+
+        function applyLang(lang, save) {
+          currentLang = lang === 'en' ? 'en' : 'it';
+          document.documentElement.setAttribute('lang', currentLang);
+          if (save) {
+            try {
+              localStorage.setItem('lang', currentLang);
+            } catch (e) {}
+          }
+
+          const dict = i18n[currentLang] || i18n.it;
+          if (metaDescription) {
+            metaDescription.setAttribute('content', dict.metaDesc);
+          }
+          if (pageTitle) {
+            pageTitle.textContent = dict.pageTitle;
+          }
+
+          document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) {
+              if (dict[key].indexOf('<') !== -1 || dict[key].indexOf('&amp;') !== -1) {
+                el.innerHTML = dict[key];
+              } else {
+                el.textContent = dict[key];
+              }
+            }
+          });
+
+          // Update IT / EN button states
+          if (btnLangIt && btnLangEn) {
+            btnLangIt.classList.toggle('is-active', currentLang === 'it');
+            btnLangEn.classList.toggle('is-active', currentLang === 'en');
+          }
+
+          applyTheme(getCurrentTheme(), false);
+        }
+
+        // Initialize state
+        applyLang(currentLang, false);
+        applyTheme(getCurrentTheme(), false);
+
+        // Theme Toggle Event
+        if (themeBtn) {
+          themeBtn.addEventListener('click', function () {
+            const current = getCurrentTheme();
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next, true);
+          });
+        }
+
+        // Language Buttons Events
+        if (btnLangIt) {
+          btnLangIt.addEventListener('click', function () {
+            applyLang('it', true);
+          });
+        }
+        if (btnLangEn) {
+          btnLangEn.addEventListener('click', function () {
+            applyLang('en', true);
+          });
+        }
+
+        // Share Profile Event
+        if (shareProfileBtn) {
+          shareProfileBtn.addEventListener('click', function () {
+            const dict = i18n[currentLang] || i18n.it;
+            const shareData = {
+              title: dict.pageTitle,
+              text: 'Francesco Bruno (@scobru) — developer & sound designer',
+              url: window.location.href,
+            };
+
+            if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+              navigator
+                .share(shareData)
+                .catch(function () {});
+            } else {
+              copyToClipboard(window.location.href, dict.toastProfileCopied);
+            }
+          });
+        }
+
+        // Pill Options Dots (⋮) Event: Copies link to clipboard without triggering link navigation
+        document.querySelectorAll('.pill-dots').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const urlToCopy = this.getAttribute('data-copy');
+            if (urlToCopy) {
+              copyToClipboard(urlToCopy);
+            }
+          });
+        });
+
+        // Watch OS theme preference change
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', function (e) {
+            if (!localStorage.getItem('theme')) {
+              applyTheme(e.matches ? 'dark' : 'light', false);
+            }
+          });
+      })();
+    </script>
   </body>
 </html>
