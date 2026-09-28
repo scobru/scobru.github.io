@@ -1,2061 +1,2198 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      id="meta-description"
-      content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music."
-    />
-    <title id="site-title">Francesco Bruno — scobru</title>
-    <link
-      rel="icon"
-      href="https://avatars.githubusercontent.com/u/1079164?v=4"
-    />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#fbfaf4" id="theme-color-meta" />
-
-    <!-- Google Fonts: Inclusive Sans (Display) & JetBrains Mono (Technical / Code) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&display=swap"
-      rel="stylesheet"
-    />
-
-    <script>
-      (function () {
-        try {
-          const savedTheme = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const theme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light';
-          document.documentElement.setAttribute('data-theme', theme);
-
-          const savedLang = localStorage.getItem('lang');
-          const browserLang = (navigator.language || '').toLowerCase();
-          const lang = savedLang || (browserLang.startsWith('it') ? 'it' : 'en');
-          document.documentElement.setAttribute('lang', lang);
-        } catch (e) {}
-      })();
-    </script>
-
-    <style>
-      :root {
-        /* Desert Ant Palette */
-        --color-cream: #fbfaf4;
-        --color-cream-dark: #f2f1eb;
-        --color-cream-sunken: #e9e8e0;
-        --color-paper: #fcfbf7;
-        --color-ink: #0e1113;
-        --color-ink-5: rgba(14, 17, 19, 0.05);
-        --color-ink-10: rgba(14, 17, 19, 0.1);
-        --color-ink-20: rgba(14, 17, 19, 0.2);
-        --color-ink-60: rgba(14, 17, 19, 0.6);
-        --color-white: #ffffff;
-        --color-black: #000000;
-
-        /* Mineral Accents */
-        --color-sage: #adb49c;
-        --color-teal: #c3d3ce;
-        --color-forest: #181e1d;
-        --color-terracotta: #db704c;
-        --color-sand: #d6d0c3;
-        --color-warm-grey: #b7b6b4;
-        --color-clay-red: #d53712;
-        --color-dark-teal: #1c525d;
-        --color-dusty-pink: #b6969d;
-        --color-light-peach: #f8dbca;
-        --color-faun: #cec4bb;
-        --color-cool-grey: #dcdedf;
-        --color-stone: #b4aea6;
-        --color-mist: #57606a;
-
-        /* Semantic Tokens (Light) */
-        --color-bg-canvas: var(--color-cream);
-        --color-bg-surface: var(--color-paper);
-        --color-bg-card: var(--color-cream-dark);
-        --color-bg-card-hover: var(--color-cream-sunken);
-        --color-bg-tag: var(--color-ink-5);
-        --color-text-primary: var(--color-ink);
-        --color-text-secondary: #2c3134;
-        --color-text-muted: var(--color-mist);
-        --color-text-faint: #9aa1a5;
-        --color-border-subtle: rgba(14, 17, 19, 0.1);
-        --color-border-default: rgba(14, 17, 19, 0.22);
-        --color-selection-bg: var(--color-teal);
-        --color-selection-fg: var(--color-ink);
-
-        /* Typography */
-        --font-display: "Inclusive Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-        --font-mono: "JetBrains Mono", SFMono-Regular, Menlo, monospace;
-
-        /* Spacing & Sizes */
-        --container-width: 1180px;
-        --gutter: clamp(1.25rem, 4vw, 3rem);
-        --radius-sm: 6px;
-        --radius-md: 10px;
-        --radius-lg: 16px;
-        --radius-xl: 22px;
-        --radius-2xl: 28px;
-        --radius-pill: 9999px;
-
-        /* Shadows & Transitions */
-        --shadow-sm: 0 2px 6px rgba(14, 17, 19, 0.04);
-        --shadow-card: 0 16px 48px rgba(0, 0, 0, 0.09);
-        --shadow-hover: 0 28px 75px rgba(0, 0, 0, 0.16);
-        --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      [data-theme="dark"] {
-        --color-bg-canvas: #121716;
-        --color-bg-surface: #181e1d;
-        --color-bg-card: #1d2422;
-        --color-bg-card-hover: #262f2d;
-        --color-bg-tag: rgba(251, 250, 244, 0.07);
-        --color-text-primary: #fbfaf4;
-        --color-text-secondary: #d7dbd9;
-        --color-text-muted: #9aa5a1;
-        --color-text-faint: #6e7975;
-        --color-border-subtle: rgba(251, 250, 244, 0.12);
-        --color-border-default: rgba(251, 250, 244, 0.24);
-        --color-selection-bg: #324246;
-        --color-selection-fg: #fbfaf4;
-      }
-
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      ::selection {
-        background: var(--color-selection-bg);
-        color: var(--color-selection-fg);
-      }
-
-      html {
-        color-scheme: light dark;
-        scroll-behavior: smooth;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      body {
-        background-color: var(--color-bg-canvas);
-        color: var(--color-text-primary);
-        font-family: var(--font-mono);
-        font-size: 15px;
-        line-height: 1.6;
-        transition: background-color 0.25s var(--ease-standard), color 0.25s var(--ease-standard);
-        overflow-x: clip;
-      }
-
-      /* Container & Layout */
-      .layout-container {
-        width: 100%;
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: 0 var(--gutter);
-      }
-
-      /* Site Header */
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: color-mix(in srgb, var(--color-bg-canvas) 85%, transparent);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--color-border-subtle);
-        transition: border-color 0.2s ease;
-      }
-
-      .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 72px;
-      }
-
-      .brandmark {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: var(--color-text-primary);
-      }
-
-      .brandmark-symbol {
-        width: 36px;
-        height: 36px;
-        border-radius: 9px;
-        background: var(--color-text-primary);
-        color: var(--color-bg-canvas);
-        display: grid;
-        place-items: center;
-        transition: transform 0.2s var(--ease-out);
-      }
-
-      .brandmark:hover .brandmark-symbol {
-        transform: scale(1.05);
-      }
-
-      .brandmark-name {
-        font-family: var(--font-display);
-        font-size: 1.35rem;
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        line-height: 1;
-      }
-
-      .brandmark-role {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--color-text-muted);
-        letter-spacing: 0.04em;
-        margin-left: 2px;
-      }
-
-      .header-nav {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .nav-link {
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--color-text-secondary);
-        text-decoration: none;
-        padding: 5px 10px;
-        border-radius: var(--radius-sm);
-        border: 1px solid transparent;
-        transition: all 0.15s ease;
-      }
-
-      .nav-link:hover {
-        background: var(--color-ink-5);
-        color: var(--color-text-primary);
-      }
-
-      .nav-pill-btn {
-        background: transparent;
-        border: 1px solid var(--color-border-default);
-        color: var(--color-text-primary);
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        font-weight: 500;
-        padding: 5px 11px;
-        border-radius: var(--radius-pill);
-        cursor: pointer;
-        transition: all 0.15s ease;
-        line-height: 1.2;
-      }
-
-      .nav-pill-btn:hover {
-        background: var(--color-text-primary);
-        color: var(--color-bg-canvas);
-      }
-
-      /* Hero Section */
-      .hero-section {
-        padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2rem, 5vw, 4rem);
-      }
-
-      .hero-eyebrow {
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--color-text-muted);
-        margin-bottom: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .hero-eyebrow::before {
-        content: "";
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #3c8a52; /* Live indicator dot */
-      }
-
-      .hero-title {
-        font-family: var(--font-display);
-        font-size: clamp(2.8rem, 6.8vw, 5.5rem);
-        font-weight: 700;
-        line-height: 0.95;
-        letter-spacing: -0.05em;
-        color: var(--color-text-primary);
-        margin-bottom: 1.8rem;
-        max-width: 980px;
-      }
-
-      .hero-title em {
-        font-style: italic;
-        font-weight: 400;
-        color: var(--color-text-secondary);
-      }
-
-      .hero-sub {
-        font-family: var(--font-mono);
-        font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-        color: var(--color-text-secondary);
-        max-width: 720px;
-        line-height: 1.6;
-        margin-bottom: 2.2rem;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-      }
-
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 22px;
-        background: var(--color-text-primary);
-        color: var(--color-bg-canvas);
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 0.98rem;
-        letter-spacing: -0.01em;
-        border-radius: var(--radius-xl);
-        text-decoration: none;
-        border: 2px solid var(--color-text-primary);
-        transition: transform 0.15s ease, background 0.15s ease;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-      }
-
-      .btn-secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 22px;
-        background: transparent;
-        color: var(--color-text-primary);
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 0.98rem;
-        letter-spacing: -0.01em;
-        border-radius: var(--radius-xl);
-        text-decoration: none;
-        border: 2px solid var(--color-border-default);
-        transition: all 0.15s ease;
-      }
-
-      .btn-secondary:hover {
-        background: var(--color-ink-5);
-        border-color: var(--color-text-primary);
-      }
-
-      /* Fan Deck (Feature Cards Fan) */
-      .fan-section {
-        padding: 2rem 0 5rem;
-        position: relative;
-      }
-
-      .fan-section-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 2.5rem;
-        border-bottom: 1px solid var(--color-border-subtle);
-        padding-bottom: 0.75rem;
-      }
-
-      .fan-section-title {
-        font-family: var(--font-display);
-        font-size: 1.5rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-      }
-
-      .fan-deck-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 0;
-      }
-
-      .fan-deck {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 1100px;
-      }
-
-      .fan-deck > * {
-        margin-right: -45px;
-        position: relative;
-        flex: 0 0 auto;
-        transition: z-index 0s 0.1s;
-      }
-
-      .fan-deck > *:hover {
-        z-index: 20;
-        transition: z-index 0s 0s;
-      }
-
-      .fan-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 275px;
-        height: 405px;
-        border-radius: var(--radius-2xl);
-        box-shadow: var(--shadow-card);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        text-decoration: none;
-        color: var(--color-ink);
-        padding: 24px;
-        overflow: hidden;
-        transform: rotate(var(--tilt, 0deg));
-        transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
-        background-color: var(--fc-bg, var(--color-teal));
-      }
-
-      .fan-card:hover {
-        transform: rotate(calc(var(--tilt, 0deg) * 0.25)) translateY(-16px) scale(1.04);
-        box-shadow: var(--shadow-hover);
-      }
-
-      /* Fan Card Variants */
-      .fan-card--tunecamp {
-        --fc-bg: var(--color-teal);
-        --tilt: -5.5deg;
-      }
-      .fan-card--linda {
-        --fc-bg: var(--color-forest);
-        color: var(--color-cream);
-        --tilt: -2.5deg;
-      }
-      .fan-card--linda .fc-tag {
-        background: rgba(255, 255, 255, 0.12);
-        color: var(--color-cream);
-      }
-      .fan-card--linda .fc-art {
-        background: rgba(255, 255, 255, 0.08);
-      }
-      .fan-card--wormhole {
-        --fc-bg: var(--color-sand);
-        --tilt: 0.5deg;
-      }
-      .fan-card--sidecamp {
-        --fc-bg: var(--color-dusty-pink);
-        --tilt: 3.5deg;
-      }
-      .fan-card--eph {
-        --fc-bg: var(--color-terracotta);
-        --tilt: 6deg;
-      }
-      .fan-card--soap {
-        --fc-bg: var(--color-teal);
-        --tilt: 6deg;
-      }
-
-      .fc-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
-      .fc-tag {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 4px 9px;
-        border-radius: var(--radius-pill);
-        background: rgba(0, 0, 0, 0.08);
-        line-height: 1.2;
-      }
-
-      .fan-card--nullroute .fc-tag {
-        background: rgba(255, 255, 255, 0.12);
-        color: var(--color-cream);
-      }
-
-      .fc-glyph {
-        opacity: 0.6;
-        transition: transform 0.3s var(--ease-out);
-      }
-
-      .fan-card:hover .fc-glyph {
-        transform: translate(2px, -2px);
-        opacity: 1;
-      }
-
-      .fc-mid {
-        margin-top: auto;
-        margin-bottom: 1.25rem;
-      }
-
-      .fc-name {
-        font-family: var(--font-display);
-        font-size: 2.15rem;
-        font-weight: 700;
-        line-height: 1.05;
-        letter-spacing: -0.04em;
-        margin-bottom: 8px;
-      }
-
-      .fc-claim {
-        font-family: var(--font-display);
-        font-size: 0.98rem;
-        font-weight: 500;
-        line-height: 1.35;
-        opacity: 0.9;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .fc-art {
-        height: 100px;
-        width: 100%;
-        border-radius: var(--radius-md);
-        background: rgba(0, 0, 0, 0.06);
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .fan-card--nullroute .fc-art {
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .fc-art-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* Filter Toolbar */
-      .catalog-section {
-        padding: 3rem 0 6rem;
-      }
-
-      .catalog-toolbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.25rem;
-        border-bottom: 1px solid var(--color-border-subtle);
-      }
-
-      .catalog-filter-group {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .catalog-filter-label {
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--color-text-muted);
-        margin-right: 4px;
-      }
-
-      .filter-pill {
-        background: var(--color-bg-tag);
-        border: 1px solid transparent;
-        color: var(--color-text-primary);
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        padding: 5px 12px;
-        border-radius: var(--radius-pill);
-        cursor: pointer;
-        transition: all 0.15s ease;
-      }
-
-      .filter-pill:hover {
-        border-color: var(--color-border-default);
-      }
-
-      .filter-pill.is-active {
-        background: var(--color-text-primary);
-        color: var(--color-bg-canvas);
-      }
-
-      .catalog-count-badge {
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--color-text-muted);
-      }
-
-      /* Section Heading */
-      .cat-section {
-        margin-bottom: 3.5rem;
-      }
-
-      .cat-section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 1.25rem;
-        border-bottom: 1px dashed var(--color-border-subtle);
-        padding-bottom: 0.5rem;
-      }
-
-      .cat-section-title {
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--color-text-muted);
-      }
-
-      /* 3-Column Card Grid (Desert Ant "Intel Stage") */
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" id="meta-description"
+    content="Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music." />
+  <title id="site-title">Francesco Bruno — scobru</title>
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/1079164?v=4" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fbfaf4" id="theme-color-meta" />
+
+  <!-- Google Fonts: Inclusive Sans (Display) & JetBrains Mono (Technical / Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet" />
+
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+
+        const savedLang = localStorage.getItem('lang');
+        const browserLang = (navigator.language || '').toLowerCase();
+        const lang = savedLang || (browserLang.startsWith('it') ? 'it' : 'en');
+        document.documentElement.setAttribute('lang', lang);
+      } catch (e) { }
+    })();
+  </script>
+
+  <style>
+    :root {
+      /* Desert Ant Palette */
+      --color-cream: #fbfaf4;
+      --color-cream-dark: #f2f1eb;
+      --color-cream-sunken: #e9e8e0;
+      --color-paper: #fcfbf7;
+      --color-ink: #0e1113;
+      --color-ink-5: rgba(14, 17, 19, 0.05);
+      --color-ink-10: rgba(14, 17, 19, 0.1);
+      --color-ink-20: rgba(14, 17, 19, 0.2);
+      --color-ink-60: rgba(14, 17, 19, 0.6);
+      --color-white: #ffffff;
+      --color-black: #000000;
+
+      /* Mineral Accents */
+      --color-sage: #adb49c;
+      --color-teal: #c3d3ce;
+      --color-forest: #181e1d;
+      --color-terracotta: #db704c;
+      --color-sand: #d6d0c3;
+      --color-warm-grey: #b7b6b4;
+      --color-clay-red: #d53712;
+      --color-dark-teal: #1c525d;
+      --color-dusty-pink: #b6969d;
+      --color-light-peach: #f8dbca;
+      --color-faun: #cec4bb;
+      --color-cool-grey: #dcdedf;
+      --color-stone: #b4aea6;
+      --color-mist: #57606a;
+
+      /* Semantic Tokens (Light) */
+      --color-bg-canvas: var(--color-cream);
+      --color-bg-surface: var(--color-paper);
+      --color-bg-card: var(--color-cream-dark);
+      --color-bg-card-hover: var(--color-cream-sunken);
+      --color-bg-tag: var(--color-ink-5);
+      --color-text-primary: var(--color-ink);
+      --color-text-secondary: #2c3134;
+      --color-text-muted: var(--color-mist);
+      --color-text-faint: #9aa1a5;
+      --color-border-subtle: rgba(14, 17, 19, 0.1);
+      --color-border-default: rgba(14, 17, 19, 0.22);
+      --color-selection-bg: var(--color-teal);
+      --color-selection-fg: var(--color-ink);
+
+      /* Typography */
+      --font-display: "Inclusive Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+
+      /* Spacing & Sizes */
+      --container-width: 1180px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+      --radius-2xl: 28px;
+      --radius-pill: 9999px;
+
+      /* Shadows & Transitions */
+      --shadow-sm: 0 2px 6px rgba(14, 17, 19, 0.04);
+      --shadow-card: 0 16px 48px rgba(0, 0, 0, 0.09);
+      --shadow-hover: 0 28px 75px rgba(0, 0, 0, 0.16);
+      --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --color-bg-canvas: #121716;
+      --color-bg-surface: #181e1d;
+      --color-bg-card: #1d2422;
+      --color-bg-card-hover: #262f2d;
+      --color-bg-tag: rgba(251, 250, 244, 0.07);
+      --color-text-primary: #fbfaf4;
+      --color-text-secondary: #d7dbd9;
+      --color-text-muted: #9aa5a1;
+      --color-text-faint: #6e7975;
+      --color-border-subtle: rgba(251, 250, 244, 0.12);
+      --color-border-default: rgba(251, 250, 244, 0.24);
+      --color-selection-bg: #324246;
+      --color-selection-fg: #fbfaf4;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::selection {
+      background: var(--color-selection-bg);
+      color: var(--color-selection-fg);
+    }
+
+    html {
+      color-scheme: light dark;
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--color-bg-canvas);
+      color: var(--color-text-primary);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      line-height: 1.6;
+      transition: background-color 0.25s var(--ease-standard), color 0.25s var(--ease-standard);
+      overflow-x: clip;
+    }
+
+    /* Container & Layout */
+    .layout-container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Site Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--color-bg-canvas) 85%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-border-subtle);
+      transition: border-color 0.2s ease;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brandmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text-primary);
+    }
+
+    .brandmark-symbol {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--color-text-primary);
+      color: var(--color-bg-canvas);
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s var(--ease-out);
+    }
+
+    .brandmark:hover .brandmark-symbol {
+      transform: scale(1.05);
+    }
+
+    .brandmark-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .brandmark-role {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      margin-left: 2px;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--color-ink-5);
+      color: var(--color-text-primary);
+    }
+
+    .nav-pill-btn {
+      background: transparent;
+      border: 1px solid var(--color-border-default);
+      color: var(--color-text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      line-height: 1.2;
+    }
+
+    .nav-pill-btn:hover {
+      background: var(--color-text-primary);
+      color: var(--color-bg-canvas);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2rem, 5vw, 4rem);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3c8a52;
+      /* Live indicator dot */
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      color: var(--color-text-primary);
+      margin-bottom: 1.8rem;
+      max-width: 980px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+    }
+
+    .hero-sub {
+      font-family: var(--font-mono);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: var(--color-text-secondary);
+      max-width: 720px;
+      line-height: 1.6;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--color-text-primary);
+      color: var(--color-bg-canvas);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+      border-radius: var(--radius-xl);
+      text-decoration: none;
+      border: 2px solid var(--color-text-primary);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: transparent;
+      color: var(--color-text-primary);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+      border-radius: var(--radius-xl);
+      text-decoration: none;
+      border: 2px solid var(--color-border-default);
+      transition: all 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-ink-5);
+      border-color: var(--color-text-primary);
+    }
+
+    /* Fan Deck (Feature Cards Fan) */
+    .fan-section {
+      padding: 2rem 0 5rem;
+      position: relative;
+    }
+
+    .fan-section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 0.75rem;
+    }
+
+    .fan-section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .fan-deck-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .fan-deck {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .fan-deck>* {
+      margin-right: -45px;
+      position: relative;
+      flex: 0 0 auto;
+      transition: z-index 0s 0.1s;
+    }
+
+    .fan-deck>*:hover {
+      z-index: 20;
+      transition: z-index 0s 0s;
+    }
+
+    .fan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 275px;
+      height: 405px;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      color: var(--color-ink);
+      padding: 24px;
+      overflow: hidden;
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+      background-color: var(--fc-bg, var(--color-teal));
+    }
+
+    .fan-card:hover {
+      transform: rotate(calc(var(--tilt, 0deg) * 0.25)) translateY(-16px) scale(1.04);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Fan Card Variants */
+    .fan-card--tunecamp {
+      --fc-bg: var(--color-teal);
+      --tilt: -5.5deg;
+    }
+
+    .fan-card--linda {
+      --fc-bg: var(--color-forest);
+      color: var(--color-cream);
+      --tilt: -2.5deg;
+    }
+
+    .fan-card--linda .fc-tag {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--color-cream);
+    }
+
+    .fan-card--linda .fc-art {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .fan-card--wormhole {
+      --fc-bg: var(--color-sand);
+      --tilt: 0.5deg;
+    }
+
+    .fan-card--sidecamp {
+      --fc-bg: var(--color-dusty-pink);
+      --tilt: 3.5deg;
+    }
+
+    .fan-card--eph {
+      --fc-bg: var(--color-terracotta);
+      --tilt: 6deg;
+    }
+
+    .fan-card--soap {
+      --fc-bg: var(--color-teal);
+      --tilt: 6deg;
+    }
+
+    .fc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .fc-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.08);
+      line-height: 1.2;
+    }
+
+    .fan-card--nullroute .fc-tag {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--color-cream);
+    }
+
+    .fc-glyph {
+      opacity: 0.6;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .fan-card:hover .fc-glyph {
+      transform: translate(2px, -2px);
+      opacity: 1;
+    }
+
+    .fc-mid {
+      margin-top: auto;
+      margin-bottom: 1.25rem;
+    }
+
+    .fc-name {
+      font-family: var(--font-display);
+      font-size: 2.15rem;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .fc-claim {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1.35;
+      opacity: 0.9;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .fc-art {
+      height: 100px;
+      width: 100%;
+      border-radius: var(--radius-md);
+      background: rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fan-card--nullroute .fc-art {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .fc-art-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Filter Toolbar */
+    .catalog-section {
+      padding: 3rem 0 6rem;
+    }
+
+    .catalog-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .catalog-filter-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .catalog-filter-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-right: 4px;
+    }
+
+    .filter-pill {
+      background: var(--color-bg-tag);
+      border: 1px solid transparent;
+      color: var(--color-text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--color-border-default);
+    }
+
+    .filter-pill.is-active {
+      background: var(--color-text-primary);
+      color: var(--color-bg-canvas);
+    }
+
+    .catalog-count-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Section Heading */
+    .cat-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .cat-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px dashed var(--color-border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    .cat-section-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+    }
+
+    /* 3-Column Card Grid (Desert Ant "Intel Stage") */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    .intel-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px;
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      text-decoration: none;
+      color: var(--color-text-primary);
+      transition: background-color 0.22s var(--ease-standard),
+        color 0.22s var(--ease-standard),
+        transform 0.2s var(--ease-out),
+        box-shadow 0.2s var(--ease-out);
+      position: relative;
+    }
+
+    .intel-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Color morphing on hover */
+    .intel-card--teal:hover {
+      background: var(--color-teal);
+      color: var(--color-ink);
+    }
+
+    .intel-card--dark-teal:hover {
+      background: var(--color-dark-teal);
+      color: var(--color-cream);
+    }
+
+    .intel-card--forest:hover {
+      background: var(--color-forest);
+      color: var(--color-cream);
+    }
+
+    .intel-card--sage:hover {
+      background: var(--color-sage);
+      color: var(--color-ink);
+    }
+
+    .intel-card--terracotta:hover {
+      background: var(--color-terracotta);
+      color: var(--color-ink);
+    }
+
+    .intel-card--dusty-pink:hover {
+      background: var(--color-dusty-pink);
+      color: var(--color-ink);
+    }
+
+    .intel-card--sand:hover {
+      background: var(--color-sand);
+      color: var(--color-ink);
+    }
+
+    .intel-card--clay-red:hover {
+      background: var(--color-clay-red);
+      color: var(--color-cream);
+    }
+
+    .intel-card--warm-grey:hover {
+      background: var(--color-warm-grey);
+      color: var(--color-ink);
+    }
+
+    .intel-card--faun:hover {
+      background: var(--color-faun);
+      color: var(--color-ink);
+    }
+
+    .intel-card--stone:hover {
+      background: var(--color-stone);
+      color: var(--color-ink);
+    }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-src-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      border: 1px solid currentColor;
+      opacity: 0.6;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.15s ease;
+    }
+
+    .card-src-btn:hover {
+      opacity: 1;
+    }
+
+    .card-desc {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      font-weight: 500;
+      opacity: 0.88;
+      flex-grow: 1;
+    }
+
+    .card-bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .card-kind-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="dark"] .card-kind-badge {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .intel-card:hover .card-kind-badge {
+      background: rgba(0, 0, 0, 0.12);
+      color: inherit;
+    }
+
+    .card-tag-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag-mini {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      opacity: 0.65;
+    }
+
+    /* Cabasa Video Drawer / Player */
+    .media-player-box {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      background: var(--color-ink-5);
+      border: 1px dashed var(--color-border-default);
+    }
+
+    .media-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: transparent;
+      border: 1px solid var(--color-border-default);
+      color: var(--color-text-primary);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .media-toggle-btn:hover {
+      background: var(--color-text-primary);
+      color: var(--color-bg-canvas);
+    }
+
+    .media-drawer-content {
+      display: none;
+      margin-top: 16px;
+    }
+
+    .media-drawer-content.is-open {
+      display: block;
+    }
+
+    .video-wrapper {
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      background: #000;
+      margin: 0 auto;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-caption {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .video-caption a {
+      color: inherit;
+    }
+
+    /* Site Footer */
+    .site-footer {
+      border-top: 1px solid var(--color-border-subtle);
+      padding: clamp(3rem, 6vw, 5rem) 0 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-list a {
+      font-size: 0.88rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-list a:hover {
+      color: var(--color-text-primary);
+      text-decoration: underline;
+    }
+
+    .footer-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--color-border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
       .card-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        width: 100%;
-      }
-
-      .intel-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 22px;
-        background-color: var(--color-bg-card);
-        border: 1px solid var(--color-border-subtle);
-        border-radius: var(--radius-xl);
-        text-decoration: none;
-        color: var(--color-text-primary);
-        transition: background-color 0.22s var(--ease-standard),
-                    color 0.22s var(--ease-standard),
-                    transform 0.2s var(--ease-out),
-                    box-shadow 0.2s var(--ease-out);
-        position: relative;
-      }
-
-      .intel-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-      }
-
-      /* Color morphing on hover */
-      .intel-card--teal:hover { background: var(--color-teal); color: var(--color-ink); }
-      .intel-card--dark-teal:hover { background: var(--color-dark-teal); color: var(--color-cream); }
-      .intel-card--forest:hover { background: var(--color-forest); color: var(--color-cream); }
-      .intel-card--sage:hover { background: var(--color-sage); color: var(--color-ink); }
-      .intel-card--terracotta:hover { background: var(--color-terracotta); color: var(--color-ink); }
-      .intel-card--dusty-pink:hover { background: var(--color-dusty-pink); color: var(--color-ink); }
-      .intel-card--sand:hover { background: var(--color-sand); color: var(--color-ink); }
-      .intel-card--clay-red:hover { background: var(--color-clay-red); color: var(--color-cream); }
-      .intel-card--warm-grey:hover { background: var(--color-warm-grey); color: var(--color-ink); }
-      .intel-card--faun:hover { background: var(--color-faun); color: var(--color-ink); }
-      .intel-card--stone:hover { background: var(--color-stone); color: var(--color-ink); }
-
-      .card-top-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 10px;
-      }
-
-      .card-title {
-        font-family: var(--font-display);
-        font-size: 1.45rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1.15;
-      }
-
-      .card-actions {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .card-src-btn {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        padding: 2px 6px;
-        border-radius: var(--radius-sm);
-        border: 1px solid currentColor;
-        opacity: 0.6;
-        text-decoration: none;
-        color: inherit;
-        transition: opacity 0.15s ease;
-      }
-
-      .card-src-btn:hover {
-        opacity: 1;
-      }
-
-      .card-desc {
-        font-family: var(--font-display);
-        font-size: 0.95rem;
-        line-height: 1.45;
-        font-weight: 500;
-        opacity: 0.88;
-        flex-grow: 1;
-      }
-
-      .card-bottom-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: auto;
-      }
-
-      .card-kind-badge {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        padding: 3px 8px;
-        border-radius: var(--radius-pill);
-        background: rgba(0, 0, 0, 0.06);
-      }
-
-      [data-theme="dark"] .card-kind-badge {
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .intel-card:hover .card-kind-badge {
-        background: rgba(0, 0, 0, 0.12);
-        color: inherit;
-      }
-
-      .card-tag-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
-      }
-
-      .tag-mini {
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        opacity: 0.65;
-      }
-
-      /* Cabasa Video Drawer / Player */
-      .media-player-box {
-        margin-top: 14px;
-        padding: 16px;
-        border-radius: var(--radius-lg);
-        background: var(--color-ink-5);
-        border: 1px dashed var(--color-border-default);
-      }
-
-      .media-toggle-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        background: transparent;
-        border: 1px solid var(--color-border-default);
-        color: var(--color-text-primary);
-        padding: 6px 12px;
-        border-radius: var(--radius-pill);
-        cursor: pointer;
-        transition: all 0.15s ease;
-      }
-
-      .media-toggle-btn:hover {
-        background: var(--color-text-primary);
-        color: var(--color-bg-canvas);
-      }
-
-      .media-drawer-content {
-        display: none;
-        margin-top: 16px;
-      }
-
-      .media-drawer-content.is-open {
-        display: block;
-      }
-
-      .video-wrapper {
-        max-width: 320px;
-        aspect-ratio: 9 / 16;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-card);
-        background: #000;
-        margin: 0 auto;
-      }
-
-      .video-wrapper video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .video-caption {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--color-text-muted);
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      .video-caption a {
-        color: inherit;
-      }
-
-      /* Site Footer */
-      .site-footer {
-        border-top: 1px solid var(--color-border-subtle);
-        padding: clamp(3rem, 6vw, 5rem) 0 2.5rem;
-        margin-top: 4rem;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .footer-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: clamp(2rem, 4vw, 4rem);
-        margin-bottom: 3.5rem;
+        grid-template-columns: 1fr 1fr;
       }
 
-      .footer-brand h3 {
-        font-family: var(--font-display);
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 8px;
+      .fan-deck-container {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 1.5rem 0 2.5rem;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
       }
 
-      .footer-brand p {
-        font-size: 0.88rem;
-        color: var(--color-text-muted);
-        line-height: 1.5;
-        max-width: 320px;
+      .fan-deck {
+        justify-content: flex-start;
+        width: auto;
       }
 
-      .footer-col h4 {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--color-text-muted);
-        margin-bottom: 1rem;
+      .fan-deck>* {
+        margin-right: 14px;
+        scroll-snap-align: center;
       }
 
-      .footer-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+      .fan-card {
+        width: 260px;
+        height: 380px;
+        transform: none !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid {
+        grid-template-columns: 1fr;
       }
 
-      .footer-list a {
-        font-size: 0.88rem;
-        color: var(--color-text-secondary);
-        text-decoration: none;
-        transition: color 0.15s ease;
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
-      .footer-list a:hover {
-        color: var(--color-text-primary);
-        text-decoration: underline;
+      .header-content {
+        height: 64px;
       }
 
-      .footer-bottom-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 16px;
-        padding-top: 20px;
-        border-top: 1px dashed var(--color-border-subtle);
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        color: var(--color-text-muted);
+      .hero-title {
+        font-size: 2.5rem;
       }
+    }
+  </style>
+</head>
 
-      /* Responsive Breakpoints */
-      @media (max-width: 1024px) {
-        .card-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .footer-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .fan-deck-container {
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          padding: 1.5rem 0 2.5rem;
-          justify-content: flex-start;
-          -webkit-overflow-scrolling: touch;
-        }
-        .fan-deck {
-          justify-content: flex-start;
-          width: auto;
-        }
-        .fan-deck > * {
-          margin-right: 14px;
-          scroll-snap-align: center;
-        }
-        .fan-card {
-          width: 260px;
-          height: 380px;
-          transform: none !important;
-        }
-      }
+<body>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="layout-container">
+      <div class="header-content">
+        <a href="#" class="brandmark" aria-label="scobru home">
+          <div class="brandmark-symbol" aria-hidden="true">
+            <!-- Geometric Sound & P2P Symbol -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="10" width="3" height="4" rx="1.5" fill="currentColor" />
+              <rect x="8" y="6" width="3" height="12" rx="1.5" fill="currentColor" />
+              <rect x="13" y="3" width="3" height="18" rx="1.5" fill="currentColor" />
+              <rect x="18" y="8" width="3" height="8" rx="1.5" fill="currentColor" />
+            </svg>
+          </div>
+          <div>
+            <span class="brandmark-name">scobru</span>
+            <span class="brandmark-role">// lab</span>
+          </div>
+        </a>
 
-      @media (max-width: 640px) {
-        .card-grid {
-          grid-template-columns: 1fr;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr;
-        }
-        .header-content {
-          height: 64px;
-        }
-        .hero-title {
-          font-size: 2.5rem;
-        }
-      }
-    </style>
-  </head>
+        <nav class="header-nav" aria-label="Main Navigation">
+          <a href="links.html" class="nav-link" title="Links & thoughts">[ links ]</a>
+          <a href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1" target="_blank"
+            rel="noopener" class="nav-link">[ blog ]</a>
+          <button id="lang-toggle" class="nav-pill-btn" type="button" aria-label="Passa all'italiano">
+            <span id="lang-text">[ it ]</span>
+          </button>
+          <button id="theme-toggle" class="nav-pill-btn" type="button" aria-label="Toggle theme">
+            <span id="theme-text">[ dark ]</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-  <body>
-    <!-- Site Header -->
-    <header class="site-header">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
       <div class="layout-container">
-        <div class="header-content">
-          <a href="#" class="brandmark" aria-label="scobru home">
-            <div class="brandmark-symbol" aria-hidden="true">
-              <!-- Geometric Sound & P2P Symbol -->
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="10" width="3" height="4" rx="1.5" fill="currentColor"/>
-                <rect x="8" y="6" width="3" height="12" rx="1.5" fill="currentColor"/>
-                <rect x="13" y="3" width="3" height="18" rx="1.5" fill="currentColor"/>
-                <rect x="18" y="8" width="3" height="8" rx="1.5" fill="currentColor"/>
+        <div class="hero-eyebrow">
+          <span data-i18n="heroStatus">P2P Systems · Audio Tech · Open Source</span>
+        </div>
+        <h1 class="hero-title" data-i18n="heroTitle">
+          Francesco Bruno.<br />
+          <em>Sistemi P2P &amp; Sintesi Sonora.</em>
+        </h1>
+        <p class="hero-sub" data-i18n="heroSub">
+          Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e strumenti di sintesi
+          generativa.
+        </p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (32)</a>
+          <a href="https://github.com/scobru" target="_blank" rel="noopener" class="btn-secondary">GitHub &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Cards Fan Deck -->
+    <section class="fan-section" aria-label="In evidenza">
+      <div class="layout-container">
+        <div class="fan-section-head">
+          <h2 class="fan-section-title" data-i18n="fanTitle">Progetti in Evidenza</h2>
+          <span class="catalog-count-badge">// flagship 05</span>
+        </div>
+
+        <div class="fan-deck-container">
+          <div class="fan-deck">
+            <!-- 1. Tunecamp -->
+            <div>
+              <a href="https://tunecamp.org/" target="_blank" rel="noopener" class="fan-card fan-card--tunecamp">
+                <div class="fc-top">
+                  <span class="fc-tag">STREAMING P2P</span>
+                  <span class="fc-glyph">&nearr;</span>
+                </div>
+                <div class="fc-mid">
+                  <div class="fc-name">Tunecamp</div>
+                  <p class="fc-claim" data-i18n="claimTunecamp">Streaming musicale decentralizzato e federato senza
+                    intermediari.</p>
+                </div>
+                <div class="fc-art">
+                  <!-- Stylized audio node wave -->
+                  <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
+                    <path d="M5 20 Q 25 5, 50 20 T 95 20" stroke="currentColor" stroke-width="2.5" fill="none" />
+                    <circle cx="25" cy="12" r="4" fill="currentColor" />
+                    <circle cx="50" cy="20" r="5" fill="currentColor" />
+                    <circle cx="75" cy="28" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+
+            <!-- 2. Linda -->
+            <div>
+              <a href="https://linda.scobrudot.dev/" target="_blank" rel="noopener" class="fan-card fan-card--linda">
+                <div class="fc-top">
+                  <span class="fc-tag">P2P MESSENGER</span>
+                  <span class="fc-glyph">&nearr;</span>
+                </div>
+                <div class="fc-mid">
+                  <div class="fc-name">Linda</div>
+                  <p class="fc-claim" data-i18n="claimLinda">Messaggistica cifrata P2P serverless su stack Holepunch.
+                  </p>
+                </div>
+                <div class="fc-art">
+                  <!-- Holepunch P2P Handshake Glyph -->
+                  <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
+                    <circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="2" />
+                    <circle cx="24" cy="20" r="4" fill="currentColor" />
+                    <circle cx="76" cy="20" r="10" stroke="currentColor" stroke-width="2" />
+                    <circle cx="76" cy="20" r="4" fill="currentColor" />
+                    <path d="M34 20 H66" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3" />
+                    <path d="M46 16 L50 20 L46 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M54 16 L50 20 L54 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+
+            <!-- 3. Wormhole -->
+            <div>
+              <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener"
+                class="fan-card fan-card--wormhole">
+                <div class="fc-top">
+                  <span class="fc-tag">E2EE TRANSFER</span>
+                  <span class="fc-glyph">&nearr;</span>
+                </div>
+                <div class="fc-mid">
+                  <div class="fc-name">Wormhole</div>
+                  <p class="fc-claim" data-i18n="claimWormhole">Trasferimento file peer-to-peer istantaneo con
+                    crittografia end-to-end.</p>
+                </div>
+                <div class="fc-art">
+                  <!-- Concentric wormhole rings -->
+                  <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
+                    <ellipse cx="50" cy="20" rx="36" ry="14" stroke="currentColor" stroke-width="1.5"
+                      stroke-dasharray="6 3" />
+                    <ellipse cx="50" cy="20" rx="24" ry="9" stroke="currentColor" stroke-width="2" />
+                    <ellipse cx="50" cy="20" rx="12" ry="4" stroke="currentColor" stroke-width="2.5" />
+                    <circle cx="50" cy="20" r="2.5" fill="currentColor" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+
+            <!-- 4. Sidecamp -->
+            <div>
+              <a href="https://www.tunecamp.org/sidecamp.html" target="_blank" rel="noopener"
+                class="fan-card fan-card--sidecamp">
+                <div class="fc-top">
+                  <span class="fc-tag">P2P COMPANION</span>
+                  <span class="fc-glyph">&nearr;</span>
+                </div>
+                <div class="fc-mid">
+                  <div class="fc-name">Sidecamp</div>
+                  <p class="fc-claim" data-i18n="claimSidecamp">Companion P2P per TuneCamp: Soulseek, Torrents e
+                    download yt-dlp.</p>
+                </div>
+                <div class="fc-art">
+                  <!-- Sidecamp P2P streams & node glyph -->
+                  <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
+                    <rect x="20" y="10" width="60" height="20" rx="6" stroke="currentColor" stroke-width="2" />
+                    <circle cx="34" cy="20" r="4" fill="currentColor" />
+                    <circle cx="66" cy="20" r="4" fill="currentColor" />
+                    <path d="M44 20 L56 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M50 14 L50 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M10 20 L16 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M84 20 L90 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+
+            <!-- 5. SOAP -->
+            <div>
+              <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="fan-card fan-card--soap">
+                <div class="fc-top">
+                  <span class="fc-tag">VOICE CLEANER</span>
+                  <span class="fc-glyph">&nearr;</span>
+                </div>
+                <div class="fc-mid">
+                  <div class="fc-name">Soap</div>
+                  <p class="fc-claim" data-i18n="claimSoap">Denoise, dereverb e loudness per voci, tutto in locale via
+                    WebAssembly.</p>
+                </div>
+                <div class="fc-art">
+                  <!-- Soap bubble / waveform cleanup glyph -->
+                  <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
+                    <circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2" />
+                    <circle cx="20" cy="20" r="3" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="42" cy="20" r="5" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="58" cy="20" r="7" stroke="currentColor" stroke-width="2" />
+                    <path d="M72 26 Q78 20 84 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M72 14 Q78 20 84 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Projects Section (Intel Stage) -->
+    <section class="catalog-section" id="catalog">
+      <div class="layout-container">
+        <!-- Toolbar & Category Filter Pills -->
+        <div class="catalog-toolbar">
+          <div class="catalog-filter-group" id="filter-group">
+            <span class="catalog-filter-label" data-i18n="filterLabel">// filter:</span>
+            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (32)
+              ]</button>
+            <button class="filter-pill" data-filter="federated" type="button" data-i18n="filterFederated">[ federated
+              (1) ]</button>
+            <button class="filter-pill" data-filter="decentralized" type="button" data-i18n="filterDecentralized">[
+              decentralized (3) ]</button>
+            <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (5) ]</button>
+            <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5)
+              ]</button>
+            <button class="filter-pill" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech
+              (5) ]</button>
+            <button class="filter-pill" data-filter="art-and-music" type="button" data-i18n="filterArtMusic">[ art &amp;
+              music (4) ]</button>
+            <button class="filter-pill" data-filter="contracts" type="button" data-i18n="filterContracts">[ connect (9)
+              ]</button>
+          </div>
+          <span class="catalog-count-badge" id="visible-count">// 32/32 visualizzati</span>
+        </div>
+
+        <!-- Category 01a: Federated -->
+        <div class="cat-section" data-cat="federated">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secFederated">[ 01a // Federated ]</span>
+            <span class="catalog-count-badge">1 item</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://tunecamp.org/" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">Tunecamp</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/tunecamp', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descTunecamp">Decentralized music streaming</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">FEDERATED</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#p2p</span>
+                  <span class="tag-mini">#streaming</span>
+                  <span class="tag-mini">#music</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 01b: Decentralized -->
+        <div class="cat-section" data-cat="decentralized">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secDecentralized">[ 01b // Decentralized ]</span>
+            <span class="catalog-count-badge">3 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://nullroute.scobrudot.dev/" target="_blank" rel="noopener"
+              class="intel-card intel-card--dark-teal">
+              <div class="card-top-row">
+                <span class="card-title">Nullroute</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/nullroute', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descNullroute">EVM stealth payment hub</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">WEB3</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#evm</span>
+                  <span class="tag-mini">#stealth-pay</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://zenvault.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
+              <div class="card-top-row">
+                <span class="card-title">Zenvault</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/zenvault', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descZenvault">Decentralized Secure Vault</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">SECURITY</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#p2p</span>
+                  <span class="tag-mini">#vault</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://smollog.scobrudot.dev/" target="_blank" rel="noopener"
+              class="intel-card intel-card--dusty-pink">
+              <div class="card-top-row">
+                <span class="card-title">Smollog</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/smollog', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descSmollog">Zero-backend, cryptographic blogging platform on Zen</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">BLOGGING</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#zen</span>
+                  <span class="tag-mini">#crypto</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 01c: P2P -->
+        <div class="cat-section" data-cat="p2p">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secP2P">[ 01c // P2P ]</span>
+            <span class="catalog-count-badge">5 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener"
+              class="intel-card intel-card--sand">
+              <div class="card-top-row">
+                <span class="card-title">Wormhole</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/wormhole', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descWormhole">E2EE P2P file transfer</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">FILE TRANSFER</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#e2ee</span>
+                  <span class="tag-mini">#p2p</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://linda.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--forest">
+              <div class="card-top-row">
+                <span class="card-title">Linda</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/linda', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descLinda">Serverless P2P encrypted messenger on Holepunch stack</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">MESSENGER</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#holepunch</span>
+                  <span class="tag-mini">#e2ee</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://www.tunecamp.org/sidecamp.html" target="_blank" rel="noopener"
+              class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">Sidecamp</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/sidecamp', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descSidecamp">TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">COMPANION</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#soulseek</span>
+                  <span class="tag-mini">#torrents</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://whiterabbit.scobrudot.dev" target="_blank" rel="noopener"
+              class="intel-card intel-card--clay-red">
+              <div class="card-top-row">
+                <span class="card-title">Whiterabbit</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/whiterabbit', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descWhiterabbit">Ephemeral p2p chat</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">EPHEMERAL CHAT</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#zero-log</span>
+                  <span class="tag-mini">#privacy</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://iris.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--faun">
+              <div class="card-top-row">
+                <span class="card-title">Iris</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/iris', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descIris">Air-gapped optical file transfer via animated QR codes</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">OPTICAL TRANSFER</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#air-gap</span>
+                  <span class="tag-mini">#qr</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 02: Protocols & Infra -->
+        <div class="cat-section" data-cat="web">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secInfra">[ 02 // Protocols, Web3 &amp; Infra ]</span>
+            <span class="catalog-count-badge">5 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://github.com/scobru/zen" target="_blank" rel="noopener"
+              class="intel-card intel-card--warm-grey">
+              <div class="card-top-row">
+                <span class="card-title">Zen</span>
+                <div class="card-actions">
+                  <span class="card-src-btn">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descZen">Zen fork</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">PROTOCOL</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#gun-db</span>
+                  <span class="tag-mini">#p2p</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
+              <div class="card-top-row">
+                <span class="card-title">Delay</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/delay', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descDelay">Decentralized Relay</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">RELAY INFRA</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#ipfs</span>
+                  <span class="tag-mini">#network</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://github.com/scobru/cli-tools" target="_blank" rel="noopener"
+              class="intel-card intel-card--stone">
+              <div class="card-top-row">
+                <span class="card-title">CLI Tools</span>
+                <div class="card-actions">
+                  <span class="card-src-btn">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descCliTools">Collection of CLI Tools</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">DEV TOOLS</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#terminal</span>
+                  <span class="tag-mini">#cli</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://fid.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">FID</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/fid', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descFid">Fediverse-ID: self-sovereign SSO &amp; identity protocol for
+                ActivityPub</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">FEDIVERSE</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#activitypub</span>
+                  <span class="tag-mini">#sso</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://gazza.scobrudot.dev/" target="_blank" rel="noopener"
+              class="intel-card intel-card--dark-teal">
+              <div class="card-top-row">
+                <span class="card-title">Gazza</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/gazza', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descGazza">Hides any file inside a video: whoever hosts the video hosts
+                your bytes, returned byte for byte</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">STEGANOGRAPHY</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#video</span>
+                  <span class="tag-mini">#storage</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 03: Audio-Tech / Web Instruments -->
+        <div class="cat-section" data-cat="audio-tech">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secAudio">[ 03 // Web / Instrument ]</span>
+            <span class="catalog-count-badge">6 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sand">
+              <div class="card-top-row">
+                <span class="card-title">Eurydice</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/eurydice', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descEurydice">Eurydice: Ambient soundscape studio with generative
+                synthesis and visual identity.</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">SOUNDSCAPE</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#web-audio</span>
+                  <span class="tag-mini">#ambient</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://delia.scobrudot.dev" target="_blank" rel="noopener"
+              class="intel-card intel-card--dusty-pink">
+              <div class="card-top-row">
+                <span class="card-title">Delia</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/delia', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descDelia">Browser tape instrument with varispeed &amp; tape wear
+                simulation</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">DSP / TAPE</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#varispeed</span>
+                  <span class="tag-mini">#dsp</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Cabasa (with Video Drawer) -->
+            <div class="intel-card intel-card--terracotta" style="grid-column: span 1;">
+              <div class="card-top-row">
+                <a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener"
+                  style="text-decoration:none; color:inherit;">
+                  <span class="card-title">Cabasa</span>
+                </a>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="window.open('https://github.com/scobru/cabasa', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descCabasa">Generative soundtrack engine: 7 live data sources (ISS,
+                quakes, chaos) drive real-time ambient synthesis</p>
+
+              <!-- Reel Drawer Toggle -->
+              <div class="media-player-box">
+                <button class="media-toggle-btn" id="cabasa-video-btn" type="button" aria-expanded="false"
+                  data-i18n="btnCabasaVideo">
+                  ▶ [ watch reel (ipfs) ]
+                </button>
+                <div class="media-drawer-content" id="cabasa-video-drawer">
+                  <div class="video-wrapper">
+                    <video id="cabasa-video-element" controls playsinline preload="metadata"
+                      poster="cabasa-preview.jpg">
+                      <source
+                        src="https://delay.scobrudot.dev/api/v1/ipfs/cat/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb"
+                        type="video/mp4" />
+                      <source src="https://ipfs.io/ipfs/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb"
+                        type="video/mp4" />
+                      <source src="https://dweb.link/ipfs/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb"
+                        type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="video-caption">
+                    <span data-i18n="videoMetaRelay">IPFS relay via</span> <a href="https://delay.scobrudot.dev"
+                      target="_blank" rel="noopener">delay.scobrudot.dev</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">LIVE SYNTHESIS</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#live-data</span>
+                  <span class="tag-mini">#generative</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://eph.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
+              <div class="card-top-row">
+                <span class="card-title">EPH</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/eph', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descEph">One-button ephemeral synth: every press draws a whole patch from
+                one seed, 4 billion of them</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">SYNTH GENERATOR</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#ephemeral</span>
+                  <span class="tag-mini">#midi</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">Soap</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness
+                normalization via WebAssembly — audio never leaves your device</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">VOICE DSP</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#wasm</span>
+                  <span class="tag-mini">#ai</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener"
+              class="intel-card intel-card--forest">
+              <div class="card-top-row">
+                <span class="card-title">Onepick</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/onepick', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descOnepick">Decentralized analog P2P radio &amp; culture frequency on Zen
+              </p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">P2P RADIO</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#radio</span>
+                  <span class="tag-mini">#zen</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 04: Music & Art -->
+        <div class="cat-section" data-cat="art-and-music">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secMusic">[ 04 // Music &amp; Art ]</span>
+            <span class="catalog-count-badge">4 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://sudorecords.scobrudot.dev" target="_blank" rel="noopener"
+              class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">Sudo Records</span>
+              </div>
+              <p class="card-desc" data-i18n="descSudoRecords">Record Label hosted on Tunecamp</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">LABEL</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#record-label</span>
+                  <span class="tag-mini">#tunecamp</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener"
+              class="intel-card intel-card--sand">
+              <div class="card-top-row">
+                <span class="card-title">Homologo</span>
+              </div>
+              <p class="card-desc" data-i18n="descHomologo">Songwriter, Pop, Electronic</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">BANDCAMP</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#songwriter</span>
+                  <span class="tag-mini">#pop</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://fademusik.bandcamp.com" target="_blank" rel="noopener"
+              class="intel-card intel-card--dusty-pink">
+              <div class="card-top-row">
+                <span class="card-title">Fade</span>
+              </div>
+              <p class="card-desc" data-i18n="descFade">Electronic / Synth music</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">SYNTH</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#electronic</span>
+                  <span class="tag-mini">#modular</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://zimablue.bandcamp.com" target="_blank" rel="noopener"
+              class="intel-card intel-card--dark-teal">
+              <div class="card-top-row">
+                <span class="card-title">Zima Blue</span>
+              </div>
+              <p class="card-desc" data-i18n="descZimaBlue">Ambient, Experimental soundscapes</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">SOUNDSCAPES</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#ambient</span>
+                  <span class="tag-mini">#experimental</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 05: Connect -->
+        <div class="cat-section" data-cat="contracts">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secConnect">[ 05 // Connect ]</span>
+            <span class="catalog-count-badge">9 links</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://github.com/scobru" target="_blank" rel="me noopener" class="intel-card intel-card--forest">
+              <div class="card-top-row"><span class="card-title">GitHub</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">@scobru</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">CODE</span></div>
+            </a>
+
+            <a href="https://twitter.com/scobru1988" target="_blank" rel="me noopener"
+              class="intel-card intel-card--sand">
+              <div class="card-top-row"><span class="card-title">Twitter / X</span><span
+                  class="card-src-btn">&rarr;</span></div>
+              <p class="card-desc">@scobru1988</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">SOCIAL</span></div>
+            </a>
+
+            <a href="https://livellosegreto.it/@scobru" target="_blank" rel="me noopener"
+              class="intel-card intel-card--sage">
+              <div class="card-top-row"><span class="card-title">Mastodon</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">@scobru@livellosegreto.it</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">FEDIVERSE</span></div>
+            </a>
+
+            <a href="https://t.me/scobru" target="_blank" rel="me noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row"><span class="card-title">Telegram</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">@scobru</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">CHAT</span></div>
+            </a>
+
+            <a href="https://instagram.com/francescobruno" target="_blank" rel="me noopener"
+              class="intel-card intel-card--dusty-pink">
+              <div class="card-top-row"><span class="card-title">Instagram</span><span
+                  class="card-src-btn">&rarr;</span></div>
+              <p class="card-desc">@francescobruno</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">MEDIA</span></div>
+            </a>
+
+            <a href="https://youtube.com/scobru88" target="_blank" rel="me noopener"
+              class="intel-card intel-card--clay-red">
+              <div class="card-top-row"><span class="card-title">YouTube</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">@scobru88</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">VIDEO</span></div>
+            </a>
+
+            <a href="https://audius.co/francescobruno" target="_blank" rel="me noopener"
+              class="intel-card intel-card--terracotta">
+              <div class="card-top-row"><span class="card-title">Audius</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">francescobruno</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">MUSIC</span></div>
+            </a>
+
+            <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7" target="_blank" rel="me noopener"
+              class="intel-card intel-card--sage">
+              <div class="card-top-row"><span class="card-title">Spotify</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">Selected Playlist</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">AUDIO</span></div>
+            </a>
+
+            <a href="mailto:scobru1988@gmail.com" rel="me" class="intel-card intel-card--stone">
+              <div class="card-top-row"><span class="card-title">Email</span><span class="card-src-btn">&rarr;</span>
+              </div>
+              <p class="card-desc">scobru1988@gmail.com</p>
+              <div class="card-bottom-row"><span class="card-kind-badge">DIRECT</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="layout-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brandmark" style="margin-bottom: 12px;">
+            <div class="brandmark-symbol">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="10" width="3" height="4" rx="1.5" fill="currentColor" />
+                <rect x="8" y="6" width="3" height="12" rx="1.5" fill="currentColor" />
+                <rect x="13" y="3" width="3" height="18" rx="1.5" fill="currentColor" />
+                <rect x="18" y="8" width="3" height="8" rx="1.5" fill="currentColor" />
               </svg>
             </div>
-            <div>
-              <span class="brandmark-name">scobru</span>
-              <span class="brandmark-role">// lab</span>
-            </div>
-          </a>
+            <span class="brandmark-name">scobru</span>
+          </div>
+          <p data-i18n="footerBio">Francesco Bruno — developer &amp; sound designer. Decentralized apps, P2P, creative
+            technology, and electronic music.</p>
+        </div>
 
-          <nav class="header-nav" aria-label="Main Navigation">
-            <a href="links.html" class="nav-link" title="Links & thoughts">[ links ]</a>
-            <a href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1" target="_blank" rel="noopener" class="nav-link">[ blog ]</a>
-            <button id="lang-toggle" class="nav-pill-btn" type="button" aria-label="Passa all'italiano">
-              <span id="lang-text">[ it ]</span>
-            </button>
-            <button id="theme-toggle" class="nav-pill-btn" type="button" aria-label="Toggle theme">
-              <span id="theme-text">[ dark ]</span>
-            </button>
-          </nav>
+        <div class="footer-col">
+          <h4 data-i18n="fColP2p">P2P &amp; Web3</h4>
+          <ul class="footer-list">
+            <li><a href="https://tunecamp.org/" target="_blank" rel="noopener">Tunecamp</a></li>
+            <li><a href="https://nullroute.scobrudot.dev/" target="_blank" rel="noopener">Nullroute</a></li>
+            <li><a href="https://zenvault.scobrudot.dev" target="_blank" rel="noopener">Zenvault</a></li>
+            <li><a href="https://smollog.scobrudot.dev/" target="_blank" rel="noopener">Smollog</a></li>
+            <li><a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener">Wormhole</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="fColAudio">Audio &amp; Tools</h4>
+          <ul class="footer-list">
+            <li><a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener">Cabasa</a></li>
+            <li><a href="https://delia.scobrudot.dev" target="_blank" rel="noopener">Delia</a></li>
+            <li><a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener">Eurydice</a></li>
+            <li><a href="https://soap-blond.vercel.app" target="_blank" rel="noopener">Soap</a></li>
+            <li><a href="https://eph.scobrudot.dev" target="_blank" rel="noopener">EPH</a></li>
+            <li><a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener">Onepick</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="fColConnect">Network</h4>
+          <ul class="footer-list">
+            <li><a href="https://github.com/scobru" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://twitter.com/scobru1988" target="_blank" rel="noopener">Twitter / X</a></li>
+            <li><a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener">Mastodon</a></li>
+            <li><a href="https://t.me/scobru" target="_blank" rel="noopener">Telegram</a></li>
+            <li><a href="mailto:scobru1988@gmail.com">scobru1988@gmail.com</a></li>
+          </ul>
         </div>
       </div>
-    </header>
 
-    <main>
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="layout-container">
-          <div class="hero-eyebrow">
-            <span data-i18n="heroStatus">P2P Systems · Audio Tech · Open Source</span>
-          </div>
-          <h1 class="hero-title" data-i18n="heroTitle">
-            Francesco Bruno.<br />
-            <em>Sistemi P2P &amp; Sintesi Sonora.</em>
-          </h1>
-          <p class="hero-sub" data-i18n="heroSub">
-            Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e strumenti di sintesi generativa.
-          </p>
-          <div class="hero-actions">
-            <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (32)</a>
-            <a href="https://github.com/scobru" target="_blank" rel="noopener" class="btn-secondary">GitHub &rarr;</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Feature Cards Fan Deck -->
-      <section class="fan-section" aria-label="In evidenza">
-        <div class="layout-container">
-          <div class="fan-section-head">
-            <h2 class="fan-section-title" data-i18n="fanTitle">Progetti in Evidenza</h2>
-            <span class="catalog-count-badge">// flagship 05</span>
-          </div>
-
-          <div class="fan-deck-container">
-            <div class="fan-deck">
-              <!-- 1. Tunecamp -->
-              <div>
-                <a href="https://tunecamp.org/" target="_blank" rel="noopener" class="fan-card fan-card--tunecamp">
-                  <div class="fc-top">
-                    <span class="fc-tag">STREAMING P2P</span>
-                    <span class="fc-glyph">&nearr;</span>
-                  </div>
-                  <div class="fc-mid">
-                    <div class="fc-name">Tunecamp</div>
-                    <p class="fc-claim" data-i18n="claimTunecamp">Streaming musicale decentralizzato e federato senza intermediari.</p>
-                  </div>
-                  <div class="fc-art">
-                    <!-- Stylized audio node wave -->
-                    <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
-                      <path d="M5 20 Q 25 5, 50 20 T 95 20" stroke="currentColor" stroke-width="2.5" fill="none"/>
-                      <circle cx="25" cy="12" r="4" fill="currentColor"/>
-                      <circle cx="50" cy="20" r="5" fill="currentColor"/>
-                      <circle cx="75" cy="28" r="4" fill="currentColor"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <!-- 2. Linda -->
-              <div>
-                <a href="https://linda.scobrudot.dev/" target="_blank" rel="noopener" class="fan-card fan-card--linda">
-                  <div class="fc-top">
-                    <span class="fc-tag">P2P MESSENGER</span>
-                    <span class="fc-glyph">&nearr;</span>
-                  </div>
-                  <div class="fc-mid">
-                    <div class="fc-name">Linda</div>
-                    <p class="fc-claim" data-i18n="claimLinda">Messaggistica cifrata P2P serverless su stack Holepunch.</p>
-                  </div>
-                  <div class="fc-art">
-                    <!-- Holepunch P2P Handshake Glyph -->
-                    <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
-                      <circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="2"/>
-                      <circle cx="24" cy="20" r="4" fill="currentColor"/>
-                      <circle cx="76" cy="20" r="10" stroke="currentColor" stroke-width="2"/>
-                      <circle cx="76" cy="20" r="4" fill="currentColor"/>
-                      <path d="M34 20 H66" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
-                      <path d="M46 16 L50 20 L46 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M54 16 L50 20 L54 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <!-- 3. Wormhole -->
-              <div>
-                <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener" class="fan-card fan-card--wormhole">
-                  <div class="fc-top">
-                    <span class="fc-tag">E2EE TRANSFER</span>
-                    <span class="fc-glyph">&nearr;</span>
-                  </div>
-                  <div class="fc-mid">
-                    <div class="fc-name">Wormhole</div>
-                    <p class="fc-claim" data-i18n="claimWormhole">Trasferimento file peer-to-peer istantaneo con crittografia end-to-end.</p>
-                  </div>
-                  <div class="fc-art">
-                    <!-- Concentric wormhole rings -->
-                    <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
-                      <ellipse cx="50" cy="20" rx="36" ry="14" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 3"/>
-                      <ellipse cx="50" cy="20" rx="24" ry="9" stroke="currentColor" stroke-width="2"/>
-                      <ellipse cx="50" cy="20" rx="12" ry="4" stroke="currentColor" stroke-width="2.5"/>
-                      <circle cx="50" cy="20" r="2.5" fill="currentColor"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <!-- 4. Sidecamp -->
-              <div>
-                <a href="https://www.tunecamp.org/sidecamp.html" target="_blank" rel="noopener" class="fan-card fan-card--sidecamp">
-                  <div class="fc-top">
-                    <span class="fc-tag">P2P COMPANION</span>
-                    <span class="fc-glyph">&nearr;</span>
-                  </div>
-                  <div class="fc-mid">
-                    <div class="fc-name">Sidecamp</div>
-                    <p class="fc-claim" data-i18n="claimSidecamp">Companion P2P per TuneCamp: Soulseek, Torrents e download yt-dlp.</p>
-                  </div>
-                  <div class="fc-art">
-                    <!-- Sidecamp P2P streams & node glyph -->
-                    <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
-                      <rect x="20" y="10" width="60" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
-                      <circle cx="34" cy="20" r="4" fill="currentColor"/>
-                      <circle cx="66" cy="20" r="4" fill="currentColor"/>
-                      <path d="M44 20 L56 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M50 14 L50 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M10 20 L16 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M84 20 L90 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <!-- 5. SOAP -->
-              <div>
-                <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="fan-card fan-card--soap">
-                  <div class="fc-top">
-                    <span class="fc-tag">VOICE CLEANER</span>
-                    <span class="fc-glyph">&nearr;</span>
-                  </div>
-                  <div class="fc-mid">
-                    <div class="fc-name">Soap</div>
-                    <p class="fc-claim" data-i18n="claimSoap">Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.</p>
-                  </div>
-                  <div class="fc-art">
-                    <!-- Soap bubble / waveform cleanup glyph -->
-                    <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
-                      <circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2"/>
-                      <circle cx="20" cy="20" r="3" stroke="currentColor" stroke-width="1.5"/>
-                      <circle cx="42" cy="20" r="5" stroke="currentColor" stroke-width="1.5"/>
-                      <circle cx="58" cy="20" r="7" stroke="currentColor" stroke-width="2"/>
-                      <path d="M72 26 Q78 20 84 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M72 14 Q78 20 84 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- All Projects Section (Intel Stage) -->
-      <section class="catalog-section" id="catalog">
-        <div class="layout-container">
-          <!-- Toolbar & Category Filter Pills -->
-          <div class="catalog-toolbar">
-            <div class="catalog-filter-group" id="filter-group">
-              <span class="catalog-filter-label" data-i18n="filterLabel">// filter:</span>
-              <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (32) ]</button>
-              <button class="filter-pill" data-filter="federated" type="button" data-i18n="filterFederated">[ federated (1) ]</button>
-              <button class="filter-pill" data-filter="decentralized" type="button" data-i18n="filterDecentralized">[ decentralized (3) ]</button>
-              <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (5) ]</button>
-              <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5) ]</button>
-              <button class="filter-pill" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech (5) ]</button>
-              <button class="filter-pill" data-filter="art-and-music" type="button" data-i18n="filterArtMusic">[ art &amp; music (4) ]</button>
-              <button class="filter-pill" data-filter="contracts" type="button" data-i18n="filterContracts">[ connect (9) ]</button>
-            </div>
-            <span class="catalog-count-badge" id="visible-count">// 32/32 visualizzati</span>
-          </div>
-
-          <!-- Category 01a: Federated -->
-          <div class="cat-section" data-cat="federated">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secFederated">[ 01a // Federated ]</span>
-              <span class="catalog-count-badge">1 item</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://tunecamp.org/" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-                <div class="card-top-row">
-                  <span class="card-title">Tunecamp</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/tunecamp', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descTunecamp">Decentralized music streaming</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">FEDERATED</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#p2p</span>
-                    <span class="tag-mini">#streaming</span>
-                    <span class="tag-mini">#music</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 01b: Decentralized -->
-          <div class="cat-section" data-cat="decentralized">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secDecentralized">[ 01b // Decentralized ]</span>
-              <span class="catalog-count-badge">3 items</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://nullroute.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--dark-teal">
-                <div class="card-top-row">
-                  <span class="card-title">Nullroute</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/nullroute', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descNullroute">EVM stealth payment hub</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">WEB3</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#evm</span>
-                    <span class="tag-mini">#stealth-pay</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://zenvault.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
-                <div class="card-top-row">
-                  <span class="card-title">Zenvault</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/zenvault', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descZenvault">Decentralized Secure Vault</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">SECURITY</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#p2p</span>
-                    <span class="tag-mini">#vault</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://smollog.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--dusty-pink">
-                <div class="card-top-row">
-                  <span class="card-title">Smollog</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/smollog', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descSmollog">Zero-backend, cryptographic blogging platform on Zen</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">BLOGGING</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#zen</span>
-                    <span class="tag-mini">#crypto</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 01c: P2P -->
-          <div class="cat-section" data-cat="p2p">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secP2P">[ 01c // P2P ]</span>
-              <span class="catalog-count-badge">5 items</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--sand">
-                <div class="card-top-row">
-                  <span class="card-title">Wormhole</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/wormhole', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descWormhole">E2EE P2P file transfer</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">FILE TRANSFER</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#e2ee</span>
-                    <span class="tag-mini">#p2p</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://linda.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--forest">
-                <div class="card-top-row">
-                  <span class="card-title">Linda</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/linda', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descLinda">Serverless P2P encrypted messenger on Holepunch stack</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">MESSENGER</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#holepunch</span>
-                    <span class="tag-mini">#e2ee</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://www.tunecamp.org/sidecamp.html" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-                <div class="card-top-row">
-                  <span class="card-title">Sidecamp</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/sidecamp', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descSidecamp">TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">COMPANION</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#soulseek</span>
-                    <span class="tag-mini">#torrents</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://whiterabbit.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--clay-red">
-                <div class="card-top-row">
-                  <span class="card-title">Whiterabbit</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/whiterabbit', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descWhiterabbit">Ephemeral p2p chat</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">EPHEMERAL CHAT</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#zero-log</span>
-                    <span class="tag-mini">#privacy</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://iris.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--faun">
-                <div class="card-top-row">
-                  <span class="card-title">Iris</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/iris', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descIris">Air-gapped optical file transfer via animated QR codes</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">OPTICAL TRANSFER</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#air-gap</span>
-                    <span class="tag-mini">#qr</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 02: Protocols & Infra -->
-          <div class="cat-section" data-cat="web">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secInfra">[ 02 // Protocols, Web3 &amp; Infra ]</span>
-              <span class="catalog-count-badge">5 items</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://github.com/scobru/zen" target="_blank" rel="noopener" class="intel-card intel-card--warm-grey">
-                <div class="card-top-row">
-                  <span class="card-title">Zen</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descZen">Zen fork</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">PROTOCOL</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#gun-db</span>
-                    <span class="tag-mini">#p2p</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
-                <div class="card-top-row">
-                  <span class="card-title">Delay</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/delay', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descDelay">Decentralized Relay</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">RELAY INFRA</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#ipfs</span>
-                    <span class="tag-mini">#network</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://github.com/scobru/cli-tools" target="_blank" rel="noopener" class="intel-card intel-card--stone">
-                <div class="card-top-row">
-                  <span class="card-title">CLI Tools</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descCliTools">Collection of CLI Tools</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">DEV TOOLS</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#terminal</span>
-                    <span class="tag-mini">#cli</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://fid.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-                <div class="card-top-row">
-                  <span class="card-title">FID</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/fid', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descFid">Fediverse-ID: self-sovereign SSO &amp; identity protocol for ActivityPub</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">FEDIVERSE</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#activitypub</span>
-                    <span class="tag-mini">#sso</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://gazza.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--dark-teal">
-                <div class="card-top-row">
-                  <span class="card-title">Gazza</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/gazza', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descGazza">Hides any file inside a video: whoever hosts the video hosts your bytes, returned byte for byte</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">STEGANOGRAPHY</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#video</span>
-                    <span class="tag-mini">#storage</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 03: Audio-Tech / Web Instruments -->
-          <div class="cat-section" data-cat="audio-tech">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secAudio">[ 03 // Web / Instrument ]</span>
-              <span class="catalog-count-badge">6 items</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sand">
-                <div class="card-top-row">
-                  <span class="card-title">Eurydice</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/eurydice', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descEurydice">Eurydice: Ambient soundscape studio with generative synthesis and visual identity.</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">SOUNDSCAPE</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#web-audio</span>
-                    <span class="tag-mini">#ambient</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://delia.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--dusty-pink">
-                <div class="card-top-row">
-                  <span class="card-title">Delia</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/delia', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descDelia">Browser tape instrument with varispeed &amp; tape wear simulation</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">DSP / TAPE</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#varispeed</span>
-                    <span class="tag-mini">#dsp</span>
-                  </div>
-                </div>
-              </a>
-
-              <!-- Cabasa (with Video Drawer) -->
-              <div class="intel-card intel-card--terracotta" style="grid-column: span 1;">
-                <div class="card-top-row">
-                  <a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
-                    <span class="card-title">Cabasa</span>
-                  </a>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="window.open('https://github.com/scobru/cabasa', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descCabasa">Generative soundtrack engine: 7 live data sources (ISS, quakes, chaos) drive real-time ambient synthesis</p>
-                
-                <!-- Reel Drawer Toggle -->
-                <div class="media-player-box">
-                  <button class="media-toggle-btn" id="cabasa-video-btn" type="button" aria-expanded="false" data-i18n="btnCabasaVideo">
-                    ▶ [ watch reel (ipfs) ]
-                  </button>
-                  <div class="media-drawer-content" id="cabasa-video-drawer">
-                    <div class="video-wrapper">
-                      <video id="cabasa-video-element" controls playsinline preload="metadata" poster="cabasa-preview.jpg">
-                        <source src="https://delay.scobrudot.dev/api/v1/ipfs/cat/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" type="video/mp4" />
-                        <source src="https://ipfs.io/ipfs/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" type="video/mp4" />
-                        <source src="https://dweb.link/ipfs/QmPfxCneGJSwaB7Q6AdAPZBJQw8MyAQxZc8zkDZAcKYjKb" type="video/mp4" />
-                      </video>
-                    </div>
-                    <div class="video-caption">
-                      <span data-i18n="videoMetaRelay">IPFS relay via</span> <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener">delay.scobrudot.dev</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">LIVE SYNTHESIS</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#live-data</span>
-                    <span class="tag-mini">#generative</span>
-                  </div>
-                </div>
-              </div>
-
-              <a href="https://eph.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
-                <div class="card-top-row">
-                  <span class="card-title">EPH</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/eph', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descEph">One-button ephemeral synth: every press draws a whole patch from one seed, 4 billion of them</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">SYNTH GENERATOR</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#ephemeral</span>
-                    <span class="tag-mini">#midi</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-                <div class="card-top-row">
-                  <span class="card-title">Soap</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness normalization via WebAssembly — audio never leaves your device</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">VOICE DSP</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#wasm</span>
-                    <span class="tag-mini">#ai</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener" class="intel-card intel-card--forest">
-                <div class="card-top-row">
-                  <span class="card-title">Onepick</span>
-                  <div class="card-actions">
-                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/onepick', '_blank');">&lt;/&gt;</span>
-                  </div>
-                </div>
-                <p class="card-desc" data-i18n="descOnepick">Decentralized analog P2P radio &amp; culture frequency on Zen</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">P2P RADIO</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#radio</span>
-                    <span class="tag-mini">#zen</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 04: Music & Art -->
-          <div class="cat-section" data-cat="art-and-music">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secMusic">[ 04 // Music &amp; Art ]</span>
-              <span class="catalog-count-badge">4 items</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://sudorecords.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-                <div class="card-top-row">
-                  <span class="card-title">Sudo Records</span>
-                </div>
-                <p class="card-desc" data-i18n="descSudoRecords">Record Label hosted on Tunecamp</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">LABEL</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#record-label</span>
-                    <span class="tag-mini">#tunecamp</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://homologomusic.bandcamp.com" target="_blank" rel="noopener" class="intel-card intel-card--sand">
-                <div class="card-top-row">
-                  <span class="card-title">Homologo</span>
-                </div>
-                <p class="card-desc" data-i18n="descHomologo">Songwriter, Pop, Electronic</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">BANDCAMP</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#songwriter</span>
-                    <span class="tag-mini">#pop</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://fademusik.bandcamp.com" target="_blank" rel="noopener" class="intel-card intel-card--dusty-pink">
-                <div class="card-top-row">
-                  <span class="card-title">Fade</span>
-                </div>
-                <p class="card-desc" data-i18n="descFade">Electronic / Synth music</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">SYNTH</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#electronic</span>
-                    <span class="tag-mini">#modular</span>
-                  </div>
-                </div>
-              </a>
-
-              <a href="https://zimablue.bandcamp.com" target="_blank" rel="noopener" class="intel-card intel-card--dark-teal">
-                <div class="card-top-row">
-                  <span class="card-title">Zima Blue</span>
-                </div>
-                <p class="card-desc" data-i18n="descZimaBlue">Ambient, Experimental soundscapes</p>
-                <div class="card-bottom-row">
-                  <span class="card-kind-badge">SOUNDSCAPES</span>
-                  <div class="card-tag-pills">
-                    <span class="tag-mini">#ambient</span>
-                    <span class="tag-mini">#experimental</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 05: Connect -->
-          <div class="cat-section" data-cat="contracts">
-            <div class="cat-section-header">
-              <span class="cat-section-title" data-i18n="secConnect">[ 05 // Connect ]</span>
-              <span class="catalog-count-badge">9 links</span>
-            </div>
-            <div class="card-grid">
-              <a href="https://github.com/scobru" target="_blank" rel="me noopener" class="intel-card intel-card--forest">
-                <div class="card-top-row"><span class="card-title">GitHub</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">@scobru</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">CODE</span></div>
-              </a>
-
-              <a href="https://twitter.com/scobru1988" target="_blank" rel="me noopener" class="intel-card intel-card--sand">
-                <div class="card-top-row"><span class="card-title">Twitter / X</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">@scobru1988</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">SOCIAL</span></div>
-              </a>
-
-              <a href="https://livellosegreto.it/@scobru" target="_blank" rel="me noopener" class="intel-card intel-card--sage">
-                <div class="card-top-row"><span class="card-title">Mastodon</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">@scobru@livellosegreto.it</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">FEDIVERSE</span></div>
-              </a>
-
-              <a href="https://t.me/scobru" target="_blank" rel="me noopener" class="intel-card intel-card--teal">
-                <div class="card-top-row"><span class="card-title">Telegram</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">@scobru</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">CHAT</span></div>
-              </a>
-
-              <a href="https://instagram.com/francescobruno" target="_blank" rel="me noopener" class="intel-card intel-card--dusty-pink">
-                <div class="card-top-row"><span class="card-title">Instagram</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">@francescobruno</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">MEDIA</span></div>
-              </a>
-
-              <a href="https://youtube.com/scobru88" target="_blank" rel="me noopener" class="intel-card intel-card--clay-red">
-                <div class="card-top-row"><span class="card-title">YouTube</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">@scobru88</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">VIDEO</span></div>
-              </a>
-
-              <a href="https://audius.co/francescobruno" target="_blank" rel="me noopener" class="intel-card intel-card--terracotta">
-                <div class="card-top-row"><span class="card-title">Audius</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">francescobruno</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">MUSIC</span></div>
-              </a>
-
-              <a href="https://open.spotify.com/playlist/7n27JWYA8ZstzRVkQa6Jo7" target="_blank" rel="me noopener" class="intel-card intel-card--sage">
-                <div class="card-top-row"><span class="card-title">Spotify</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">Selected Playlist</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">AUDIO</span></div>
-              </a>
-
-              <a href="mailto:scobru1988@gmail.com" rel="me" class="intel-card intel-card--stone">
-                <div class="card-top-row"><span class="card-title">Email</span><span class="card-src-btn">&rarr;</span></div>
-                <p class="card-desc">scobru1988@gmail.com</p>
-                <div class="card-bottom-row"><span class="card-kind-badge">DIRECT</span></div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Site Footer -->
-    <footer class="site-footer">
-      <div class="layout-container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <div class="brandmark" style="margin-bottom: 12px;">
-              <div class="brandmark-symbol">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="10" width="3" height="4" rx="1.5" fill="currentColor"/>
-                  <rect x="8" y="6" width="3" height="12" rx="1.5" fill="currentColor"/>
-                  <rect x="13" y="3" width="3" height="18" rx="1.5" fill="currentColor"/>
-                  <rect x="18" y="8" width="3" height="8" rx="1.5" fill="currentColor"/>
-                </svg>
-              </div>
-              <span class="brandmark-name">scobru</span>
-            </div>
-            <p data-i18n="footerBio">Francesco Bruno — developer &amp; sound designer. Decentralized apps, P2P, creative technology, and electronic music.</p>
-          </div>
-
-          <div class="footer-col">
-            <h4 data-i18n="fColP2p">P2P &amp; Web3</h4>
-            <ul class="footer-list">
-              <li><a href="https://tunecamp.org/" target="_blank" rel="noopener">Tunecamp</a></li>
-              <li><a href="https://nullroute.scobrudot.dev/" target="_blank" rel="noopener">Nullroute</a></li>
-              <li><a href="https://zenvault.scobrudot.dev" target="_blank" rel="noopener">Zenvault</a></li>
-              <li><a href="https://smollog.scobrudot.dev/" target="_blank" rel="noopener">Smollog</a></li>
-              <li><a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener">Wormhole</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 data-i18n="fColAudio">Audio &amp; Tools</h4>
-            <ul class="footer-list">
-              <li><a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener">Cabasa</a></li>
-              <li><a href="https://delia.scobrudot.dev" target="_blank" rel="noopener">Delia</a></li>
-              <li><a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener">Eurydice</a></li>
-              <li><a href="https://soap-blond.vercel.app" target="_blank" rel="noopener">Soap</a></li>
-              <li><a href="https://eph.scobrudot.dev" target="_blank" rel="noopener">EPH</a></li>
-              <li><a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener">Onepick</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 data-i18n="fColConnect">Network</h4>
-            <ul class="footer-list">
-              <li><a href="https://github.com/scobru" target="_blank" rel="noopener">GitHub</a></li>
-              <li><a href="https://twitter.com/scobru1988" target="_blank" rel="noopener">Twitter / X</a></li>
-              <li><a href="https://livellosegreto.it/@scobru" target="_blank" rel="noopener">Mastodon</a></li>
-              <li><a href="https://t.me/scobru" target="_blank" rel="noopener">Telegram</a></li>
-              <li><a href="mailto:scobru1988@gmail.com">scobru1988@gmail.com</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom-bar">
-          <span data-i18n="sysStatus">// 32 items indexed · system: online</span>
-          <span>&copy; <span id="current-year"></span> Francesco Bruno &middot; Desert Ant Aesthetic</span>
-        </div>
+      <div class="footer-bottom-bar">
+        <span data-i18n="sysStatus">// 32 items indexed · system: online</span>
+        <span>&copy; <span id="current-year"></span> Francesco Bruno &middot; Desert Ant Aesthetic</span>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <!-- Script: Theme, i18n, Filtering & Video Drawer -->
-    <script>
-      (function () {
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+  <!-- Script: Theme, i18n, Filtering & Video Drawer -->
+  <script>
+    (function () {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        const toggleBtn = document.getElementById('theme-toggle');
-        const themeText = document.getElementById('theme-text');
-        const metaThemeColor = document.getElementById('theme-color-meta');
-        const metaDescription = document.getElementById('meta-description');
-        const siteTitle = document.getElementById('site-title');
-        const langToggleBtn = document.getElementById('lang-toggle');
-        const langText = document.getElementById('lang-text');
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeText = document.getElementById('theme-text');
+      const metaThemeColor = document.getElementById('theme-color-meta');
+      const metaDescription = document.getElementById('meta-description');
+      const siteTitle = document.getElementById('site-title');
+      const langToggleBtn = document.getElementById('lang-toggle');
+      const langText = document.getElementById('lang-text');
 
-        const i18n = {
-          en: {
-            siteTitle: 'Francesco Bruno — scobru',
-            metaDesc: 'Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.',
-            heroStatus: 'P2P Systems · Audio Tech · Open Source',
-            heroTitle: 'Francesco Bruno.<br /><em>P2P Systems &amp; Audio Synthesis.</em>',
-            heroSub: 'Decentralized architectures, peer-to-peer cryptography, federated protocols, and generative audio synthesis.',
-            btnExplore: 'Explore Projects (33) ↓',
-            fanTitle: 'Featured Projects',
-            claimTunecamp: 'Decentralized federated music streaming without intermediaries.',
-            claimLinda: 'Serverless P2P encrypted messenger on Holepunch stack.',
-            claimWormhole: 'Instant peer-to-peer file transfer with end-to-end encryption.',
-            claimSidecamp: 'TuneCamp P2P companion for Soulseek, Torrents, and yt-dlp downloading.',
-            claimSoap: 'Denoise, dereverb & loudness for vocals, fully on-device via WebAssembly.',
-            claimEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4B of them.',
-            filterLabel: '// filter:',
-            filterAll: '[ all (33) ]',
-            filterFederated: '[ federated (1) ]',
-            filterDecentralized: '[ decentralized (3) ]',
-            filterP2P: '[ p2p apps (5) ]',
-            filterWeb: '[ web & infra (5) ]',
-            filterAudioTech: '[ audio-tech (5) ]',
-            filterArtMusic: '[ art & music (4) ]',
-            filterContracts: '[ connect (9) ]',
-            secFederated: '[ 01a // Federated ]',
-            secDecentralized: '[ 01b // Decentralized ]',
-            secP2P: '[ 01c // P2P ]',
-            secInfra: '[ 02 // Protocols, Web3 & Infra ]',
-            secAudio: '[ 03 // Web / Instrument ]',
-            secMusic: '[ 04 // Music & Art ]',
-            secConnect: '[ 05 // Connect ]',
-            descTunecamp: 'Decentralized music streaming',
-            descNullroute: 'EVM stealth payment hub',
-            descZenvault: 'Decentralized Secure Vault',
-            descSmollog: 'Zero-backend, cryptographic blogging platform on Zen',
-            descWormhole: 'E2EE P2P file transfer',
-            descLinda: 'Serverless P2P encrypted messenger on Holepunch stack',
-            descSidecamp: 'TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)',
-            descWhiterabbit: 'Ephemeral p2p chat',
-            descIris: 'Air-gapped optical file transfer via animated QR codes',
-            descZen: 'Zen fork',
-            descDelay: 'Decentralized Relay',
-            descCliTools: 'Collection of CLI Tools',
-            descFid: 'Fediverse-ID: self-sovereign SSO & identity protocol for ActivityPub',
-            descGazza: 'Hides any file inside a video: whoever hosts the video hosts your bytes, returned byte for byte',
-            descEurydice: 'Eurydice: Ambient soundscape studio with generative synthesis and visual identity.',
-            descDelia: 'Browser tape instrument with varispeed & tape wear simulation',
-            descCabasa: 'Generative soundtrack engine: 7 live data sources (ISS, quakes, chaos) drive real-time ambient synthesis',
-            descSoap: 'On-device voice cleanup: denoise, dereverb & loudness normalization via WebAssembly — audio never leaves your device',
-            descEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4 billion of them',
-            descOnepick: 'Decentralized analog P2P radio & culture frequency on Zen',
-            descSudoRecords: 'Record Label hosted on Tunecamp',
-            descHomologo: 'Songwriter, Pop, Electronic',
-            descFade: 'Electronic / Synth music',
-            descZimaBlue: 'Ambient, Experimental soundscapes',
-            btnCabasaVideo: '▶ [ watch reel (ipfs) ]',
-            btnCabasaVideoHide: '▲ [ hide reel ]',
-            videoMetaRelay: 'IPFS relay via',
-            footerBio: 'Francesco Bruno — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.',
-            fColP2p: 'P2P & Web3',
-            fColAudio: 'Audio & Tools',
-            fColConnect: 'Network',
-            sysStatus: '// 33 items indexed · system: online',
-            langToggle: '[ it ]',
-            langAria: "Passa all'italiano",
-            themeDark: '[ dark ]',
-            themeLight: '[ light ]',
-            themeAria: 'Toggle theme'
-          },
-          it: {
-            siteTitle: 'Francesco Bruno — scobru',
-            metaDesc: 'Francesco Bruno (scobru) — sviluppatore & sound designer. App decentralizzate, P2P, creative technology e musica elettronica.',
-            heroStatus: 'Sistemi P2P · Audio Tech · Open Source',
-            heroTitle: 'Francesco Bruno.<br /><em>Sistemi P2P &amp; Sintesi Sonora.</em>',
-            heroSub: 'Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e sintesi audio generativa.',
-            btnExplore: 'Esplora Progetti (33) ↓',
-            fanTitle: 'Progetti in Evidenza',
-            claimTunecamp: 'Streaming musicale decentralizzato e federato senza intermediari.',
-            claimLinda: 'Messaggistica cifrata P2P serverless su stack Holepunch.',
-            claimWormhole: 'Trasferimento file P2P istantaneo con crittografia end-to-end.',
-            claimSidecamp: 'Companion P2P per TuneCamp: Soulseek, Torrents e download yt-dlp.',
-            claimSoap: 'Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.',
-            claimEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto.',
-            filterLabel: '// filtra:',
-            filterAll: '[ tutti (33) ]',
-            filterFederated: '[ federate (1) ]',
-            filterDecentralized: '[ decentralizzate (3) ]',
-            filterP2P: '[ app p2p (5) ]',
-            filterWeb: '[ web & infra (5) ]',
-            filterAudioTech: '[ audio-tech (5) ]',
-            filterArtMusic: '[ musica & arte (4) ]',
-            filterContracts: '[ contatti (9) ]',
-            secFederated: '[ 01a // Federate ]',
-            secDecentralized: '[ 01b // Decentralizzate ]',
-            secP2P: '[ 01c // P2P ]',
-            secInfra: '[ 02 // Protocolli, Web3 & Infra ]',
-            secAudio: '[ 03 // Web / Instrument ]',
-            secMusic: '[ 04 // Musica & Arte ]',
-            secConnect: '[ 05 // Contatti ]',
-            descTunecamp: 'Streaming musicale decentralizzato',
-            descNullroute: 'Hub di pagamenti stealth per EVM',
-            descZenvault: 'Cassaforte sicura decentralizzata',
-            descSmollog: 'Piattaforma di blogging crittografica e zero-backend su Zen',
-            descWormhole: 'Trasferimento file P2P con crittografia end-to-end',
-            descLinda: 'Messaggistica crittografata P2P serverless su stack Holepunch',
-            descSidecamp: 'Companion P2P per TuneCamp (Soulseek, Torrents, yt-dlp)',
-            descWhiterabbit: 'Chat P2P effimera',
-            descIris: 'Trasferimento file ottico a rete isolata tramite codici QR animati',
-            descZen: 'Fork di Zen',
-            descDelay: 'Relay decentralizzato',
-            descCliTools: 'Raccolta di strumenti da riga di comando',
-            descFid: 'Fediverse-ID: SSO auto-sovrano & protocollo d\'identità per ActivityPub',
-            descGazza: 'Nasconde un file dentro un video: chi ospita il video ospita i tuoi byte, restituiti byte per byte',
-            descEurydice: 'Eurydice: Studio di paesaggi sonori ambientali con sintesi generativa e identità visiva.',
-            descDelia: 'Strumento a nastro per browser con simulazione di varispeed e usura',
-            descCabasa: 'Motore di colonne sonore generative: 7 sorgenti dati live (ISS, terremoti, caos) guidano sintesi ambient in tempo reale',
-            descSoap: 'Pulizia vocale on-device: denoise, dereverb e normalizzazione loudness via WebAssembly — l'audio non lascia mai il tuo dispositivo',
+      const i18n = {
+        en: {
+          siteTitle: 'Francesco Bruno — scobru',
+          metaDesc: 'Francesco Bruno (scobru) — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.',
+          heroStatus: 'P2P Systems · Audio Tech · Open Source',
+          heroTitle: 'Francesco Bruno.<br /><em>P2P Systems &amp; Audio Synthesis.</em>',
+          heroSub: 'Decentralized architectures, peer-to-peer cryptography, federated protocols, and generative audio synthesis.',
+          btnExplore: 'Explore Projects (33) ↓',
+          fanTitle: 'Featured Projects',
+          claimTunecamp: 'Decentralized federated music streaming without intermediaries.',
+          claimLinda: 'Serverless P2P encrypted messenger on Holepunch stack.',
+          claimWormhole: 'Instant peer-to-peer file transfer with end-to-end encryption.',
+          claimSidecamp: 'TuneCamp P2P companion for Soulseek, Torrents, and yt-dlp downloading.',
+          claimSoap: 'Denoise, dereverb & loudness for vocals, fully on-device via WebAssembly.',
+          claimEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4B of them.',
+          filterLabel: '// filter:',
+          filterAll: '[ all (33) ]',
+          filterFederated: '[ federated (1) ]',
+          filterDecentralized: '[ decentralized (3) ]',
+          filterP2P: '[ p2p apps (5) ]',
+          filterWeb: '[ web & infra (5) ]',
+          filterAudioTech: '[ audio-tech (5) ]',
+          filterArtMusic: '[ art & music (4) ]',
+          filterContracts: '[ connect (9) ]',
+          secFederated: '[ 01a // Federated ]',
+          secDecentralized: '[ 01b // Decentralized ]',
+          secP2P: '[ 01c // P2P ]',
+          secInfra: '[ 02 // Protocols, Web3 & Infra ]',
+          secAudio: '[ 03 // Web / Instrument ]',
+          secMusic: '[ 04 // Music & Art ]',
+          secConnect: '[ 05 // Connect ]',
+          descTunecamp: 'Decentralized music streaming',
+          descNullroute: 'EVM stealth payment hub',
+          descZenvault: 'Decentralized Secure Vault',
+          descSmollog: 'Zero-backend, cryptographic blogging platform on Zen',
+          descWormhole: 'E2EE P2P file transfer',
+          descLinda: 'Serverless P2P encrypted messenger on Holepunch stack',
+          descSidecamp: 'TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)',
+          descWhiterabbit: 'Ephemeral p2p chat',
+          descIris: 'Air-gapped optical file transfer via animated QR codes',
+          descZen: 'Zen fork',
+          descDelay: 'Decentralized Relay',
+          descCliTools: 'Collection of CLI Tools',
+          descFid: 'Fediverse-ID: self-sovereign SSO & identity protocol for ActivityPub',
+          descGazza: 'Hides any file inside a video: whoever hosts the video hosts your bytes, returned byte for byte',
+          descEurydice: 'Eurydice: Ambient soundscape studio with generative synthesis and visual identity.',
+          descDelia: 'Browser tape instrument with varispeed & tape wear simulation',
+          descCabasa: 'Generative soundtrack engine: 7 live data sources (ISS, quakes, chaos) drive real-time ambient synthesis',
+          descSoap: 'On-device voice cleanup: denoise, dereverb & loudness normalization via WebAssembly — audio never leaves your device',
+          descEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4 billion of them',
+          descOnepick: 'Decentralized analog P2P radio & culture frequency on Zen',
+          descSudoRecords: 'Record Label hosted on Tunecamp',
+          descHomologo: 'Songwriter, Pop, Electronic',
+          descFade: 'Electronic / Synth music',
+          descZimaBlue: 'Ambient, Experimental soundscapes',
+          btnCabasaVideo: '▶ [ watch reel (ipfs) ]',
+          btnCabasaVideoHide: '▲ [ hide reel ]',
+          videoMetaRelay: 'IPFS relay via',
+          footerBio: 'Francesco Bruno — developer & sound designer. Decentralized apps, P2P, creative technology, and electronic music.',
+          fColP2p: 'P2P & Web3',
+          fColAudio: 'Audio & Tools',
+          fColConnect: 'Network',
+          sysStatus: '// 33 items indexed · system: online',
+          langToggle: '[ it ]',
+          langAria: "Passa all'italiano",
+          themeDark: '[ dark ]',
+          themeLight: '[ light ]',
+          themeAria: 'Toggle theme'
+        },
+        it: {
+          siteTitle: 'Francesco Bruno — scobru',
+          metaDesc: 'Francesco Bruno (scobru) — sviluppatore & sound designer. App decentralizzate, P2P, creative technology e musica elettronica.',
+          heroStatus: 'Sistemi P2P · Audio Tech · Open Source',
+          heroTitle: 'Francesco Bruno.<br /><em>Sistemi P2P &amp; Sintesi Sonora.</em>',
+          heroSub: 'Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e sintesi audio generativa.',
+          btnExplore: 'Esplora Progetti (33) ↓',
+          fanTitle: 'Progetti in Evidenza',
+          claimTunecamp: 'Streaming musicale decentralizzato e federato senza intermediari.',
+          claimLinda: 'Messaggistica cifrata P2P serverless su stack Holepunch.',
+          claimWormhole: 'Trasferimento file P2P istantaneo con crittografia end-to-end.',
+          claimSidecamp: 'Companion P2P per TuneCamp: Soulseek, Torrents e download yt-dlp.',
+          claimSoap: 'Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.',
+          claimEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto.',
+          filterLabel: '// filtra:',
+          filterAll: '[ tutti (33) ]',
+          filterFederated: '[ federate (1) ]',
+          filterDecentralized: '[ decentralizzate (3) ]',
+          filterP2P: '[ app p2p (5) ]',
+          filterWeb: '[ web & infra (5) ]',
+          filterAudioTech: '[ audio-tech (5) ]',
+          filterArtMusic: '[ musica & arte (4) ]',
+          filterContracts: '[ contatti (9) ]',
+          secFederated: '[ 01a // Federate ]',
+          secDecentralized: '[ 01b // Decentralizzate ]',
+          secP2P: '[ 01c // P2P ]',
+          secInfra: '[ 02 // Protocolli, Web3 & Infra ]',
+          secAudio: '[ 03 // Web / Instrument ]',
+          secMusic: '[ 04 // Musica & Arte ]',
+          secConnect: '[ 05 // Contatti ]',
+          descTunecamp: 'Streaming musicale decentralizzato',
+          descNullroute: 'Hub di pagamenti stealth per EVM',
+          descZenvault: 'Cassaforte sicura decentralizzata',
+          descSmollog: 'Piattaforma di blogging crittografica e zero-backend su Zen',
+          descWormhole: 'Trasferimento file P2P con crittografia end-to-end',
+          descLinda: 'Messaggistica crittografata P2P serverless su stack Holepunch',
+          descSidecamp: 'Companion P2P per TuneCamp (Soulseek, Torrents, yt-dlp)',
+          descWhiterabbit: 'Chat P2P effimera',
+          descIris: 'Trasferimento file ottico a rete isolata tramite codici QR animati',
+          descZen: 'Fork di Zen',
+          descDelay: 'Relay decentralizzato',
+          descCliTools: 'Raccolta di strumenti da riga di comando',
+          descFid: 'Fediverse-ID: SSO auto-sovrano & protocollo d\'identità per ActivityPub',
+          descGazza: 'Nasconde un file dentro un video: chi ospita il video ospita i tuoi byte, restituiti byte per byte',
+          descEurydice: 'Eurydice: Studio di paesaggi sonori ambientali con sintesi generativa e identità visiva.',
+          descDelia: 'Strumento a nastro per browser con simulazione di varispeed e usura',
+          descCabasa: 'Motore di colonne sonore generative: 7 sorgenti dati live (ISS, terremoti, caos) guidano sintesi ambient in tempo reale',
+          descSoap: 'Pulizia vocale on-device: denoise, dereverb e normalizzazione loudness via WebAssembly — l'audio non lascia mai il tuo dispositivo',
             descEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto',
-            descOnepick: 'Radio P2P analogica decentralizzata & frequenza culturale su Zen',
-            descSudoRecords: 'Etichetta discografica ospitata su Tunecamp',
-            descHomologo: 'Cantautorato, Pop, Elettronica',
-            descFade: 'Musica elettronica / Synth',
-            descZimaBlue: 'Ambient, paesaggi sonori sperimentali',
-            btnCabasaVideo: '▶ [ guarda reel (ipfs) ]',
-            btnCabasaVideoHide: '▲ [ chiudi reel ]',
-            videoMetaRelay: 'Relay IPFS su',
-            footerBio: 'Francesco Bruno — sviluppatore & sound designer. App decentralizzate, P2P, creative technology e musica elettronica.',
-            fColP2p: 'P2P & Web3',
-            fColAudio: 'Audio & Strumenti',
-            fColConnect: 'Contatti',
-            sysStatus: '// 33 elementi indicizzati · sistema: online',
-            langToggle: '[ en ]',
-            langAria: 'Switch to English',
-            themeDark: '[ scuro ]',
-            themeLight: '[ chiaro ]',
-            themeAria: 'Cambia tema'
-          }
-        };
-
-        function getCurrentTheme() {
-          const savedTheme = localStorage.getItem('theme');
-          if (savedTheme) return savedTheme;
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          descOnepick: 'Radio P2P analogica decentralizzata & frequenza culturale su Zen',
+          descSudoRecords: 'Etichetta discografica ospitata su Tunecamp',
+          descHomologo: 'Cantautorato, Pop, Elettronica',
+          descFade: 'Musica elettronica / Synth',
+          descZimaBlue: 'Ambient, paesaggi sonori sperimentali',
+          btnCabasaVideo: '▶ [ guarda reel (ipfs) ]',
+          btnCabasaVideoHide: '▲ [ chiudi reel ]',
+          videoMetaRelay: 'Relay IPFS su',
+          footerBio: 'Francesco Bruno — sviluppatore & sound designer. App decentralizzate, P2P, creative technology e musica elettronica.',
+          fColP2p: 'P2P & Web3',
+          fColAudio: 'Audio & Strumenti',
+          fColConnect: 'Contatti',
+          sysStatus: '// 33 elementi indicizzati · sistema: online',
+          langToggle: '[ en ]',
+          langAria: 'Switch to English',
+          themeDark: '[ scuro ]',
+          themeLight: '[ chiaro ]',
+          themeAria: 'Cambia tema'
         }
+      };
 
-        function getCurrentLang() {
-          const savedLang = localStorage.getItem('lang');
-          if (savedLang === 'en' || savedLang === 'it') return savedLang;
-          const browserLang = (navigator.language || '').toLowerCase();
-          return browserLang.startsWith('it') ? 'it' : 'en';
+      function getCurrentTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function getCurrentLang() {
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang === 'en' || savedLang === 'it') return savedLang;
+        const browserLang = (navigator.language || '').toLowerCase();
+        return browserLang.startsWith('it') ? 'it' : 'en';
+      }
+
+      let currentLang = getCurrentLang();
+
+      function updateThemeControls(theme) {
+        const dict = i18n[currentLang] || i18n.en;
+        if (themeText) {
+          themeText.textContent = theme === 'dark' ? dict.themeLight : dict.themeDark;
         }
-
-        let currentLang = getCurrentLang();
-
-        function updateThemeControls(theme) {
-          const dict = i18n[currentLang] || i18n.en;
-          if (themeText) {
-            themeText.textContent = theme === 'dark' ? dict.themeLight : dict.themeDark;
-          }
-          if (toggleBtn) {
-            toggleBtn.setAttribute('aria-label', dict.themeAria);
-            toggleBtn.setAttribute('title', dict.themeAria);
-          }
-        }
-
-        function applyTheme(theme, save) {
-          document.documentElement.setAttribute('data-theme', theme);
-          if (save) {
-            try {
-              localStorage.setItem('theme', theme);
-            } catch (e) {}
-          }
-          updateThemeControls(theme);
-          if (metaThemeColor) {
-            metaThemeColor.setAttribute('content', theme === 'dark' ? '#121716' : '#fbfaf4');
-          }
-        }
-
-        function applyLang(lang, save) {
-          currentLang = lang === 'it' ? 'it' : 'en';
-          document.documentElement.setAttribute('lang', currentLang);
-          if (save) {
-            try {
-              localStorage.setItem('lang', currentLang);
-            } catch (e) {}
-          }
-
-          const dict = i18n[currentLang] || i18n.en;
-          if (siteTitle) siteTitle.textContent = dict.siteTitle;
-          if (metaDescription) metaDescription.setAttribute('content', dict.metaDesc);
-
-          document.querySelectorAll('[data-i18n]').forEach(function (el) {
-            const key = el.getAttribute('data-i18n');
-            if (dict[key]) {
-              el.innerHTML = dict[key];
-            }
-          });
-
-          if (langText) langText.textContent = dict.langToggle;
-          if (langToggleBtn) {
-            langToggleBtn.setAttribute('aria-label', dict.langAria);
-            langToggleBtn.setAttribute('title', dict.langAria);
-          }
-
-          const cabasaDrawer = document.getElementById('cabasa-video-drawer');
-          const cabasaBtn = document.getElementById('cabasa-video-btn');
-          if (cabasaBtn && cabasaDrawer && cabasaDrawer.classList.contains('is-open')) {
-            cabasaBtn.textContent = dict.btnCabasaVideoHide;
-          }
-
-          updateThemeControls(getCurrentTheme());
-        }
-
-        // Filtering
-        function applyFilter(cat) {
-          const filterBtns = document.querySelectorAll('#filter-group .filter-pill');
-          filterBtns.forEach(btn => {
-            btn.classList.toggle('is-active', btn.getAttribute('data-filter') === cat);
-          });
-
-          const sections = document.querySelectorAll('.cat-section');
-          let count = 0;
-          sections.forEach(sec => {
-            const secCat = sec.getAttribute('data-cat');
-            const matches = cat === 'all' || secCat === cat;
-            sec.style.display = matches ? 'block' : 'none';
-            if (matches) {
-              const cards = sec.querySelectorAll('.intel-card');
-              count += cards.length;
-            }
-          });
-
-          const countBadge = document.getElementById('visible-count');
-          if (countBadge) {
-            countBadge.textContent = `// ${count}/32 visualizzati`;
-          }
-        }
-
-        // Init
-        applyTheme(getCurrentTheme(), false);
-        applyLang(currentLang, false);
-        applyFilter('all');
-
         if (toggleBtn) {
-          toggleBtn.addEventListener('click', function () {
-            const next = getCurrentTheme() === 'dark' ? 'light' : 'dark';
-            applyTheme(next, true);
-          });
+          toggleBtn.setAttribute('aria-label', dict.themeAria);
+          toggleBtn.setAttribute('title', dict.themeAria);
+        }
+      }
+
+      function applyTheme(theme, save) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (save) {
+          try {
+            localStorage.setItem('theme', theme);
+          } catch (e) { }
+        }
+        updateThemeControls(theme);
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', theme === 'dark' ? '#121716' : '#fbfaf4');
+        }
+      }
+
+      function applyLang(lang, save) {
+        currentLang = lang === 'it' ? 'it' : 'en';
+        document.documentElement.setAttribute('lang', currentLang);
+        if (save) {
+          try {
+            localStorage.setItem('lang', currentLang);
+          } catch (e) { }
         }
 
+        const dict = i18n[currentLang] || i18n.en;
+        if (siteTitle) siteTitle.textContent = dict.siteTitle;
+        if (metaDescription) metaDescription.setAttribute('content', dict.metaDesc);
+
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) {
+            el.innerHTML = dict[key];
+          }
+        });
+
+        if (langText) langText.textContent = dict.langToggle;
         if (langToggleBtn) {
-          langToggleBtn.addEventListener('click', function () {
-            const nextLang = currentLang === 'en' ? 'it' : 'en';
-            applyLang(nextLang, true);
-          });
+          langToggleBtn.setAttribute('aria-label', dict.langAria);
+          langToggleBtn.setAttribute('title', dict.langAria);
         }
 
+        const cabasaDrawer = document.getElementById('cabasa-video-drawer');
+        const cabasaBtn = document.getElementById('cabasa-video-btn');
+        if (cabasaBtn && cabasaDrawer && cabasaDrawer.classList.contains('is-open')) {
+          cabasaBtn.textContent = dict.btnCabasaVideoHide;
+        }
+
+        updateThemeControls(getCurrentTheme());
+      }
+
+      // Filtering
+      function applyFilter(cat) {
         const filterBtns = document.querySelectorAll('#filter-group .filter-pill');
         filterBtns.forEach(btn => {
-          btn.addEventListener('click', function () {
-            applyFilter(this.getAttribute('data-filter'));
-          });
+          btn.classList.toggle('is-active', btn.getAttribute('data-filter') === cat);
         });
 
-        // Video drawer
-        const cabasaVideoBtn = document.getElementById('cabasa-video-btn');
-        const cabasaVideoDrawer = document.getElementById('cabasa-video-drawer');
-        const cabasaVideoEl = document.getElementById('cabasa-video-element');
-
-        if (cabasaVideoBtn && cabasaVideoDrawer) {
-          cabasaVideoBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const isOpen = cabasaVideoDrawer.classList.toggle('is-open');
-            cabasaVideoBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            const dict = i18n[currentLang] || i18n.en;
-            cabasaVideoBtn.textContent = isOpen ? dict.btnCabasaVideoHide : dict.btnCabasaVideo;
-            if (!isOpen && cabasaVideoEl) {
-              cabasaVideoEl.pause();
-            }
-          });
-        }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-          if (!localStorage.getItem('theme')) {
-            applyTheme(e.matches ? 'dark' : 'light', false);
+        const sections = document.querySelectorAll('.cat-section');
+        let count = 0;
+        sections.forEach(sec => {
+          const secCat = sec.getAttribute('data-cat');
+          const matches = cat === 'all' || secCat === cat;
+          sec.style.display = matches ? 'block' : 'none';
+          if (matches) {
+            const cards = sec.querySelectorAll('.intel-card');
+            count += cards.length;
           }
         });
-      })();
-    </script>
-  </body>
+
+        const countBadge = document.getElementById('visible-count');
+        if (countBadge) {
+          countBadge.textContent = `// ${count}/32 visualizzati`;
+        }
+      }
+
+      // Init
+      applyTheme(getCurrentTheme(), false);
+      applyLang(currentLang, false);
+      applyFilter('all');
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          const next = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+          applyTheme(next, true);
+        });
+      }
+
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', function () {
+          const nextLang = currentLang === 'en' ? 'it' : 'en';
+          applyLang(nextLang, true);
+        });
+      }
+
+      const filterBtns = document.querySelectorAll('#filter-group .filter-pill');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          applyFilter(this.getAttribute('data-filter'));
+        });
+      });
+
+      // Video drawer
+      const cabasaVideoBtn = document.getElementById('cabasa-video-btn');
+      const cabasaVideoDrawer = document.getElementById('cabasa-video-drawer');
+      const cabasaVideoEl = document.getElementById('cabasa-video-element');
+
+      if (cabasaVideoBtn && cabasaVideoDrawer) {
+        cabasaVideoBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = cabasaVideoDrawer.classList.toggle('is-open');
+          cabasaVideoBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          const dict = i18n[currentLang] || i18n.en;
+          cabasaVideoBtn.textContent = isOpen ? dict.btnCabasaVideoHide : dict.btnCabasaVideo;
+          if (!isOpen && cabasaVideoEl) {
+            cabasaVideoEl.pause();
+          }
+        });
+      }
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+          applyTheme(e.matches ? 'dark' : 'light', false);
+        }
+      });
+    })();
+  </script>
+</body>
+
 </html>
