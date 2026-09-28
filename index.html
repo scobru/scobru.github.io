@@ -463,6 +463,10 @@
         --fc-bg: var(--color-terracotta);
         --tilt: 6deg;
       }
+      .fan-card--soap {
+        --fc-bg: var(--color-teal);
+        --tilt: 6deg;
+      }
 
       .fc-top {
         display: flex;
@@ -1101,23 +1105,26 @@
                 </a>
               </div>
 
-              <!-- 5. EPH -->
+              <!-- 5. SOAP -->
               <div>
-                <a href="https://eph.scobrudot.dev" target="_blank" rel="noopener" class="fan-card fan-card--eph">
+                <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="fan-card fan-card--soap">
                   <div class="fc-top">
-                    <span class="fc-tag">EPHEMERAL SYNTH</span>
+                    <span class="fc-tag">VOICE CLEANER</span>
                     <span class="fc-glyph">&nearr;</span>
                   </div>
                   <div class="fc-mid">
-                    <div class="fc-name">EPH</div>
-                    <p class="fc-claim" data-i18n="claimEph">Synth effimero a un bottone: estrae una patch intera da 4 miliardi di seed.</p>
+                    <div class="fc-name">Soap</div>
+                    <p class="fc-claim" data-i18n="claimSoap">Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.</p>
                   </div>
                   <div class="fc-art">
-                    <!-- Synthesizer knob & waveforms -->
+                    <!-- Soap bubble / waveform cleanup glyph -->
                     <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
-                      <circle cx="28" cy="20" r="11" stroke="currentColor" stroke-width="2"/>
-                      <line x1="28" y1="20" x2="35" y2="13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                      <path d="M48 24 L56 14 L64 26 L72 14 L80 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2"/>
+                      <circle cx="20" cy="20" r="3" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="42" cy="20" r="5" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="58" cy="20" r="7" stroke="currentColor" stroke-width="2"/>
+                      <path d="M72 26 Q78 20 84 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M72 14 Q78 20 84 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </div>
                 </a>
@@ -1425,7 +1432,7 @@
           <div class="cat-section" data-cat="audio-tech">
             <div class="cat-section-header">
               <span class="cat-section-title" data-i18n="secAudio">[ 03 // Web / Instrument ]</span>
-              <span class="catalog-count-badge">5 items</span>
+              <span class="catalog-count-badge">6 items</span>
             </div>
             <div class="card-grid">
               <a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sand">
@@ -1515,6 +1522,23 @@
                   <div class="card-tag-pills">
                     <span class="tag-mini">#ephemeral</span>
                     <span class="tag-mini">#midi</span>
+                  </div>
+                </div>
+              </a>
+
+              <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+                <div class="card-top-row">
+                  <span class="card-title">Soap</span>
+                  <div class="card-actions">
+                    <span class="card-src-btn" onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
+                  </div>
+                </div>
+                <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness normalization via WebAssembly — audio never leaves your device</p>
+                <div class="card-bottom-row">
+                  <span class="card-kind-badge">VOICE DSP</span>
+                  <div class="card-tag-pills">
+                    <span class="tag-mini">#wasm</span>
+                    <span class="tag-mini">#ai</span>
                   </div>
                 </div>
               </a>
@@ -1705,6 +1729,7 @@
               <li><a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener">Cabasa</a></li>
               <li><a href="https://delia.scobrudot.dev" target="_blank" rel="noopener">Delia</a></li>
               <li><a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener">Eurydice</a></li>
+              <li><a href="https://soap-blond.vercel.app" target="_blank" rel="noopener">Soap</a></li>
               <li><a href="https://eph.scobrudot.dev" target="_blank" rel="noopener">EPH</a></li>
               <li><a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener">Onepick</a></li>
             </ul>
@@ -1749,15 +1774,16 @@
             heroStatus: 'P2P Systems · Audio Tech · Open Source',
             heroTitle: 'Francesco Bruno.<br /><em>P2P Systems &amp; Audio Synthesis.</em>',
             heroSub: 'Decentralized architectures, peer-to-peer cryptography, federated protocols, and generative audio synthesis.',
-            btnExplore: 'Explore Projects (32) ↓',
+            btnExplore: 'Explore Projects (33) ↓',
             fanTitle: 'Featured Projects',
             claimTunecamp: 'Decentralized federated music streaming without intermediaries.',
             claimLinda: 'Serverless P2P encrypted messenger on Holepunch stack.',
             claimWormhole: 'Instant peer-to-peer file transfer with end-to-end encryption.',
             claimSidecamp: 'TuneCamp P2P companion for Soulseek, Torrents, and yt-dlp downloading.',
+            claimSoap: 'Denoise, dereverb & loudness for vocals, fully on-device via WebAssembly.',
             claimEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4B of them.',
             filterLabel: '// filter:',
-            filterAll: '[ all (32) ]',
+            filterAll: '[ all (33) ]',
             filterFederated: '[ federated (1) ]',
             filterDecentralized: '[ decentralized (3) ]',
             filterP2P: '[ p2p apps (5) ]',
@@ -1789,6 +1815,7 @@
             descEurydice: 'Eurydice: Ambient soundscape studio with generative synthesis and visual identity.',
             descDelia: 'Browser tape instrument with varispeed & tape wear simulation',
             descCabasa: 'Generative soundtrack engine: 7 live data sources (ISS, quakes, chaos) drive real-time ambient synthesis',
+            descSoap: 'On-device voice cleanup: denoise, dereverb & loudness normalization via WebAssembly — audio never leaves your device',
             descEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4 billion of them',
             descOnepick: 'Decentralized analog P2P radio & culture frequency on Zen',
             descSudoRecords: 'Record Label hosted on Tunecamp',
@@ -1802,7 +1829,7 @@
             fColP2p: 'P2P & Web3',
             fColAudio: 'Audio & Tools',
             fColConnect: 'Network',
-            sysStatus: '// 32 items indexed · system: online',
+            sysStatus: '// 33 items indexed · system: online',
             langToggle: '[ it ]',
             langAria: "Passa all'italiano",
             themeDark: '[ dark ]',
@@ -1815,15 +1842,16 @@
             heroStatus: 'Sistemi P2P · Audio Tech · Open Source',
             heroTitle: 'Francesco Bruno.<br /><em>Sistemi P2P &amp; Sintesi Sonora.</em>',
             heroSub: 'Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e sintesi audio generativa.',
-            btnExplore: 'Esplora Progetti (32) ↓',
+            btnExplore: 'Esplora Progetti (33) ↓',
             fanTitle: 'Progetti in Evidenza',
             claimTunecamp: 'Streaming musicale decentralizzato e federato senza intermediari.',
             claimLinda: 'Messaggistica cifrata P2P serverless su stack Holepunch.',
             claimWormhole: 'Trasferimento file P2P istantaneo con crittografia end-to-end.',
             claimSidecamp: 'Companion P2P per TuneCamp: Soulseek, Torrents e download yt-dlp.',
+            claimSoap: 'Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.',
             claimEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto.',
             filterLabel: '// filtra:',
-            filterAll: '[ tutti (32) ]',
+            filterAll: '[ tutti (33) ]',
             filterFederated: '[ federate (1) ]',
             filterDecentralized: '[ decentralizzate (3) ]',
             filterP2P: '[ app p2p (5) ]',
@@ -1855,6 +1883,7 @@
             descEurydice: 'Eurydice: Studio di paesaggi sonori ambientali con sintesi generativa e identità visiva.',
             descDelia: 'Strumento a nastro per browser con simulazione di varispeed e usura',
             descCabasa: 'Motore di colonne sonore generative: 7 sorgenti dati live (ISS, terremoti, caos) guidano sintesi ambient in tempo reale',
+            descSoap: 'Pulizia vocale on-device: denoise, dereverb e normalizzazione loudness via WebAssembly — l'audio non lascia mai il tuo dispositivo',
             descEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto',
             descOnepick: 'Radio P2P analogica decentralizzata & frequenza culturale su Zen',
             descSudoRecords: 'Etichetta discografica ospitata su Tunecamp',
@@ -1868,7 +1897,7 @@
             fColP2p: 'P2P & Web3',
             fColAudio: 'Audio & Strumenti',
             fColConnect: 'Contatti',
-            sysStatus: '// 32 elementi indicizzati · sistema: online',
+            sysStatus: '// 33 elementi indicizzati · sistema: online',
             langToggle: '[ en ]',
             langAria: 'Switch to English',
             themeDark: '[ scuro ]',
