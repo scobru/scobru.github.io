@@ -1,0 +1,4 @@
+This is a Brave Creators publisher verification file.
+
+Domain: scobrudot.dev
+Token: 67e320748490684e2d5873cde2aae2d88826c9227ada69e2ac3c609c28950143
