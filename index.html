@@ -1215,8 +1215,10 @@
             <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (5) ]</button>
             <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5)
               ]</button>
-            <button class="filter-pill" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech
-              (6) ]</button>
+            <button class="filter-pill" data-filter="audio-instruments" type="button" data-i18n="filterAudioInstruments">[ audio-instruments
+              (5) ]</button>
+            <button class="filter-pill" data-filter="audio-processing" type="button" data-i18n="filterAudioProcessing">[ audio-processing
+              (2) ]</button>
             <button class="filter-pill" data-filter="art-and-music" type="button" data-i18n="filterArtMusic">[ art &amp;
               music (4) ]</button>
             <button class="filter-pill" data-filter="contracts" type="button" data-i18n="filterContracts">[ connect (9)
@@ -1523,10 +1525,10 @@
         </div>
 
         <!-- Category 03: Audio-Tech / Web Instruments -->
-        <div class="cat-section" data-cat="audio-tech">
+        <div class="cat-section" data-cat="audio-instruments">
           <div class="cat-section-header">
-            <span class="cat-section-title" data-i18n="secAudio">[ 03 // Web / Instrument ]</span>
-            <span class="catalog-count-badge">7 items</span>
+            <span class="cat-section-title" data-i18n="secAudio">[ 03 // Audio Instruments ]</span>
+            <span class="catalog-count-badge">5 items</span>
           </div>
           <div class="card-grid">
             <a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sand">
@@ -1637,24 +1639,6 @@
               </div>
             </a>
 
-            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-              <div class="card-top-row">
-                <span class="card-title">Soap</span>
-                <div class="card-actions">
-                  <span class="card-src-btn"
-                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
-                </div>
-              </div>
-              <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness
-                normalization via WebAssembly â€” audio never leaves your device</p>
-              <div class="card-bottom-row">
-                <span class="card-kind-badge">VOICE DSP</span>
-                <div class="card-tag-pills">
-                  <span class="tag-mini">#wasm</span>
-                  <span class="tag-mini">#ai</span>
-                </div>
-              </div>
-            </a>
 
             <a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener"
               class="intel-card intel-card--forest">
@@ -1672,6 +1656,34 @@
                 <div class="card-tag-pills">
                   <span class="tag-mini">#radio</span>
                   <span class="tag-mini">#zen</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 03b: Audio Processing -->
+        <div class="cat-section" data-cat="audio-processing">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secAudioProc">[ 03b // Audio Processing ]</span>
+            <span class="catalog-count-badge">2 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">Soap</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness
+                normalization via WebAssembly — audio never leaves your device</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">VOICE DSP</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#wasm</span>
+                  <span class="tag-mini">#ai</span>
                 </div>
               </div>
             </a>
@@ -1942,16 +1954,18 @@
           filterDecentralized: '[ decentralized (3) ]',
           filterP2P: '[ p2p apps (5) ]',
           filterWeb: '[ web & infra (5) ]',
-          filterAudioTech: '[ audio-tech (6) ]',
+          filterAudioInstruments: '[ audio-instruments (5) ]',
           filterArtMusic: '[ art & music (4) ]',
           filterContracts: '[ connect (9) ]',
+          filterAudioProcessing: '[ audio-processing (2) ]',
           secFederated: '[ 01a // Federated ]',
           secDecentralized: '[ 01b // Decentralized ]',
           secP2P: '[ 01c // P2P ]',
           secInfra: '[ 02 // Protocols, Web3 & Infra ]',
-          secAudio: '[ 03 // Web / Instrument ]',
+          secAudio: '[ 03 // Audio Instruments ]',
           secMusic: '[ 04 // Music & Art ]',
           secConnect: '[ 05 // Connect ]',
+          secAudioProc: '[ 03b // Audio Processing ]',
           descTunecamp: 'Decentralized music streaming',
           descNullroute: 'EVM stealth payment hub',
           descZenvault: 'Decentralized Secure Vault',
@@ -2010,16 +2024,18 @@
           filterDecentralized: '[ decentralizzate (3) ]',
           filterP2P: '[ app p2p (5) ]',
           filterWeb: '[ web & infra (5) ]',
-          filterAudioTech: '[ audio-tech (6) ]',
+          filterAudioInstruments: '[ audio-instruments (5) ]',
           filterArtMusic: '[ musica & arte (4) ]',
           filterContracts: '[ contatti (9) ]',
+          filterAudioProcessing: '[ audio-processing (2) ]',
           secFederated: '[ 01a // Federate ]',
           secDecentralized: '[ 01b // Decentralizzate ]',
           secP2P: '[ 01c // P2P ]',
           secInfra: '[ 02 // Protocolli, Web3 & Infra ]',
-          secAudio: '[ 03 // Web / Instrument ]',
+          secAudio: '[ 03 // Audio Instruments ]',
           secMusic: '[ 04 // Musica & Arte ]',
           secConnect: '[ 05 // Contatti ]',
+          secAudioProc: '[ 03b // Audio Processing ]',
           descTunecamp: 'Streaming musicale decentralizzato',
           descNullroute: 'Hub di pagamenti stealth per EVM',
           descZenvault: 'Cassaforte sicura decentralizzata',
