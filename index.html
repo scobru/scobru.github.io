@@ -986,7 +986,21 @@
       }
 
       .header-content {
-        height: 64px;
+        height: auto;
+        min-height: 64px;
+        flex-wrap: wrap;
+        row-gap: 6px;
+        padding: 8px 0;
+      }
+
+      .header-nav {
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .nav-link,
+      .nav-pill-btn {
+        white-space: nowrap;
       }
 
       .hero-title {
@@ -1018,6 +1032,8 @@
         </a>
 
         <nav class="header-nav" aria-label="Main Navigation">
+          <a href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1?post=post-1790706843645"
+            target="_blank" rel="noopener" class="nav-link">[ about ]</a>
           <a href="links.html" class="nav-link" title="Links & thoughts">[ links ]</a>
           <a href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1" target="_blank"
             rel="noopener" class="nav-link">[ blog ]</a>
