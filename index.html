@@ -986,7 +986,21 @@
       }
 
       .header-content {
-        height: 64px;
+        height: auto;
+        min-height: 64px;
+        flex-wrap: wrap;
+        row-gap: 6px;
+        padding: 8px 0;
+      }
+
+      .header-nav {
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .nav-link,
+      .nav-pill-btn {
+        white-space: nowrap;
       }
 
       .hero-title {
@@ -1018,6 +1032,8 @@
         </a>
 
         <nav class="header-nav" aria-label="Main Navigation">
+          <a href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1?post=post-1790706843645"
+            target="_blank" rel="noopener" class="nav-link">[ about ]</a>
           <a href="links.html" class="nav-link" title="Links & thoughts">[ links ]</a>
           <a href="https://smollog.scobrudot.dev/0E2ktahyK9Ngm8bocvimGuKnOVIba3lNA7451zGqcfwn1" target="_blank"
             rel="noopener" class="nav-link">[ blog ]</a>
@@ -1048,7 +1064,7 @@
           generativa.
         </p>
         <div class="hero-actions">
-          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (32)</a>
+          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (35)</a>
           <a href="https://github.com/scobru" target="_blank" rel="noopener" class="btn-secondary">GitHub &rarr;</a>
         </div>
       </div>
@@ -1206,23 +1222,28 @@
         <div class="catalog-toolbar">
           <div class="catalog-filter-group" id="filter-group">
             <span class="catalog-filter-label" data-i18n="filterLabel">// filter:</span>
-            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (32)
+            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (35)
               ]</button>
             <button class="filter-pill" data-filter="federated" type="button" data-i18n="filterFederated">[ federated
               (1) ]</button>
             <button class="filter-pill" data-filter="decentralized" type="button" data-i18n="filterDecentralized">[
               decentralized (3) ]</button>
             <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (5) ]</button>
-            <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5)
+            <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (4)
               ]</button>
-            <button class="filter-pill" data-filter="audio-tech" type="button" data-i18n="filterAudioTech">[ audio-tech
+            <button class="filter-pill" data-filter="ai" type="button" data-i18n="filterAI">[ ai &amp; agents (2) ]</button>
+            <button class="filter-pill" data-filter="audio-instruments" type="button"
+              data-i18n="filterAudioInstruments">[ audio-instruments
               (5) ]</button>
+            <button class="filter-pill" data-filter="audio-processing" type="button" data-i18n="filterAudioProcessing">[
+              audio-processing
+              (2) ]</button>
             <button class="filter-pill" data-filter="art-and-music" type="button" data-i18n="filterArtMusic">[ art &amp;
               music (4) ]</button>
             <button class="filter-pill" data-filter="contracts" type="button" data-i18n="filterContracts">[ connect (9)
               ]</button>
           </div>
-          <span class="catalog-count-badge" id="visible-count">// 32/32 visualizzati</span>
+          <span class="catalog-count-badge" id="visible-count">// 35/35 visualizzati</span>
         </div>
 
         <!-- Category 01a: Federated -->
@@ -1424,26 +1445,9 @@
         <div class="cat-section" data-cat="web">
           <div class="cat-section-header">
             <span class="cat-section-title" data-i18n="secInfra">[ 02 // Protocols, Web3 &amp; Infra ]</span>
-            <span class="catalog-count-badge">5 items</span>
+            <span class="catalog-count-badge">4 items</span>
           </div>
           <div class="card-grid">
-            <a href="https://github.com/scobru/zen" target="_blank" rel="noopener"
-              class="intel-card intel-card--warm-grey">
-              <div class="card-top-row">
-                <span class="card-title">Zen</span>
-                <div class="card-actions">
-                  <span class="card-src-btn">&lt;/&gt;</span>
-                </div>
-              </div>
-              <p class="card-desc" data-i18n="descZen">Zen fork</p>
-              <div class="card-bottom-row">
-                <span class="card-kind-badge">PROTOCOL</span>
-                <div class="card-tag-pills">
-                  <span class="tag-mini">#gun-db</span>
-                  <span class="tag-mini">#p2p</span>
-                </div>
-              </div>
-            </a>
 
             <a href="https://delay.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
               <div class="card-top-row">
@@ -1519,14 +1523,63 @@
                 </div>
               </div>
             </a>
+
+
+          </div>
+        </div>
+
+        <!-- Category 02b: AI & Agents -->
+        <div class="cat-section" data-cat="ai">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secAI">[ 02b // AI &amp; Agents ]</span>
+            <span class="catalog-count-badge">2 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://neo.scobrudot.dev" target="_blank" rel="noopener"
+              class="intel-card intel-card--stone">
+              <div class="card-top-row">
+                <span class="card-title">Neo</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/neo', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descNeo">Private AI assistant running entirely in your browser via WebGPU, no server</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">LOCAL AI</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#webgpu</span>
+                  <span class="tag-mini">#privacy</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://github.com/scobru/intelligent-trading" target="_blank" rel="noopener"
+              class="intel-card intel-card--forest">
+              <div class="card-top-row">
+                <span class="card-title">Intelligent Trading</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/intelligent-trading', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descTrading">Autonomous LLM trading agents on Base, with a coordinator for allocation and risk</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">DEFI</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#base</span>
+                  <span class="tag-mini">#ai-agents</span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
 
         <!-- Category 03: Audio-Tech / Web Instruments -->
-        <div class="cat-section" data-cat="audio-tech">
+        <div class="cat-section" data-cat="audio-instruments">
           <div class="cat-section-header">
-            <span class="cat-section-title" data-i18n="secAudio">[ 03 // Web / Instrument ]</span>
-            <span class="catalog-count-badge">6 items</span>
+            <span class="cat-section-title" data-i18n="secAudio">[ 03 // Audio Instruments ]</span>
+            <span class="catalog-count-badge">5 items</span>
           </div>
           <div class="card-grid">
             <a href="https://eurydice.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sand">
@@ -1637,24 +1690,6 @@
               </div>
             </a>
 
-            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
-              <div class="card-top-row">
-                <span class="card-title">Soap</span>
-                <div class="card-actions">
-                  <span class="card-src-btn"
-                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
-                </div>
-              </div>
-              <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness
-                normalization via WebAssembly — audio never leaves your device</p>
-              <div class="card-bottom-row">
-                <span class="card-kind-badge">VOICE DSP</span>
-                <div class="card-tag-pills">
-                  <span class="tag-mini">#wasm</span>
-                  <span class="tag-mini">#ai</span>
-                </div>
-              </div>
-            </a>
 
             <a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener"
               class="intel-card intel-card--forest">
@@ -1672,6 +1707,53 @@
                 <div class="card-tag-pills">
                   <span class="tag-mini">#radio</span>
                   <span class="tag-mini">#zen</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 03b: Audio Processing -->
+        <div class="cat-section" data-cat="audio-processing">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secAudioProc">[ 03b // Audio Processing ]</span>
+            <span class="catalog-count-badge">2 items</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">Soap</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/soap', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb & loudness
+                normalization via WebAssembly � audio never leaves your device</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">VOICE DSP</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#wasm</span>
+                  <span class="tag-mini">#ai</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://onda.scobrudot.dev" target="_blank" rel="noopener"
+              class="intel-card intel-card--terracotta">
+              <div class="card-top-row">
+                <span class="card-title">Onda</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/onda', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc">Subtitles, transcripts and jump cuts for video and audio. On-device, no cloud.</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">VIDEO DSP</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#on-device</span>
+                  <span class="tag-mini">#ai</span>
                 </div>
               </div>
             </a>
@@ -1919,7 +2001,7 @@
           heroStatus: 'P2P Systems · Audio Tech · Open Source',
           heroTitle: 'Francesco Bruno.<br /><em>P2P Systems &amp; Audio Synthesis.</em>',
           heroSub: 'Decentralized architectures, peer-to-peer cryptography, federated protocols, and generative audio synthesis.',
-          btnExplore: 'Explore Projects (33) ↓',
+          btnExplore: 'Explore Projects (35) ↓',
           fanTitle: 'Featured Projects',
           claimTunecamp: 'Decentralized federated music streaming without intermediaries.',
           claimLinda: 'Serverless P2P encrypted messenger on Holepunch stack.',
@@ -1928,21 +2010,25 @@
           claimSoap: 'Denoise, dereverb & loudness for vocals, fully on-device via WebAssembly.',
           claimEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4B of them.',
           filterLabel: '// filter:',
-          filterAll: '[ all (33) ]',
+          filterAll: '[ all (35) ]',
           filterFederated: '[ federated (1) ]',
           filterDecentralized: '[ decentralized (3) ]',
           filterP2P: '[ p2p apps (5) ]',
-          filterWeb: '[ web & infra (5) ]',
-          filterAudioTech: '[ audio-tech (5) ]',
+          filterWeb: '[ web & infra (4) ]',
+          filterAI: '[ ai & agents (2) ]',
+          filterAudioInstruments: '[ audio-instruments (5) ]',
           filterArtMusic: '[ art & music (4) ]',
           filterContracts: '[ connect (9) ]',
+          filterAudioProcessing: '[ audio-processing (2) ]',
           secFederated: '[ 01a // Federated ]',
           secDecentralized: '[ 01b // Decentralized ]',
           secP2P: '[ 01c // P2P ]',
           secInfra: '[ 02 // Protocols, Web3 & Infra ]',
-          secAudio: '[ 03 // Web / Instrument ]',
+          secAI: '[ 02b // AI & Agents ]',
+          secAudio: '[ 03 // Audio Instruments ]',
           secMusic: '[ 04 // Music & Art ]',
           secConnect: '[ 05 // Connect ]',
+          secAudioProc: '[ 03b // Audio Processing ]',
           descTunecamp: 'Decentralized music streaming',
           descNullroute: 'EVM stealth payment hub',
           descZenvault: 'Decentralized Secure Vault',
@@ -1956,6 +2042,8 @@
           descDelay: 'Decentralized Relay',
           descCliTools: 'Collection of CLI Tools',
           descFid: 'Fediverse-ID: self-sovereign SSO & identity protocol for ActivityPub',
+          descNeo: 'Private AI assistant running entirely in your browser via WebGPU, no server',
+          descTrading: 'Autonomous LLM trading agents on Base, with a coordinator for allocation and risk',
           descGazza: 'Hides any file inside a video: whoever hosts the video hosts your bytes, returned byte for byte',
           descEurydice: 'Eurydice: Ambient soundscape studio with generative synthesis and visual identity.',
           descDelia: 'Browser tape instrument with varispeed & tape wear simulation',
@@ -1974,7 +2062,7 @@
           fColP2p: 'P2P & Web3',
           fColAudio: 'Audio & Tools',
           fColConnect: 'Network',
-          sysStatus: '// 33 items indexed · system: online',
+          sysStatus: '// 35 items indexed · system: online',
           langToggle: '[ it ]',
           langAria: "Passa all'italiano",
           themeDark: '[ dark ]',
@@ -1987,7 +2075,7 @@
           heroStatus: 'Sistemi P2P · Audio Tech · Open Source',
           heroTitle: 'Francesco Bruno.<br /><em>Sistemi P2P &amp; Sintesi Sonora.</em>',
           heroSub: 'Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e sintesi audio generativa.',
-          btnExplore: 'Esplora Progetti (33) ↓',
+          btnExplore: 'Esplora Progetti (35) ↓',
           fanTitle: 'Progetti in Evidenza',
           claimTunecamp: 'Streaming musicale decentralizzato e federato senza intermediari.',
           claimLinda: 'Messaggistica cifrata P2P serverless su stack Holepunch.',
@@ -1996,21 +2084,25 @@
           claimSoap: 'Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.',
           claimEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto.',
           filterLabel: '// filtra:',
-          filterAll: '[ tutti (33) ]',
+          filterAll: '[ tutti (35) ]',
           filterFederated: '[ federate (1) ]',
           filterDecentralized: '[ decentralizzate (3) ]',
           filterP2P: '[ app p2p (5) ]',
-          filterWeb: '[ web & infra (5) ]',
-          filterAudioTech: '[ audio-tech (5) ]',
+          filterWeb: '[ web & infra (4) ]',
+          filterAI: '[ ai & agents (2) ]',
+          filterAudioInstruments: '[ audio-instruments (5) ]',
           filterArtMusic: '[ musica & arte (4) ]',
           filterContracts: '[ contatti (9) ]',
+          filterAudioProcessing: '[ audio-processing (2) ]',
           secFederated: '[ 01a // Federate ]',
           secDecentralized: '[ 01b // Decentralizzate ]',
           secP2P: '[ 01c // P2P ]',
           secInfra: '[ 02 // Protocolli, Web3 & Infra ]',
-          secAudio: '[ 03 // Web / Instrument ]',
+          secAI: '[ 02b // AI & Agenti ]',
+          secAudio: '[ 03 // Audio Instruments ]',
           secMusic: '[ 04 // Musica & Arte ]',
           secConnect: '[ 05 // Contatti ]',
+          secAudioProc: '[ 03b // Audio Processing ]',
           descTunecamp: 'Streaming musicale decentralizzato',
           descNullroute: 'Hub di pagamenti stealth per EVM',
           descZenvault: 'Cassaforte sicura decentralizzata',
@@ -2024,12 +2116,14 @@
           descDelay: 'Relay decentralizzato',
           descCliTools: 'Raccolta di strumenti da riga di comando',
           descFid: 'Fediverse-ID: SSO auto-sovrano & protocollo d\'identità per ActivityPub',
+          descNeo: 'Assistente AI privato che gira interamente nel browser via WebGPU, senza server',
+          descTrading: 'Agenti di trading autonomi basati su LLM su Base, con coordinator per allocazione e rischio',
           descGazza: 'Nasconde un file dentro un video: chi ospita il video ospita i tuoi byte, restituiti byte per byte',
           descEurydice: 'Eurydice: Studio di paesaggi sonori ambientali con sintesi generativa e identità visiva.',
           descDelia: 'Strumento a nastro per browser con simulazione di varispeed e usura',
           descCabasa: 'Motore di colonne sonore generative: 7 sorgenti dati live (ISS, terremoti, caos) guidano sintesi ambient in tempo reale',
           descSoap: 'Pulizia vocale on-device: denoise, dereverb e normalizzazione loudness via WebAssembly — l\'audio non lascia mai il tuo dispositivo',
-            descEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto',
+          descEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto',
           descOnepick: 'Radio P2P analogica decentralizzata & frequenza culturale su Zen',
           descSudoRecords: 'Etichetta discografica ospitata su Tunecamp',
           descHomologo: 'Cantautorato, Pop, Elettronica',
@@ -2042,7 +2136,7 @@
           fColP2p: 'P2P & Web3',
           fColAudio: 'Audio & Strumenti',
           fColConnect: 'Contatti',
-          sysStatus: '// 33 elementi indicizzati · sistema: online',
+          sysStatus: '// 35 elementi indicizzati · sistema: online',
           langToggle: '[ en ]',
           langAria: 'Switch to English',
           themeDark: '[ scuro ]',
@@ -2146,7 +2240,7 @@
 
         const countBadge = document.getElementById('visible-count');
         if (countBadge) {
-          countBadge.textContent = `// ${count}/32 visualizzati`;
+          countBadge.textContent = `// ${count}/35 visualizzati`;
         }
       }
 
