@@ -68,7 +68,8 @@
 
     // type -> [icon, label, link, detail]; every string below is rendered via textContent
     const T = {
-      PushEvent: e => ['↑', `push (${e.payload.size ?? e.payload.commits?.length ?? 0})`, gh(e.repo.name + '/commit/' + e.payload.head), e.payload.commits?.at(-1)?.message.split('\n')[0]],
+      // events API no longer ships commits[]: message comes from msgOf() via the commits endpoint
+      PushEvent: e => ['↑', 'push ' + (e.payload.ref || '').replace('refs/heads/', ''), gh(e.repo.name + '/commit/' + e.payload.head), msgOf(e.payload.head)],
       PullRequestEvent: e => ['⇄', `PR ${e.payload.pull_request.merged ? 'merged' : e.payload.action}`, e.payload.pull_request.html_url, e.payload.pull_request.title],
       IssuesEvent: e => ['!', `issue ${e.payload.action}`, e.payload.issue.html_url, e.payload.issue.title],
       IssueCommentEvent: e => ['…', 'commento', e.payload.comment.html_url, e.payload.issue.title],
@@ -78,6 +79,24 @@
       ForkEvent: e => ['⑂', 'fork', e.payload.forkee.html_url],
       ReleaseEvent: e => ['◆', `release ${e.payload.action}`, e.payload.release.html_url, e.payload.release.name || e.payload.release.tag_name],
     };
+
+    // commits are immutable: cache message by sha forever; null = unfetched. Cap fetches/load for the rate limit.
+    let msgs = {}; try { msgs = JSON.parse(localStorage.getItem('commitMsgs') || '{}'); } catch (e) {}
+    const msgOf = sha => msgs[sha] ?? null;
+
+    async function fillMessages(events) {
+      const todo = events.filter(e => e.type === 'PushEvent' && msgs[e.payload.head] === undefined).slice(0, 20);
+      for (const e of todo) {
+        const sha = e.payload.head;
+        try {
+          const r = await fetch(`https://api.github.com/repos/${e.repo.name}/commits/${sha}`);
+          if (r.status === 403) break; // rate limited, retry next load
+          msgs[sha] = r.ok ? (await r.json()).commit.message.split('\n')[0] : ''; // 404 = private/deleted
+        } catch (err) { break; }
+        document.querySelectorAll(`[data-sha="${sha}"]`).forEach(el => { el.textContent = msgs[sha]; });
+      }
+      try { localStorage.setItem('commitMsgs', JSON.stringify(msgs)); } catch (e) {}
+    }
 
     const ago = d => {
       const s = (Date.now() - new Date(d)) / 1000;
@@ -100,11 +119,12 @@
         const repo = document.createElement('span'); repo.className = 'repo'; repo.textContent = ' ' + e.repo.name;
         const when = document.createElement('div'); when.className = 'when'; when.textContent = ago(e.created_at);
         body.append(a, repo);
-        if (sub) { const s = document.createElement('div'); s.className = 'sub'; s.textContent = sub; body.append(s); }
+        if (sub !== undefined) { const s = document.createElement('div'); s.className = 'sub'; s.textContent = sub ?? ''; if (e.type === 'PushEvent') s.dataset.sha = e.payload.head; body.append(s); }
         body.append(when);
         row.append(i, body); feed.append(row); n++;
       }
       $('status').textContent = n ? '' : 'nessuna attività recente';
+      fillMessages(events);
     }
 
     async function load() {
