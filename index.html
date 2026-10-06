@@ -1228,7 +1228,8 @@
             <button class="filter-pill" data-filter="federated" type="button" data-i18n="filterFederated">[ federated
               (1) ]</button>
             <button class="filter-pill" data-filter="decentralized" type="button" data-i18n="filterDecentralized">[
-              decentralized (3) ]</button>
+              decentralized (1) ]</button>
+            <button class="filter-pill" data-filter="self-hosted" type="button" data-i18n="filterSelfHosted">[ self-hosted (1) ]</button>
             <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (5) ]</button>
             <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (4)
               ]</button>
@@ -1279,7 +1280,7 @@
         <div class="cat-section" data-cat="decentralized">
           <div class="cat-section-header">
             <span class="cat-section-title" data-i18n="secDecentralized">[ 01b // Decentralized ]</span>
-            <span class="catalog-count-badge">3 items</span>
+            <span class="catalog-count-badge">1 item</span>
           </div>
           <div class="card-grid">
             <a href="https://nullroute.scobrudot.dev/" target="_blank" rel="noopener"
@@ -1301,24 +1302,6 @@
               </div>
             </a>
 
-            <a href="https://zenos.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
-              <div class="card-top-row">
-                <span class="card-title">ZenOS Web</span>
-                <div class="card-actions">
-                  <span class="card-src-btn"
-                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/zenos-web', '_blank');">&lt;/&gt;</span>
-                </div>
-              </div>
-              <p class="card-desc" data-i18n="descZenosWeb">Self-hosted workspace with E2EE notes, calendar, bookmarks & blog</p>
-              <div class="card-bottom-row">
-                <span class="card-kind-badge">WORKSPACE</span>
-                <div class="card-tag-pills">
-                  <span class="tag-mini">#zenos</span>
-                  <span class="tag-mini">#self-hosted</span>
-                  <span class="tag-mini">#vault</span>
-                </div>
-              </div>
-            </a>
           </div>
         </div>
 
@@ -1424,6 +1407,34 @@
           </div>
         </div>
 
+        <!-- Category 01d: Self-hosted -->
+        <div class="cat-section" data-cat="self-hosted">
+          <div class="cat-section-header">
+            <span class="cat-section-title" data-i18n="secSelfHosted">[ 01d // Self-hosted ]</span>
+            <span class="catalog-count-badge">1 item</span>
+          </div>
+          <div class="card-grid">
+            <a href="https://zenos.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
+              <div class="card-top-row">
+                <span class="card-title">ZenOS Web</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/zenos-web', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descZenosWeb">Self-hosted workspace with E2EE notes, calendar, bookmarks & blog</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">WORKSPACE</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#zenos</span>
+                  <span class="tag-mini">#self-hosted</span>
+                  <span class="tag-mini">#vault</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <!-- Category 02: Protocols & Infra -->
         <div class="cat-section" data-cat="web">
           <div class="cat-section-header">
@@ -1506,8 +1517,6 @@
                 </div>
               </div>
             </a>
-
-
           </div>
         </div>
 
@@ -2015,7 +2024,8 @@
           filterLabel: '// filter:',
           filterAll: '[ all (36) ]',
           filterFederated: '[ federated (1) ]',
-          filterDecentralized: '[ decentralized (3) ]',
+          filterDecentralized: '[ decentralized (1) ]',
+          filterSelfHosted: '[ self-hosted (1) ]',
           filterP2P: '[ p2p apps (5) ]',
           filterWeb: '[ web & infra (4) ]',
           filterAI: '[ ai & agents (3) ]',
@@ -2025,6 +2035,7 @@
           filterAudioProcessing: '[ audio-processing (2) ]',
           secFederated: '[ 01a // Federated ]',
           secDecentralized: '[ 01b // Decentralized ]',
+          secSelfHosted: '[ 01d // Self-hosted ]',
           secP2P: '[ 01c // P2P ]',
           secInfra: '[ 02 // Protocols, Web3 & Infra ]',
           secAI: '[ 02b // AI & Agents ]',
@@ -2091,7 +2102,8 @@
           filterLabel: '// filtra:',
           filterAll: '[ tutti (36) ]',
           filterFederated: '[ federate (1) ]',
-          filterDecentralized: '[ decentralizzate (3) ]',
+          filterDecentralized: '[ decentralizzate (1) ]',
+          filterSelfHosted: '[ self-hosted (1) ]',
           filterP2P: '[ app p2p (5) ]',
           filterWeb: '[ web & infra (4) ]',
           filterAI: '[ ai & agenti (3) ]',
@@ -2101,6 +2113,7 @@
           filterAudioProcessing: '[ audio-processing (2) ]',
           secFederated: '[ 01a // Federate ]',
           secDecentralized: '[ 01b // Decentralizzate ]',
+          secSelfHosted: '[ 01d // Self-hosted ]',
           secP2P: '[ 01c // P2P ]',
           secInfra: '[ 02 // Protocolli, Web3 & Infra ]',
           secAI: '[ 02b // AI & Agenti ]',
