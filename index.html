@@ -643,8 +643,8 @@
     .intel-card {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: flex-start;
+      gap: 14px;
       padding: 22px;
       background-color: var(--color-bg-card);
       border: 1px solid var(--color-border-subtle);
@@ -762,7 +762,9 @@
       line-height: 1.45;
       font-weight: 500;
       opacity: 0.88;
-      flex-grow: 1;
+      flex-grow: 0;
+      min-height: 4.2rem;
+      margin: 0;
     }
 
     .card-bottom-row {
@@ -772,6 +774,7 @@
       flex-wrap: wrap;
       gap: 6px;
       margin-top: auto;
+      padding-top: 4px;
     }
 
     .card-kind-badge {
@@ -807,36 +810,44 @@
 
     /* Cabasa Video Drawer / Player */
     .media-player-box {
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: var(--radius-lg);
-      background: var(--color-ink-5);
-      border: 1px dashed var(--color-border-default);
+      margin-top: 6px;
+      margin-bottom: 2px;
+      padding: 0;
+      border-radius: var(--radius-md);
+      background: transparent;
+      border: none;
     }
 
     .media-toggle-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 6px;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      background: transparent;
-      border: 1px solid var(--color-border-default);
-      color: var(--color-text-primary);
-      padding: 6px 12px;
+      font-size: 0.72rem;
+      background: rgba(14, 17, 19, 0.04);
+      border: 1px dashed var(--color-border-default);
+      color: var(--color-text-muted);
+      padding: 5px 12px;
       border-radius: var(--radius-pill);
       cursor: pointer;
       transition: all 0.15s ease;
+      width: 100%;
+    }
+
+    [data-theme="dark"] .media-toggle-btn {
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .media-toggle-btn:hover {
       background: var(--color-text-primary);
       color: var(--color-bg-canvas);
+      border-style: solid;
     }
 
     .media-drawer-content {
       display: none;
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     .media-drawer-content.is-open {
@@ -870,6 +881,376 @@
 
     .video-caption a {
       color: inherit;
+    }
+
+    /* Screenshot Thumbnail Preview & Gallery Lightbox */
+    .card-thumb-preview {
+      margin: 6px 0 6px 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border-subtle);
+      background: rgba(14, 17, 19, 0.04);
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    [data-theme="dark"] .card-thumb-preview {
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .intel-card:hover .card-thumb-preview {
+      border-color: var(--color-border-default);
+    }
+
+    .thumb-tabs-bar {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 3px 4px;
+      background: rgba(10, 13, 15, 0.76);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      max-width: calc(100% - 14px);
+    }
+
+    [data-theme="dark"] .thumb-tabs-bar {
+      background: rgba(0, 0, 0, 0.78);
+    }
+
+    .thumb-tab-btn {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.75);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 2px 7px;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .thumb-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .thumb-tab-btn.is-active {
+      color: #0b0e10;
+      background: #ffffff;
+      font-weight: 700;
+    }
+
+    .thumb-media-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090c0d;
+    }
+
+    .thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 32%;
+      display: block;
+      transform: scale(1.38);
+      transform-origin: center 32%;
+      transition: transform 0.4s var(--ease-out), filter 0.25s ease, opacity 0.2s ease;
+    }
+
+    .thumb-img--contain {
+      object-fit: contain;
+      background: #060809;
+      padding: 4px;
+      transform: scale(1.18);
+      transform-origin: center center;
+    }
+
+    .intel-card:hover .thumb-img {
+      transform: scale(1.50);
+    }
+
+    .intel-card:hover .thumb-img--contain {
+      transform: scale(1.28);
+    }
+
+    .thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(14, 17, 19, 0.72) 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 6px 8px;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .card-thumb-preview:hover .thumb-overlay {
+      opacity: 1;
+    }
+
+    .thumb-zoom-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      background: rgba(14, 17, 19, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: var(--radius-pill);
+      padding: 2px 7px;
+      backdrop-filter: blur(4px);
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card-thumb-preview:hover .thumb-zoom-badge {
+      background: rgba(14, 17, 19, 0.95);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* Fan Card Preview Trigger */
+    .fc-preview-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-pill);
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      cursor: pointer;
+      opacity: 0.65;
+      margin-left: auto;
+      margin-right: 6px;
+      transition: opacity 0.15s ease, background-color 0.15s ease;
+    }
+
+    .fc-preview-trigger:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    /* Lightbox Modal */
+    .site-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 13, 14, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: clamp(12px, 3vw, 28px);
+      opacity: 0;
+      transition: opacity 0.22s var(--ease-out);
+    }
+
+    .site-lightbox.is-open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lb-card {
+      position: relative;
+      width: 100%;
+      max-width: 1180px;
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      animation: lbScaleIn 0.22s var(--ease-out);
+    }
+
+    @keyframes lbScaleIn {
+      from {
+        transform: scale(0.97) translateY(8px);
+        opacity: 0.5;
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .lb-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-card);
+    }
+
+    .lb-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lb-project-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+    }
+
+    .lb-counter-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .lb-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lb-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border-default);
+      background: transparent;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .lb-btn:hover {
+      background: var(--color-text-primary);
+      color: var(--color-bg-canvas);
+    }
+
+    .lb-stage {
+      position: relative;
+      flex: 1;
+      min-height: 240px;
+      max-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090c0e;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .lb-stage-img {
+      max-width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: opacity 0.15s ease;
+    }
+
+    .lb-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(14, 17, 19, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-pill);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: all 0.15s ease;
+      z-index: 2;
+    }
+
+    .lb-nav-arrow:hover {
+      background: rgba(14, 17, 19, 0.95);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lb-nav-arrow--prev {
+      left: 14px;
+    }
+
+    .lb-nav-arrow--next {
+      right: 14px;
+    }
+
+    .lb-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 18px;
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    .lb-caption {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lb-hint {
+      color: var(--color-text-muted);
+      font-size: 0.68rem;
+      opacity: 0.75;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .lb-hint {
+        display: none;
+      }
+      .lb-stage {
+        max-height: 60vh;
+      }
+      .lb-stage-img {
+        max-height: 60vh;
+      }
     }
 
     /* Site Footer */
@@ -1084,6 +1465,7 @@
               <a href="https://tunecamp.org/" target="_blank" rel="noopener" class="fan-card fan-card--tunecamp">
                 <div class="fc-top">
                   <span class="fc-tag">STREAMING P2P</span>
+                  <button class="fc-preview-trigger" type="button" title="Screenshot anteprima" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('tunecamp', 0);">⤢</button>
                   <span class="fc-glyph">&nearr;</span>
                 </div>
                 <div class="fc-mid">
@@ -1108,6 +1490,7 @@
               <a href="https://linda.scobrudot.dev/" target="_blank" rel="noopener" class="fan-card fan-card--linda">
                 <div class="fc-top">
                   <span class="fc-tag">P2P MESSENGER</span>
+                  <button class="fc-preview-trigger" type="button" title="Screenshot anteprima" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('linda', 0);">⤢</button>
                   <span class="fc-glyph">&nearr;</span>
                 </div>
                 <div class="fc-mid">
@@ -1136,6 +1519,7 @@
                 class="fan-card fan-card--wormhole">
                 <div class="fc-top">
                   <span class="fc-tag">E2EE TRANSFER</span>
+                  <button class="fc-preview-trigger" type="button" title="Screenshot anteprima" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('wormhole', 0);">⤢</button>
                   <span class="fc-glyph">&nearr;</span>
                 </div>
                 <div class="fc-mid">
@@ -1162,6 +1546,7 @@
                 class="fan-card fan-card--orto">
                 <div class="fc-top">
                   <span class="fc-tag">WORKSPACE</span>
+                  <button class="fc-preview-trigger" type="button" title="Screenshot anteprima" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('orto', 0);">⤢</button>
                   <span class="fc-glyph">&nearr;</span>
                 </div>
                 <div class="fc-mid">
@@ -1260,6 +1645,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descTunecamp">Decentralized music streaming</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('tunecamp', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/tunecamp.png" alt="Tunecamp screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">FEDERATED</span>
                 <div class="card-tag-pills">
@@ -1289,6 +1685,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descNullroute">EVM stealth payment hub</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('nullroute', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/nullroute.png" alt="Nullroute screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">WEB3</span>
                 <div class="card-tag-pills">
@@ -1318,6 +1725,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descWormhole">E2EE P2P file transfer</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('wormhole', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/wormhole.png" alt="Wormhole screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">FILE TRANSFER</span>
                 <div class="card-tag-pills">
@@ -1336,6 +1754,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descLinda">Serverless P2P encrypted messenger on Holepunch stack</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('linda', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/linda.png" alt="Linda screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">MESSENGER</span>
                 <div class="card-tag-pills">
@@ -1364,7 +1793,7 @@
             </a>
 
             <a href="https://www.tunecamp.org/sidecamp.html" target="_blank" rel="noopener"
-              class="intel-card intel-card--teal">
+              class="intel-card intel-card--teal" id="card-sidecamp">
               <div class="card-top-row">
                 <span class="card-title">Sidecamp</span>
                 <div class="card-actions">
@@ -1373,6 +1802,21 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descSidecamp">TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)</p>
+              <div class="card-thumb-preview" id="thumb-preview-sidecamp" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('sidecamp', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'sidecamp', 0);">[ 01 // search ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'sidecamp', 1);">[ 02 // network ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/sidecamp-search.png" alt="Sidecamp screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">COMPANION</span>
                 <div class="card-tag-pills">
@@ -1392,6 +1836,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descWhiterabbit">Ephemeral p2p chat</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('whiterabbit', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/whiterabbit.png" alt="Whiterabbit screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">EPHEMERAL CHAT</span>
                 <div class="card-tag-pills">
@@ -1410,6 +1865,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descIris">Air-gapped optical file transfer via animated QR codes</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('iris', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/iris.png" alt="Iris screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">OPTICAL TRANSFER</span>
                 <div class="card-tag-pills">
@@ -1428,7 +1894,7 @@
             <span class="catalog-count-badge">2 items</span>
           </div>
           <div class="card-grid">
-            <a href="https://orto.scobrudot.dev/?demo" target="_blank" rel="noopener" class="intel-card intel-card--sage">
+            <a href="https://orto.scobrudot.dev/?demo" target="_blank" rel="noopener" class="intel-card intel-card--sage" id="card-orto">
               <div class="card-top-row">
                 <span class="card-title">Orto</span>
                 <div class="card-actions">
@@ -1437,6 +1903,21 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descZenosWeb">Self-hosted workspace with E2EE notes, calendar, bookmarks & blog. Opens a live demo</p>
+              <div class="card-thumb-preview" id="thumb-preview-orto" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('orto', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'orto', 0);">[ 01 // notes ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'orto', 1);">[ 02 // calendar ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/orto-notes.png" alt="Orto Notes" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">WORKSPACE</span>
                 <div class="card-tag-pills">
@@ -1456,6 +1937,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descAula">Lightweight, self-hosted open source Google Classroom alternative with SQLite and zero dependencies</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('aula', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/aula.png" alt="Aula screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">EDTECH / SELF-HOSTED</span>
                 <div class="card-tag-pills">
@@ -1485,6 +1977,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descViso">One identity for every Freenet app: personas on your node, sign in without sharing a key</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('viso', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/viso.png" alt="Viso screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">IDENTITY</span>
                 <div class="card-tag-pills">
@@ -1503,6 +2006,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descMecenate">Sell data to strangers without trusting them: a griefing escrow on Base, encrypted files on Freenet</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('mecenate', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/mecenate.png" alt="Mecenate screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">ESCROW</span>
                 <div class="card-tag-pills">
@@ -1512,7 +2026,7 @@
                 </div>
               </div>
             </a>
-            <a href="https://github.com/scobru/distant-worlds" target="_blank" rel="noopener" class="intel-card intel-card--forest">
+            <a href="https://github.com/scobru/distant-worlds" target="_blank" rel="noopener" class="intel-card intel-card--forest" id="card-distantworlds">
               <div class="card-top-row">
                 <span class="card-title">Distant Worlds</span>
                 <div class="card-actions">
@@ -1521,6 +2035,21 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descDistantWorlds">Endless generated planets to explore, with their own creatures and music, shared in a multiplayer galaxy on Freenet</p>
+              <div class="card-thumb-preview" id="thumb-preview-distantworlds" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('distantworlds', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'distantworlds', 0);">[ 01 // thaith ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'distantworlds', 1);">[ 02 // quelon ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/distant-worlds-thaith.png" alt="Planet Thaith" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">GAME</span>
                 <div class="card-tag-pills">
@@ -1539,6 +2068,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descFreeTunes">Bandcamp-like music publishing and streaming on Freenet, no server</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('freetunes', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/freetunes.png" alt="FreeTunes screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">MUSIC</span>
                 <div class="card-tag-pills">
@@ -1557,6 +2097,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descFreeNames">Human-readable names for Freenet sites: zones, petnames and a public registry</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('freenames', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/freenames.png" alt="FreeNames screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">NAMES</span>
                 <div class="card-tag-pills">
@@ -1575,6 +2126,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descFreePolls">Polls and forms on Freenet: signed answers, invite links, availability slots</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('freepolls', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/freepolls.png" alt="FreePolls screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">POLLS</span>
                 <div class="card-tag-pills">
@@ -1593,6 +2155,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descFreeSwap">Uniswap V3 swap UI served from Freenet, on Ethereum and Base</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('freeswap', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/freeswap.png" alt="FreeSwap screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">SWAP</span>
                 <div class="card-tag-pills">
@@ -1611,6 +2184,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descFH">Decentralized home page and contract tile launcher for Freenet sites and apps</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('fh', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/fh.png" alt="FH launcher screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">LAUNCHPAD / FREENET</span>
                 <div class="card-tag-pills">
@@ -1678,6 +2262,17 @@
               </div>
               <p class="card-desc" data-i18n="descFid">Fediverse-ID: self-sovereign SSO &amp; identity protocol for
                 ActivityPub</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('fid', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/fid.png" alt="FID screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">FEDIVERSE</span>
                 <div class="card-tag-pills">
@@ -1698,6 +2293,17 @@
               </div>
               <p class="card-desc" data-i18n="descGazza">Hides any file inside a video: whoever hosts the video hosts
                 your bytes, returned byte for byte</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('gazza', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/gazza.png" alt="Gazza screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">STEGANOGRAPHY</span>
                 <div class="card-tag-pills">
@@ -1746,6 +2352,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descNeo">Private AI assistant running entirely in your browser via WebGPU, no server</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('neo', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/neo.png" alt="Neo screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">LOCAL AI</span>
                 <div class="card-tag-pills">
@@ -1756,7 +2373,7 @@
             </a>
 
             <a href="https://intelligent-trading.scobrudot.dev/" target="_blank" rel="noopener"
-              class="intel-card intel-card--forest">
+              class="intel-card intel-card--forest" id="card-trading">
               <div class="card-top-row">
                 <span class="card-title">Intelligent Trading</span>
                 <div class="card-actions">
@@ -1765,6 +2382,21 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descTrading">Autonomous LLM trading agents on Base, with a coordinator for allocation and risk</p>
+              <div class="card-thumb-preview" id="thumb-preview-trading" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('trading', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'trading', 0);">[ 01 // coordinator (live) ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'trading', 1);">[ 02 // landing ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/trading-coordinator.png" alt="Intelligent Trading Master Coordinator LIVE" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">DEFI</span>
                 <div class="card-tag-pills">
@@ -1793,6 +2425,17 @@
               </div>
               <p class="card-desc" data-i18n="descEurydice">Eurydice: Ambient soundscape studio with generative
                 synthesis and visual identity.</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('eurydice', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/eurydice.png" alt="Eurydice screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">SOUNDSCAPE</span>
                 <div class="card-tag-pills">
@@ -1813,6 +2456,17 @@
               </div>
               <p class="card-desc" data-i18n="descDelia">Browser tape instrument with varispeed &amp; tape wear
                 simulation</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('delia', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/delia.png" alt="Delia screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">DSP / TAPE</span>
                 <div class="card-tag-pills">
@@ -1822,8 +2476,8 @@
               </div>
             </a>
 
-            <!-- Cabasa (with Video Drawer) -->
-            <div class="intel-card intel-card--terracotta" style="grid-column: span 1;">
+            <!-- Cabasa (with Screenshots & Video Drawer) -->
+            <div class="intel-card intel-card--terracotta" style="grid-column: span 1;" id="card-cabasa">
               <div class="card-top-row">
                 <a href="https://cabasa.scobrudot.dev" target="_blank" rel="noopener"
                   style="text-decoration:none; color:inherit;">
@@ -1836,6 +2490,23 @@
               </div>
               <p class="card-desc" data-i18n="descCabasa">Generative soundtrack engine: 7 live data sources (ISS,
                 quakes, chaos) drive real-time ambient synthesis</p>
+
+              <!-- Screenshots Preview -->
+              <div class="card-thumb-preview" id="thumb-preview-cabasa" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('cabasa', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'cabasa', 0);">[ 01 // universe ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'cabasa', 1);">[ 02 // active ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/cabasa-universe.png" alt="Cabasa generative universe" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
 
               <!-- Reel Drawer Toggle -->
               <div class="media-player-box">
@@ -1872,7 +2543,7 @@
               </div>
             </div>
 
-            <a href="https://eph.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage">
+            <a href="https://eph.scobrudot.dev" target="_blank" rel="noopener" class="intel-card intel-card--sage" id="card-eph">
               <div class="card-top-row">
                 <span class="card-title">EPH</span>
                 <div class="card-actions">
@@ -1882,6 +2553,21 @@
               </div>
               <p class="card-desc" data-i18n="descEph">One-button ephemeral synth: every press draws a whole patch from
                 one seed, 4 billion of them</p>
+              <div class="card-thumb-preview" id="thumb-preview-eph" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('eph', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'eph', 0);">[ 01 // synth ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'eph', 1);">[ 02 // groovebox ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/eph-synth.png" alt="EPH synth" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">SYNTH GENERATOR</span>
                 <div class="card-tag-pills">
@@ -1890,7 +2576,6 @@
                 </div>
               </div>
             </a>
-
 
             <a href="https://onepick.scobrudot.dev/" target="_blank" rel="noopener"
               class="intel-card intel-card--forest">
@@ -1903,6 +2588,17 @@
               </div>
               <p class="card-desc" data-i18n="descOnepick">Decentralized analog P2P radio &amp; culture frequency on Zen
               </p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('onepick', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/onepick.png" alt="Onepick screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">P2P RADIO</span>
                 <div class="card-tag-pills">
@@ -1921,7 +2617,7 @@
             <span class="catalog-count-badge">6 items</span>
           </div>
           <div class="card-grid">
-            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+            <a href="https://soap-blond.vercel.app" target="_blank" rel="noopener" class="intel-card intel-card--teal" id="card-soap">
               <div class="card-top-row">
                 <span class="card-title">Soap</span>
                 <div class="card-actions">
@@ -1931,6 +2627,21 @@
               </div>
               <p class="card-desc" data-i18n="descSoap">On-device voice cleanup: denoise, dereverb &amp; loudness
                 normalization via WebAssembly &mdash; audio never leaves your device</p>
+              <div class="card-thumb-preview" id="thumb-preview-soap" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('soap', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'soap', 0);">[ 01 // web app ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'soap', 1);">[ 02 // plugin ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/soap-web.png" alt="Soap Voice DSP Web App" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">VOICE DSP</span>
                 <div class="card-tag-pills">
@@ -1950,6 +2661,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descOnda">Subtitles, transcripts and jump cuts for video and audio. On-device, no cloud.</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('onda', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/onda.png" alt="Onda screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">VIDEO DSP</span>
                 <div class="card-tag-pills">
@@ -1969,6 +2691,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descHimalaya">Zero-latency multiband brickwall limiter for broadcast and mastering with auto-release &amp; oscilloscope (JUCE 8 + React 19)</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('himalaya', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/himalaya.png" alt="Himalaya Brickwall Limiter plugin" class="thumb-img thumb-img--contain" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">BRICKWALL LIMITER</span>
                 <div class="card-tag-pills">
@@ -1990,6 +2723,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descSculpt">Zero-latency 11-band precision parametric equalizer with spectrum analyzer, Butterworth Q filters &amp; interactive node editor (JUCE 8 + React 19)</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('sculpt', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/sculpt.png" alt="Sculpt Parametric EQ plugin" class="thumb-img thumb-img--contain" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">PARAMETRIC EQ</span>
                 <div class="card-tag-pills">
@@ -2011,6 +2755,17 @@
                 </div>
               </div>
               <p class="card-desc" data-i18n="descPressor2000">Zero-latency studio compressor with 4 analog modes (VCA/Opto/FET/Vari-Mu), transfer curve &amp; waveform visualization (JUCE 8 + React 19)</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('pressor2000', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/pressor2000.png" alt="Pressor2000 Studio Compressor plugin" class="thumb-img thumb-img--contain" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">ANALOG COMP</span>
                 <div class="card-tag-pills">
@@ -2058,6 +2813,17 @@
                 <span class="card-title">Sudo Records</span>
               </div>
               <p class="card-desc" data-i18n="descSudoRecords">Record Label hosted on Tunecamp</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('sudorecords', 0);" title="Visualizza anteprima">
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/sudorecords.png" alt="Sudo Records screenshot" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
               <div class="card-bottom-row">
                 <span class="card-kind-badge">LABEL</span>
                 <div class="card-tag-pills">
@@ -2270,6 +3036,36 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox Gallery Modal -->
+  <div id="site-lightbox" class="site-lightbox" role="dialog" aria-modal="true" aria-label="Project Preview" onclick="handleLightboxBackdropClick(event)">
+    <div class="lb-card" onclick="event.stopPropagation();">
+      <div class="lb-header">
+        <div class="lb-title-group">
+          <span class="lb-project-title" id="lb-title">Project Title</span>
+          <span class="lb-counter-badge" id="lb-counter">[ 1 / 1 ]</span>
+        </div>
+        <div class="lb-header-actions">
+          <a href="#" target="_blank" rel="noopener" class="lb-btn" id="lb-ext-link">
+            <span>link</span>
+            <span>&nearr;</span>
+          </a>
+          <button type="button" class="lb-btn" onclick="closeLightbox()" aria-label="Close preview">
+            <span>[ esc ✕ ]</span>
+          </button>
+        </div>
+      </div>
+      <div class="lb-stage">
+        <button type="button" class="lb-nav-arrow lb-nav-arrow--prev" id="lb-prev-btn" onclick="navLightbox(-1)" aria-label="Previous image">&larr;</button>
+        <img src="" alt="" class="lb-stage-img" id="lb-img" />
+        <button type="button" class="lb-nav-arrow lb-nav-arrow--next" id="lb-next-btn" onclick="navLightbox(1)" aria-label="Next image">&rarr;</button>
+      </div>
+      <div class="lb-footer">
+        <span class="lb-caption" id="lb-caption">Screenshot caption</span>
+        <span class="lb-hint" id="lb-hint">&larr; &rarr; per scorrere &middot; esc per chiudere</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Script: Theme, i18n, Filtering & Video Drawer -->
   <script>
@@ -2620,6 +3416,559 @@
           }
         });
       }
+
+      // Project Galleries Data & Lightbox Controller
+      const projectGalleries = {
+        tunecamp: {
+          title: 'Tunecamp',
+          url: 'https://tunecamp.org/',
+          items: [
+            {
+              src: 'screenshots/tunecamp.png',
+              thumb: 'screenshots/thumbs/tunecamp.png',
+              caption_en: 'Tunecamp — Explore the network (federated music streaming across self-hosted nodes)',
+              caption_it: 'Tunecamp — Esplora la rete (streaming musicale federato su nodi self-hosted)'
+            }
+          ]
+        },
+        sudorecords: {
+          title: 'Sudo Records',
+          url: 'https://sudorecords.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/sudorecords.png',
+              thumb: 'screenshots/thumbs/sudorecords.png',
+              caption_en: 'Sudo Records — The first independent record label hosted on the Tunecamp network',
+              caption_it: 'Sudo Records — La prima etichetta discografica indipendente su rete Tunecamp'
+            }
+          ]
+        },
+        nullroute: {
+          title: 'Nullroute',
+          url: 'https://nullroute.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/nullroute.png',
+              thumb: 'screenshots/thumbs/nullroute.png',
+              caption_en: 'Nullroute — EVM stealth payment hub & recipient address generator on Base Sepolia',
+              caption_it: 'Nullroute — Hub di pagamenti stealth EVM e indirizzi monouso su Base Sepolia'
+            }
+          ]
+        },
+        wormhole: {
+          title: 'Wormhole',
+          url: 'https://wormhole.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/wormhole.png',
+              thumb: 'screenshots/thumbs/wormhole.png',
+              caption_en: 'Wormhole — Decentralized P2P & IPFS file transfer with AES-256 E2EE encryption',
+              caption_it: 'Wormhole — Trasferimento file P2P e IPFS decentralizzato con cifratura E2EE AES-256'
+            }
+          ]
+        },
+        linda: {
+          title: 'Linda',
+          url: 'https://linda.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/linda.png',
+              thumb: 'screenshots/thumbs/linda.png',
+              caption_en: 'Linda — Serverless P2P encrypted messenger on Holepunch stack',
+              caption_it: 'Linda — Messaggistica cifrata P2P serverless su stack Holepunch'
+            }
+          ]
+        },
+        sidecamp: {
+          title: 'Sidecamp',
+          url: 'https://www.tunecamp.org/sidecamp.html',
+          items: [
+            {
+              src: 'screenshots/sidecamp-search.png',
+              thumb: 'screenshots/thumbs/sidecamp-search.png',
+              caption_en: 'Sidecamp — Search & download platforms (Soulseek, SoundCloud, Bandcamp, Torrent, YouTube)',
+              caption_it: 'Sidecamp — Ricerca e download multi-piattaforma (Soulseek, SoundCloud, Torrent, YouTube)'
+            },
+            {
+              src: 'screenshots/sidecamp-network.png',
+              thumb: 'screenshots/thumbs/sidecamp-network.png',
+              caption_en: 'Sidecamp — P2P network discovery & connected TuneCamp server catalog',
+              caption_it: 'Sidecamp — Rete P2P e catalogo tracce condivise dal server TuneCamp'
+            }
+          ]
+        },
+        whiterabbit: {
+          title: 'Whiterabbit',
+          url: 'https://whiterabbit.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/whiterabbit.png',
+              thumb: 'screenshots/thumbs/whiterabbit.png',
+              caption_en: 'White Rabbit — Zero-log end-to-end P2P chat, no server, no account',
+              caption_it: 'White Rabbit — Chat P2P cifrata end-to-end senza server né account'
+            }
+          ]
+        },
+        iris: {
+          title: 'Iris',
+          url: 'https://iris.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/iris.png',
+              thumb: 'screenshots/thumbs/iris.png',
+              caption_en: 'Iris — Air-gapped optical file transfer via continuous animated QR code streams',
+              caption_it: 'Iris — Trasferimento file ottico a rete isolata (air-gap) con flussi QR animati'
+            }
+          ]
+        },
+        orto: {
+          title: 'Orto',
+          url: 'https://orto.scobrudot.dev/?demo',
+          items: [
+            {
+              src: 'screenshots/orto-notes.png',
+              thumb: 'screenshots/thumbs/orto-notes.png',
+              caption_en: 'Orto — Self-hosted workspace: notes, tags & personal encrypted vault',
+              caption_it: 'Orto — Workspace self-hosted: note, tag e cassaforte personale cifrata'
+            },
+            {
+              src: 'screenshots/orto-calendar.png',
+              thumb: 'screenshots/thumbs/orto-calendar.png',
+              caption_en: 'Orto — Calendar, event planner and timeline view',
+              caption_it: 'Orto — Vista calendario, pianificazione eventi e timeline'
+            }
+          ]
+        },
+        aula: {
+          title: 'Aula',
+          url: 'https://github.com/scobru/aula',
+          items: [
+            {
+              src: 'screenshots/aula.png',
+              thumb: 'screenshots/thumbs/aula.png',
+              caption_en: 'Aula — Lightweight, self-hosted open source Google Classroom alternative with SQLite',
+              caption_it: 'Aula — Alternativa leggera e self-hosted a Google Classroom con SQLite e zero dipendenze'
+            }
+          ]
+        },
+        viso: {
+          title: 'Viso',
+          url: 'https://github.com/scobru/viso',
+          items: [
+            {
+              src: 'screenshots/viso.png',
+              thumb: 'screenshots/thumbs/viso.png',
+              caption_en: 'Viso — Self-sovereign persona identity for Freenet decentralized applications',
+              caption_it: 'Viso — Identità e personas auto-sovrane per applicazioni decentralizzate su Freenet'
+            }
+          ]
+        },
+        mecenate: {
+          title: 'Mecenate',
+          url: 'https://github.com/scobru/mecenate',
+          items: [
+            {
+              src: 'screenshots/mecenate.png',
+              thumb: 'screenshots/thumbs/mecenate.png',
+              caption_en: 'Mecenate — Griefing escrow on Base & encrypted files served from Freenet',
+              caption_it: 'Mecenate — Escrow con penalità su Base e file cifrati serviti da Freenet'
+            }
+          ]
+        },
+        distantworlds: {
+          title: 'Distant Worlds',
+          url: 'https://github.com/scobru/distant-worlds',
+          items: [
+            {
+              src: 'screenshots/distant-worlds-thaith.png',
+              thumb: 'screenshots/thumbs/distant-worlds-thaith.png',
+              caption_en: 'Distant Worlds — Generated planet Thaith with colony, creatures and soundscape on Freenet',
+              caption_it: 'Distant Worlds — Pianeta generativo Thaith con colonia, creature e paesaggio sonoro su Freenet'
+            },
+            {
+              src: 'screenshots/distant-worlds-quelon.png',
+              thumb: 'screenshots/thumbs/distant-worlds-quelon.png',
+              caption_en: 'Distant Worlds — Generated planet Quelon uncolonized procedural ecosystem on Freenet',
+              caption_it: 'Distant Worlds — Pianeta generativo Quelon ed ecosistema procedurale su Freenet'
+            }
+          ]
+        },
+        freetunes: {
+          title: 'FreeTunes',
+          url: 'https://github.com/scobru/freetunes',
+          items: [
+            {
+              src: 'screenshots/freetunes.png',
+              thumb: 'screenshots/thumbs/freetunes.png',
+              caption_en: 'FreeTunes — Bandcamp-like decentralized music publishing and streaming on Freenet',
+              caption_it: 'FreeTunes — Pubblicazione e streaming musicale decentralizzato stile Bandcamp su Freenet'
+            }
+          ]
+        },
+        freenames: {
+          title: 'FreeNames',
+          url: 'https://github.com/scobru/freenames',
+          items: [
+            {
+              src: 'screenshots/freenames.png',
+              thumb: 'screenshots/thumbs/freenames.png',
+              caption_en: 'FreeNames — Human-readable naming, zones and public petname registry on Freenet',
+              caption_it: 'FreeNames — Nomi leggibili per siti Freenet, zone e registro petname pubblico'
+            }
+          ]
+        },
+        freepolls: {
+          title: 'FreePolls',
+          url: 'https://github.com/scobru/freepolls',
+          items: [
+            {
+              src: 'screenshots/freepolls.png',
+              thumb: 'screenshots/thumbs/freepolls.png',
+              caption_en: 'FreePolls — Decentralized surveys, polls and signed forms on Freenet',
+              caption_it: 'FreePolls — Sondaggi, moduli e risposte firmate decentralizzate su Freenet'
+            }
+          ]
+        },
+        freeswap: {
+          title: 'FreeSwap',
+          url: 'https://github.com/scobru/freeswap',
+          items: [
+            {
+              src: 'screenshots/freeswap.png',
+              thumb: 'screenshots/thumbs/freeswap.png',
+              caption_en: 'FreeSwap — Uniswap V3 swap UI served directly from Freenet on Ethereum and Base',
+              caption_it: 'FreeSwap — Interfaccia Uniswap V3 per scambi token ospitata su Freenet su Ethereum e Base'
+            }
+          ]
+        },
+        fh: {
+          title: 'FH (Fisherman\'s Horizon)',
+          url: 'https://github.com/scobru/FH',
+          items: [
+            {
+              src: 'screenshots/fh.png',
+              thumb: 'screenshots/thumbs/fh.png',
+              caption_en: 'Fisherman\'s Horizon — Decentralized home page and interactive tile launcher for Freenet',
+              caption_it: 'Fisherman\'s Horizon — Home page decentralizzata e launcher a tile per siti e app Freenet'
+            }
+          ]
+        },
+        fid: {
+          title: 'FID',
+          url: 'https://fid.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/fid.png',
+              thumb: 'screenshots/thumbs/fid.png',
+              caption_en: 'FID — Fediverse-ID: self-sovereign SSO & identity protocol for ActivityPub',
+              caption_it: 'FID — Fediverse-ID: protocollo di identità e SSO auto-sovrano per ActivityPub'
+            }
+          ]
+        },
+        gazza: {
+          title: 'Gazza',
+          url: 'https://gazza.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/gazza.png',
+              thumb: 'screenshots/thumbs/gazza.png',
+              caption_en: 'Gazza — Steganographic video storage: encode and retrieve arbitrary files from video hosts',
+              caption_it: 'Gazza — Storage steganografico video: nascondi e recupera qualsiasi file all\'interno di video'
+            }
+          ]
+        },
+        neo: {
+          title: 'Neo',
+          url: 'https://neo.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/neo.png',
+              thumb: 'screenshots/thumbs/neo.png',
+              caption_en: 'Neo — Private AI assistant running 100% locally in browser via WebGPU with zero cloud telemetry',
+              caption_it: 'Neo — Assistente AI privato in esecuzione 100% locale nel browser via WebGPU senza cloud'
+            }
+          ]
+        },
+        trading: {
+          title: 'Intelligent Trading',
+          url: 'https://intelligent-trading.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/trading-coordinator.png',
+              thumb: 'screenshots/thumbs/trading-coordinator.png',
+              caption_en: 'Intelligent Trading — Master Coordinator LIVE: central multi-agent orchestrator, live PnL, equity curve & autonomous agent allocation on Base',
+              caption_it: 'Intelligent Trading — Master Coordinator LIVE: orchestratore multi-agente centrale, PnL in tempo reale, equity curve e gestione del rischio su Base'
+            },
+            {
+              src: 'screenshots/trading-landing.png',
+              thumb: 'screenshots/thumbs/trading-landing.png',
+              caption_en: 'Intelligent Trading — Autonomous LLM trading agents on Base: strategy architecture & safety overview',
+              caption_it: 'Intelligent Trading — Agenti di trading autonomi su Base: architettura delle strategie e panoramica'
+            }
+          ]
+        },
+        eurydice: {
+          title: 'Eurydice',
+          url: 'https://eurydice.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/eurydice.png',
+              thumb: 'screenshots/thumbs/eurydice.png',
+              caption_en: 'Eurydice — Ambient soundscape generative synthesis studio with real-time visual canvas',
+              caption_it: 'Eurydice — Studio di sintesi generativa e soundscape ambient con visualizzatore in tempo reale'
+            }
+          ]
+        },
+        delia: {
+          title: 'Delia',
+          url: 'https://delia.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/delia.png',
+              thumb: 'screenshots/thumbs/delia.png',
+              caption_en: 'Delia — Browser magnetic tape instrument with varispeed, tape loop wear & analog degradation',
+              caption_it: 'Delia — Strumento a nastro magnetico nel browser con simulazione varispeed, usura ed equalizzazione'
+            }
+          ]
+        },
+        cabasa: {
+          title: 'Cabasa',
+          url: 'https://cabasa.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/cabasa-universe.png',
+              thumb: 'screenshots/thumbs/cabasa-universe.png',
+              caption_en: 'Cabasa — Generative soundtrack engine selecting from 7 live telemetry data streams (ISS, seismic, chaos)',
+              caption_it: 'Cabasa — Motore di colonna sonora generativa guidato da 7 stream di dati in tempo reale (ISS, sismi, caos)'
+            },
+            {
+              src: 'screenshots/cabasa-active.png',
+              thumb: 'screenshots/thumbs/cabasa-active.png',
+              caption_en: 'Cabasa — Live generative playback & telemetry modulation in action',
+              caption_it: 'Cabasa — Riproduzione generativa e modulazione dei parametri audio dai flussi live'
+            }
+          ]
+        },
+        eph: {
+          title: 'EPH',
+          url: 'https://eph.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/eph-synth.png',
+              thumb: 'screenshots/thumbs/eph-synth.png',
+              caption_en: 'EPH — Ephemeral synthesizer interface: procedural oscillator generation from 4 billion seeds',
+              caption_it: 'EPH — Interfaccia sintetizzatore effimero: generazione procedurale di patch da 4 miliardi di seed'
+            },
+            {
+              src: 'screenshots/eph-groovebox.png',
+              thumb: 'screenshots/thumbs/eph-groovebox.png',
+              caption_en: 'EPH — Ephemeral groovebox & sequencer layout with instant patch randomization',
+              caption_it: 'EPH — Layout groovebox e sequencer effimero con randomizzazione istantanea del timbro'
+            }
+          ]
+        },
+        onepick: {
+          title: 'Onepick',
+          url: 'https://onepick.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/onepick.png',
+              thumb: 'screenshots/thumbs/onepick.png',
+              caption_en: 'Onepick — Decentralized analog P2P radio & cultural broadcast frequency powered by Zen protocol',
+              caption_it: 'Onepick — Radio analogica P2P decentralizzata e frequenza culturale supportata dal protocollo Zen'
+            }
+          ]
+        },
+        soap: {
+          title: 'Soap',
+          url: 'https://soap-blond.vercel.app',
+          items: [
+            {
+              src: 'screenshots/soap-web.png',
+              thumb: 'screenshots/thumbs/soap-web.png',
+              caption_en: 'Soap — WebAssembly voice DSP: real-time AI noise reduction & dereverberation directly in the browser',
+              caption_it: 'Soap — Voice DSP in WebAssembly: pulizia vocale, dereverbero e cancellazione rumore locale nel browser'
+            },
+            {
+              src: 'screenshots/soap-plugin.png',
+              thumb: 'screenshots/thumbs/soap-plugin.png',
+              caption_en: 'Soap — Zero-latency professional DAW plugin version (VST3 / CLAP / AU)',
+              caption_it: 'Soap — Versione plugin DAW a latenza zero per produzione professionale (VST3 / CLAP / AU)'
+            }
+          ]
+        },
+        onda: {
+          title: 'Onda',
+          url: 'https://onda.scobrudot.dev',
+          items: [
+            {
+              src: 'screenshots/onda.png',
+              thumb: 'screenshots/thumbs/onda.png',
+              caption_en: 'Onda — Automated subtitles, transcripts & intelligent silence jump cuts running on-device',
+              caption_it: 'Onda — Sottotitoli automatici, trascrizioni e jump cut dei silenzi elaborati interamente sul dispositivo'
+            }
+          ]
+        },
+        himalaya: {
+          title: 'Himalaya',
+          url: 'https://github.com/scobru/himalaya',
+          items: [
+            {
+              src: 'screenshots/himalaya.png',
+              thumb: 'screenshots/thumbs/himalaya.png',
+              caption_en: 'Himalaya — Zero-latency multiband brickwall limiter with auto-release, LUFS meter & oscilloscope (JUCE 8 + React 19)',
+              caption_it: 'Himalaya — Limiter brickwall multibanda a latenza zero con auto-release, meter LUFS e oscilloscopio (JUCE 8 + React 19)'
+            }
+          ]
+        },
+        sculpt: {
+          title: 'Sculpt',
+          url: 'https://github.com/scobru/sculpt',
+          items: [
+            {
+              src: 'screenshots/sculpt.png',
+              thumb: 'screenshots/thumbs/sculpt.png',
+              caption_en: 'Sculpt — 11-band zero-latency precision parametric EQ with FFT spectrum analyzer and interactive curve (JUCE 8 + React 19)',
+              caption_it: 'Sculpt — Equalizzatore parametrico a 11 bande con analizzatore di spettro FFT e curve interattive (JUCE 8 + React 19)'
+            }
+          ]
+        },
+        pressor2000: {
+          title: 'Pressor2000',
+          url: 'https://github.com/scobru/pressor2000',
+          items: [
+            {
+              src: 'screenshots/pressor2000.png',
+              thumb: 'screenshots/thumbs/pressor2000.png',
+              caption_en: 'Pressor2000 — Zero-latency studio compressor with 4 analog modes (VCA/Opto/FET/Vari-Mu) & transfer curve (JUCE 8 + React 19)',
+              caption_it: 'Pressor2000 — Compressore analogico da studio a latenza zero con 4 modalità (VCA/Opto/FET/Vari-Mu) e visualizzatore di curva (JUCE 8 + React 19)'
+            }
+          ]
+        }
+      };
+
+      let currentGallery = null;
+      let currentGalleryIdx = 0;
+
+      window.switchCardThumb = function (btn, projectId, idx) {
+        const container = document.getElementById('thumb-preview-' + projectId);
+        if (!container) return;
+        const data = projectGalleries[projectId];
+        if (!data || !data.items[idx]) return;
+
+        const tabs = container.querySelectorAll('.thumb-tab-btn');
+        tabs.forEach((t, i) => {
+          t.classList.toggle('is-active', i === idx);
+        });
+
+        const img = container.querySelector('.thumb-img');
+        if (img) {
+          img.style.opacity = '0.35';
+          setTimeout(() => {
+            img.src = data.items[idx].thumb;
+            img.alt = currentLang === 'it' ? data.items[idx].caption_it : data.items[idx].caption_en;
+            img.style.opacity = '1';
+          }, 100);
+        }
+
+        container.dataset.activeIdx = idx;
+      };
+
+      window.openProjectGallery = function (projectId, idx) {
+        const data = projectGalleries[projectId];
+        if (!data || !data.items || !data.items.length) return;
+
+        currentGallery = data;
+        currentGalleryIdx = typeof idx === 'number' ? Math.max(0, Math.min(idx, data.items.length - 1)) : 0;
+
+        updateLightboxContent();
+        const lb = document.getElementById('site-lightbox');
+        if (lb) {
+          lb.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      window.closeLightbox = function () {
+        const lb = document.getElementById('site-lightbox');
+        if (lb) {
+          lb.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+        currentGallery = null;
+      };
+
+      window.handleLightboxBackdropClick = function (e) {
+        if (e.target.id === 'site-lightbox') {
+          closeLightbox();
+        }
+      };
+
+      window.navLightbox = function (dir) {
+        if (!currentGallery || !currentGallery.items.length) return;
+        const len = currentGallery.items.length;
+        currentGalleryIdx = (currentGalleryIdx + dir + len) % len;
+        updateLightboxContent();
+      };
+
+      function updateLightboxContent() {
+        if (!currentGallery) return;
+        const item = currentGallery.items[currentGalleryIdx];
+        const titleEl = document.getElementById('lb-title');
+        const counterEl = document.getElementById('lb-counter');
+        const extLinkEl = document.getElementById('lb-ext-link');
+        const imgEl = document.getElementById('lb-img');
+        const captionEl = document.getElementById('lb-caption');
+        const hintEl = document.getElementById('lb-hint');
+        const prevBtn = document.getElementById('lb-prev-btn');
+        const nextBtn = document.getElementById('lb-next-btn');
+
+        if (titleEl) titleEl.textContent = currentGallery.title;
+        if (counterEl) counterEl.textContent = `[ ${currentGalleryIdx + 1} / ${currentGallery.items.length} ]`;
+
+        if (extLinkEl) {
+          if (currentGallery.url) {
+            extLinkEl.href = currentGallery.url;
+            extLinkEl.style.display = 'inline-flex';
+          } else {
+            extLinkEl.style.display = 'none';
+          }
+        }
+
+        const isIt = currentLang === 'it';
+        if (captionEl) {
+          captionEl.textContent = isIt ? (item.caption_it || item.caption_en) : (item.caption_en || item.caption_it);
+        }
+        if (hintEl) {
+          hintEl.textContent = isIt ? '← → per scorrere · esc per chiudere' : '← → to browse · esc to close';
+        }
+
+        if (imgEl) {
+          imgEl.style.opacity = '0.35';
+          imgEl.src = item.src;
+          imgEl.alt = isIt ? item.caption_it : item.caption_en;
+          imgEl.onload = function () {
+            imgEl.style.opacity = '1';
+          };
+        }
+
+        const isMulti = currentGallery.items.length > 1;
+        if (prevBtn) prevBtn.style.display = isMulti ? 'inline-flex' : 'none';
+        if (nextBtn) nextBtn.style.display = isMulti ? 'inline-flex' : 'none';
+      }
+
+      document.addEventListener('keydown', function (e) {
+        const lb = document.getElementById('site-lightbox');
+        if (!lb || !lb.classList.contains('is-open')) return;
+
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+          navLightbox(-1);
+        } else if (e.key === 'ArrowRight') {
+          navLightbox(1);
+        }
+      });
 
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
         if (!localStorage.getItem('theme')) {
