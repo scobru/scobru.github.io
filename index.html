@@ -1444,7 +1444,7 @@
           generativa.
         </p>
         <div class="hero-actions">
-          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (50)</a>
+          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (51)</a>
           <a href="https://github.com/scobru" target="_blank" rel="noopener" class="btn-secondary">GitHub &rarr;</a>
         </div>
       </div>
@@ -1603,7 +1603,7 @@
         <div class="catalog-toolbar">
           <div class="catalog-filter-group" id="filter-group">
             <span class="catalog-filter-label" data-i18n="filterLabel">// filter:</span>
-            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (50)
+            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (51)
               ]</button>
             <button class="filter-pill" data-filter="federated" type="button" data-i18n="filterFederated">[ federated
               (1) ]</button>
@@ -1611,7 +1611,7 @@
               decentralized (1) ]</button>
             <button class="filter-pill" data-filter="self-hosted" type="button" data-i18n="filterSelfHosted">[ self-hosted (2) ]</button>
             <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (6) ]</button>
-            <button class="filter-pill" data-filter="freenet" type="button" data-i18n="filterFreenet">[ freenet (8) ]</button>
+            <button class="filter-pill" data-filter="freenet" type="button" data-i18n="filterFreenet">[ freenet (9) ]</button>
             <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (4)
               ]</button>
             <button class="filter-pill" data-filter="ai" type="button" data-i18n="filterAI">[ ai &amp; agents (3) ]</button>
@@ -1626,7 +1626,7 @@
             <button class="filter-pill" data-filter="contracts" type="button" data-i18n="filterContracts">[ connect (10)
               ]</button>
           </div>
-          <span class="catalog-count-badge" id="visible-count">// 50/50 visualizzati</span>
+          <span class="catalog-count-badge" id="visible-count">// 51/51 visualizzati</span>
         </div>
 
         <!-- Category 01a: Federated -->
@@ -1965,7 +1965,7 @@
         <div class="cat-section" data-cat="freenet">
           <div class="cat-section-header">
             <span class="cat-section-title" data-i18n="secFreenet">[ 01e // Freenet ]</span>
-            <span class="catalog-count-badge">8 items</span>
+            <span class="catalog-count-badge">9 items</span>
           </div>
           <div class="card-grid">
             <a href="https://github.com/scobru/viso" target="_blank" rel="noopener" class="intel-card intel-card--dusty-pink">
@@ -1994,6 +1994,40 @@
                   <span class="tag-mini">#freenet</span>
                   <span class="tag-mini">#identity</span>
                   <span class="tag-mini">#sign-in</span>
+                </div>
+              </div>
+            </a>
+            <a href="https://github.com/scobru/radica" target="_blank" rel="noopener" class="intel-card intel-card--forest" id="card-radica">
+              <div class="card-top-row">
+                <span class="card-title">Radica</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/radica', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descRadica">100% decentralized, serverless P2P social network on Freenet with on-device AI moderation and cryptographic personas</p>
+              <div class="card-thumb-preview" id="thumb-preview-radica" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('radica', parseInt(this.dataset.activeIdx||'0'));" title="Visualizza anteprima">
+                <div class="thumb-tabs-bar" onclick="event.stopPropagation();">
+                  <button type="button" class="thumb-tab-btn is-active" onclick="switchCardThumb(this, 'radica', 0);">[ 01 // feed ]</button>
+                  <button type="button" class="thumb-tab-btn" onclick="switchCardThumb(this, 'radica', 1);">[ 02 // chat ]</button>
+                </div>
+                <div class="thumb-media-frame">
+                  <img src="screenshots/thumbs/radica-feed.png" alt="Radica feed" class="thumb-img" loading="lazy" />
+                  <div class="thumb-overlay">
+                    <span class="thumb-zoom-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      <span>zoom (2)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">SOCIAL</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#freenet</span>
+                  <span class="tag-mini">#social</span>
+                  <span class="tag-mini">#p2p</span>
+                  <span class="tag-mini">#ai</span>
                 </div>
               </div>
             </a>
@@ -3031,7 +3065,7 @@
       </div>
 
       <div class="footer-bottom-bar">
-        <span data-i18n="sysStatus">// 50 items indexed · system: online</span>
+        <span data-i18n="sysStatus">// 51 items indexed · system: online</span>
         <span>&copy; <span id="current-year"></span> Francesco Bruno &middot; Desert Ant Aesthetic</span>
       </div>
     </div>
@@ -3087,7 +3121,7 @@
           heroStatus: 'P2P Systems · Audio Tech · Open Source',
           heroTitle: 'Francesco Bruno.<br /><em>P2P Systems &amp; Audio Synthesis.</em>',
           heroSub: 'Decentralized architectures, peer-to-peer cryptography, federated protocols, and generative audio synthesis.',
-          btnExplore: 'Explore Projects (50) ↓',
+          btnExplore: 'Explore Projects (51) ↓',
           fanTitle: 'Featured Projects',
           claimTunecamp: 'Decentralized federated music streaming without intermediaries.',
           claimLinda: 'Serverless P2P encrypted messenger on Holepunch stack.',
@@ -3096,11 +3130,11 @@
           claimSoap: 'Denoise, dereverb & loudness for vocals, fully on-device via WebAssembly.',
           claimEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4B of them.',
           filterLabel: '// filter:',
-          filterAll: '[ all (50) ]',
+          filterAll: '[ all (51) ]',
           filterFederated: '[ federated (1) ]',
           filterDecentralized: '[ decentralized (1) ]',
           filterSelfHosted: '[ self-hosted (2) ]',
-          filterFreenet: '[ freenet (8) ]',
+          filterFreenet: '[ freenet (9) ]',
           filterP2P: '[ p2p apps (6) ]',
           filterWeb: '[ web & infra (4) ]',
           filterAI: '[ ai & agents (3) ]',
@@ -3125,6 +3159,7 @@
           descAula: 'Lightweight, self-hosted open source Google Classroom alternative with SQLite and zero dependencies',
           descFH: 'Decentralized home page and contract tile launcher for Freenet sites and apps',
           descViso: 'One identity for every Freenet app: personas on your node, sign in without sharing a key',
+          descRadica: '100% decentralized, serverless P2P social network on Freenet with on-device AI moderation and cryptographic personas',
           descDistantWorlds: 'Endless generated planets to explore, with their own creatures and music, shared in a multiplayer galaxy on Freenet',
           descMecenate: 'Sell data to strangers without trusting them: a griefing escrow on Base, encrypted files on Freenet',
           descFreeTunes: 'Bandcamp-like music publishing and streaming on Freenet, no server',
@@ -3182,7 +3217,7 @@
           heroStatus: 'Sistemi P2P · Audio Tech · Open Source',
           heroTitle: 'Francesco Bruno.<br /><em>Sistemi P2P &amp; Sintesi Sonora.</em>',
           heroSub: 'Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e sintesi audio generativa.',
-          btnExplore: 'Esplora Progetti (50) ↓',
+          btnExplore: 'Esplora Progetti (51) ↓',
           fanTitle: 'Progetti in Evidenza',
           claimTunecamp: 'Streaming musicale decentralizzato e federato senza intermediari.',
           claimLinda: 'Messaggistica cifrata P2P serverless su stack Holepunch.',
@@ -3191,11 +3226,11 @@
           claimSoap: 'Denoise, dereverb e loudness per voci, tutto in locale via WebAssembly.',
           claimEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto.',
           filterLabel: '// filtra:',
-          filterAll: '[ tutti (50) ]',
+          filterAll: '[ tutti (51) ]',
           filterFederated: '[ federate (1) ]',
           filterDecentralized: '[ decentralizzate (1) ]',
           filterSelfHosted: '[ self-hosted (2) ]',
-          filterFreenet: '[ freenet (8) ]',
+          filterFreenet: '[ freenet (9) ]',
           filterP2P: '[ app p2p (6) ]',
           filterWeb: '[ web & infra (4) ]',
           filterAI: '[ ai & agenti (3) ]',
@@ -3220,6 +3255,7 @@
           descAula: 'Alternativa leggera e self-hosted a Google Classroom con SQLite e zero dipendenze',
           descFH: 'Home page decentralizzata e launcher a tessere per siti e contratti su Freenet',
           descViso: 'Un\'identità per ogni app Freenet: persona sul tuo nodo, accesso senza condividere chiavi',
+          descRadica: 'Social network P2P decentralizzato e serverless su Freenet con moderazione AI on-device e personas crittografiche',
           descDistantWorlds: 'Pianeti infiniti generati da esplorare, con creature e musica proprie, condivisi in una galassia multiplayer su Freenet',
           descMecenate: 'Vendi dati a sconosciuti senza fidarti: escrow con penalità su Base, file cifrati su Freenet',
           descFreeTunes: 'Pubblica e ascolta musica su Freenet, stile Bandcamp, senza server',
@@ -3264,7 +3300,7 @@
           fColP2p: 'P2P & Web3',
           fColAudio: 'Audio & Strumenti',
           fColConnect: 'Contatti',
-          sysStatus: '// 50 elementi indicizzati · sistema: online',
+          sysStatus: '// 51 elementi indicizzati · sistema: online',
           langToggle: '[ en ]',
           langAria: 'Switch to English',
           themeDark: '[ scuro ]',
@@ -3560,6 +3596,24 @@
               thumb: 'screenshots/thumbs/viso.png',
               caption_en: 'Viso — Self-sovereign persona identity for Freenet decentralized applications',
               caption_it: 'Viso — Identità e personas auto-sovrane per applicazioni decentralizzate su Freenet'
+            }
+          ]
+        },
+        radica: {
+          title: 'Radica',
+          url: 'https://github.com/scobru/radica',
+          items: [
+            {
+              src: 'screenshots/radica-feed.png',
+              thumb: 'screenshots/thumbs/radica-feed.png',
+              caption_en: 'Radica — Decentralized timeline, community feeds & cryptographic persona profiles on Freenet',
+              caption_it: 'Radica — Timeline decentralizzata, feed delle community e profili persona crittografici su Freenet'
+            },
+            {
+              src: 'screenshots/radica-chat.png',
+              thumb: 'screenshots/thumbs/radica-chat.png',
+              caption_en: 'Radica — E2EE P2P private rooms and public community chatrooms on Freenet',
+              caption_it: 'Radica — Stanze private P2P con crittografia end-to-end e chatroom di community su Freenet'
             }
           ]
         },
