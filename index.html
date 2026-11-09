@@ -452,7 +452,8 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    .fan-card--wormhole {
+    .fan-card--wormhole,
+    .fan-card--freehole {
       --fc-bg: var(--color-sand);
       --tilt: 0.5deg;
     }
@@ -1444,7 +1445,7 @@
           generativa.
         </p>
         <div class="hero-actions">
-          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (51)</a>
+          <a href="#catalog" class="btn-primary" data-i18n="btnExplore">Esplora Progetti (53)</a>
           <a href="https://github.com/scobru" target="_blank" rel="noopener" class="btn-secondary">GitHub &rarr;</a>
         </div>
       </div>
@@ -1513,22 +1514,21 @@
               </a>
             </div>
 
-            <!-- 3. Wormhole -->
+            <!-- 3. Freehole -->
             <div>
-              <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener"
-                class="fan-card fan-card--wormhole">
+              <a href="https://freehole.scobrudot.dev/" target="_blank" rel="noopener"
+                class="fan-card fan-card--freehole">
                 <div class="fc-top">
                   <span class="fc-tag">E2EE TRANSFER</span>
-                  <button class="fc-preview-trigger" type="button" title="Screenshot anteprima" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('wormhole', 0);">⤢</button>
+                  <button class="fc-preview-trigger" type="button" title="Screenshot anteprima" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('freehole', 0);">⤢</button>
                   <span class="fc-glyph">&nearr;</span>
                 </div>
                 <div class="fc-mid">
-                  <div class="fc-name">Wormhole</div>
-                  <p class="fc-claim" data-i18n="claimWormhole">Trasferimento file peer-to-peer istantaneo con
-                    crittografia end-to-end.</p>
+                  <div class="fc-name">Freehole</div>
+                  <p class="fc-claim" data-i18n="claimFreehole">Trasferimento file sovereign P2P e Freenet con crittografia end-to-end.</p>
                 </div>
                 <div class="fc-art">
-                  <!-- Concentric wormhole rings -->
+                  <!-- Concentric freehole rings -->
                   <svg width="80" height="40" viewBox="0 0 100 40" fill="none">
                     <ellipse cx="50" cy="20" rx="36" ry="14" stroke="currentColor" stroke-width="1.5"
                       stroke-dasharray="6 3" />
@@ -1602,7 +1602,7 @@
         <div class="catalog-toolbar">
           <div class="catalog-filter-group" id="filter-group">
             <span class="catalog-filter-label" data-i18n="filterLabel">// filter:</span>
-            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (51)
+            <button class="filter-pill is-active" data-filter="all" type="button" data-i18n="filterAll">[ all (53)
               ]</button>
             <button class="filter-pill" data-filter="federated" type="button" data-i18n="filterFederated">[ federated
               (1) ]</button>
@@ -1610,8 +1610,8 @@
               decentralized (1) ]</button>
             <button class="filter-pill" data-filter="self-hosted" type="button" data-i18n="filterSelfHosted">[ self-hosted (2) ]</button>
             <button class="filter-pill" data-filter="p2p" type="button" data-i18n="filterP2P">[ p2p apps (6) ]</button>
-            <button class="filter-pill" data-filter="freenet" type="button" data-i18n="filterFreenet">[ freenet (9) ]</button>
-            <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (4)
+            <button class="filter-pill" data-filter="freenet" type="button" data-i18n="filterFreenet">[ freenet (10) ]</button>
+            <button class="filter-pill" data-filter="web" type="button" data-i18n="filterWeb">[ web &amp; infra (5)
               ]</button>
             <button class="filter-pill" data-filter="ai" type="button" data-i18n="filterAI">[ ai &amp; agents (3) ]</button>
             <button class="filter-pill" data-filter="audio-instruments" type="button"
@@ -1625,7 +1625,7 @@
             <button class="filter-pill" data-filter="contracts" type="button" data-i18n="filterContracts">[ connect (10)
               ]</button>
           </div>
-          <span class="catalog-count-badge" id="visible-count">// 51/51 visualizzati</span>
+          <span class="catalog-count-badge" id="visible-count">// 53/53 visualizzati</span>
         </div>
 
         <!-- Category 01a: Federated -->
@@ -1714,19 +1714,19 @@
             <span class="catalog-count-badge">6 items</span>
           </div>
           <div class="card-grid">
-            <a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener"
+            <a href="https://freehole.scobrudot.dev/" target="_blank" rel="noopener"
               class="intel-card intel-card--sand">
               <div class="card-top-row">
-                <span class="card-title">Wormhole</span>
+                <span class="card-title">Freehole</span>
                 <div class="card-actions">
                   <span class="card-src-btn"
-                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/wormhole', '_blank');">&lt;/&gt;</span>
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/freehole', '_blank');">&lt;/&gt;</span>
                 </div>
               </div>
-              <p class="card-desc" data-i18n="descWormhole">E2EE P2P file transfer</p>
-              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('wormhole', 0);" title="Visualizza anteprima">
+              <p class="card-desc" data-i18n="descFreehole">Sovereign E2EE P2P and Freenet file transfer with Reed-Solomon FEC</p>
+              <div class="card-thumb-preview" onclick="event.preventDefault(); event.stopPropagation(); openProjectGallery('freehole', 0);" title="Visualizza anteprima">
                 <div class="thumb-media-frame">
-                  <img src="screenshots/thumbs/wormhole.png" alt="Wormhole screenshot" class="thumb-img" loading="lazy" />
+                  <img src="screenshots/thumbs/freehole.png" alt="Freehole screenshot" class="thumb-img" loading="lazy" />
                   <div class="thumb-overlay">
                     <span class="thumb-zoom-badge">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
@@ -1736,10 +1736,13 @@
                 </div>
               </div>
               <div class="card-bottom-row">
-                <span class="card-kind-badge">FILE TRANSFER</span>
+                <span class="card-kind-badge">FILE TRANSFER / SOVEREIGN</span>
                 <div class="card-tag-pills">
-                  <span class="tag-mini">#e2ee</span>
                   <span class="tag-mini">#p2p</span>
+                  <span class="tag-mini">#freenet</span>
+                  <span class="tag-mini">#webrtc</span>
+                  <span class="tag-mini">#e2ee</span>
+                  <span class="tag-mini">#zen</span>
                 </div>
               </div>
             </a>
@@ -1964,7 +1967,7 @@
         <div class="cat-section" data-cat="freenet">
           <div class="cat-section-header">
             <span class="cat-section-title" data-i18n="secFreenet">[ 01e // Freenet ]</span>
-            <span class="catalog-count-badge">9 items</span>
+            <span class="catalog-count-badge">10 items</span>
           </div>
           <div class="card-grid">
             <a href="https://github.com/scobru/viso" target="_blank" rel="noopener" class="intel-card intel-card--dusty-pink">
@@ -2256,6 +2259,25 @@
                 </div>
               </div>
             </a>
+            <a href="https://github.com/scobru/freetree" target="_blank" rel="noopener" class="intel-card intel-card--forest">
+              <div class="card-top-row">
+                <span class="card-title">Freetree</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/freetree', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descFreetree">Decentralized Linktree for Freenet &amp; Delta: turn Delta link pages into responsive profile hubs</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">LINKTREE / FREENET</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#freenet</span>
+                  <span class="tag-mini">#delta</span>
+                  <span class="tag-mini">#linktree</span>
+                  <span class="tag-mini">#p2p</span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -2263,7 +2285,7 @@
         <div class="cat-section" data-cat="web">
           <div class="cat-section-header">
             <span class="cat-section-title" data-i18n="secInfra">[ 02 // Protocols, Web3 &amp; Infra ]</span>
-            <span class="catalog-count-badge">4 items</span>
+            <span class="catalog-count-badge">5 items</span>
           </div>
           <div class="card-grid">
 
@@ -2359,6 +2381,25 @@
                 <span class="card-kind-badge">STEGANOGRAPHY</span>
                 <div class="card-tag-pills">
                   <span class="tag-mini">#video</span>
+                  <span class="tag-mini">#storage</span>
+                </div>
+              </div>
+            </a>
+            <a href="https://github.com/scobru/freenet-blob" target="_blank" rel="noopener" class="intel-card intel-card--teal">
+              <div class="card-top-row">
+                <span class="card-title">freenet-blob</span>
+                <div class="card-actions">
+                  <span class="card-src-btn"
+                    onclick="event.stopPropagation(); window.open('https://github.com/scobru/freenet-blob', '_blank');">&lt;/&gt;</span>
+                </div>
+              </div>
+              <p class="card-desc" data-i18n="descFreenetBlob">Fault-tolerant decentralized blob storage with Reed-Solomon FEC for Freenet</p>
+              <div class="card-bottom-row">
+                <span class="card-kind-badge">STORAGE / INFRA</span>
+                <div class="card-tag-pills">
+                  <span class="tag-mini">#freenet</span>
+                  <span class="tag-mini">#reed-solomon</span>
+                  <span class="tag-mini">#fec</span>
                   <span class="tag-mini">#storage</span>
                 </div>
               </div>
@@ -3048,7 +3089,8 @@
             <li><a href="https://orto.scobrudot.dev/?demo" target="_blank" rel="noopener">Orto</a></li>
             <li><a href="https://github.com/scobru/orto" target="_blank" rel="noopener">Orto Skill</a></li>
             <li><a href="https://github.com/scobru/aula" target="_blank" rel="noopener">Aula</a></li>
-            <li><a href="https://wormhole.scobrudot.dev/" target="_blank" rel="noopener">Wormhole</a></li>
+            <li><a href="https://freehole.scobrudot.dev/" target="_blank" rel="noopener">Freehole</a></li>
+            <li><a href="https://github.com/scobru/freetree" target="_blank" rel="noopener">Freetree</a></li>
           </ul>
         </div>
 
@@ -3138,22 +3180,23 @@
           heroStatus: 'P2P Systems · Audio Tech · Open Source',
           heroTitle: 'Francesco Bruno.<br /><em>P2P Systems &amp; Audio Synthesis.</em>',
           heroSub: 'Decentralized architectures, peer-to-peer cryptography, federated protocols, and generative audio synthesis.',
-          btnExplore: 'Explore Projects (51) ↓',
+          btnExplore: 'Explore Projects (53) ↓',
           fanTitle: 'Featured Projects',
           claimTunecamp: 'Decentralized federated music streaming without intermediaries.',
           claimLinda: 'Serverless P2P encrypted messenger on Holepunch stack.',
-          claimWormhole: 'Instant peer-to-peer file transfer with end-to-end encryption.',
+          claimFreehole: 'Instant sovereign peer-to-peer and Freenet file transfer with end-to-end encryption.',
+          claimWormhole: 'Instant sovereign peer-to-peer and Freenet file transfer with end-to-end encryption.',
           claimOrto: 'Self-hosted workspace with E2EE notes, calendar, bookmarks and blog.',
           claimRadica: 'Serverless P2P social network on Freenet with on-device AI moderation.',
           claimEph: 'One-button ephemeral synth: every press draws a whole patch from one seed, 4B of them.',
           filterLabel: '// filter:',
-          filterAll: '[ all (51) ]',
+          filterAll: '[ all (53) ]',
           filterFederated: '[ federated (1) ]',
           filterDecentralized: '[ decentralized (1) ]',
           filterSelfHosted: '[ self-hosted (2) ]',
-          filterFreenet: '[ freenet (9) ]',
+          filterFreenet: '[ freenet (10) ]',
           filterP2P: '[ p2p apps (6) ]',
-          filterWeb: '[ web & infra (4) ]',
+          filterWeb: '[ web & infra (5) ]',
           filterAI: '[ ai & agents (3) ]',
           filterAudioInstruments: '[ audio-instruments (5) ]',
           filterArtMusic: '[ art & music (4) ]',
@@ -3183,10 +3226,13 @@
           descFreeNames: 'Human-readable names for Freenet sites: zones, petnames and a public registry',
           descFreePolls: 'Polls and forms on Freenet: signed answers, invite links, availability slots',
           descFreeSwap: 'Uniswap V3 swap UI served from Freenet, on Ethereum and Base',
+          descFreetree: 'Decentralized Linktree for Freenet & Delta: turn Delta link pages into responsive profile hubs',
+          descFreenetBlob: 'Fault-tolerant decentralized blob storage with Reed-Solomon FEC for Freenet',
           descZenosSkill: 'Self-hosted Orto server, CLI & agent skill: one Node process, one SQLite file',
           descZenos: 'Self-hosted workspace & agentic OS: one Node server, one SQLite file',
           descZenvault: 'Self-hosted workspace & agentic OS: one Node server, one SQLite file',
-          descWormhole: 'E2EE P2P file transfer',
+          descFreehole: 'Sovereign E2EE P2P and Freenet file transfer with Reed-Solomon FEC',
+          descWormhole: 'Sovereign E2EE P2P and Freenet file transfer with Reed-Solomon FEC',
           descLinda: 'Serverless P2P encrypted messenger on Holepunch stack',
           descLindaNet: 'Publish a website from a folder and open it from a link: no server, no DNS, over Hyperswarm',
           descSidecamp: 'TuneCamp P2P companion (Soulseek, Torrents, yt-dlp)',
@@ -3221,7 +3267,7 @@
           fColP2p: 'P2P & Web3',
           fColAudio: 'Audio & Tools',
           fColConnect: 'Network',
-          sysStatus: '// 50 items indexed · system: online',
+          sysStatus: '// 53 items indexed · system: online',
           langToggle: '[ it ]',
           langAria: "Passa all'italiano",
           themeDark: '[ dark ]',
@@ -3234,22 +3280,23 @@
           heroStatus: 'Sistemi P2P · Audio Tech · Open Source',
           heroTitle: 'Francesco Bruno.<br /><em>Sistemi P2P &amp; Sintesi Sonora.</em>',
           heroSub: 'Architetture decentralizzate, crittografia peer-to-peer, protocolli federati e sintesi audio generativa.',
-          btnExplore: 'Esplora Progetti (51) ↓',
+          btnExplore: 'Esplora Progetti (53) ↓',
           fanTitle: 'Progetti in Evidenza',
           claimTunecamp: 'Streaming musicale decentralizzato e federato senza intermediari.',
           claimLinda: 'Messaggistica cifrata P2P serverless su stack Holepunch.',
-          claimWormhole: 'Trasferimento file P2P istantaneo con crittografia end-to-end.',
+          claimFreehole: 'Trasferimento file sovereign P2P e Freenet istantaneo con crittografia end-to-end.',
+          claimWormhole: 'Trasferimento file sovereign P2P e Freenet istantaneo con crittografia end-to-end.',
           claimOrto: 'Workspace self-hosted con note E2EE, calendario, segnalibri e blog.',
           claimRadica: 'Social network P2P serverless su Freenet con moderazione AI on-device.',
           claimEph: 'Synth effimero a un bottone: ogni pressione estrae una patch intera da un seed, 4 miliardi in tutto.',
           filterLabel: '// filtra:',
-          filterAll: '[ tutti (51) ]',
+          filterAll: '[ tutti (53) ]',
           filterFederated: '[ federate (1) ]',
           filterDecentralized: '[ decentralizzate (1) ]',
           filterSelfHosted: '[ self-hosted (2) ]',
-          filterFreenet: '[ freenet (9) ]',
+          filterFreenet: '[ freenet (10) ]',
           filterP2P: '[ app p2p (6) ]',
-          filterWeb: '[ web & infra (4) ]',
+          filterWeb: '[ web & infra (5) ]',
           filterAI: '[ ai & agenti (3) ]',
           filterAudioInstruments: '[ audio-instruments (5) ]',
           filterArtMusic: '[ musica & arte (4) ]',
@@ -3279,10 +3326,13 @@
           descFreeNames: 'Nomi leggibili per i siti Freenet: zone, petname e un registry pubblico',
           descFreePolls: 'Sondaggi e moduli su Freenet: risposte firmate, link di invito, disponibilità',
           descFreeSwap: 'Interfaccia swap Uniswap V3 servita da Freenet, su Ethereum e Base',
+          descFreetree: 'Linktree decentralizzato per Freenet e Delta: trasforma le pagine link di Delta in profili reattivi e categorizzati',
+          descFreenetBlob: 'Storage blob decentralizzato e fault-tolerant con Reed-Solomon FEC per Freenet',
           descZenosSkill: 'Server Orto self-hosted, CLI e skill per agenti: un processo Node, un file SQLite',
           descZenos: 'Workspace self-hosted ed OS agentico: un server Node, un file SQLite',
           descZenvault: 'Workspace self-hosted ed OS agentico: un server Node, un file SQLite',
-          descWormhole: 'Trasferimento file P2P con crittografia end-to-end',
+          descFreehole: 'Trasferimento file sovereign P2P e Freenet con crittografia end-to-end e Reed-Solomon FEC',
+          descWormhole: 'Trasferimento file sovereign P2P e Freenet con crittografia end-to-end e Reed-Solomon FEC',
           descLinda: 'Messaggistica crittografata P2P serverless su stack Holepunch',
           descLindaNet: 'Pubblica un sito da una cartella e aprilo da un link: niente server, niente DNS, su Hyperswarm',
           descSidecamp: 'Companion P2P per TuneCamp (Soulseek, Torrents, yt-dlp)',
@@ -3317,7 +3367,7 @@
           fColP2p: 'P2P & Web3',
           fColAudio: 'Audio & Strumenti',
           fColConnect: 'Contatti',
-          sysStatus: '// 51 elementi indicizzati · sistema: online',
+          sysStatus: '// 53 elementi indicizzati · sistema: online',
           langToggle: '[ en ]',
           langAria: 'Switch to English',
           themeDark: '[ scuro ]',
@@ -3508,15 +3558,27 @@
             }
           ]
         },
-        wormhole: {
-          title: 'Wormhole',
-          url: 'https://wormhole.scobrudot.dev/',
+        freehole: {
+          title: 'Freehole',
+          url: 'https://freehole.scobrudot.dev/',
           items: [
             {
-              src: 'screenshots/wormhole.png',
-              thumb: 'screenshots/thumbs/wormhole.png',
-              caption_en: 'Wormhole — Decentralized P2P & IPFS file transfer with AES-256 E2EE encryption',
-              caption_it: 'Wormhole — Trasferimento file P2P e IPFS decentralizzato con cifratura E2EE AES-256'
+              src: 'screenshots/freehole.png',
+              thumb: 'screenshots/thumbs/freehole.png',
+              caption_en: 'Freehole — Sovereign P2P & Freenet file transfer with AES-256 E2EE encryption and Reed-Solomon FEC',
+              caption_it: 'Freehole — Trasferimento file sovereign P2P e Freenet con cifratura E2EE AES-256 e Reed-Solomon FEC'
+            }
+          ]
+        },
+        wormhole: {
+          title: 'Freehole',
+          url: 'https://freehole.scobrudot.dev/',
+          items: [
+            {
+              src: 'screenshots/freehole.png',
+              thumb: 'screenshots/thumbs/freehole.png',
+              caption_en: 'Freehole — Sovereign P2P & Freenet file transfer with AES-256 E2EE encryption and Reed-Solomon FEC',
+              caption_it: 'Freehole — Trasferimento file sovereign P2P e Freenet con cifratura E2EE AES-256 e Reed-Solomon FEC'
             }
           ]
         },
