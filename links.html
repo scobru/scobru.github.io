@@ -14,13 +14,13 @@
       href="https://avatars.githubusercontent.com/u/1079164?v=4"
     />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#8ea3b5" id="theme-color-meta" />
+    <meta name="theme-color" content="#c5ebf2" id="theme-color-meta" />
 
-    <!-- Google Font Space Mono for the authentic typewriter monospace look -->
+    <!-- Google Font Inter for modern, clean Linktree typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -47,59 +47,65 @@
 
     <style>
       :root {
-        --page-bg: #8fa3b4;
-        --card-bg: #dff0fa;
-        --card-border: rgba(255, 255, 255, 0.7);
-        --card-shadow: 0 16px 45px rgba(28, 51, 74, 0.18);
-        --text-primary: #111821;
-        --text-muted: #4e6578;
+        --page-bg: #8c93a0;
+        --card-bg-gradient: linear-gradient(150deg, #c5ebf2 0%, #dbf0f5 25%, #fde2dc 70%, #fad2ca 100%);
+        --card-border: rgba(255, 255, 255, 0.75);
+        --card-shadow: 0 24px 64px rgba(25, 42, 60, 0.2);
+        --text-primary: #111827;
+        --text-muted: #4b5563;
         --text-accent: #0f172a;
         --btn-white-bg: #ffffff;
-        --btn-white-text: #111821;
+        --btn-white-text: #111827;
         --btn-white-border: rgba(0, 0, 0, 0.08);
-        --pill-bg: #eaf5fc;
-        --pill-border: #b8d7ea;
-        --pill-text: #111821;
+        --pill-bg: #ffffff;
+        --pill-border: rgba(0, 0, 0, 0.06);
+        --pill-text: #111827;
         --pill-hover-bg: #ffffff;
-        --pill-hover-border: #75a7c9;
-        --pill-hover-text: #050b12;
-        --pill-shadow: 0 2px 6px rgba(45, 80, 105, 0.04);
-        --pill-hover-shadow: 0 8px 24px rgba(35, 75, 110, 0.12);
-        --thumb-bg: #ffffff;
-        --thumb-border: #c4dff0;
-        --thumb-color: #2b455b;
-        --dots-color: #6c869b;
+        --pill-hover-border: rgba(0, 0, 0, 0.12);
+        --pill-hover-text: #000000;
+        --pill-shadow: 0 4px 14px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+        --pill-hover-shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
+        --thumb-bg: #f1f5f9;
+        --thumb-border: rgba(0, 0, 0, 0.04);
+        --thumb-color: #1e293b;
+        --dots-color: #64748b;
         --dots-hover-bg: rgba(0, 0, 0, 0.06);
-        --toast-bg: #111821;
+        --toast-bg: #111827;
         --toast-text: #ffffff;
+        --badge-bg: #ffffff;
+        --badge-text: #1e293b;
       }
 
       [data-theme='dark'] {
-        --page-bg: #0d1217;
-        --card-bg: #151d27;
-        --card-border: rgba(255, 255, 255, 0.06);
-        --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
-        --text-primary: #f0f6fc;
-        --text-muted: #8899a6;
+        --page-bg: #090d13;
+        --card-bg-gradient: radial-gradient(circle at 15% 15%, #182a3d 0%, transparent 60%),
+                            radial-gradient(circle at 85% 25%, #341a30 0%, transparent 55%),
+                            radial-gradient(circle at 50% 85%, #27172b 0%, #0d131c 100%);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --card-shadow: 0 28px 70px rgba(0, 0, 0, 0.7);
+        --text-primary: #f8fafc;
+        --text-muted: #94a3b8;
         --text-accent: #ffffff;
-        --btn-white-bg: #222d3d;
-        --btn-white-text: #f0f6fc;
-        --btn-white-border: rgba(255, 255, 255, 0.12);
-        --pill-bg: #1d2735;
-        --pill-border: #2c3c4f;
-        --pill-text: #e5edf5;
-        --pill-hover-bg: #263345;
-        --pill-hover-border: #4d698a;
+        --btn-white-bg: rgba(255, 255, 255, 0.12);
+        --btn-white-text: #f8fafc;
+        --btn-white-border: rgba(255, 255, 255, 0.14);
+        --pill-bg: rgba(255, 255, 255, 0.08);
+        --pill-border: rgba(255, 255, 255, 0.09);
+        --pill-text: #f8fafc;
+        --pill-hover-bg: rgba(255, 255, 255, 0.14);
+        --pill-hover-border: rgba(255, 255, 255, 0.22);
         --pill-hover-text: #ffffff;
-        --pill-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
-        --pill-hover-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
-        --thumb-bg: #243142;
-        --thumb-border: #384d66;
-        --thumb-color: #9ac2e0;
-        --dots-color: #7990a8;
-        --dots-hover-bg: rgba(255, 255, 255, 0.1);
-        --toast-bg: #f0f6fc;
-        --toast-text: #0d1217;
+        --pill-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        --pill-hover-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+        --thumb-bg: rgba(255, 255, 255, 0.12);
+        --thumb-border: rgba(255, 255, 255, 0.15);
+        --thumb-color: #f1f5f9;
+        --dots-color: #94a3b8;
+        --dots-hover-bg: rgba(255, 255, 255, 0.12);
+        --toast-bg: #f8fafc;
+        --toast-text: #090d13;
+        --badge-bg: rgba(255, 255, 255, 0.12);
+        --badge-text: #f1f5f9;
       }
 
       * {
@@ -111,8 +117,8 @@
       body {
         background-color: var(--page-bg);
         color: var(--text-primary);
-        font-family: 'Space Mono', 'Courier New', monospace;
-        line-height: 1.4;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.45;
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -125,8 +131,8 @@
       /* Card Container matching reference image */
       .linktree-card {
         width: 100%;
-        max-width: 440px;
-        background-color: var(--card-bg);
+        max-width: 460px;
+        background: var(--card-bg-gradient);
         border: 1px solid var(--card-border);
         border-radius: 36px;
         box-shadow: var(--card-shadow);
@@ -135,7 +141,9 @@
         flex-direction: column;
         align-items: center;
         position: relative;
-        transition: background-color 0.25s ease, border-color 0.25s ease;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: background 0.3s ease, border-color 0.25s ease;
       }
 
       /* Top Actions Bar inside the Card */
@@ -158,19 +166,21 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background: var(--btn-white-bg);
         border: 1px solid var(--btn-white-border);
         color: var(--text-primary);
         cursor: pointer;
         text-decoration: none;
-        transition: transform 0.15s ease, background-color 0.15s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, background-color 0.15s ease, box-shadow 0.15s ease;
       }
 
       .brand-icon-btn:hover {
-        transform: rotate(45deg);
+        transform: rotate(45deg) scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .brand-icon-btn svg {
@@ -182,7 +192,7 @@
       .topbar-right {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         flex-wrap: wrap;
       }
 
@@ -195,33 +205,33 @@
         border: 1px solid var(--btn-white-border);
         border-radius: 9999px;
         font-family: inherit;
-        font-size: 0.76rem;
-        font-weight: 700;
-        padding: 6px 12px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 7px 14px;
         cursor: pointer;
         text-decoration: none;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         transition: all 0.15s ease;
       }
 
       .topbar-btn:hover {
         transform: translateY(-1px);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .topbar-btn:active {
         transform: scale(0.97);
       }
 
-      /* Language switcher: explicit and non-ambiguous IT | EN */
+      /* Language switcher */
       .lang-switch-container {
         display: inline-flex;
         align-items: center;
         background: var(--btn-white-bg);
         border: 1px solid var(--btn-white-border);
         border-radius: 9999px;
-        padding: 2px 4px;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        padding: 3px 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       }
 
       .lang-choice {
@@ -229,9 +239,9 @@
         border: none;
         font-family: inherit;
         font-size: 0.74rem;
-        font-weight: 400;
+        font-weight: 500;
         color: var(--text-muted);
-        padding: 4px 6px;
+        padding: 4px 8px;
         border-radius: 9999px;
         cursor: pointer;
         transition: all 0.15s ease;
@@ -239,27 +249,27 @@
 
       .lang-choice.is-active {
         background: var(--text-primary);
-        color: var(--card-bg);
+        color: var(--btn-white-bg);
         font-weight: 700;
       }
 
       .lang-divider {
         font-size: 0.7rem;
         color: var(--text-muted);
-        opacity: 0.5;
+        opacity: 0.4;
         margin: 0 1px;
       }
 
       .share-icon-btn {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
         padding: 0;
       }
 
       .share-icon-btn svg {
-        width: 16px;
-        height: 16px;
+        width: 17px;
+        height: 17px;
         fill: currentColor;
       }
 
@@ -270,20 +280,22 @@
         align-items: center;
         text-align: center;
         margin-bottom: 24px;
+        width: 100%;
       }
 
       .avatar-wrapper {
         width: 96px;
         height: 96px;
-        border-radius: 50%;
+        border-radius: 28px;
         overflow: hidden;
         margin-bottom: 14px;
-        background: #cfdbe6;
-        border: 3px solid var(--btn-white-bg);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        background: #f1f5f9;
+        border: 3px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
       }
 
       .avatar-img {
@@ -291,27 +303,66 @@
         height: 100%;
         object-fit: cover;
         display: block;
+        border-radius: inherit;
       }
 
       .avatar-placeholder {
-        width: 50%;
-        height: 50%;
+        width: 48%;
+        height: 48%;
         fill: #8598a7;
       }
 
       .profile-handle {
         font-size: 1.35rem;
         font-weight: 700;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.4px;
         color: var(--text-accent);
-        margin-bottom: 4px;
+        margin-bottom: 6px;
       }
 
       .profile-bio {
-        font-size: 0.78rem;
+        font-size: 0.88rem;
         color: var(--text-muted);
-        max-width: 340px;
-        line-height: 1.4;
+        max-width: 350px;
+        line-height: 1.45;
+        font-weight: 400;
+        margin-bottom: 16px;
+      }
+
+      .social-icons-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 4px;
+      }
+
+      .social-icon-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--btn-white-bg);
+        border: 1px solid var(--btn-white-border);
+        color: var(--text-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .social-icon-btn:hover {
+        transform: translateY(-2px) scale(1.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        color: var(--text-accent);
+      }
+
+      .social-icon-btn svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
       }
 
       /* Links List */
@@ -320,24 +371,27 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
       }
 
-      /* Capsule / Pill button */
+      /* Link Pill / Card */
       .link-pill {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        min-height: 58px;
-        padding: 8px 12px 8px 10px;
-        border-radius: 9999px;
+        min-height: 60px;
+        padding: 10px 14px 10px 12px;
+        border-radius: 20px;
         background: var(--pill-bg);
-        border: 1.5px solid var(--pill-border);
+        border: 1px solid var(--pill-border);
         color: var(--pill-text);
         text-decoration: none;
         box-shadow: var(--pill-shadow);
-        transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                    background-color 0.15s ease,
+                    border-color 0.15s ease;
         position: relative;
         cursor: pointer;
       }
@@ -346,7 +400,7 @@
         background: var(--pill-hover-bg);
         border-color: var(--pill-hover-border);
         color: var(--pill-hover-text);
-        transform: translateY(-2px);
+        transform: scale(1.015);
         box-shadow: var(--pill-hover-shadow);
       }
 
@@ -361,9 +415,9 @@
 
       /* Thumbnail on the left of the pill */
       .pill-thumb {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -371,28 +425,28 @@
         background: var(--thumb-bg);
         border: 1px solid var(--thumb-border);
         color: var(--thumb-color);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
         overflow: hidden;
       }
 
       .pill-thumb svg {
-        width: 19px;
-        height: 19px;
+        width: 22px;
+        height: 22px;
         fill: currentColor;
       }
 
-      /* Affirmation / statement text */
+      /* Content text */
       .pill-content {
         flex: 1 1 auto;
         min-width: 0;
         text-align: center;
-        padding: 0 8px;
+        padding: 0 12px;
       }
 
       .pill-phrase {
         display: block;
-        font-size: 0.86rem;
-        font-weight: 400;
+        font-size: 0.88rem;
+        font-weight: 600;
         line-height: 1.35;
         letter-spacing: -0.2px;
         color: inherit;
@@ -401,8 +455,8 @@
 
       /* Options vertical dots ⋮ */
       .pill-dots {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -420,7 +474,7 @@
       .pill-dots:hover {
         background: var(--dots-hover-bg);
         color: var(--text-primary);
-        transform: scale(1.15);
+        transform: scale(1.1);
       }
 
       .pill-dots:focus-visible {
@@ -429,71 +483,81 @@
 
       /* Section dividers in links */
       .section-divider {
-        font-size: 0.72rem;
-        color: var(--text-muted);
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--text-primary);
         text-align: center;
-        margin: 10px 0 2px 0;
-        letter-spacing: 0.5px;
-        text-transform: lowercase;
+        margin: 22px 0 8px 0;
+        letter-spacing: -0.2px;
       }
 
-      /* Social Footer */
+      /* Card Footer */
       .card-footer {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 16px;
-        border-top: 1px dashed var(--pill-border);
-        padding-top: 20px;
+        gap: 12px;
+        padding-top: 18px;
+        margin-top: 8px;
       }
 
-      .social-icons-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      .social-icon-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
+      .brand-pill-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         background: var(--btn-white-bg);
         border: 1px solid var(--btn-white-border);
+        border-radius: 9999px;
+        padding: 6px 14px 6px 10px;
         color: var(--text-primary);
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .brand-pill-badge:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      }
+
+      .brand-pill-logo {
+        width: 20px;
+        height: 20px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-        transition: all 0.15s ease;
       }
 
-      .social-icon-btn:hover {
-        transform: translateY(-2px);
-        color: var(--pill-hover-text);
-        border-color: var(--pill-hover-border);
+      .brand-pill-logo svg {
+        width: 16px;
+        height: 16px;
       }
 
-      .social-icon-btn svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-      }
-
-      .footer-site-link {
-        font-size: 0.76rem;
+      .footer-links-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.74rem;
         color: var(--text-muted);
+      }
+
+      .footer-sublink {
+        color: inherit;
         text-decoration: none;
-        border-bottom: 1px dotted currentColor;
-        padding-bottom: 2px;
         transition: color 0.15s ease;
       }
 
-      .footer-site-link:hover {
+      .footer-sublink:hover {
         color: var(--text-primary);
-        border-bottom-style: solid;
+        text-decoration: underline;
+      }
+
+      .footer-sep {
+        opacity: 0.4;
       }
 
       /* Toast Notification */
@@ -507,7 +571,7 @@
         padding: 10px 20px;
         border-radius: 9999px;
         font-size: 0.82rem;
-        font-weight: 700;
+        font-weight: 600;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
         opacity: 0;
         pointer-events: none;
@@ -526,16 +590,16 @@
       /* Responsive adjustments */
       @media (max-width: 480px) {
         body {
-          padding: 12px 8px 40px 8px;
+          padding: 10px 8px 36px 8px;
         }
 
         .linktree-card {
           border-radius: 28px;
-          padding: 18px 12px 24px 12px;
+          padding: 20px 14px 28px 14px;
         }
 
         .pill-phrase {
-          font-size: 0.82rem;
+          font-size: 0.84rem;
         }
       }
     </style>
@@ -573,7 +637,7 @@
             class="topbar-btn"
             id="btn-blog"
           >
-            [ blog ]
+            Blog
           </a>
 
           <!-- Non-ambiguous IT / EN switcher -->
@@ -607,7 +671,7 @@
             aria-label="Cambia tema"
             title="Cambia tema"
           >
-            <span id="theme-btn-text">[ scuro ]</span>
+            <span id="theme-btn-text">Scuro</span>
           </button>
 
           <!-- Share button -->
@@ -652,6 +716,88 @@
         <p class="profile-bio" data-i18n="profileBio">
           Francesco Bruno — sviluppatore &amp; sound designer.<br />P2P, open-source, sintesi audio, creative tech.
         </p>
+
+        <!-- Social Icons Row directly under bio (matching Linktree reference) -->
+        <div class="social-icons-row" aria-label="Social links">
+          <!-- GitHub -->
+          <a
+            class="social-icon-btn"
+            href="https://github.com/scobru"
+            target="_blank"
+            rel="me noopener"
+            title="GitHub"
+            aria-label="GitHub"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"
+              />
+            </svg>
+          </a>
+
+          <!-- Mastodon -->
+          <a
+            class="social-icon-btn"
+            href="https://livellosegreto.it/@scobru"
+            target="_blank"
+            rel="me noopener"
+            title="Mastodon"
+            aria-label="Mastodon"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.82 2.146 13.918 2 12.001 2c-1.916 0-4.82.146-6.483.956 0 0-2.844 1.271-2.844 5.61 0 .993-.015 2.186.012 3.341.094 3.998.423 7.954 3.823 8.895 1.579.437 3.092.531 4.508.438 2.578-.17 4.02-1.031 4.02-1.031l-.057-1.264s-1.808.57-3.834.498c-2.009-.071-4.123-.223-4.425-2.642a4.417 4.417 0 0 1-.035-.559s1.884.457 4.298.57c1.472.07 2.87-.074 4.288-.242 2.766-.33 5.174-2.04 5.485-5.187.16-1.616.273-3.284.273-4.887zM17.65 13.4h-2.182V8.406c0-1.12-.47-1.69-1.409-1.69-1.037 0-1.556.67-1.556 2v3.315H10.5V8.716c0-1.33-.519-2-1.556-2-.94 0-1.41.57-1.41 1.69V13.4H5.352V8.225c0-1.12.288-2.007.863-2.66.59-.668 1.362-1.01 2.317-1.01 1.103 0 1.936.425 2.493 1.273l.575.97.575-.97c.557-.848 1.39-1.273 2.493-1.273.955 0 1.727.342 2.317 1.01.575.653.863 1.54.863 2.66V13.4z"
+              />
+            </svg>
+          </a>
+
+          <!-- Telegram -->
+          <a
+            class="social-icon-btn"
+            href="https://t.me/scobru"
+            target="_blank"
+            rel="me noopener"
+            title="Telegram"
+            aria-label="Telegram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+              />
+            </svg>
+          </a>
+
+          <!-- Twitter / X -->
+          <a
+            class="social-icon-btn"
+            href="https://twitter.com/scobru1988"
+            target="_blank"
+            rel="me noopener"
+            title="Twitter / X"
+            aria-label="Twitter"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+
+          <!-- Email -->
+          <a
+            class="social-icon-btn"
+            href="mailto:scobru1988@gmail.com"
+            rel="me"
+            title="Email"
+            aria-label="Email"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+          </a>
+        </div>
       </header>
 
       <!-- Links (Affirmations & Personal Statements) -->
@@ -719,7 +865,7 @@
         </a>
 
         <!-- Section: Audio Tech & Strumenti -->
-        <div class="section-divider" data-i18n="dividerAudio">// audio tech &amp; strumenti</div>
+        <div class="section-divider" data-i18n="dividerAudio">Audio Tech &amp; Strumenti</div>
 
         <!-- 03: Delia Tape Instrument -->
         <a
@@ -1059,7 +1205,7 @@
         </a>
 
         <!-- Section: Musica & Arte -->
-        <div class="section-divider" data-i18n="dividerMusic">// musica &amp; arte</div>
+        <div class="section-divider" data-i18n="dividerMusic">Musica &amp; Arte</div>
 
         <!-- 08: Sudo Records -->
         <a
@@ -1209,7 +1355,7 @@
         </a>
 
         <!-- Section: P2P, Web3 & Protocolli -->
-        <div class="section-divider" data-i18n="dividerP2P">// p2p, web3 &amp; protocolli</div>
+        <div class="section-divider" data-i18n="dividerP2P">P2P, Web3 &amp; Protocolli</div>
 
         <!-- 13: Freehole -->
         <a
@@ -1554,7 +1700,7 @@
         </a>
 
         <!-- Section: AI -->
-        <div class="section-divider" data-i18n="dividerAI">// intelligenza artificiale</div>
+        <div class="section-divider" data-i18n="dividerAI">Intelligenza Artificiale</div>
 
         <!-- 24: Neo -->
         <a
@@ -1647,92 +1793,26 @@
         </a>
       </main>
 
-      <!-- Footer Social & Main Index Link -->
+      <!-- Footer Branding & Catalog Link -->
       <footer class="card-footer">
-        <div class="social-icons-row" aria-label="Social links">
-          <!-- GitHub -->
-          <a
-            class="social-icon-btn"
-            href="https://github.com/scobru"
-            target="_blank"
-            rel="me noopener"
-            title="GitHub"
-            aria-label="GitHub"
-          >
+        <a class="brand-pill-badge" href="/" title="scobru.dev">
+          <span class="brand-pill-logo">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
-                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"
+                d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
               />
             </svg>
-          </a>
-
-          <!-- Mastodon -->
-          <a
-            class="social-icon-btn"
-            href="https://livellosegreto.it/@scobru"
-            target="_blank"
-            rel="me noopener"
-            title="Mastodon"
-            aria-label="Mastodon"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.82 2.146 13.918 2 12.001 2c-1.916 0-4.82.146-6.483.956 0 0-2.844 1.271-2.844 5.61 0 .993-.015 2.186.012 3.341.094 3.998.423 7.954 3.823 8.895 1.579.437 3.092.531 4.508.438 2.578-.17 4.02-1.031 4.02-1.031l-.057-1.264s-1.808.57-3.834.498c-2.009-.071-4.123-.223-4.425-2.642a4.417 4.417 0 0 1-.035-.559s1.884.457 4.298.57c1.472.07 2.87-.074 4.288-.242 2.766-.33 5.174-2.04 5.485-5.187.16-1.616.273-3.284.273-4.887zM17.65 13.4h-2.182V8.406c0-1.12-.47-1.69-1.409-1.69-1.037 0-1.556.67-1.556 2v3.315H10.5V8.716c0-1.33-.519-2-1.556-2-.94 0-1.41.57-1.41 1.69V13.4H5.352V8.225c0-1.12.288-2.007.863-2.66.59-.668 1.362-1.01 2.317-1.01 1.103 0 1.936.425 2.493 1.273l.575.97.575-.97c.557-.848 1.39-1.273 2.493-1.273.955 0 1.727.342 2.317 1.01.575.653.863 1.54.863 2.66V13.4z"
-              />
-            </svg>
-          </a>
-
-          <!-- Telegram -->
-          <a
-            class="social-icon-btn"
-            href="https://t.me/scobru"
-            target="_blank"
-            rel="me noopener"
-            title="Telegram"
-            aria-label="Telegram"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
-              />
-            </svg>
-          </a>
-
-          <!-- Twitter / X -->
-          <a
-            class="social-icon-btn"
-            href="https://twitter.com/scobru1988"
-            target="_blank"
-            rel="me noopener"
-            title="Twitter / X"
-            aria-label="Twitter"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
-
-          <!-- Email -->
-          <a
-            class="social-icon-btn"
-            href="mailto:scobru1988@gmail.com"
-            rel="me"
-            title="Email"
-            aria-label="Email"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-              />
-            </svg>
-          </a>
-        </div>
-
-        <a class="footer-site-link" href="/" data-i18n="footerIndexLink">
-          [ &larr; Torna all'indice completo di tutti i progetti ]
+          </span>
+          <span class="brand-pill-text">scobru.dev</span>
         </a>
+        <div class="footer-links-row">
+          <a class="footer-sublink" href="/" data-i18n="footerIndexLink">&larr; Torna a tutti i progetti</a>
+          <span class="footer-sep">&bull;</span>
+          <a class="footer-sublink" href="https://github.com/scobru/freetree" target="_blank" rel="noopener">Crea con Freetree</a>
+        </div>
       </footer>
     </div>
 
@@ -1761,13 +1841,13 @@
               'Francesco Bruno (@scobru) — sviluppatore & sound designer. P2P, open-source, sintesi audio, creative tech.',
             profileBio:
               'Francesco Bruno — sviluppatore &amp; sound designer.<br />P2P, open-source, sintesi audio, creative tech.',
-            themeDark: '[ scuro ]',
-            themeLight: '[ chiaro ]',
+            themeDark: 'Scuro',
+            themeLight: 'Chiaro',
             themeTitle: 'Cambia tema',
-            dividerAudio: '// audio tech & strumenti',
-            dividerMusic: '// musica & arte',
-            dividerP2P: '// p2p, web3 & protocolli',
-            dividerAI: '// intelligenza artificiale',
+            dividerAudio: 'Audio Tech & Strumenti',
+            dividerMusic: 'Musica & Arte',
+            dividerP2P: 'P2P, Web3 & Protocolli',
+            dividerAI: 'Intelligenza Artificiale',
             linkBlog: 'Leggi pensieri e note sul blog di Orto',
             linkTunecamp: 'Ascolta e pubblica musica libera su Tunecamp',
             linkDelia: 'Suona Delia: strumento a nastro virtuale nel browser',
@@ -1800,7 +1880,7 @@
             linkDelay: 'Rilancia contenuti su IPFS con un relay decentralizzato (Delay)',
             linkTrading: 'Guarda agenti AI autonomi fare trading su Base (Intelligent Trading)',
             linkNeo: 'Chatta con un assistente AI che gira nel tuo browser, senza server (Neo)',
-            footerIndexLink: "[ &larr; Torna all'indice completo di tutti i progetti ]",
+            footerIndexLink: "&larr; Torna a tutti i progetti",
             toastCopied: 'Link copiato negli appunti!',
             toastProfileCopied: 'Link del profilo copiato!',
           },
@@ -1810,13 +1890,13 @@
               'Francesco Bruno (@scobru) — developer & sound designer. P2P, open-source, audio synthesis, creative tech.',
             profileBio:
               'Francesco Bruno — developer &amp; sound designer.<br />P2P, open-source, audio synthesis, creative tech.',
-            themeDark: '[ dark ]',
-            themeLight: '[ light ]',
+            themeDark: 'Dark',
+            themeLight: 'Light',
             themeTitle: 'Toggle theme',
-            dividerAudio: '// audio tech & instruments',
-            dividerMusic: '// music & art',
-            dividerP2P: '// p2p, web3 & protocols',
-            dividerAI: '// artificial intelligence',
+            dividerAudio: 'Audio Tech & Instruments',
+            dividerMusic: 'Music & Art',
+            dividerP2P: 'P2P, Web3 & Protocols',
+            dividerAI: 'Artificial Intelligence',
             linkBlog: 'Read thoughts and notes on the Orto blog',
             linkTunecamp: 'Stream and publish free music on Tunecamp',
             linkDelia: 'Play Delia: virtual tape instrument in the browser',
@@ -1849,7 +1929,7 @@
             linkDelay: 'Relay content over IPFS with a decentralized relay (Delay)',
             linkTrading: 'Watch autonomous AI agents trade on Base (Intelligent Trading)',
             linkNeo: 'Chat with an AI assistant that runs in your browser, no server (Neo)',
-            footerIndexLink: '[ &larr; Return to full project catalog ]',
+            footerIndexLink: '&larr; Return to all projects',
             toastCopied: 'Link copied to clipboard!',
             toastProfileCopied: 'Profile link copied!',
           },
@@ -1930,7 +2010,7 @@
             themeBtn.setAttribute('aria-label', dict.themeTitle);
           }
           if (metaThemeColor) {
-            metaThemeColor.setAttribute('content', theme === 'dark' ? '#0d1217' : '#8fa3b4');
+            metaThemeColor.setAttribute('content', theme === 'dark' ? '#090d13' : '#c5ebf2');
           }
         }
 
